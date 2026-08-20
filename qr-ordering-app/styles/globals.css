@@ -4,16 +4,69 @@
 
 html, body {
   background-color: #fdf8f0;
+  scroll-behavior: smooth;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  height: 0px;
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 .btn-primary {
-  @apply bg-gold text-maroon-dark font-semibold rounded-full px-6 py-3 hover:brightness-95 transition disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply bg-gold text-maroon-dark font-semibold rounded-full px-6 py-3 shadow-sm hover:shadow-md hover:brightness-95 active:scale-95 transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
 }
 
 .btn-outline {
-  @apply border-2 border-maroon text-maroon font-semibold rounded-full px-6 py-3 hover:bg-maroon hover:text-white transition;
+  @apply border-2 border-maroon text-maroon font-semibold rounded-full px-6 py-3 hover:bg-maroon hover:text-white active:scale-95 transition-all duration-150;
 }
 
 .card {
-  @apply bg-white rounded-2xl shadow-md p-5;
+  @apply bg-white rounded-2xl shadow-[0_2px_10px_rgba(74,13,24,0.08)] p-5;
+}
+
+.card-hover {
+  @apply transition-all duration-200 hover:shadow-[0_8px_24px_rgba(74,13,24,0.14)] hover:-translate-y-0.5;
+}
+
+.chip {
+  @apply whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-all duration-150 active:scale-95;
+}
+
+.chip-active {
+  @apply bg-maroon text-white shadow-sm;
+}
+
+.chip-inactive {
+  @apply bg-white text-maroon-dark border border-black/5 shadow-sm hover:shadow;
+}
+
+.food-thumb {
+  @apply relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 flex items-center justify-center text-3xl;
+  background: radial-gradient(circle at 30% 30%, #f3d9a4, #c9a24b 60%, #8a6a2c);
+}
+
+.badge {
+  @apply inline-flex items-center gap-1 rounded-md bg-green-600 text-white text-[11px] font-bold px-1.5 py-0.5;
+}
+
+.add-btn {
+  @apply relative flex items-center justify-center gap-1 bg-white text-green-600 font-bold text-sm border border-green-600 rounded-lg px-5 py-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.08)] active:scale-90 transition-transform duration-150 uppercase tracking-wide;
+}
+
+.stepper {
+  @apply flex items-center justify-between gap-2 bg-green-600 text-white rounded-lg px-2 py-1.5 shadow-sm;
+}
+
+.stepper button {
+  @apply w-5 h-5 flex items-center justify-center font-bold leading-none active:scale-90 transition-transform;
 }

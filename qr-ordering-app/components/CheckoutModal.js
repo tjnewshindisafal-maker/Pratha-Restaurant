@@ -102,13 +102,21 @@ export default function CheckoutModal({ cart, total, onClose, onAdd, onRemove, o
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center">
-      <div className="bg-cream w-full sm:max-w-lg sm:rounded-2xl rounded-t-2xl max-h-[90vh] overflow-y-auto">
-        <div className="p-5 border-b flex items-center justify-between sticky top-0 bg-cream z-10">
-          <h2 className="text-lg font-serif font-bold text-maroon-dark">
+    <div className="fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center animate-fadeIn">
+      <div className="bg-cream w-full sm:max-w-lg sm:rounded-2xl rounded-t-2xl max-h-[90vh] overflow-y-auto animate-sheetUp sm:animate-pop">
+        <div className="flex justify-center pt-2 sm:hidden">
+          <div className="w-10 h-1.5 rounded-full bg-black/10" />
+        </div>
+        <div className="px-5 py-4 border-b flex items-center gap-3 sticky top-0 bg-cream z-10">
+          {step === 'form' && (
+            <button onClick={() => setStep('cart')} className="text-maroon-dark text-lg leading-none">
+              &larr;
+            </button>
+          )}
+          <h2 className="text-lg font-serif font-bold text-maroon-dark flex-1">
             {step === 'cart' ? 'Your Cart' : 'Checkout'}
           </h2>
-          <button onClick={onClose} className="text-2xl leading-none text-gray-500">
+          <button onClick={onClose} className="text-2xl leading-none text-gray-400 hover:text-gray-600">
             &times;
           </button>
         </div>
@@ -121,17 +129,13 @@ export default function CheckoutModal({ cart, total, onClose, onAdd, onRemove, o
               cartLines.map(({ item, qty }) => (
                 <div key={item.id} className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">{item.name}</p>
+                    <p className="font-medium text-maroon-dark">{item.name}</p>
                     <p className="text-sm text-gray-500">₹{item.price} each</p>
                   </div>
-                  <div className="flex items-center gap-3 bg-maroon rounded-full px-3 py-1">
-                    <button onClick={() => onRemove(item)} className="text-white font-bold text-lg leading-none">
-                      −
-                    </button>
-                    <span className="text-white font-semibold w-4 text-center">{qty}</span>
-                    <button onClick={() => onAdd(item)} className="text-white font-bold text-lg leading-none">
-                      +
-                    </button>
+                  <div className="stepper">
+                    <button onClick={() => onRemove(item)}>−</button>
+                    <span className="font-bold text-sm w-4 text-center">{qty}</span>
+                    <button onClick={() => onAdd(item)}>+</button>
                   </div>
                 </div>
               ))
@@ -159,7 +163,7 @@ export default function CheckoutModal({ cart, total, onClose, onAdd, onRemove, o
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full mt-1 border rounded-lg px-3 py-2"
+                className="w-full mt-1 border border-black/10 rounded-xl px-3 py-2.5 outline-none focus:border-maroon focus:ring-2 focus:ring-maroon/10 transition"
                 placeholder="Your name"
               />
             </div>
@@ -171,7 +175,7 @@ export default function CheckoutModal({ cart, total, onClose, onAdd, onRemove, o
                 maxLength={10}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value.replace(/\D/g, '') })}
-                className="w-full mt-1 border rounded-lg px-3 py-2"
+                className="w-full mt-1 border border-black/10 rounded-xl px-3 py-2.5 outline-none focus:border-maroon focus:ring-2 focus:ring-maroon/10 transition"
                 placeholder="10-digit mobile number"
               />
             </div>
@@ -181,7 +185,7 @@ export default function CheckoutModal({ cart, total, onClose, onAdd, onRemove, o
                 required
                 value={form.address}
                 onChange={(e) => setForm({ ...form, address: e.target.value })}
-                className="w-full mt-1 border rounded-lg px-3 py-2"
+                className="w-full mt-1 border border-black/10 rounded-xl px-3 py-2.5 outline-none focus:border-maroon focus:ring-2 focus:ring-maroon/10 transition"
                 rows={2}
                 placeholder="House no, street, area"
               />
@@ -191,7 +195,7 @@ export default function CheckoutModal({ cart, total, onClose, onAdd, onRemove, o
               <input
                 value={form.landmark}
                 onChange={(e) => setForm({ ...form, landmark: e.target.value })}
-                className="w-full mt-1 border rounded-lg px-3 py-2"
+                className="w-full mt-1 border border-black/10 rounded-xl px-3 py-2.5 outline-none focus:border-maroon focus:ring-2 focus:ring-maroon/10 transition"
               />
             </div>
 
@@ -217,13 +221,23 @@ export default function CheckoutModal({ cart, total, onClose, onAdd, onRemove, o
             <div>
               <label className="text-sm font-semibold text-maroon-dark block mb-2">Payment Method</label>
               <div className="flex gap-3">
-                <label className={`flex-1 border rounded-lg px-3 py-2 text-center cursor-pointer ${paymentMode === 'cod' ? 'border-maroon bg-maroon/5' : ''}`}>
+                <label
+                  className={`flex-1 flex flex-col items-center gap-1 border-2 rounded-xl px-3 py-3 text-center cursor-pointer transition-all ${
+                    paymentMode === 'cod' ? 'border-green-600 bg-green-50 shadow-sm' : 'border-black/10 hover:border-black/20'
+                  }`}
+                >
                   <input type="radio" name="pm" className="hidden" checked={paymentMode === 'cod'} onChange={() => setPaymentMode('cod')} />
-                  Cash on Delivery
+                  <span className="text-xl">💵</span>
+                  <span className="text-sm font-semibold text-maroon-dark">Cash on Delivery</span>
                 </label>
-                <label className={`flex-1 border rounded-lg px-3 py-2 text-center cursor-pointer ${paymentMode === 'online' ? 'border-maroon bg-maroon/5' : ''}`}>
+                <label
+                  className={`flex-1 flex flex-col items-center gap-1 border-2 rounded-xl px-3 py-3 text-center cursor-pointer transition-all ${
+                    paymentMode === 'online' ? 'border-green-600 bg-green-50 shadow-sm' : 'border-black/10 hover:border-black/20'
+                  }`}
+                >
                   <input type="radio" name="pm" className="hidden" checked={paymentMode === 'online'} onChange={() => setPaymentMode('online')} />
-                  Pay Online
+                  <span className="text-xl">💳</span>
+                  <span className="text-sm font-semibold text-maroon-dark">Pay Online</span>
                 </label>
               </div>
             </div>
