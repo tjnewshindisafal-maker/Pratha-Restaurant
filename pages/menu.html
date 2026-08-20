@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu | Pratha Restaurant</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="../index.html" class="logo">Pratha <span>Restaurant</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">What We Serve</span>
+      <h1>Our Menu</h1>
+      <p>Crafted with tradition, served with love.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="menu-tabs">
+        <button class="menu-tab active" data-target="starters">Starters</button>
+        <button class="menu-tab" data-target="mains">Main Course</button>
+        <button class="menu-tab" data-target="breads">Breads &amp; Rice</button>
+        <button class="menu-tab" data-target="desserts">Desserts</button>
+        <button class="menu-tab" data-target="beverages">Beverages</button>
+      </div>
+
+      <div class="menu-panel active" id="starters">
+        <h3 class="menu-category-title">Starters</h3>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Paneer Tikka</h4><p>Char-grilled cottage cheese with smoky spices.</p></div>
+            <div class="menu-item-price">₹260</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Chicken Seekh Kebab</h4><p>Minced chicken skewers grilled in the tandoor.</p></div>
+            <div class="menu-item-price">₹300</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Veg Samosa (2 pc)</h4><p>Crispy pastry filled with spiced potatoes and peas.</p></div>
+            <div class="menu-item-price">₹90</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Amritsari Fish Fry</h4><p>Batter-fried fish with carom seed and gram flour.</p></div>
+            <div class="menu-item-price">₹340</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="mains">
+        <h3 class="menu-category-title">Main Course</h3>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Butter Chicken</h4><p>Tandoori chicken in creamy tomato-butter gravy.</p></div>
+            <div class="menu-item-price">₹320</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Dal Makhani</h4><p>Slow-cooked black lentils with cream and butter.</p></div>
+            <div class="menu-item-price">₹220</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Kadhai Paneer</h4><p>Cottage cheese tossed with bell peppers in spiced masala.</p></div>
+            <div class="menu-item-price">₹280</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Mutton Rogan Josh</h4><p>Slow-braised mutton in a rich Kashmiri red gravy.</p></div>
+            <div class="menu-item-price">₹380</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Palak Paneer</h4><p>Cottage cheese simmered in a smooth spinach gravy.</p></div>
+            <div class="menu-item-price">₹260</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Chicken Chettinad</h4><p>South Indian style chicken curry with roasted spices.</p></div>
+            <div class="menu-item-price">₹310</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="breads">
+        <h3 class="menu-category-title">Breads &amp; Rice</h3>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Aloo Paratha</h4><p>Whole-wheat flatbread stuffed with spiced potatoes.</p></div>
+            <div class="menu-item-price">₹120</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Butter Naan</h4><p>Soft leavened bread brushed with butter.</p></div>
+            <div class="menu-item-price">₹70</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Garlic Naan</h4><p>Tandoor-baked naan topped with fresh garlic and herbs.</p></div>
+            <div class="menu-item-price">₹85</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Jeera Rice</h4><p>Basmati rice tempered with cumin seeds.</p></div>
+            <div class="menu-item-price">₹150</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Hyderabadi Biryani</h4><p>Fragrant basmati rice layered with spiced meat or vegetables.</p></div>
+            <div class="menu-item-price">₹290</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="desserts">
+        <h3 class="menu-category-title">Desserts</h3>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Gulab Jamun (2 pc)</h4><p>Soft milk dumplings soaked in cardamom syrup.</p></div>
+            <div class="menu-item-price">₹100</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Rasmalai</h4><p>Cottage cheese dumplings in saffron-infused milk.</p></div>
+            <div class="menu-item-price">₹130</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Gajar Ka Halwa</h4><p>Warm carrot pudding slow-cooked with milk and ghee.</p></div>
+            <div class="menu-item-price">₹140</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="beverages">
+        <h3 class="menu-category-title">Beverages</h3>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Masala Chai</h4><p>Spiced Indian tea brewed with milk.</p></div>
+            <div class="menu-item-price">₹50</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Mango Lassi</h4><p>Chilled yogurt smoothie blended with mango pulp.</p></div>
+            <div class="menu-item-price">₹110</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info"><h4>Fresh Lime Soda</h4><p>Refreshing soda with lime, mint, and a hint of spice.</p></div>
+            <div class="menu-item-price">₹80</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Pratha Restaurant</div>
+          <p>Authentic Indian cuisine served with tradition, warmth, and a whole lot of flavor.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="../index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon – Fri: 11am – 10pm</p>
+          <p>Sat – Sun: 10am – 11pm</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>123 Spice Street, Food District</p>
+          <p>+91 98765 43210</p>
+          <p>hello@pratharestaurant.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Pratha Restaurant. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

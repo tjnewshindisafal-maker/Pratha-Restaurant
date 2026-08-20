@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Swap to "postgresql" and set DATABASE_URL to a Postgres connection string for production.
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Restaurant {
+  id                String   @id @default(cuid())
+  name              String
+  logoUrl           String?
+  address           String
+  lat               Float
+  lng               Float
+  deliveryRadiusKm  Float    @default(6)
+  isOpen            Boolean  @default(true)
+  whatsappNumber    String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  menuItems  MenuItem[]
+  orders     Order[]
+  staffUsers StaffUser[]
+}
+
+model MenuItem {
+  id           String   @id @default(cuid())
+  restaurantId String
+  name         String
+  description  String?
+  price        Float
+  category     String
+  isVeg        Boolean  @default(true)
+  imageUrl     String?
+  isAvailable  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id])
+}
+
+model Order {
+  id               String   @id @default(cuid())
+  restaurantId     String
+  customerName     String
+  customerPhone    String
+  deliveryAddress  String
+  landmark         String?
+  customerLat      Float?
+  customerLng      Float?
+  distanceKm       Float?
+  items            String
+  totalAmount      Float
+  paymentMode      String
+  paymentStatus    String   @default("pending")
+  orderStatus      String   @default("new")
+  razorpayOrderId  String?
+  razorpayPaymentId String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id])
+}
+
+model StaffUser {
+  id           String   @id @default(cuid())
+  restaurantId String
+  name         String
+  phone        String?
+  email        String   @unique
+  passwordHash String
+  role         String   @default("staff")
+  createdAt    DateTime @default(now())
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id])
+}

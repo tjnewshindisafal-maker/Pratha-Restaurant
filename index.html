@@ -3,20 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pratha Restaurant</title>
+  <title>Pratha Restaurant | Authentic Indian Flavors</title>
+  <meta name="description" content="Pratha Restaurant — authentic Indian cuisine made with fresh ingredients and traditional recipes." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Pratha Restaurant</h1>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo">Pratha <span>Restaurant</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="pages/menu.html">Menu</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
   </header>
 
-  <main>
-    <p>Welcome to Pratha Restaurant. Content coming soon.</p>
-  </main>
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Welcome to Pratha</span>
+      <h1>Authentic Flavors, <em>Timeless</em> Tradition</h1>
+      <p>Handcrafted Indian dishes made from family recipes, fresh spices, and a lot of love — served warm, every single day.</p>
+      <div class="hero-buttons">
+        <a href="pages/menu.html" class="btn btn-primary">View Menu</a>
+        <a href="pages/contact.html" class="btn btn-outline">Reserve a Table</a>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>&copy; 2026 Pratha Restaurant</p>
+  <section class="section about">
+    <div class="container about-grid">
+      <div class="about-visual"></div>
+      <div class="about-text">
+        <span class="eyebrow">Our Story</span>
+        <h2>A Taste Passed Down Through Generations</h2>
+        <p>Pratha Restaurant began with a simple idea — bring the warmth of a home-cooked Indian meal to every guest who walks through our doors. Every dish is prepared using recipes passed down through generations, slow-cooked spices, and locally sourced ingredients.</p>
+        <p>From sizzling tandoori starters to comforting curries and flaky parathas straight off the tawa, our kitchen is where tradition meets flavor.</p>
+        <div class="stat-row">
+          <div><strong>15+</strong><span>Years of Legacy</span></div>
+          <div><strong>40+</strong><span>Signature Dishes</span></div>
+          <div><strong>10k+</strong><span>Happy Guests</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Why Pratha</span>
+        <h2>What Makes Us Different</h2>
+        <p>Every plate we serve is a promise of quality, authenticity, and hospitality.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌿</div>
+          <h3>Fresh Ingredients</h3>
+          <p>Sourced daily from local markets to keep every dish vibrant and full of flavor.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👨‍🍳</div>
+          <h3>Authentic Recipes</h3>
+          <p>Traditional family recipes, cooked slow and true to their roots.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Warm Hospitality</h3>
+          <p>A welcoming space where every guest is treated like family.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section menu-preview">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Chef's Picks</span>
+        <h2>Featured Dishes</h2>
+        <p>A few favorites our guests keep coming back for.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Butter Chicken</h4>
+            <p>Tandoori chicken simmered in a creamy tomato-butter gravy.</p>
+          </div>
+          <div class="menu-item-price">₹320</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Paneer Tikka</h4>
+            <p>Char-grilled cottage cheese marinated in smoky spices.</p>
+          </div>
+          <div class="menu-item-price">₹260</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Aloo Paratha</h4>
+            <p>Whole-wheat flatbread stuffed with spiced mashed potatoes.</p>
+          </div>
+          <div class="menu-item-price">₹120</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Dal Makhani</h4>
+            <p>Slow-cooked black lentils finished with cream and butter.</p>
+          </div>
+          <div class="menu-item-price">₹220</div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="pages/menu.html" class="btn btn-primary">See Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials" style="background: var(--cream-dark);">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Testimonials</span>
+        <h2>What Our Guests Say</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"The butter chicken tastes exactly like my grandmother's recipe. Incredible flavors and warm service."</p>
+          <div class="testimonial-name">Ananya Sharma</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Best parathas in town, hands down. The ambiance makes it feel like a family dinner every time."</p>
+          <div class="testimonial-name">Rohan Mehta</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Authentic, fresh, and full of soul. Pratha has become our go-to spot for celebrations."</p>
+          <div class="testimonial-name">Priya Nair</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="container">
+      <h2>Hungry Already?</h2>
+      <p>Book your table now and taste the tradition for yourself.</p>
+      <a href="pages/contact.html" class="btn btn-primary">Reserve a Table</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Pratha Restaurant</div>
+          <p>Authentic Indian cuisine served with tradition, warmth, and a whole lot of flavor.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="pages/menu.html">Menu</a>
+          <a href="pages/about.html">About</a>
+          <a href="pages/contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon – Fri: 11am – 10pm</p>
+          <p>Sat – Sun: 10am – 11pm</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>123 Spice Street, Food District</p>
+          <p>+91 98765 43210</p>
+          <p>hello@pratharestaurant.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Pratha Restaurant. All rights reserved.
+      </div>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>

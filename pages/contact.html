@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Pratha Restaurant</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="../index.html" class="logo">Pratha <span>Restaurant</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Get In Touch</span>
+      <h1>Contact Us</h1>
+      <p>We'd love to have you at our table.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <h2 style="margin-bottom: 28px;">Visit or Reach Us</h2>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>123 Spice Street, Food District, New Delhi, India</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>+91 98765 43210</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p>hello@pratharestaurant.com</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">🕒</div>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>Mon – Fri: 11am – 10pm<br />Sat – Sun: 10am – 11pm</p>
+          </div>
+        </div>
+
+        <div class="map-frame">
+          <iframe
+            src="https://maps.google.com/maps?q=New%20Delhi%20restaurant&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            title="Pratha Restaurant location"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div>
+        <form class="contact-form" id="contactForm">
+          <h3 style="margin-bottom: 20px;">Reserve a Table</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+            <div class="form-group">
+              <label for="guests">Guests</label>
+              <input type="number" id="guests" name="guests" min="1" max="20" placeholder="Number of guests" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Special Requests</label>
+            <textarea id="message" name="message" placeholder="Anything we should know?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Reservation Request</button>
+          <p class="form-note">This form is a UI demo only — no backend is connected yet. Connect it to your booking system or email service to make it functional.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Pratha Restaurant</div>
+          <p>Authentic Indian cuisine served with tradition, warmth, and a whole lot of flavor.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="../index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon – Fri: 11am – 10pm</p>
+          <p>Sat – Sun: 10am – 11pm</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>123 Spice Street, Food District</p>
+          <p>+91 98765 43210</p>
+          <p>hello@pratharestaurant.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Pratha Restaurant. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
