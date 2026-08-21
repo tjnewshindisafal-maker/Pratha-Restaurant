@@ -22,7 +22,7 @@ model Restaurant {
 
   menuItems  MenuItem[]
   orders     Order[]
-  staff7sers Staff7ser[]
+  staffUsers StaffUser[]
 }
 
 model MenuItem {
@@ -67,7 +67,7 @@ model Order {
   restaurant Restaurant @relation(fields: [restaurantId], references: [id])
 }
 
-model Staff7ser {
+model StaffUser {
   id           String   @id @default(cuid())
   restaurantId String
   name         String
