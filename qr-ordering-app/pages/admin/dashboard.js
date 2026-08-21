@@ -105,9 +105,10 @@ export default function Dashboard() {
   }
 
   function notifyRider(order) {
+    const trackingLink = `${window.location.origin}/rider/${order.id}`;
     const text = `Delivery for order #${order.id.slice(-6).toUpperCase()}: ${order.customerName}, ${order.deliveryAddress}${
       order.landmark ? ` (near ${order.landmark})` : ''
-    }. Phone: ${order.customerPhone}.`;
+    }. Phone: ${order.customerPhone}.\n\nOpen this link on your phone and tap "Start Sharing" so the customer can see your live location: ${trackingLink}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
   }
 
@@ -193,6 +194,14 @@ export default function Dashboard() {
                   <button onClick={() => notifyRider(order)} className="text-sm text-green-700 font-semibold underline">
                     Notify Rider (WhatsApp)
                   </button>
+                  <a
+                    href={`/rider/${order.id}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm text-maroon font-semibold underline"
+                  >
+                    Open Rider Tracking Page
+                  </a>
                 </div>
               </div>
             ))}

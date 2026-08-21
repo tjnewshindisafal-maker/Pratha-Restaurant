@@ -3,7 +3,6 @@ generator client {
 }
 
 datasource db {
-  // Swap to "postgresql" and set DATABASE_URL to a Postgres connection string for production.
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
@@ -23,7 +22,7 @@ model Restaurant {
 
   menuItems  MenuItem[]
   orders     Order[]
-  staffUsers StaffUser[]
+  staff7sers Staff7ser[]
 }
 
 model MenuItem {
@@ -52,6 +51,9 @@ model Order {
   customerLat      Float?
   customerLng      Float?
   distanceKm       Float?
+  riderLat         Float?
+  riderLng         Float?
+  riderLocationAt  DateTime?
   items            String
   totalAmount      Float
   paymentMode      String
@@ -65,7 +67,7 @@ model Order {
   restaurant Restaurant @relation(fields: [restaurantId], references: [id])
 }
 
-model StaffUser {
+model Staff7ser {
   id           String   @id @default(cuid())
   restaurantId String
   name         String

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import LiveMap from '../../components/LiveMap';
 
 const STEPS = [
   { key: 'new', label: 'Order Placed' },
@@ -28,7 +29,7 @@ export default function TrackOrderPage() {
     }
 
     load();
-    const interval = setInterval(load, 8000);
+    const interval = setInterval(load, 5000);
     return () => clearInterval(interval);
   }, [id]);
 
@@ -79,6 +80,29 @@ export default function TrackOrderPage() {
               );
             })}
           </ol>
+        )}
+
+        {order.orderStatus === 'out_for_delivery' && (
+          <div className="card mt-8">
+            <h2 className="font-semibold text-maroon-dark mb-3">Live Location</h2>
+            {order.riderLat && order.riderLng ? (
+              <>
+                <LiveMap
+                  restaurantPos={
+                    order.restaurantLat && order.restaurantLng
+                      ? { lat: order.restaurantLat, lng: order.restaurantLng }
+                      : null
+                  }
+                  riderPos={{ lat: order.riderLat, lng: order.riderLng }}
+                />
+                <p className="text-xs text-gray-500 mt-2">
+                  Updated {new Date(order.riderLocationAt).toLocaleTimeString()}
+                </p>
+              </>
+            ) : (
+              <p className="text-sm text-gray-500">Waiting for the delivery partner to share their location…</p>
+            )}
+          </div>
         )}
 
         <div className="card mt-8">

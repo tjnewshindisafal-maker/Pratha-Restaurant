@@ -11,9 +11,16 @@ export default async function handler(req, res) {
     const order = await prisma.order.findUnique({ where: { id } });
     if (!order) return res.status(404).json({ error: 'Order not found' });
 
+    const restaurant = await prisma.restaurant.findUnique({ where: { id: order.restaurantId } });
+
     // Public tracking view: only expose what a customer needs, not internal restaurant fields.
     const staff = getStaffFromRequest(req);
-    const payload = { ...order, items: JSON.parse(order.items) };
+    const payload = {
+      ...order,
+      items: JSON.parse(order.items),
+      restaurantLat: restaurant?.lat ?? null,
+      restaurantLng: restaurant?.lng ?? null,
+    };
     if (!staff) {
       delete payload.customerLat;
       delete payload.customerLng;
@@ -25,7 +32,7 @@ export default async function handler(req, res) {
     const staff = getStaffFromRequest(req);
     if (!staff) return res.status(401).json({ error: 'Not authenticated' });
 
-    const { orderStatus, paymentStatus } = req.body || {};
+    const { orderStatus, paymentStatus, riderLat, riderLng } = req.body || {};
     const data = {};
 
     if (orderStatus !== undefined) {
@@ -39,6 +46,11 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Invalid payment status' });
       }
       data.paymentStatus = paymentStatus;
+    }
+    if (typeof riderLat === 'number' && typeof riderLng === 'number') {
+      data.riderLat = riderLat;
+      data.riderLng = riderLng;
+      data.riderLocationAt = new Date();
     }
     // Cash-on-delivery orders are marked paid automatically once delivered.
     if (data.orderStatus === 'delivered') {
