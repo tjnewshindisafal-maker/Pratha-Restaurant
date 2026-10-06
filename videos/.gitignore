@@ -1,0 +1,4 @@
+# Rendered output (large) - re-render with `npm run render`
+*/renders/
+*/.hyperframes/
+node_modules/
