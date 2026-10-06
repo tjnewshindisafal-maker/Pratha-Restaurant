@@ -16,48 +16,51 @@
       html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--plum2); }
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; }
       .full { position: absolute; inset: 0; overflow: hidden; }
+      .bg { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; display: block; }
       .dark { background: radial-gradient(circle at 50% 38%, #3a1f66 0%, var(--plum) 50%, var(--plum2) 100%); }
-      .light { background: radial-gradient(circle at 50% 35%, #ffffff 0%, var(--lav) 45%, #dccdf3 100%); }
-      .tube { position: absolute; display: block; mix-blend-mode: multiply; }
+      .tint { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(36,16,64,0.55) 0%, rgba(36,16,64,0.25) 50%, rgba(23,10,43,0.75) 100%); }
+      .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 900px; background: linear-gradient(180deg, rgba(23,10,43,0) 0%, rgba(23,10,43,0.55) 60%, rgba(23,10,43,0.8) 100%); }
+      .tube { position: absolute; display: block; filter: drop-shadow(0 40px 50px rgba(23,10,43,0.55)); }
       .words { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-      .hw { display: block; font-weight: 900; font-size: 200px; line-height: 1; color: #fff; letter-spacing: -4px; }
+      .hw { display: block; font-weight: 900; font-size: 200px; line-height: 1; color: #fff; letter-spacing: -4px; text-shadow: 0 10px 40px rgba(0,0,0,0.5); }
       .hw.l { color: var(--lilac); }
-      .cap { position: absolute; left: 0; right: 0; bottom: 300px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-      .pill { display: block; background: var(--plum); color: #fff; padding: 14px 34px 18px; border-radius: 18px; font-weight: 900; font-size: 92px; line-height: 1; text-align: center; }
+      .cap { position: absolute; left: 0; right: 0; bottom: 260px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+      .pill { display: block; background: var(--plum); color: #fff; padding: 14px 34px 18px; border-radius: 18px; font-weight: 900; font-size: 92px; line-height: 1; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
       .pill.l { background: var(--lilac); color: var(--plum); }
-      .pill.w { background: #fff; color: var(--plum); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
-      .pill.l { box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+      .pill.w { background: #fff; color: var(--plum); }
       .pill.sm { font-size: 54px; font-weight: 800; padding: 12px 28px 14px; }
       .kicker { display: block; background: var(--plum); color: #fff; font-weight: 700; font-size: 44px; letter-spacing: 12px; padding: 12px 18px 12px 30px; border-radius: 14px; }
-      .brand { display: block; font-family: "Marcellus", serif; font-size: 150px; line-height: 1; color: var(--plum); }
-      #big72 { position: absolute; left: 0; right: 0; top: 260px; text-align: center; font-weight: 900; font-size: 820px; line-height: 1; color: rgba(91,58,155,0.13); letter-spacing: -30px; }
-      .zoombox { position: absolute; left: 0; right: 0; top: 0; height: 1920px; overflow: hidden; }
-      .zoombox img { position: absolute; left: 50%; top: -60px; width: 712px; height: 1644px; margin-left: -356px; mix-blend-mode: multiply; }
+      .brand { display: block; font-family: "Marcellus", serif; font-size: 150px; line-height: 1; color: #fff; text-shadow: 0 6px 30px rgba(23,10,43,0.6); }
+      #big72 { position: absolute; left: 0; right: 0; top: 230px; text-align: center; font-weight: 900; font-size: 820px; line-height: 1; color: rgba(255,255,255,0.28); letter-spacing: -30px; }
+      .zoombox { position: absolute; inset: 0; overflow: hidden; background: #fff; }
+      .zoombox img { position: absolute; left: 50%; top: -60px; width: 712px; height: 1644px; margin-left: -356px; }
       .chips { position: absolute; left: 0; right: 0; top: 200px; display: flex; justify-content: center; gap: 18px; }
       .chip { display: block; background: #fff; color: var(--plum); border: 4px solid var(--violet); font-weight: 800; font-size: 50px; padding: 12px 30px; border-radius: 60px; }
-      .meter { position: absolute; left: 90px; right: 90px; top: 340px; background: rgba(36,16,64,0.92); border-radius: 28px; padding: 26px 34px 30px; }
-      .meter .row { display: flex; justify-content: space-between; align-items: baseline; color: #fff; font-weight: 800; font-size: 44px; letter-spacing: 6px; }
-      .meter .val { font-size: 72px; color: var(--lilac); letter-spacing: 0; }
-      .meter .track { margin-top: 18px; height: 34px; border-radius: 20px; background: rgba(255,255,255,0.15); overflow: hidden; }
-      .meter .fill { height: 100%; width: 100%; border-radius: 20px; background: linear-gradient(90deg, #8d6be0, #cdb6f2, #ffffff); transform-origin: 0 50%; }
-      .sweep { position: absolute; top: -200px; left: 0; width: 420px; height: 2400px; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: screen; }
-      .bub { position: absolute; border-radius: 50%; background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.95) 0%, rgba(205,182,242,0.55) 35%, rgba(141,107,224,0.25) 70%, rgba(141,107,224,0.05) 100%); border: 2px solid rgba(255,255,255,0.7); }
-      #checks .list { position: absolute; left: 90px; right: 90px; top: 250px; display: flex; flex-direction: column; gap: 28px; }
+      .meter { position: absolute; left: 90px; right: 90px; top: 700px; background: rgba(36,16,64,0.9); border-radius: 36px; padding: 40px 44px 46px; }
+      .meter .row { display: flex; justify-content: space-between; align-items: baseline; color: #fff; font-weight: 800; font-size: 46px; letter-spacing: 6px; }
+      .meter .val { font-size: 120px; color: var(--lilac); letter-spacing: 0; }
+      .meter .track { margin-top: 24px; height: 44px; border-radius: 24px; background: rgba(255,255,255,0.15); overflow: hidden; }
+      .meter .fill { height: 100%; width: 100%; border-radius: 24px; background: linear-gradient(90deg, #8d6be0, #cdb6f2, #ffffff); transform-origin: 0 50%; }
+      .sweep { position: absolute; top: -200px; left: 0; width: 420px; height: 2400px; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: screen; }
+      #checks .list { position: absolute; left: 90px; right: 90px; top: 300px; display: flex; flex-direction: column; gap: 34px; }
       #checks .head { display: block; color: var(--lilac); font-weight: 800; font-size: 46px; letter-spacing: 12px; margin-bottom: 10px; }
-      .check { display: flex; align-items: center; gap: 28px; color: #fff; font-weight: 900; font-size: 72px; }
-      .tick { display: flex; align-items: center; justify-content: center; width: 96px; height: 96px; border-radius: 50%; background: var(--lilac); color: var(--plum); font-size: 60px; flex: none; }
-      #checks .card { position: absolute; left: 290px; top: 1080px; width: 500px; height: 900px; background: var(--lav); border-radius: 48px; overflow: hidden; }
-      #checks .card img { position: absolute; left: 70px; top: 40px; width: 360px; height: 831px; mix-blend-mode: multiply; }
-      #endcard .stack { position: absolute; left: 0; right: 0; top: 1130px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-      .sub { display: block; color: var(--violet); font-weight: 700; font-size: 40px; letter-spacing: 6px; }
-      .cta { display: block; background: var(--plum); color: #fff; font-weight: 900; font-size: 62px; padding: 22px 70px; border-radius: 80px; letter-spacing: 3px; margin-top: 16px; }
+      .check { display: flex; align-items: center; gap: 28px; color: #fff; font-weight: 900; font-size: 76px; }
+      .tick { display: flex; align-items: center; justify-content: center; width: 100px; height: 100px; border-radius: 50%; background: var(--lilac); color: var(--plum); font-size: 62px; flex: none; }
+      #checks .card { position: absolute; left: 270px; top: 860px; width: 540px; height: 1200px; background: radial-gradient(circle at 50% 30%, #ffffff 0%, var(--lav) 60%, #d9c8f5 100%); border-radius: 56px; overflow: hidden; }
+      #checks .card img { position: absolute; left: 95px; top: 60px; width: 350px; height: 808px; }
+      #endcard .panel { position: absolute; left: 60px; right: 60px; bottom: 170px; background: rgba(241,235,250,0.9); border-radius: 44px; padding: 34px 30px 44px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+      #endcard .brand { color: var(--plum); text-shadow: none; font-size: 130px; }
+      .sub { display: block; color: var(--violet); font-weight: 700; font-size: 32px; letter-spacing: 3px; white-space: nowrap; }
+      .cta { display: block; background: var(--plum); color: #fff; font-weight: 900; font-size: 62px; padding: 22px 70px; border-radius: 80px; letter-spacing: 3px; margin-top: 8px; }
       #flash { background: #fff; }
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="27" data-width="1080" data-height="1920">
-      <!-- S1 hook -->
-      <div id="hook" class="full dark clip" data-start="0" data-duration="1.95" data-track-index="0">
+      <!-- S1 hook: dull skin -->
+      <div id="hook" class="full clip" data-start="0" data-duration="1.95" data-track-index="0">
+        <img id="hook-bg" class="bg" src="assets/img/glow.webp" alt="" style="filter: grayscale(1) brightness(0.55) contrast(1.1);" />
+        <div class="tint"></div>
         <div class="words" id="hookwords">
           <div class="hw" id="w1">DRY,</div>
           <div class="hw" id="w2">DULL</div>
@@ -65,93 +68,96 @@
         </div>
       </div>
 
-      <!-- S2 reveal -->
-      <div id="reveal" class="full light clip" data-start="1.9" data-duration="3.75" data-track-index="0">
+      <!-- S2 reveal on water splash -->
+      <div id="reveal" class="full clip" data-start="1.9" data-duration="3.75" data-track-index="0">
+        <img id="splash-bg" class="bg" src="assets/img/splash.webp" alt="" />
         <div id="big72">72</div>
-        <img id="tube-reveal" class="tube" src="assets/img/tube.png" alt="Zinerals Moisturizer" style="left: 302px; top: 240px; width: 476px; height: 1100px;" />
+        <img id="tube-reveal" class="tube" src="assets/img/tube-cut.png" alt="Zinerals Moisturizer" style="left: 302px; top: 220px; width: 476px; height: 1100px;" />
+        <div class="shade"></div>
         <div id="c-meet" class="cap">
           <div class="kicker">MEET</div>
-          <div class="pill l">72-HOUR HYDRATION</div>
+          <div class="pill l" style="font-size: 78px;">72-HOUR HYDRATION</div>
         </div>
         <div id="c-brand" class="cap">
           <div class="brand">zinerals</div>
-          <div class="pill">MOISTURIZER</div>
+          <div class="pill w">MOISTURIZER</div>
         </div>
       </div>
 
-      <!-- S3 benefit 1 -->
-      <div id="b1" class="full light clip" data-start="5.6" data-duration="5.8" data-track-index="0">
-        <div class="zoombox"><img id="z1" src="assets/img/tube.png" alt="" /></div>
+      <!-- S3a label zoom -->
+      <div id="b1" class="full clip" data-start="5.6" data-duration="2.65" data-track-index="0">
+        <div class="zoombox"><img id="z1" src="assets/img/tube-cut.png" alt="" /></div>
         <div class="chips">
           <div class="chip" id="b1c1">Hyaluronic Acid</div>
           <div class="chip" id="b1c2">Pentavitin</div>
         </div>
-        <div class="meter" id="meter">
-          <div class="row"><span>HYDRATION</span><span class="val"><span id="hrs">0</span> HRS</span></div>
-          <div class="track"><div class="fill" id="fill"></div></div>
-        </div>
         <div class="cap" id="b1cap" style="bottom: 200px;">
-          <div class="pill w">72HR DEEP</div>
+          <div class="pill w">DEEP</div>
           <div class="pill l">HYDRATION</div>
         </div>
       </div>
 
-      <!-- S4 benefit 2 -->
-      <div id="b2" class="full light clip" data-start="11.3" data-duration="3.35" data-track-index="0">
-        <div class="zoombox"><img id="z2" src="assets/img/tube.png" alt="" /></div>
+      <!-- S3b 72hr meter on splash -->
+      <div id="b1b" class="full clip" data-start="8.2" data-duration="3.15" data-track-index="0">
+        <img id="splash2" class="bg" src="assets/img/splash.webp" alt="" />
+        <div class="meter" id="meter">
+          <div class="row"><span>HYDRATION</span><span class="val"><span id="hrs">0</span> HRS</span></div>
+          <div class="track"><div class="fill" id="fill"></div></div>
+        </div>
+        <div class="cap" id="b1bcap">
+          <div class="pill">FULL 72 HOURS</div>
+        </div>
+      </div>
+
+      <!-- S4 brighten: dull to glow -->
+      <div id="b2" class="full clip" data-start="11.3" data-duration="3.35" data-track-index="0">
+        <img id="glow-bg" class="bg" src="assets/img/glow.webp" alt="" />
         <div class="sweep" id="sweep"></div>
         <div class="chips"><div class="chip" id="b2c1">Niacinamide</div></div>
-        <div class="cap" id="b2cap" style="bottom: 200px;">
+        <div class="cap" id="b2cap">
           <div class="pill w">BRIGHTENS</div>
           <div class="pill l" style="font-size: 72px;">WHILE IT HYDRATES</div>
         </div>
       </div>
 
-      <!-- S5 benefit 3 -->
-      <div id="b3" class="full light clip" data-start="14.6" data-duration="4.0" data-track-index="0">
-          <div class="bub" id="bub-0" style="left:303px; top:1803px; width:99px; height:99px;"></div>
-          <div class="bub" id="bub-1" style="left:193px; top:1689px; width:107px; height:107px;"></div>
-          <div class="bub" id="bub-2" style="left:545px; top:1820px; width:104px; height:104px;"></div>
-          <div class="bub" id="bub-3" style="left:127px; top:1810px; width:31px; height:31px;"></div>
-          <div class="bub" id="bub-4" style="left:917px; top:1740px; width:63px; height:63px;"></div>
-          <div class="bub" id="bub-5" style="left:624px; top:1619px; width:54px; height:54px;"></div>
-          <div class="bub" id="bub-6" style="left:794px; top:1740px; width:99px; height:99px;"></div>
-          <div class="bub" id="bub-7" style="left:916px; top:1781px; width:90px; height:90px;"></div>
-          <div class="bub" id="bub-8" style="left:466px; top:1827px; width:49px; height:49px;"></div>
-          <div class="bub" id="bub-9" style="left:297px; top:1825px; width:49px; height:49px;"></div>
-          <div class="bub" id="bub-10" style="left:948px; top:1767px; width:79px; height:79px;"></div>
-          <div class="bub" id="bub-11" style="left:819px; top:1507px; width:38px; height:38px;"></div>
-          <div class="bub" id="bub-12" style="left:223px; top:1888px; width:105px; height:105px;"></div>
-          <div class="bub" id="bub-13" style="left:103px; top:1654px; width:33px; height:33px;"></div>
-          <div class="bub" id="bub-14" style="left:903px; top:1637px; width:90px; height:90px;"></div>
-          <div class="bub" id="bub-15" style="left:669px; top:1868px; width:79px; height:79px;"></div>
-        <img id="tube-b3" class="tube" src="assets/img/tube.png" alt="" style="left: 330px; top: 170px; width: 420px; height: 970px;" />
+      <!-- S5 gel texture -->
+      <div id="b3" class="full clip" data-start="14.6" data-duration="4.0" data-track-index="0">
+        <img id="gel-bg" class="bg" src="assets/img/gel.webp" alt="" />
         <div class="cap" id="b3cap">
           <div class="pill">LIGHTWEIGHT GEL</div>
           <div class="pill l sm">OIL-FREE · FAST-ABSORBING</div>
         </div>
         <div class="cap" id="b3cap2">
-          <div class="pill">NO STICKY</div>
+          <div class="pill w">NO STICKY</div>
           <div class="pill l">RESIDUE</div>
         </div>
       </div>
 
-      <!-- S6 checklist -->
-      <div id="checks" class="full dark clip" data-start="18.6" data-duration="4.75" data-track-index="0">
+      <!-- S6a checklist -->
+      <div id="checks" class="full dark clip" data-start="18.6" data-duration="2.3" data-track-index="0">
         <div class="list">
-          <div class="head">MADE FOR EVERYONE</div>
+          <div class="head">GENTLE ON SKIN</div>
           <div class="check" id="ck-0"><span class="tick">✓</span><span>Fragrance free</span></div>
           <div class="check" id="ck-1"><span class="tick">✓</span><span>Non-comedogenic</span></div>
-          <div class="check" id="ck-2"><span class="tick">✓</span><span>For men &amp; women</span></div>
-          <div class="check" id="ck-3"><span class="tick">✓</span><span>All skin types</span></div>
         </div>
-        <div class="card" id="card"><img src="assets/img/tube.png" alt="" /></div>
+        <div class="card" id="card"><img src="assets/img/tube-cut.png" alt="" /></div>
       </div>
 
-      <!-- S7 end card -->
-      <div id="endcard" class="full light clip" data-start="23.3" data-duration="3.7" data-track-index="0">
-        <img id="tube-end" class="tube" src="assets/img/tube.png" alt="" style="left: 345px; top: 150px; width: 390px; height: 900px;" />
-        <div class="stack" id="endstack">
+      <!-- S6b men & women -->
+      <div id="couple" class="full clip" data-start="20.85" data-duration="2.5" data-track-index="0">
+        <img id="couple-bg" class="bg" src="assets/img/couple.webp" alt="" />
+        <div class="shade"></div>
+        <div class="cap" id="cpcap">
+          <div class="pill" id="cp1">FOR MEN &amp; WOMEN</div>
+          <div class="pill l" id="cp2">ALL SKIN TYPES</div>
+        </div>
+      </div>
+
+      <!-- S7 end card on ingredient flatlay -->
+      <div id="endcard" class="full clip" data-start="23.3" data-duration="3.7" data-track-index="0">
+        <img id="flat-bg" class="bg" src="assets/img/flatlay.webp" alt="" />
+        <img id="tube-end" class="tube" src="assets/img/tube-cut.png" alt="" style="left: 335px; top: 170px; width: 410px; height: 947px;" />
+        <div class="panel" id="endstack">
           <div class="brand">zinerals</div>
           <div class="pill sm">72HR MOISTURIZER</div>
           <div class="sub">LIGHT · OIL-FREE · FRAGRANCE FREE</div>
@@ -179,88 +185,80 @@
       <audio id="sfx-6-whoosh" src="assets/sfx/whoosh.wav" data-start="5.45" data-duration="0.45" data-track-index="42" data-volume="0.5"></audio>
       <audio id="sfx-7-pop" src="assets/sfx/pop.wav" data-start="5.75" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
       <audio id="sfx-8-pop" src="assets/sfx/pop.wav" data-start="6.9" data-duration="0.18" data-track-index="40" data-volume="0.45"></audio>
-      <audio id="sfx-9-shimmer" src="assets/sfx/shimmer.wav" data-start="8.3" data-duration="1.2" data-track-index="41" data-volume="0.4"></audio>
-      <audio id="sfx-10-whoosh" src="assets/sfx/whoosh.wav" data-start="11.15" data-duration="0.45" data-track-index="42" data-volume="0.5"></audio>
-      <audio id="sfx-11-pop" src="assets/sfx/pop.wav" data-start="11.45" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
-      <audio id="sfx-12-shimmer" src="assets/sfx/shimmer.wav" data-start="12.0" data-duration="1.2" data-track-index="40" data-volume="0.4"></audio>
-      <audio id="sfx-13-whoosh" src="assets/sfx/whoosh.wav" data-start="14.45" data-duration="0.45" data-track-index="41" data-volume="0.5"></audio>
-      <audio id="sfx-14-pop" src="assets/sfx/pop.wav" data-start="14.75" data-duration="0.18" data-track-index="42" data-volume="0.45"></audio>
-      <audio id="sfx-15-pop" src="assets/sfx/pop.wav" data-start="17.0" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
-      <audio id="sfx-16-whoosh" src="assets/sfx/whoosh.wav" data-start="18.45" data-duration="0.45" data-track-index="40" data-volume="0.5"></audio>
-      <audio id="sfx-17-pop" src="assets/sfx/pop.wav" data-start="18.75" data-duration="0.18" data-track-index="41" data-volume="0.45"></audio>
-      <audio id="sfx-18-pop" src="assets/sfx/pop.wav" data-start="19.75" data-duration="0.18" data-track-index="42" data-volume="0.45"></audio>
-      <audio id="sfx-19-pop" src="assets/sfx/pop.wav" data-start="20.95" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
-      <audio id="sfx-20-pop" src="assets/sfx/pop.wav" data-start="22.0" data-duration="0.18" data-track-index="40" data-volume="0.45"></audio>
-      <audio id="sfx-21-whoosh" src="assets/sfx/whoosh.wav" data-start="23.2" data-duration="0.45" data-track-index="41" data-volume="0.5"></audio>
-      <audio id="sfx-22-shimmer" src="assets/sfx/shimmer.wav" data-start="23.45" data-duration="1.2" data-track-index="42" data-volume="0.4"></audio>
+      <audio id="sfx-9-whoosh" src="assets/sfx/whoosh.wav" data-start="8.05" data-duration="0.45" data-track-index="41" data-volume="0.5"></audio>
+      <audio id="sfx-10-shimmer" src="assets/sfx/shimmer.wav" data-start="8.35" data-duration="1.2" data-track-index="42" data-volume="0.4"></audio>
+      <audio id="sfx-11-whoosh" src="assets/sfx/whoosh.wav" data-start="11.15" data-duration="0.45" data-track-index="43" data-volume="0.5"></audio>
+      <audio id="sfx-12-pop" src="assets/sfx/pop.wav" data-start="11.45" data-duration="0.18" data-track-index="40" data-volume="0.45"></audio>
+      <audio id="sfx-13-shimmer" src="assets/sfx/shimmer.wav" data-start="12.0" data-duration="1.2" data-track-index="41" data-volume="0.4"></audio>
+      <audio id="sfx-14-whoosh" src="assets/sfx/whoosh.wav" data-start="14.45" data-duration="0.45" data-track-index="42" data-volume="0.5"></audio>
+      <audio id="sfx-15-pop" src="assets/sfx/pop.wav" data-start="14.75" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
+      <audio id="sfx-16-pop" src="assets/sfx/pop.wav" data-start="17.0" data-duration="0.18" data-track-index="40" data-volume="0.45"></audio>
+      <audio id="sfx-17-whoosh" src="assets/sfx/whoosh.wav" data-start="18.45" data-duration="0.45" data-track-index="41" data-volume="0.5"></audio>
+      <audio id="sfx-18-pop" src="assets/sfx/pop.wav" data-start="18.75" data-duration="0.18" data-track-index="42" data-volume="0.45"></audio>
+      <audio id="sfx-19-pop" src="assets/sfx/pop.wav" data-start="19.75" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
+      <audio id="sfx-20-whoosh" src="assets/sfx/whoosh.wav" data-start="20.7" data-duration="0.45" data-track-index="40" data-volume="0.5"></audio>
+      <audio id="sfx-21-pop" src="assets/sfx/pop.wav" data-start="20.95" data-duration="0.18" data-track-index="41" data-volume="0.45"></audio>
+      <audio id="sfx-22-pop" src="assets/sfx/pop.wav" data-start="22.0" data-duration="0.18" data-track-index="42" data-volume="0.45"></audio>
+      <audio id="sfx-23-whoosh" src="assets/sfx/whoosh.wav" data-start="23.15" data-duration="0.45" data-track-index="43" data-volume="0.5"></audio>
+      <audio id="sfx-24-shimmer" src="assets/sfx/shimmer.wav" data-start="23.45" data-duration="1.2" data-track-index="40" data-volume="0.4"></audio>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
       tl.set("#flash", { opacity: 0 }, 0);
-      const flash = (t) => tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, t);
-      [1.9, 5.6, 11.3, 14.6, 18.6, 23.3].forEach(flash);
+      [1.9, 5.6, 8.2, 11.3, 14.6, 18.6, 20.85, 23.3].forEach((t) => tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, t));
       const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 60, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, stagger: 0.1, ease: "back.out(2)" }, t);
+      const kb = (sel, t, d, a, b) => tl.fromTo(sel, { scale: a }, { scale: b, duration: d, ease: "none" }, t);
       // S1
+      kb("#hook-bg", 0, 1.95, 1.25, 1.35);
       [["#w1", 0.2], ["#w2", 0.5], ["#w3", 0.85]].forEach(([id, t]) => tl.fromTo(id, { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, t));
       tl.fromTo("#hookwords", { x: -16 }, { x: 0, duration: 0.3, ease: "elastic.out(1, 0.3)" }, 0.85);
       tl.to("#hookwords", { scale: 1.3, opacity: 0, filter: "blur(18px)", duration: 0.3, ease: "power2.in" }, 1.65);
       // S2
+      kb("#splash-bg", 1.9, 3.75, 1.0, 1.12);
       tl.fromTo("#tube-reveal", { y: 900, rotation: 14 }, { y: 0, rotation: 0, duration: 0.7, ease: "back.out(1.4)" }, 1.95);
       tl.fromTo("#tube-reveal", { scale: 1 }, { scale: 1.06, duration: 3, ease: "none", immediateRender: false }, 2.65);
       tl.fromTo("#big72", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 2.1);
       pop("#c-meet > *", 2.05);
       tl.to("#c-meet", { opacity: 0, duration: 0.15 }, 3.85);
       pop("#c-brand > *", 4.0);
-      // S3
-      tl.fromTo("#z1", { scale: 2.3, transformOrigin: "50% 58%" }, { scale: 2.55, duration: 5.8, ease: "none" }, 5.6);
+      // S3a
+      tl.fromTo("#z1", { scale: 2.3, transformOrigin: "50% 58%" }, { scale: 2.5, duration: 2.65, ease: "none" }, 5.6);
       tl.fromTo("#b1c1", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 5.75);
       tl.fromTo("#b1c2", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 6.9);
       pop("#b1cap > *", 5.8);
-      tl.fromTo("#meter", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.2);
-      tl.fromTo("#fill", { scaleX: 0 }, { scaleX: 1, duration: 2.4, ease: "power2.inOut" }, 8.35);
-      tl.fromTo("#hrs", { innerText: 0 }, { innerText: 72, snap: { innerText: 1 }, duration: 2.4, ease: "power2.inOut" }, 8.35);
-      // S4
-      tl.fromTo("#z2", { scale: 2.5, transformOrigin: "50% 66%", filter: "grayscale(0.85) brightness(0.92)" }, { scale: 2.7, duration: 3.35, ease: "none" }, 11.3);
+      // S3b
+      kb("#splash2", 8.2, 3.15, 1.15, 1.0);
+      tl.fromTo("#meter", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 8.25);
+      tl.fromTo("#fill", { scaleX: 0 }, { scaleX: 1, duration: 2.3, ease: "power2.inOut" }, 8.45);
+      tl.fromTo("#hrs", { innerText: 0 }, { innerText: 72, snap: { innerText: 1 }, duration: 2.3, ease: "power2.inOut" }, 8.45);
+      pop("#b1bcap > *", 8.4);
+      // S4 dull -> glow
+      kb("#glow-bg", 11.3, 3.35, 1.0, 1.1);
+      tl.fromTo("#glow-bg", { filter: "grayscale(0.9) brightness(0.75) contrast(0.9)" }, { filter: "grayscale(0) brightness(1.05) contrast(1)", duration: 0.7, ease: "power2.out" }, 12.15);
       tl.fromTo("#sweep", { x: -500 }, { x: 1200, duration: 0.9, ease: "power2.inOut" }, 11.95);
-      tl.to("#z2", { filter: "grayscale(0) brightness(1.05)", duration: 0.6, ease: "power2.out" }, 12.2);
       tl.fromTo("#b2c1", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 11.45);
       pop("#b2cap > *", 11.5);
-      // S5
-      tl.fromTo("#tube-b3", { rotation: -8, y: 40 }, { rotation: 6, y: -20, duration: 4, ease: "sine.inOut" }, 14.6);
-      tl.fromTo("#bub-0", { y: 0, opacity: 0 }, { y: -1337, opacity: 0.9, duration: 3.07, ease: "none" }, 15.32);
-      tl.fromTo("#bub-1", { y: 0, opacity: 0 }, { y: -1355, opacity: 0.9, duration: 3.76, ease: "none" }, 14.72);
-      tl.fromTo("#bub-2", { y: 0, opacity: 0 }, { y: -1274, opacity: 0.9, duration: 2.72, ease: "none" }, 14.72);
-      tl.fromTo("#bub-3", { y: 0, opacity: 0 }, { y: -1122, opacity: 0.9, duration: 2.91, ease: "none" }, 15.2);
-      tl.fromTo("#bub-4", { y: 0, opacity: 0 }, { y: -1208, opacity: 0.9, duration: 3.11, ease: "none" }, 15.35);
-      tl.fromTo("#bub-5", { y: 0, opacity: 0 }, { y: -1487, opacity: 0.9, duration: 3.02, ease: "none" }, 15.13);
-      tl.fromTo("#bub-6", { y: 0, opacity: 0 }, { y: -1498, opacity: 0.9, duration: 2.88, ease: "none" }, 14.9);
-      tl.fromTo("#bub-7", { y: 0, opacity: 0 }, { y: -929, opacity: 0.9, duration: 3.63, ease: "none" }, 15.49);
-      tl.fromTo("#bub-8", { y: 0, opacity: 0 }, { y: -1067, opacity: 0.9, duration: 3.44, ease: "none" }, 14.89);
-      tl.fromTo("#bub-9", { y: 0, opacity: 0 }, { y: -1454, opacity: 0.9, duration: 3.69, ease: "none" }, 15.11);
-      tl.fromTo("#bub-10", { y: 0, opacity: 0 }, { y: -1116, opacity: 0.9, duration: 3.36, ease: "none" }, 15.49);
-      tl.fromTo("#bub-11", { y: 0, opacity: 0 }, { y: -1173, opacity: 0.9, duration: 2.94, ease: "none" }, 14.66);
-      tl.fromTo("#bub-12", { y: 0, opacity: 0 }, { y: -1395, opacity: 0.9, duration: 2.71, ease: "none" }, 15.32);
-      tl.fromTo("#bub-13", { y: 0, opacity: 0 }, { y: -1320, opacity: 0.9, duration: 3.68, ease: "none" }, 14.62);
-      tl.fromTo("#bub-14", { y: 0, opacity: 0 }, { y: -1337, opacity: 0.9, duration: 3.52, ease: "none" }, 15.39);
-      tl.fromTo("#bub-15", { y: 0, opacity: 0 }, { y: -945, opacity: 0.9, duration: 3.33, ease: "none" }, 15.29);
+      // S5 gel
+      kb("#gel-bg", 14.6, 4.0, 1.0, 1.18);
       pop("#b3cap > *", 14.75);
       tl.to("#b3cap", { opacity: 0, duration: 0.15 }, 16.9);
       pop("#b3cap2 > *", 17.0);
-      // S6
+      // S6a
       tl.fromTo("#card", { y: 600, rotation: 8 }, { y: 0, rotation: -4, duration: 0.6, ease: "back.out(1.3)" }, 18.65);
       tl.fromTo("#checks .head", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3 }, 18.65);
-      tl.fromTo("#ck-0", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.8)" }, 18.75);
-      tl.fromTo("#ck-0 .tick", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 18.87);
-      tl.fromTo("#ck-1", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.8)" }, 19.75);
-      tl.fromTo("#ck-1 .tick", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 19.87);
-      tl.fromTo("#ck-2", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.8)" }, 20.95);
-      tl.fromTo("#ck-2 .tick", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 21.07);
-      tl.fromTo("#ck-3", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.8)" }, 22.0);
-      tl.fromTo("#ck-3 .tick", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 22.12);
+      [["#ck-0", 18.75], ["#ck-1", 19.75]].forEach(([id, t]) => {
+        tl.fromTo(id, { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.8)" }, t);
+        tl.fromTo(id + " .tick", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 0.12);
+      });
+      // S6b
+      kb("#couple-bg", 20.85, 2.5, 1.12, 1.0);
+      tl.fromTo("#cp1", { opacity: 0, y: 60, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(2)" }, 20.95);
+      tl.fromTo("#cp2", { opacity: 0, y: 60, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(2)" }, 22.0);
       // S7
-      tl.fromTo("#tube-end", { y: 120, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 23.3);
-      pop("#endstack > *", 23.5);
-      tl.fromTo("#cta", { scale: 1 }, { scale: 1.08, duration: 0.4, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 24.6);
+      kb("#flat-bg", 23.3, 3.7, 1.1, 1.0);
+      tl.fromTo("#tube-end", { y: -200, opacity: 0, scale: 0.85 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.4)" }, 23.3);
+      tl.fromTo("#endstack", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 23.5);
+      tl.fromTo("#cta", { scale: 1 }, { scale: 1.08, duration: 0.4, yoyo: true, repeat: 3, ease: "sine.inOut" }, 24.6);
       window.__timelines["main"] = tl;
     </script>
   </body>
