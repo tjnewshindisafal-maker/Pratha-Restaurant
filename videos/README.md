@@ -20,6 +20,7 @@ hyperframes doctor                    # verify
 | --- | --- |
 | `distress-sale/` | 60s vertical (1080x1920) commercial property ad — footage, text cards, AI voiceover, music bed |
 | `zinerals-facewash/` | 23s vertical product reel from one product photo — virtual camera cuts, kinetic captions, voiceover, music, SFX |
+| `zinerals-moisturizer/` | 27s vertical reel for the 72HR moisturizer — hook, 72-hr meter, benefit zooms, checklist, CTA |
 
 ## Everyday commands (run inside a project folder)
 
