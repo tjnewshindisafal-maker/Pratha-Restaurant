@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Zinerals Face Wash</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Marcellus"; src: url("assets/fonts/marcellus-latin-400-normal.woff2"); font-weight: 400; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-500-normal.woff2"); font-weight: 500; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-800-normal.woff2"); font-weight: 800; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-900-normal.woff2"); font-weight: 900; }
+      :root { --teal: #0d4d50; --teal2: #0a3a3d; --pink: #f6c1cb; --blush: #fbe9ec; --white: #ffffff; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--teal2); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; }
+      .full { position: absolute; inset: 0; }
+      #hook { background: radial-gradient(circle at 50% 40%, #136468 0%, var(--teal) 45%, var(--teal2) 100%); display: flex; align-items: center; justify-content: center; }
+      #hook .words { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+      .hw { display: block; font-weight: 900; font-size: 190px; line-height: 1; color: #fff; letter-spacing: -4px; }
+      .hw.pink { color: var(--pink); }
+      #camwrap { position: absolute; inset: 0; overflow: hidden; }
+      #cam { position: absolute; left: -420px; top: 0; width: 1920px; height: 1920px; transform-origin: 0 0; }
+      #cam img { display: block; width: 1920px; height: 1920px; }
+      #flash { background: #fff; opacity: 0; }
+      .cap { position: absolute; left: 0; right: 0; bottom: 330px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+      .big { display: block; font-weight: 900; font-size: 104px; line-height: 1; color: #fff; text-align: center; letter-spacing: -2px; background: rgba(10,58,61,0.82); padding: 14px 34px 18px; border-radius: 18px; }
+      .hl { display: block; background: var(--teal); color: #fff; padding: 14px 34px 18px; border-radius: 18px; font-weight: 900; font-size: 96px; line-height: 1; }
+      .hlp { display: block; background: var(--pink); color: var(--teal2); padding: 14px 34px 18px; border-radius: 18px; font-weight: 900; font-size: 96px; line-height: 1; }
+      .num { display: block; font-weight: 800; font-size: 44px; color: var(--teal); background: #fff; padding: 8px 22px; border-radius: 40px; letter-spacing: 4px; }
+      .brand { display: block; font-family: "Marcellus", serif; font-size: 150px; color: #fff; line-height: 1; text-shadow: 0 6px 30px rgba(0,0,0,0.4); }
+      .kicker { display: block; font-weight: 700; font-size: 46px; letter-spacing: 14px; color: #fff; text-shadow: 0 3px 14px rgba(0,0,0,0.5); }
+      #ingr .panel { position: absolute; left: 60px; right: 60px; top: 170px; background: rgba(10,58,61,0.88); border-radius: 36px; padding: 40px 36px 46px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+      #ingr .title { display: block; font-weight: 800; font-size: 50px; letter-spacing: 12px; color: var(--pink); }
+      #ingr .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; width: 900px; }
+      .chip { display: block; background: #fff; color: var(--teal2); font-weight: 800; font-size: 50px; padding: 14px 30px; border-radius: 60px; }
+      #punch { background: rgba(10,58,61,0.55); display: flex; align-items: center; justify-content: center; }
+      #punch .words { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+      #endcard .panel { position: absolute; left: 0; right: 0; bottom: 0; height: 720px; background: linear-gradient(180deg, rgba(10,58,61,0) 0%, rgba(10,58,61,0.92) 32%, var(--teal2) 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 260px; gap: 22px; }
+      .cta { display: block; background: var(--pink); color: var(--teal2); font-weight: 900; font-size: 64px; padding: 22px 70px; border-radius: 80px; letter-spacing: 3px; }
+      .kicker.dark { background: rgba(10,58,61,0.85); padding: 12px 20px 12px 34px; border-radius: 14px; text-shadow: none; }
+      .brand.onlight { color: var(--teal); text-shadow: 0 0 30px rgba(255,255,255,0.95), 0 0 8px rgba(255,255,255,0.9); }
+      .small { display: block; color: #fff; font-weight: 500; font-size: 40px; letter-spacing: 6px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="23" data-width="1080" data-height="1920">
+      <!-- Scene 1: hook -->
+      <div id="hook" class="full clip" data-start="0" data-duration="2.1" data-track-index="0">
+        <div class="words">
+          <div class="hw" id="w1">DULL,</div>
+          <div class="hw" id="w2">TIRED</div>
+          <div class="hw pink" id="w3">SKIN?</div>
+        </div>
+      </div>
+
+      <!-- Product photo with virtual camera -->
+      <div id="photo" class="full clip" data-start="1.95" data-duration="21.05" data-track-index="1">
+        <div id="camwrap"><div id="cam"><img src="assets/img/product.png" alt="Zinerals Face Wash" /></div></div>
+      </div>
+
+      <!-- Captions -->
+      <div id="c-meet" class="clip cap" data-start="2.1" data-duration="1.5" data-track-index="3">
+        <div class="kicker dark">MEET YOUR</div>
+        <div class="hlp">DAILY GLOW</div>
+      </div>
+      <div id="c-brand" class="clip cap" data-start="3.6" data-duration="1.9" data-track-index="3">
+        <div class="brand onlight">zinerals</div>
+        <div class="hl">FACE WASH</div>
+      </div>
+      <div id="c-b1" class="clip cap" data-start="5.5" data-duration="1.7" data-track-index="3">
+        <div class="num">01</div>
+        <div class="big">BRIGHTENS</div>
+        <div class="hlp">VISIBLY</div>
+      </div>
+      <div id="c-b2" class="clip cap" data-start="7.2" data-duration="1.5" data-track-index="3">
+        <div class="num">02</div>
+        <div class="big">CLEANSES</div>
+        <div class="hl">DEEPLY</div>
+      </div>
+      <div id="c-b3" class="clip cap" data-start="8.7" data-duration="1.75" data-track-index="3">
+        <div class="num">03</div>
+        <div class="big">REVEALS</div>
+        <div class="hlp">NATURAL GLOW</div>
+      </div>
+      <div id="ingr" class="full clip" data-start="10.45" data-duration="6.55" data-track-index="3">
+        <div class="panel">
+          <div class="title">POWERED BY</div>
+          <div class="grid">
+          <div class="chip" id="chip-0">Red Algae</div>
+          <div class="chip" id="chip-1">Niacinamide</div>
+          <div class="chip" id="chip-2">Kojic Acid</div>
+          <div class="chip" id="chip-3">Salicylic Acid</div>
+          <div class="chip" id="chip-4">Vitamin C</div>
+          <div class="chip" id="chip-5">Vitamin E</div>
+          </div>
+        </div>
+      </div>
+      <div id="punch" class="full clip" data-start="17" data-duration="2.7" data-track-index="3">
+        <div class="words">
+          <div class="hlp" id="p1">MINERAL-BASED.</div>
+          <div class="big" id="p2">GENTLE.</div>
+          <div class="hl" id="p3">EVERY DAY.</div>
+        </div>
+      </div>
+      <div id="endcard" class="full clip" data-start="19.7" data-duration="3.3" data-track-index="3">
+        <div class="panel">
+          <div class="brand" id="e1">zinerals</div>
+          <div class="kicker" id="e2">YOUR DAILY GLOW</div>
+          <div class="small" id="e3">MINERAL-BASED CLEANSER · 70 ML</div>
+          <div class="cta" id="e4">SHOP NOW</div>
+        </div>
+      </div>
+
+      <div id="flash" class="full clip" data-start="0" data-duration="23" data-track-index="5"></div>
+
+      <!-- Sound -->
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="23" data-track-index="10" data-volume="0.32" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":1},{"t":21.6,"v":1},{"t":23,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.25" data-duration="1.19" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="2.15" data-duration="1.19" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="3.65" data-duration="1.34" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="5.6" data-duration="1.24" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="7.3" data-duration="1.02" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="8.8" data-duration="1.6" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="10.7" data-duration="5.74" data-track-index="26" data-volume="1"></audio>
+      <audio id="vo-7" src="assets/voice/vo-7.m4a" data-start="17.1" data-duration="2.62" data-track-index="27" data-volume="1"></audio>
+      <audio id="vo-8" src="assets/voice/vo-8.m4a" data-start="20.1" data-duration="1.58" data-track-index="28" data-volume="1"></audio>
+      <audio id="sfx-0-impact" src="assets/sfx/impact.wav" data-start="0.25" data-duration="0.7" data-track-index="40" data-volume="0.55"></audio>
+      <audio id="sfx-1-pop" src="assets/sfx/pop.wav" data-start="0.6" data-duration="0.18" data-track-index="41" data-volume="0.45"></audio>
+      <audio id="sfx-2-impact" src="assets/sfx/impact.wav" data-start="0.95" data-duration="0.7" data-track-index="42" data-volume="0.55"></audio>
+      <audio id="sfx-3-whoosh" src="assets/sfx/whoosh.wav" data-start="1.75" data-duration="0.45" data-track-index="43" data-volume="0.5"></audio>
+      <audio id="sfx-4-shimmer" src="assets/sfx/shimmer.wav" data-start="2.1" data-duration="1.2" data-track-index="40" data-volume="0.4"></audio>
+      <audio id="sfx-5-impact" src="assets/sfx/impact.wav" data-start="3.6" data-duration="0.7" data-track-index="41" data-volume="0.55"></audio>
+      <audio id="sfx-6-whoosh" src="assets/sfx/whoosh.wav" data-start="5.35" data-duration="0.45" data-track-index="42" data-volume="0.5"></audio>
+      <audio id="sfx-7-pop" src="assets/sfx/pop.wav" data-start="5.6" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
+      <audio id="sfx-8-whoosh" src="assets/sfx/whoosh.wav" data-start="7.05" data-duration="0.45" data-track-index="40" data-volume="0.5"></audio>
+      <audio id="sfx-9-pop" src="assets/sfx/pop.wav" data-start="7.3" data-duration="0.18" data-track-index="41" data-volume="0.45"></audio>
+      <audio id="sfx-10-whoosh" src="assets/sfx/whoosh.wav" data-start="8.55" data-duration="0.45" data-track-index="42" data-volume="0.5"></audio>
+      <audio id="sfx-11-pop" src="assets/sfx/pop.wav" data-start="8.8" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
+      <audio id="sfx-12-whoosh" src="assets/sfx/whoosh.wav" data-start="10.3" data-duration="0.45" data-track-index="40" data-volume="0.5"></audio>
+      <audio id="sfx-13-pop" src="assets/sfx/pop.wav" data-start="10.85" data-duration="0.18" data-track-index="41" data-volume="0.45"></audio>
+      <audio id="sfx-14-pop" src="assets/sfx/pop.wav" data-start="11.75" data-duration="0.18" data-track-index="42" data-volume="0.45"></audio>
+      <audio id="sfx-15-pop" src="assets/sfx/pop.wav" data-start="12.6" data-duration="0.18" data-track-index="43" data-volume="0.45"></audio>
+      <audio id="sfx-16-pop" src="assets/sfx/pop.wav" data-start="13.45" data-duration="0.18" data-track-index="40" data-volume="0.45"></audio>
+      <audio id="sfx-17-pop" src="assets/sfx/pop.wav" data-start="14.75" data-duration="0.18" data-track-index="41" data-volume="0.45"></audio>
+      <audio id="sfx-18-pop" src="assets/sfx/pop.wav" data-start="15.35" data-duration="0.18" data-track-index="42" data-volume="0.45"></audio>
+      <audio id="sfx-19-whoosh" src="assets/sfx/whoosh.wav" data-start="16.85" data-duration="0.45" data-track-index="43" data-volume="0.5"></audio>
+      <audio id="sfx-20-impact" src="assets/sfx/impact.wav" data-start="17.1" data-duration="0.7" data-track-index="40" data-volume="0.55"></audio>
+      <audio id="sfx-21-impact" src="assets/sfx/impact.wav" data-start="17.85" data-duration="0.7" data-track-index="41" data-volume="0.55"></audio>
+      <audio id="sfx-22-impact" src="assets/sfx/impact.wav" data-start="18.55" data-duration="0.7" data-track-index="42" data-volume="0.55"></audio>
+      <audio id="sfx-23-whoosh" src="assets/sfx/whoosh.wav" data-start="19.55" data-duration="0.45" data-track-index="43" data-volume="0.5"></audio>
+      <audio id="sfx-24-shimmer" src="assets/sfx/shimmer.wav" data-start="19.8" data-duration="1.2" data-track-index="40" data-volume="0.4"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#flash", { opacity: 0 }, 0);
+      tl.set("#camwrap", { scale: 1 }, 0);
+      // Hook: word slams with shake
+      ["#w1", "#w2", "#w3"].forEach((id, i) => {
+        tl.fromTo(id, { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.out" }, 0.25 + i * 0.35);
+      });
+      tl.fromTo("#hook .words", { x: -14 }, { x: 0, duration: 0.25, ease: "elastic.out(1, 0.3)" }, 0.95);
+      tl.to("#hook .words", { scale: 1.25, opacity: 0, filter: "blur(18px)", duration: 0.3, ease: "power2.in" }, 1.75);
+      // Camera
+      tl.set("#cam", { x: 0.0, y: 0, scale: 1.0 }, 1.95);
+      tl.to("#cam", { x: -67.2, y: -67.2, scale: 1.07, duration: 1.65, ease: "none" }, 1.95);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 1.95);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 1.95);
+      tl.set("#cam", { x: -571.9, y: -816.1, scale: 1.45 }, 3.6);
+      tl.to("#cam", { x: -679.1, y: -940.4, scale: 1.552, duration: 1.9, ease: "none" }, 3.6);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 3.6);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 3.6);
+      tl.set("#cam", { x: 347.6, y: -313.9, scale: 1.6 }, 5.5);
+      tl.to("#cam", { x: 304.7, y: -403.1, scale: 1.712, duration: 1.7, ease: "none" }, 5.5);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 5.5);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 5.5);
+      tl.set("#cam", { x: -1572.0, y: -607.8, scale: 1.6 }, 7.2);
+      tl.to("#cam", { x: -1749.2, y: -717.5, scale: 1.712, duration: 1.5, ease: "none" }, 7.2);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 7.2);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 7.2);
+      tl.set("#cam", { x: 396.6, y: -1152.0, scale: 1.6 }, 8.7);
+      tl.to("#cam", { x: 357.2, y: -1299.8, scale: 1.712, duration: 1.75, ease: "none" }, 8.7);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 8.7);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 8.7);
+      tl.set("#cam", { x: -1223.3, y: -2068.5, scale: 2.3 }, 10.45);
+      tl.to("#cam", { x: -1376.1, y: -2280.5, scale: 2.461, duration: 6.55, ease: "none" }, 10.45);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 10.45);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 10.45);
+      tl.set("#cam", { x: -234.3, y: -1508.1, scale: 2.6 }, 17.0);
+      tl.to("#cam", { x: -317.9, y: -1680.9, scale: 2.782, duration: 2.7, ease: "none" }, 17.0);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 17.0);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 17.0);
+      tl.set("#cam", { x: 0.0, y: 0, scale: 1.0 }, 19.7);
+      tl.to("#cam", { x: -67.2, y: -67.2, scale: 1.07, duration: 3.3, ease: "none" }, 19.7);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, 19.7);
+      tl.fromTo("#camwrap", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 19.7);
+      // Captions pop in
+      const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 60, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, stagger: 0.1, ease: "back.out(2)" }, t);
+      pop("#c-meet > *", 2.15);
+      pop("#c-brand > *", 3.65);
+      pop("#c-b1 > *", 5.55);
+      pop("#c-b2 > *", 7.25);
+      pop("#c-b3 > *", 8.75);
+      tl.fromTo("#ingr .panel", { opacity: 0, y: -80 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.5);
+      tl.fromTo("#chip-0", { opacity: 0, scale: 0.4, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, 10.85);
+      tl.fromTo("#chip-1", { opacity: 0, scale: 0.4, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, 11.75);
+      tl.fromTo("#chip-2", { opacity: 0, scale: 0.4, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, 12.6);
+      tl.fromTo("#chip-3", { opacity: 0, scale: 0.4, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, 13.45);
+      tl.fromTo("#chip-4", { opacity: 0, scale: 0.4, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, 14.75);
+      tl.fromTo("#chip-5", { opacity: 0, scale: 0.4, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.2)" }, 15.35);
+      [["#p1", 17.1], ["#p2", 17.85], ["#p3", 18.55]].forEach(([id, t]) => {
+        tl.fromTo(id, { opacity: 0, scale: 1.9 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, t);
+      });
+      pop("#endcard .panel > *", 19.85);
+      tl.fromTo("#e4", { scale: 1 }, { scale: 1.08, duration: 0.4, yoyo: true, repeat: 3, ease: "sine.inOut" }, 21.0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

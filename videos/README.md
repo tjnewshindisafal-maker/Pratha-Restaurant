@@ -19,6 +19,7 @@ hyperframes doctor                    # verify
 | Project | What it is |
 | --- | --- |
 | `distress-sale/` | 60s vertical (1080x1920) commercial property ad — footage, text cards, AI voiceover, music bed |
+| `zinerals-facewash/` | 23s vertical product reel from one product photo — virtual camera cuts, kinetic captions, voiceover, music, SFX |
 
 ## Everyday commands (run inside a project folder)
 
