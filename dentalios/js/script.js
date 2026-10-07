@@ -1,4 +1,5 @@
 const WHATSAPP_NUMBER = "918329043003";
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Mobile menu
 const toggle = document.querySelector(".nav-toggle");
@@ -16,11 +17,57 @@ menu.querySelectorAll("a").forEach((link) =>
   })
 );
 
-// Header shadow on scroll
+// Header background on scroll + parallax on the clinic photo
 const header = document.querySelector(".site-header");
-const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 10);
-window.addEventListener("scroll", onScroll, { passive: true });
+const aboutImg = document.querySelector(".about-img img");
+let ticking = false;
+
+const onScroll = () => {
+  header.classList.toggle("scrolled", window.scrollY > 20);
+  if (aboutImg && !reduceMotion) {
+    const rect = aboutImg.parentElement.getBoundingClientRect();
+    const progress = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+    aboutImg.style.transform = `translateY(${-6.5 + progress * -8}%)`;
+  }
+  ticking = false;
+};
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  },
+  { passive: true }
+);
 onScroll();
+
+// Hero video: pause control, and respect reduced-motion preference
+const video = document.querySelector(".hero-video");
+const videoBtn = document.querySelector(".video-toggle");
+
+const setPaused = (paused) => {
+  videoBtn.classList.toggle("paused", paused);
+  videoBtn.setAttribute("aria-label", paused ? "Play video" : "Pause video");
+  videoBtn.title = paused ? "Play video" : "Pause video";
+};
+
+if (reduceMotion) {
+  video.removeAttribute("autoplay");
+  video.pause();
+  setPaused(true);
+}
+
+videoBtn.addEventListener("click", () => {
+  if (video.paused) {
+    video.play();
+    setPaused(false);
+  } else {
+    video.pause();
+    setPaused(true);
+  }
+});
 
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -41,7 +88,7 @@ form.addEventListener("submit", (e) => {
   const name = data.get("name").trim();
   const phone = data.get("phone").trim();
 
-  if (!name || !form.phone.checkValidity() || !phone) {
+  if (!name || !phone || !form.phone.checkValidity()) {
     errorBox.textContent = "Please enter your name and a valid phone number.";
     errorBox.hidden = false;
     return;
@@ -61,23 +108,47 @@ form.addEventListener("submit", (e) => {
   window.open(url, "_blank", "noopener");
 });
 
-// Reveal sections on scroll
-const revealEls = document.querySelectorAll(
-  ".service-card, .section-head, .about-text, .steps, .reviews-box, .faq details, .card, .map"
+// Count-up numbers
+const animateCount = (el) => {
+  const to = parseFloat(el.dataset.to);
+  const decimals = parseInt(el.dataset.decimals || "0", 10);
+  if (reduceMotion) {
+    el.textContent = to.toFixed(decimals);
+    return;
+  }
+  const start = performance.now();
+  const duration = 1800;
+  const step = (now) => {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 4);
+    el.textContent = (to * eased).toFixed(decimals);
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+};
+
+// Scroll reveals (staggered within grids) and count-ups
+const revealEls = document.querySelectorAll(".reveal");
+const counters = document.querySelectorAll(".count");
+
+document.querySelectorAll(".services-grid, .faq").forEach((group) =>
+  group.querySelectorAll(".reveal").forEach((el, i) => el.style.setProperty("--rd", `${(i % 3) * 0.12}s`))
 );
+
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) =>
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          io.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        if (entry.target.classList.contains("count")) animateCount(entry.target);
+        else entry.target.classList.add("visible");
+        io.unobserve(entry.target);
       }),
-    { threshold: 0.12 }
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
   );
-  revealEls.forEach((el) => {
-    el.classList.add("reveal");
-    io.observe(el);
-  });
+  revealEls.forEach((el) => io.observe(el));
+  counters.forEach((el) => io.observe(el));
+} else {
+  revealEls.forEach((el) => el.classList.add("visible"));
+  counters.forEach(animateCount);
 }
