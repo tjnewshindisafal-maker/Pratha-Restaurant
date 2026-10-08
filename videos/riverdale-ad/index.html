@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Kohinoor Riverdale Kharadi</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-500-normal.woff2"); font-weight: 500; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-800-normal.woff2"); font-weight: 800; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-900-normal.woff2"); font-weight: 900; }
+      :root { --red: #e8432f; --ink: #141414; --green: #1f3d2b; --cream: #f6f1ea; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; }
+      .full { position: absolute; inset: 0; overflow: hidden; }
+      .bg { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; display: block; }
+      .pan { position: absolute; left: 0; top: 0; height: 1920px; display: block; }
+      .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.75) 100%); }
+      .cap { position: absolute; left: 60px; right: 60px; bottom: 300px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .t1 { display: block; color: #fff; font-weight: 900; font-size: 92px; line-height: 1.02; letter-spacing: -2px; text-shadow: 0 6px 30px rgba(0,0,0,0.5); }
+      .t2 { display: block; color: #fff; font-weight: 600; font-size: 46px; line-height: 1.2; text-shadow: 0 3px 16px rgba(0,0,0,0.6); }
+      .redpill { display: block; background: var(--red); color: #fff; font-weight: 800; font-size: 44px; letter-spacing: 4px; padding: 12px 26px; border-radius: 12px; }
+      .whitepill { display: block; background: #fff; color: var(--ink); font-weight: 800; font-size: 44px; padding: 12px 26px; border-radius: 12px; }
+      .tag { position: absolute; left: 60px; bottom: 320px; display: block; background: #fff; color: var(--ink); font-weight: 900; font-size: 64px; padding: 16px 34px; border-radius: 16px; border-left: 14px solid var(--red); }
+      .logo { position: absolute; left: 60px; top: 110px; width: 430px; display: block; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.5)); }
+      .note { position: absolute; right: 30px; bottom: 30px; color: rgba(255,255,255,0.7); font-size: 22px; font-weight: 500; }
+      #loc .panel { position: absolute; left: 60px; right: 60px; top: 260px; background: rgba(20,20,20,0.82); border-radius: 36px; padding: 44px 44px 30px; }
+      #loc .head { display: block; color: var(--red); font-weight: 800; font-size: 42px; letter-spacing: 8px; margin-bottom: 18px; }
+      .loc { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(255,255,255,0.12); padding: 22px 0; color: #fff; font-weight: 700; font-size: 50px; }
+      .loc b { color: #fff; background: var(--red); font-weight: 900; font-size: 44px; padding: 6px 20px; border-radius: 12px; }
+      #trust .stats { position: absolute; left: 60px; right: 60px; top: 520px; display: flex; flex-direction: column; gap: 28px; }
+      .stat { display: flex; align-items: baseline; gap: 26px; background: rgba(255,255,255,0.95); border-radius: 26px; padding: 26px 36px; }
+      .stat b { color: var(--red); font-weight: 900; font-size: 110px; line-height: 1; }
+      .stat span { color: var(--ink); font-weight: 700; font-size: 46px; line-height: 1.15; }
+      #end .panel { position: absolute; left: 50px; right: 50px; bottom: 120px; background: var(--cream); border-radius: 40px; padding: 44px 44px 36px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+      #end .k { width: 620px; display: block; }
+      .bhk { display: block; color: var(--ink); font-weight: 900; font-size: 74px; letter-spacing: -1px; text-align: center; line-height: 1.05; }
+      .sub { display: block; color: #555; font-weight: 700; font-size: 36px; letter-spacing: 4px; text-align: center; }
+      .cta { display: block; background: var(--red); color: #fff; font-weight: 900; font-size: 56px; padding: 22px 50px; border-radius: 22px; text-align: center; }
+      .phone { display: block; color: var(--ink); font-weight: 900; font-size: 64px; }
+      .rera { display: block; color: #555; font-weight: 600; font-size: 22px; text-align: center; line-height: 1.4; }
+      #flash { background: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="42" data-width="1080" data-height="1920">
+      <!-- S1 nature hook -->
+      <div id="s1" class="full clip" data-start="0" data-duration="3.05" data-track-index="0">
+        <img id="i-egrets" class="pan" src="assets/img/egrets.jpg" alt="" style="width: 3638px;" />
+        <div class="shade"></div>
+        <img class="logo" id="logo1" src="assets/img/logo-riverdale-t.png" alt="Kohinoor Riverdale Kharadi" />
+        <div class="cap" id="c1">
+          <div class="t1">Where land ends,</div>
+          <div class="t1" style="color: #cfe8c9;">nature speaks.</div>
+        </div>
+      </div>
+
+      <!-- S2 entrance -->
+      <div id="s2" class="full clip" data-start="3.0" data-duration="4.95" data-track-index="0">
+        <img id="i-entrance" class="pan" src="assets/img/entrance.jpg" alt="" style="width: 3411px;" />
+        <div class="shade"></div>
+        <div class="cap" id="c2">
+          <div class="redpill">PHASE 2 · KHARADI</div>
+          <div class="t1">Kohinoor Riverdale</div>
+          <div class="t2">2 &amp; 3 BHK homes in Pune</div>
+        </div>
+      </div>
+
+      <!-- S3 river -->
+      <div id="s3" class="full clip" data-start="7.9" data-duration="4.95" data-track-index="0">
+        <img id="i-river" class="pan" src="assets/img/river.jpg" alt="" style="width: 4825px;" />
+        <div class="shade"></div>
+        <div class="cap" id="c3">
+          <div class="whitepill">2 &amp; 3 BHK HOMES</div>
+          <div class="t1">Riverside living</div>
+          <div class="t2">Beside the Mula-Mutha river</div>
+        </div>
+      </div>
+
+      <!-- S4 amenities montage -->
+      <div id="m-lagoon" class="full clip" data-start="12.8" data-duration="1.6" data-track-index="0">
+        <img id="mi-lagoon" class="bg" src="assets/img/lagoon.jpg" alt="" style="object-position:50% 50%" />
+        <div class="shade"></div>
+        <div class="tag" id="mt-lagoon">Lagoon Pool</div>
+      </div>
+      <div id="m-club" class="full clip" data-start="14.35" data-duration="1.6" data-track-index="0">
+        <img id="mi-club" class="bg" src="assets/img/clubhouse.jpg" alt="" style="object-position:45% 50%" />
+        <div class="shade"></div>
+        <div class="tag" id="mt-club">Clubhouse</div>
+      </div>
+      <div id="m-cove" class="full clip" data-start="15.9" data-duration="1.6" data-track-index="0">
+        <img id="mi-cove" class="bg" src="assets/img/cove.jpg" alt="" style="object-position:50% 50%" />
+        <div class="shade"></div>
+        <div class="tag" id="mt-cove">Cove Seating</div>
+      </div>
+      <div id="m-yoga" class="full clip" data-start="17.45" data-duration="1.6" data-track-index="0">
+        <img id="mi-yoga" class="bg" src="assets/img/yoga.jpg" alt="" style="object-position:50% 50%" />
+        <div class="shade"></div>
+        <div class="tag" id="mt-yoga">Yoga Deck</div>
+      </div>
+      <div id="m-head" class="clip" data-start="12.8" data-duration="6.2" data-track-index="3" style="position: absolute; left: 60px; top: 140px;">
+        <div class="redpill" id="mh">20+ AMENITIES</div>
+      </div>
+
+      <!-- S5 sample flat footage -->
+      <video id="f1" class="bg" src="assets/footage/flat.mp4" data-start="19.0" data-duration="3.5" data-media-start="0" data-playback-rate="1.6" data-track-index="0" playsinline muted></video>
+      <video id="f2" class="bg" src="assets/footage/flat.mp4" data-start="22.5" data-duration="3.0" data-media-start="12" data-playback-rate="1.6" data-track-index="0" playsinline muted></video>
+      <video id="f3" class="bg" src="assets/footage/flat.mp4" data-start="25.5" data-duration="2.55" data-media-start="38.5" data-playback-rate="1.6" data-track-index="0" playsinline muted></video>
+      <div id="fshade" class="full clip shade" data-start="19.0" data-duration="9.05" data-track-index="2"></div>
+      <div id="fhead" class="clip" data-start="19.0" data-duration="9.05" data-track-index="3" style="position: absolute; left: 60px; top: 140px;">
+        <div class="redpill">STEP INSIDE</div>
+      </div>
+      <div id="ft1" class="clip tag" data-start="19.2" data-duration="3.3" data-track-index="4">Spacious living</div>
+      <div id="ft2" class="clip tag" data-start="22.5" data-duration="3.0" data-track-index="4">Open views</div>
+      <div id="ft3" class="clip tag" data-start="25.5" data-duration="2.5" data-track-index="4">Well-planned homes</div>
+
+      <!-- S6 location -->
+      <div id="loc" class="full clip" data-start="28.0" data-duration="4.65" data-track-index="0">
+        <img id="i-loc" class="bg" src="assets/img/clubhouse.jpg" alt="" style="filter: blur(6px) brightness(0.7);" />
+        <div class="panel">
+          <div class="head">PRIME KHARADI</div>
+          <div class="loc" id="loc-0"><span>Wellington College</span><b>2 min</b></div>
+          <div class="loc" id="loc-1"><span>EON Water Front</span><b>7 min</b></div>
+          <div class="loc" id="loc-2"><span>Global Highstreet</span><b>7 min</b></div>
+          <div class="loc" id="loc-3"><span>EON IT Park</span><b>13 min</b></div>
+          <div class="loc" id="loc-4"><span>Pune Airport</span><b>20 min</b></div>
+          <div class="loc" id="loc-5"><span>Phoenix Marketcity</span><b>22 min</b></div>
+        </div>
+        <div class="note">*Approx. travel times as per brochure</div>
+      </div>
+
+      <!-- S7 trust -->
+      <div id="trust" class="full clip" data-start="32.6" data-duration="3.75" data-track-index="0">
+        <img id="i-trust" class="pan" src="assets/img/cove.jpg" alt="" style="width: 3412px; filter: brightness(0.45) blur(3px);" />
+        <div style="position: absolute; left: 60px; top: 300px;" id="trusthead"><div class="t1">By Kohinoor</div><div class="t2">Pune's trusted developer</div></div>
+        <div class="stats">
+          <div class="stat" id="st1"><b>1983</b><span>Building homes<br />since</span></div>
+          <div class="stat" id="st2"><b>49+</b><span>Projects<br />delivered</span></div>
+          <div class="stat" id="st3"><b>11K+</b><span>Delighted<br />customers</span></div>
+        </div>
+      </div>
+
+      <!-- S8 end card -->
+      <div id="end" class="full clip" data-start="36.3" data-duration="5.7" data-track-index="0">
+        <img id="i-end" class="pan" src="assets/img/egrets.jpg" alt="" style="width: 3638px;" />
+        <img class="logo" id="logo2" src="assets/img/logo-riverdale-t.png" alt="" style="top: 130px;" />
+        <div class="panel" id="endpanel">
+          <img class="k" src="assets/img/logo-kohinoor.png" alt="Kohinoor" />
+          <div class="bhk">2 &amp; 3 BHK Homes</div>
+          <div class="sub">KHARADI · PUNE</div>
+          <div class="cta" id="cta">BOOK A SITE VISIT</div>
+          <div class="phone">📞 095 6100 1003</div>
+          <div class="rera">MahaRERA: Phase I – P52100056021 | Phase II – P52100079217<br />maharera.mahaonline.gov.in · Images are artist's impressions</div>
+        </div>
+      </div>
+
+      <div id="flash" class="full clip" data-start="0" data-duration="42" data-track-index="5"></div>
+
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="42" data-track-index="10" data-volume="0.28" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.8,"v":1},{"t":40.5,"v":1},{"t":42,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.4" data-duration="2.09" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="3.2" data-duration="4.39" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="8.1" data-duration="4.52" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="13.0" data-duration="5.46" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="19.3" data-duration="4.67" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="28.2" data-duration="4.25" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="32.8" data-duration="3.43" data-track-index="26" data-volume="1"></audio>
+      <audio id="vo-7" src="assets/voice/vo-7.m4a" data-start="36.6" data-duration="1.66" data-track-index="27" data-volume="1"></audio>
+      <audio id="sfx-0-shimmer" src="assets/sfx/shimmer.wav" data-start="0.2" data-duration="1.2" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-1-whoosh" src="assets/sfx/whoosh.wav" data-start="2.85" data-duration="0.45" data-track-index="41" data-volume="0.35"></audio>
+      <audio id="sfx-2-whoosh" src="assets/sfx/whoosh.wav" data-start="7.75" data-duration="0.45" data-track-index="42" data-volume="0.35"></audio>
+      <audio id="sfx-3-whoosh" src="assets/sfx/whoosh.wav" data-start="12.65" data-duration="0.45" data-track-index="43" data-volume="0.35"></audio>
+      <audio id="sfx-4-whoosh" src="assets/sfx/whoosh.wav" data-start="14.2" data-duration="0.45" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-5-whoosh" src="assets/sfx/whoosh.wav" data-start="15.75" data-duration="0.45" data-track-index="41" data-volume="0.35"></audio>
+      <audio id="sfx-6-whoosh" src="assets/sfx/whoosh.wav" data-start="17.3" data-duration="0.45" data-track-index="42" data-volume="0.35"></audio>
+      <audio id="sfx-7-whoosh" src="assets/sfx/whoosh.wav" data-start="18.85" data-duration="0.45" data-track-index="43" data-volume="0.35"></audio>
+      <audio id="sfx-8-whoosh" src="assets/sfx/whoosh.wav" data-start="22.35" data-duration="0.45" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-9-whoosh" src="assets/sfx/whoosh.wav" data-start="25.35" data-duration="0.45" data-track-index="41" data-volume="0.35"></audio>
+      <audio id="sfx-10-whoosh" src="assets/sfx/whoosh.wav" data-start="27.85" data-duration="0.45" data-track-index="42" data-volume="0.35"></audio>
+      <audio id="sfx-11-whoosh" src="assets/sfx/whoosh.wav" data-start="32.45" data-duration="0.45" data-track-index="43" data-volume="0.35"></audio>
+      <audio id="sfx-12-whoosh" src="assets/sfx/whoosh.wav" data-start="36.15" data-duration="0.45" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-13-pop" src="assets/sfx/pop.wav" data-start="28.4" data-duration="0.18" data-track-index="41" data-volume="0.35"></audio>
+      <audio id="sfx-14-pop" src="assets/sfx/pop.wav" data-start="28.9" data-duration="0.18" data-track-index="42" data-volume="0.35"></audio>
+      <audio id="sfx-15-pop" src="assets/sfx/pop.wav" data-start="29.4" data-duration="0.18" data-track-index="43" data-volume="0.35"></audio>
+      <audio id="sfx-16-pop" src="assets/sfx/pop.wav" data-start="29.9" data-duration="0.18" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-17-pop" src="assets/sfx/pop.wav" data-start="30.4" data-duration="0.18" data-track-index="41" data-volume="0.35"></audio>
+      <audio id="sfx-18-pop" src="assets/sfx/pop.wav" data-start="30.9" data-duration="0.18" data-track-index="42" data-volume="0.35"></audio>
+      <audio id="sfx-19-impact" src="assets/sfx/impact.wav" data-start="32.75" data-duration="0.7" data-track-index="43" data-volume="0.4"></audio>
+      <audio id="sfx-20-impact" src="assets/sfx/impact.wav" data-start="33.5" data-duration="0.7" data-track-index="40" data-volume="0.4"></audio>
+      <audio id="sfx-21-impact" src="assets/sfx/impact.wav" data-start="34.25" data-duration="0.7" data-track-index="41" data-volume="0.4"></audio>
+      <audio id="sfx-22-shimmer" src="assets/sfx/shimmer.wav" data-start="36.4" data-duration="1.2" data-track-index="42" data-volume="0.35"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#flash", { opacity: 0 }, 0);
+      [3.0, 7.9, 12.8, 14.35, 15.9, 17.45, 19.0, 22.5, 25.5, 28.0, 32.6, 36.3].forEach((t) => tl.fromTo("#flash", { opacity: 0.6 }, { opacity: 0, duration: 0.2, ease: "power2.out", immediateRender: false }, t));
+      const kb = (sel, t, d, a, b) => tl.fromTo(sel, { scale: a }, { scale: b, duration: d, ease: "none" }, t);
+      const pan = (sel, t, d, x1, x2) => tl.fromTo(sel, { x: x1 }, { x: x2, duration: d, ease: "none" }, t);
+      const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "power3.out" }, t);
+      // S1
+      pan("#i-egrets", 0, 3.05, -150, -520);
+      tl.fromTo("#logo1", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.2);
+      pop("#c1 > *", 0.45);
+      // S2
+      pan("#i-entrance", 3.0, 4.95, -900, -2331);
+      pop("#c2 > *", 3.2);
+      // S3
+      pan("#i-river", 7.9, 4.95, -1050, -1650);
+      pop("#c3 > *", 8.1);
+      // S4
+      kb("#mi-lagoon", 12.8, 1.6, 1.12, 1.0);
+      tl.fromTo("#mt-lagoon", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 12.9);
+      kb("#mi-club", 14.35, 1.6, 1.12, 1.0);
+      tl.fromTo("#mt-club", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 14.45);
+      kb("#mi-cove", 15.9, 1.6, 1.12, 1.0);
+      tl.fromTo("#mt-cove", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 16.0);
+      kb("#mi-yoga", 17.45, 1.6, 1.12, 1.0);
+      tl.fromTo("#mt-yoga", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 17.55);
+      tl.fromTo("#mh", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 12.9);
+      // S5
+      pop("#fhead > *", 19.1);
+      tl.fromTo("#ft1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 19.3);
+      tl.fromTo("#ft2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 22.6);
+      tl.fromTo("#ft3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 25.6);
+      // S6
+      tl.fromTo("#loc .panel", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 28.05);
+      tl.fromTo("#loc-0", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 28.4);
+      tl.fromTo("#loc-1", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 28.9);
+      tl.fromTo("#loc-2", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 29.4);
+      tl.fromTo("#loc-3", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 29.9);
+      tl.fromTo("#loc-4", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 30.4);
+      tl.fromTo("#loc-5", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.3, ease: "back.out(1.7)" }, 30.9);
+      // S7
+      pan("#i-trust", 32.6, 3.75, -1000, -1300);
+      pop("#trusthead > *", 32.65);
+      [["#st1", 32.75], ["#st2", 33.5], ["#st3", 34.25]].forEach(([id, t]) => tl.fromTo(id, { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, t));
+      // S8
+      pan("#i-end", 36.3, 5.7, -300, -650);
+      tl.fromTo("#logo2", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 36.4);
+      tl.fromTo("#endpanel", { opacity: 0, y: 140 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 36.4);
+      tl.fromTo("#cta", { scale: 1 }, { scale: 1.06, duration: 0.45, yoyo: true, repeat: 5, ease: "sine.inOut" }, 37.4);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
