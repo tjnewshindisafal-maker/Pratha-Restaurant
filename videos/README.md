@@ -24,6 +24,7 @@ hyperframes doctor                    # verify
 | `riverdale-ad/` | 42s vertical ad for Kohinoor Riverdale Kharadi — brochure renders, sample-flat footage, location, trust stats, RERA end card |
 | `zinerals-facewash-offer/` | 31s vertical offer ad for the face wash (₹269, MRP ₹599) — lifestyle images, benefits, ingredients, price card |
 | `zinerals-ugc-edit/` | 34s UGC creator review re-edit — punch zooms, text overlays, SFX, progress bar, ₹269 end card (original audio kept) |
+| `zinerals-howto-ad/` | 15s how-to ad from a 10s AI clip — hook, step labels, ingredient chips, ₹269 offer end card |
 
 ## Everyday commands (run inside a project folder)
 
