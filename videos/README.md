@@ -26,6 +26,7 @@ hyperframes doctor                    # verify
 | `zinerals-ugc-edit/` | 34s UGC creator review re-edit — punch zooms, text overlays, SFX, progress bar, ₹269 end card (original audio kept) |
 | `zinerals-howto-ad/` | 15s how-to ad from a 10s AI clip — hook, step labels, ingredient chips, ₹269 offer end card |
 | `zinerals-splash-teaser/` | 14s premium teaser from AI splash clip — slow-mo splash, ingredient chips, benefit ticks, ₹269 end card |
+| `zinerals-woman-ugc/` | 13.5s AI UGC creator clip — hook, product + ingredient chips, benefit ticks, ₹269 end card |
 
 ## Everyday commands (run inside a project folder)
 
