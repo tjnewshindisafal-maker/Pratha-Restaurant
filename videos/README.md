@@ -23,6 +23,7 @@ hyperframes doctor                    # verify
 | `zinerals-moisturizer/` | 27s vertical reel for the 72HR moisturizer — hook, 72-hr meter, benefit zooms, checklist, CTA |
 | `riverdale-ad/` | 42s vertical ad for Kohinoor Riverdale Kharadi — brochure renders, sample-flat footage, location, trust stats, RERA end card |
 | `zinerals-facewash-offer/` | 31s vertical offer ad for the face wash (₹269, MRP ₹599) — lifestyle images, benefits, ingredients, price card |
+| `zinerals-ugc-edit/` | 34s UGC creator review re-edit — punch zooms, text overlays, SFX, progress bar, ₹269 end card (original audio kept) |
 
 ## Everyday commands (run inside a project folder)
 
