@@ -28,6 +28,7 @@ hyperframes doctor                    # verify
 | `zinerals-splash-teaser/` | 14s premium teaser from AI splash clip — slow-mo splash, ingredient chips, benefit ticks, ₹269 end card |
 | `zinerals-woman-ugc/` | 13.5s AI UGC creator clip — hook, product + ingredient chips, benefit ticks, ₹269 end card |
 | `zinerals-hero-ad/` | 33s hero ad from 3 Google Flow clips + splash shot — dialogue captions, steps, AI disclosure, ₹269 end card |
+| `navratri-coloring-ad/` | 29s Navratri ad for Kids Learn digital colouring book (₹99) — 4 AI kid clips + product reel, captions, AI label, CTA |
 
 ## Everyday commands (run inside a project folder)
 
