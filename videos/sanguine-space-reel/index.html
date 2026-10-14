@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Sanguine Space Coworking</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-500-normal.woff2"); font-weight: 500; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-800-normal.woff2"); font-weight: 800; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-900-normal.woff2"); font-weight: 900; }
+      :root { --navy: #0f2a4a; --orange: #e8641f; --green: #6f9a30; --ink: #10233d; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0f2a4a; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; }
+      .full { position: absolute; inset: 0; overflow: hidden; }
+      .pan { position: absolute; left: 0; top: 0; height: 1920px; display: block; }
+      .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,20,38,0.55) 0%, rgba(8,20,38,0.1) 30%, rgba(8,20,38,0.15) 55%, rgba(8,20,38,0.85) 100%); }
+      .dark { position: absolute; inset: 0; background: rgba(8,20,38,0.62); }
+      .cap { position: absolute; left: 60px; right: 60px; bottom: 380px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+      .t1 { display: block; color: #fff; font-weight: 900; font-size: 96px; line-height: 1.02; letter-spacing: -2px; text-shadow: 0 6px 30px rgba(0,0,0,0.55); }
+      .t2 { display: block; color: #fff; font-weight: 700; font-size: 48px; line-height: 1.2; text-shadow: 0 3px 16px rgba(0,0,0,0.7); }
+      .pill { display: block; background: var(--orange); color: #fff; font-weight: 800; font-size: 40px; letter-spacing: 4px; padding: 12px 26px; border-radius: 12px; }
+      .gpill { display: block; background: #4f7420; color: #fff; font-weight: 800; font-size: 40px; letter-spacing: 3px; padding: 12px 26px; border-radius: 12px; }
+      .logobox { position: absolute; left: 60px; top: 150px; background: #fff; border-radius: 24px; padding: 14px 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.35); }
+      .logobox img { display: block; width: 330px; }
+      .stat { position: absolute; left: 60px; right: 60px; bottom: 380px; display: flex; align-items: center; gap: 28px; background: rgba(255,255,255,0.96); border-radius: 30px; padding: 28px 40px; border-left: 16px solid var(--orange); }
+      .stat b { color: #c94f10; font-weight: 900; font-size: 130px; line-height: 1; letter-spacing: -3px; }
+      .stat span { color: var(--ink); font-weight: 800; font-size: 50px; line-height: 1.12; }
+      .panel { position: absolute; left: 60px; right: 60px; background: rgba(15,42,74,0.93); border-radius: 36px; padding: 44px 44px 34px; }
+      .head { display: block; color: #ffb27f; font-weight: 800; font-size: 40px; letter-spacing: 7px; margin-bottom: 14px; }
+      .row { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-bottom: 2px solid rgba(255,255,255,0.14); padding: 26px 0; color: #fff; font-weight: 700; font-size: 50px; line-height: 1.15; }
+      .row:last-child { border-bottom: 0; }
+      .row b { color: #fff; background: var(--orange); font-weight: 900; font-size: 46px; padding: 8px 22px; border-radius: 14px; white-space: nowrap; }
+      .row small { display: block; color: #c9d6e6; font-weight: 500; font-size: 34px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; }
+      .chip { display: flex; align-items: center; gap: 18px; background: #fff; color: var(--ink); border-radius: 22px; padding: 24px 22px; font-weight: 800; font-size: 38px; line-height: 1.12; }
+      .chip i { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: var(--green); position: relative; }
+      .chip i::after { content: ""; position: absolute; left: 15px; top: 9px; width: 11px; height: 21px; border: solid #fff; border-width: 0 6px 6px 0; transform: rotate(45deg); }
+      .list { display: flex; flex-direction: column; gap: 20px; }
+      .list .chip { font-size: 50px; padding: 26px 30px; }
+      .note { position: absolute; right: 30px; bottom: 40px; color: rgba(255,255,255,0.8); font-size: 22px; font-weight: 500; }
+      #endpanel { position: absolute; left: 50px; right: 50px; bottom: 150px; background: #fff; border-radius: 40px; padding: 44px 40px 40px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+      #endpanel img { width: 460px; display: block; }
+      .slogan { display: block; color: var(--navy); font-weight: 900; font-size: 74px; line-height: 1.02; text-align: center; letter-spacing: -1px; }
+      .slogan em { font-style: normal; color: #c94f10; }
+      .cta { display: block; background: var(--orange); color: #fff; font-weight: 900; font-size: 56px; padding: 22px 50px; border-radius: 22px; text-align: center; margin-top: 8px; }
+      .web { display: block; color: var(--navy); font-weight: 900; font-size: 50px; }
+      .info { display: block; color: #33475f; font-weight: 700; font-size: 34px; text-align: center; line-height: 1.35; }
+      #flash { background: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="37" data-width="1080" data-height="1920">
+      <!-- S1 hook -->
+      <div id="s1" class="full clip" data-start="0" data-duration="3.45" data-track-index="0">
+        <img id="i-building" class="pan" src="assets/img/building.jpg" alt="" style="width: 1278px;" />
+        <div class="shade"></div>
+        <div class="logobox" id="logo1"><img src="assets/img/logo.png" alt="Sanguine Space" /></div>
+        <div class="cap" id="c1">
+          <div class="pill">PUNE · NAGAR ROAD</div>
+          <div class="t1">Looking for a premium coworking space?</div>
+        </div>
+      </div>
+
+      <!-- S2 aerial -->
+      <div id="s2" class="full clip" data-start="3.4" data-duration="4.55" data-track-index="0">
+        <img id="i-aerial" class="pan" src="assets/img/aerial.jpg" alt="" style="width: 2885px;" />
+        <div class="shade"></div>
+        <div class="cap" id="c2">
+          <div class="gpill">PREMIUM COWORKING</div>
+          <div class="t1">Sanguine Space</div>
+          <div class="t2">Opp. Novotel Hotel, Nagar Road, Pune</div>
+        </div>
+      </div>
+
+      <!-- S3 location -->
+      <div id="s3" class="full clip" data-start="7.9" data-duration="6.15" data-track-index="0">
+        <img id="i-terrace" class="pan" src="assets/img/terrace.jpg" alt="" style="width: 2883px;" />
+        <div class="dark"></div>
+        <div class="panel" id="locpanel" style="top: 470px;">
+          <div class="head">PRIME LOCATION</div>
+          <div class="row" id="loc-0"><span>Opposite Novotel Hotel<small>Nagar Road, Pune</small></span></div>
+          <div class="row" id="loc-1"><span>Ramwadi Metro Station</span><b>170 m</b></div>
+          <div class="row" id="loc-2"><span>Phoenix Mall</span><b>150 m</b></div>
+        </div>
+      </div>
+
+      <!-- S4 spaces montage -->
+      <div id="m1" class="full clip" data-start="14.0" data-duration="2.2" data-track-index="0">
+        <img id="mi1" class="pan" src="assets/img/desks.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+        <div class="stat" id="mt1"><b>100</b><span>Ready-to-use Workstations</span></div>
+      </div>
+      <div id="m2" class="full clip" data-start="16.15" data-duration="2.15" data-track-index="0">
+        <img id="mi2" class="pan" src="assets/img/conf.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+        <div class="stat" id="mt2"><b>28</b><span>Conference Seats</span></div>
+      </div>
+      <div id="m3" class="full clip" data-start="18.25" data-duration="1.95" data-track-index="0">
+        <img id="mi3" class="pan" src="assets/img/cabin.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+        <div class="stat" id="mt3"><b>3</b><span>Executive Cabins</span></div>
+      </div>
+      <div id="m4" class="full clip" data-start="20.15" data-duration="2.5" data-track-index="0">
+        <img id="mi4" class="pan" src="assets/img/cafe.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+        <div class="stat" id="mt4"><b>1,500</b><span>Sq. Ft. Cafeteria</span></div>
+      </div>
+      <div id="m-head" class="clip" data-start="14.0" data-duration="8.6" data-track-index="3" style="position: absolute; left: 60px; top: 170px;">
+        <div class="pill" id="mh">4,600 SQ. FT. · FULLY FURNISHED</div>
+      </div>
+
+      <!-- S5 amenities -->
+      <div id="s5" class="full clip" data-start="22.6" data-duration="5.85" data-track-index="0">
+        <img id="i-open" class="pan" src="assets/img/open.jpg" alt="" style="width: 2883px;" />
+        <div class="dark"></div>
+        <div class="panel" id="ampanel" style="top: 400px;">
+          <div class="head">ALL-INCLUSIVE AMENITIES</div>
+          <div class="grid">
+            <div class="chip" id="a0"><i></i>High-Speed Internet</div>
+            <div class="chip" id="a1"><i></i>Air-Conditioned</div>
+            <div class="chip" id="a2"><i></i>UPS Power Backup</div>
+            <div class="chip" id="a3"><i></i>2W &amp; 4W Parking</div>
+            <div class="chip" id="a4"><i></i>CCTV Security</div>
+            <div class="chip" id="a5"><i></i>Pantry &amp; Coffee</div>
+            <div class="chip" id="a6"><i></i>Glass-Wall Cabins</div>
+            <div class="chip" id="a7"><i></i>Daily Cleaning</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S6 perfect for -->
+      <div id="s6" class="full clip" data-start="28.4" data-duration="3.45" data-track-index="0">
+        <img id="i-monitor" class="pan" src="assets/img/monitor.jpg" alt="" style="width: 2883px;" />
+        <div class="dark"></div>
+        <div style="position: absolute; left: 60px; right: 60px; top: 430px;">
+          <div class="t1" id="pfhead" style="margin-bottom: 36px;">Perfect for</div>
+          <div class="list">
+            <div class="chip" id="p0"><i></i>Startups &amp; Entrepreneurs</div>
+            <div class="chip" id="p1"><i></i>Freelancers &amp; Remote Workers</div>
+            <div class="chip" id="p2"><i></i>Small &amp; Medium Businesses</div>
+            <div class="chip" id="p3"><i></i>Project Teams &amp; Trainers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S7 end card -->
+      <div id="end" class="full clip" data-start="31.8" data-duration="5.2" data-track-index="0">
+        <img id="i-end" class="pan" src="assets/img/lounge.jpg" alt="" style="width: 2883px;" />
+        <div class="dark" style="background: rgba(8,20,38,0.45);"></div>
+        <div id="endpanel">
+          <img src="assets/img/logo.png" alt="Sanguine Space" />
+          <div class="slogan">Work. Connect.<br /><em>Grow Together.</em></div>
+          <div class="cta" id="cta">BOOK A VISIT TODAY</div>
+          <div class="web">www.sanguinespace.com</div>
+          <div class="info">hello@sanguinespace.com<br />Opp. Novotel Hotel, Nagar Road, Pune<br />Near Ramwadi Metro · Ample Parking</div>
+        </div>
+      </div>
+
+      <div id="flash" class="full clip" data-start="0" data-duration="37" data-track-index="5"></div>
+
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="37" data-track-index="10" data-volume="0.26" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.6,"v":1},{"t":35.6,"v":1},{"t":37,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.3" data-duration="2.84" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="3.5" data-duration="4.2" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="8.0" data-duration="5.85" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="14.1" data-duration="8.21" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="22.7" data-duration="5.33" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="28.5" data-duration="3.11" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="32.1" data-duration="1.34" data-track-index="26" data-volume="1"></audio>
+      <audio id="sfx-0" src="assets/sfx/shimmer.wav" data-start="0.1" data-duration="1.2" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-1" src="assets/sfx/whoosh.wav" data-start="3.25" data-duration="0.45" data-track-index="41" data-volume="0.35"></audio>
+      <audio id="sfx-2" src="assets/sfx/whoosh.wav" data-start="7.75" data-duration="0.45" data-track-index="42" data-volume="0.35"></audio>
+      <audio id="sfx-3" src="assets/sfx/whoosh.wav" data-start="13.85" data-duration="0.45" data-track-index="43" data-volume="0.35"></audio>
+      <audio id="sfx-4" src="assets/sfx/whoosh.wav" data-start="16.0" data-duration="0.45" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-5" src="assets/sfx/whoosh.wav" data-start="18.1" data-duration="0.45" data-track-index="41" data-volume="0.35"></audio>
+      <audio id="sfx-6" src="assets/sfx/whoosh.wav" data-start="20.0" data-duration="0.45" data-track-index="42" data-volume="0.35"></audio>
+      <audio id="sfx-7" src="assets/sfx/whoosh.wav" data-start="22.45" data-duration="0.45" data-track-index="43" data-volume="0.35"></audio>
+      <audio id="sfx-8" src="assets/sfx/whoosh.wav" data-start="28.25" data-duration="0.45" data-track-index="40" data-volume="0.35"></audio>
+      <audio id="sfx-9" src="assets/sfx/impact.wav" data-start="31.85" data-duration="0.7" data-track-index="41" data-volume="0.4"></audio>
+      <audio id="sfx-10" src="assets/sfx/shimmer.wav" data-start="32.0" data-duration="1.2" data-track-index="42" data-volume="0.3"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#flash", { opacity: 0 }, 0);
+      [3.4, 7.9, 14.0, 16.15, 18.25, 20.15, 22.6, 28.4, 31.8].forEach((t) => tl.fromTo("#flash", { opacity: 0.55 }, { opacity: 0, duration: 0.2, ease: "power2.out", immediateRender: false }, t));
+      const pan = (sel, t, d, x1, x2, s1 = 1.04, s2 = 1.1) => tl.fromTo(sel, { x: x1, scale: s1 }, { x: x2, scale: s2, duration: d, ease: "none" }, t);
+      const pop = (sel, t, st = 0.12) => tl.fromTo(sel, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, stagger: st, ease: "power3.out" }, t);
+      const slide = (sel, t) => tl.fromTo(sel, { opacity: 0, x: -90 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.7)" }, t);
+      // S1
+      pan("#i-building", 0, 3.45, 0, -198, 1.12, 1.0);
+      tl.fromTo("#logo1", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.15);
+      pop("#c1 > *", 0.35, 0.18);
+      // S2
+      pan("#i-aerial", 3.4, 4.55, -450, -950);
+      pop("#c2 > *", 3.55);
+      // S3
+      pan("#i-terrace", 7.9, 6.15, -600, -1200);
+      tl.fromTo("#locpanel", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.95);
+      slide("#loc-0", 8.2);
+      slide("#loc-1", 8.9);
+      slide("#loc-2", 11.0);
+      // S4
+      pan("#mi1", 14.0, 2.2, -500, -900);
+      pan("#mi2", 16.15, 2.15, -1100, -700);
+      pan("#mi3", 18.25, 1.95, -500, -850);
+      pan("#mi4", 20.15, 2.5, -1100, -600);
+      tl.fromTo("#mh", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 14.05);
+      [["#mt1", 14.15], ["#mt2", 16.3], ["#mt3", 18.4], ["#mt4", 20.3]].forEach(([id, t]) => tl.fromTo(id, { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, t));
+      // S5
+      pan("#i-open", 22.6, 5.85, -500, -1000);
+      tl.fromTo("#ampanel", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.65);
+      tl.fromTo(".grid .chip", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.55, ease: "back.out(2)" }, 22.95);
+      // S6
+      pan("#i-monitor", 28.4, 3.45, -700, -1000);
+      pop("#pfhead", 28.45);
+      tl.fromTo(".list .chip", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.45, ease: "back.out(1.6)" }, 28.75);
+      // S7
+      pan("#i-end", 31.8, 5.2, -600, -900);
+      tl.fromTo("#endpanel", { opacity: 0, y: 140 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 31.85);
+      tl.fromTo("#cta", { scale: 1 }, { scale: 1.06, duration: 0.45, yoyo: true, repeat: 5, ease: "sine.inOut" }, 32.6);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
