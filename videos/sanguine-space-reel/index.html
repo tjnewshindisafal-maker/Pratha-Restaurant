@@ -16,12 +16,12 @@
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; }
       .full { position: absolute; inset: 0; overflow: hidden; }
       .pan { position: absolute; left: 0; top: 0; height: 1920px; display: block; }
-      .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,20,38,0.55) 0%, rgba(8,20,38,0.1) 30%, rgba(8,20,38,0.15) 55%, rgba(8,20,38,0.85) 100%); }
+      .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,20,38,0.5) 0%, rgba(8,20,38,0) 24%, rgba(8,20,38,0) 52%, rgba(8,20,38,0.82) 100%); }
       .dark { position: absolute; inset: 0; background: rgba(8,20,38,0.62); }
       .cap { position: absolute; left: 60px; right: 60px; bottom: 380px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
       .t1 { display: block; color: #fff; font-weight: 900; font-size: 96px; line-height: 1.02; letter-spacing: -2px; text-shadow: 0 6px 30px rgba(0,0,0,0.55); }
       .t2 { display: block; color: #fff; font-weight: 700; font-size: 48px; line-height: 1.2; text-shadow: 0 3px 16px rgba(0,0,0,0.7); }
-      .pill { display: block; background: var(--orange); color: #fff; font-weight: 800; font-size: 40px; letter-spacing: 4px; padding: 12px 26px; border-radius: 12px; }
+      .pill { display: block; background: #c94f10; color: #fff; font-weight: 800; font-size: 40px; letter-spacing: 4px; padding: 12px 26px; border-radius: 12px; }
       .gpill { display: block; background: #4f7420; color: #fff; font-weight: 800; font-size: 40px; letter-spacing: 3px; padding: 12px 26px; border-radius: 12px; }
       .logobox { position: absolute; left: 60px; top: 150px; background: #fff; border-radius: 24px; padding: 14px 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.35); }
       .logobox img { display: block; width: 330px; }
@@ -48,106 +48,143 @@
       .cta { display: block; background: var(--orange); color: #fff; font-weight: 900; font-size: 56px; padding: 22px 50px; border-radius: 22px; text-align: center; margin-top: 8px; }
       .web { display: block; color: var(--navy); font-weight: 900; font-size: 50px; }
       .info { display: block; color: #33475f; font-weight: 700; font-size: 34px; text-align: center; line-height: 1.35; }
-      #flash { background: #fff; }
+      #flash { background: #fff; opacity: 0; }
+          .hook { position: absolute; left: 50px; right: 50px; top: 170px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+      .big { display: block; color: #fff; font-weight: 900; font-size: 128px; line-height: 0.95; letter-spacing: -3px; text-shadow: 0 8px 34px rgba(0,0,0,0.6); }
+      .tagb { position: absolute; left: 60px; bottom: 300px; display: block; background: #fff; color: var(--ink); font-weight: 900; font-size: 56px; padding: 16px 32px; border-radius: 16px; border-left: 14px solid var(--orange); }
+      .grid .chip { font-size: 34px; padding: 20px 18px; }
+      .list .chip { font-size: 44px; padding: 20px 26px; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="37" data-width="1080" data-height="1920">
-      <!-- S1 hook -->
-      <div id="s1" class="full clip" data-start="0" data-duration="3.45" data-track-index="0">
-        <img id="i-building" class="pan" src="assets/img/building.jpg" alt="" style="width: 1278px;" />
+    <div id="root" data-composition-id="main" data-start="0" data-duration="38.4" data-width="1080" data-height="1920">
+      <div id="h1" class="full clip" data-start="0" data-duration="1.25" data-track-index="0">
+        <img id="h1-i" class="pan" src="assets/img/desks2.jpg" alt="" style="width: 2883px;" />
         <div class="shade"></div>
-        <div class="logobox" id="logo1"><img src="assets/img/logo.png" alt="Sanguine Space" /></div>
-        <div class="cap" id="c1">
-          <div class="pill">PUNE · NAGAR ROAD</div>
-          <div class="t1">Looking for a premium coworking space?</div>
-        </div>
       </div>
-
-      <!-- S2 aerial -->
-      <div id="s2" class="full clip" data-start="3.4" data-duration="4.55" data-track-index="0">
-        <img id="i-aerial" class="pan" src="assets/img/aerial.jpg" alt="" style="width: 2885px;" />
+      <div id="h2" class="full clip" data-start="1.2" data-duration="1.25" data-track-index="0">
+        <img id="h2-i" class="pan" src="assets/img/desks4.jpg" alt="" style="width: 2883px;" />
         <div class="shade"></div>
-        <div class="cap" id="c2">
+      </div>
+      <div id="h3" class="full clip" data-start="2.4" data-duration="1.25" data-track-index="0">
+        <img id="h3-i" class="pan" src="assets/img/desks.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="h4" class="full clip" data-start="3.6" data-duration="1.25" data-track-index="0">
+        <img id="h4-i" class="pan" src="assets/img/open2.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="hooktxt" class="clip hook" data-start="0" data-duration="4.85" data-track-index="3">
+        <div class="pill" id="hk0">PUNE · NAGAR ROAD</div>
+        <div class="big" id="hk1">COWORKING</div>
+        <div class="big" id="hk2" style="background: var(--orange); color: #fff; padding: 6px 26px 14px; border-radius: 18px; text-shadow: none;">SPACE</div>
+      </div>
+      <div id="hooktag" class="clip tagb" data-start="2.4" data-duration="2.45" data-track-index="4">Fully Furnished · Ready to Move In</div>
+      <div id="b1" class="full clip" data-start="4.8" data-duration="2.15" data-track-index="0">
+        <img id="b1-i" class="pan" src="assets/img/building.jpg" alt="" style="width: 1278px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="b2" class="full clip" data-start="6.9" data-duration="2.45" data-track-index="0">
+        <img id="b2-i" class="pan" src="assets/img/open.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="s2txt" class="clip" data-start="4.8" data-duration="4.55" data-track-index="3" style="position:absolute; inset:0;">
+        <div class="logobox" id="logo1"><img src="assets/img/logo.png" alt="Sanguine Space" /></div>
+        <div class="cap" id="c2" style="bottom: 300px;">
           <div class="gpill">PREMIUM COWORKING</div>
           <div class="t1">Sanguine Space</div>
           <div class="t2">Opp. Novotel Hotel, Nagar Road, Pune</div>
         </div>
       </div>
-
-      <!-- S3 location -->
-      <div id="s3" class="full clip" data-start="7.9" data-duration="6.15" data-track-index="0">
-        <img id="i-terrace" class="pan" src="assets/img/terrace.jpg" alt="" style="width: 2883px;" />
-        <div class="dark"></div>
-        <div class="panel" id="locpanel" style="top: 470px;">
+      <div id="l1" class="full clip" data-start="9.3" data-duration="3.05" data-track-index="0">
+        <img id="l1-i" class="pan" src="assets/img/aerial.jpg" alt="" style="width: 2885px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="l2" class="full clip" data-start="12.3" data-duration="3.15" data-track-index="0">
+        <img id="l2-i" class="pan" src="assets/img/terrace2.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="s3txt" class="clip" data-start="9.3" data-duration="6.15" data-track-index="3" style="position:absolute; inset:0;">
+        <div class="panel" id="locpanel" style="bottom: 260px; padding: 34px 40px 20px;">
           <div class="head">PRIME LOCATION</div>
           <div class="row" id="loc-0"><span>Opposite Novotel Hotel<small>Nagar Road, Pune</small></span></div>
           <div class="row" id="loc-1"><span>Ramwadi Metro Station</span><b>170 m</b></div>
           <div class="row" id="loc-2"><span>Phoenix Mall</span><b>150 m</b></div>
         </div>
       </div>
-
-      <!-- S4 spaces montage -->
-      <div id="m1" class="full clip" data-start="14.0" data-duration="2.2" data-track-index="0">
-        <img id="mi1" class="pan" src="assets/img/desks.jpg" alt="" style="width: 2883px;" />
+      <div id="m1" class="full clip" data-start="15.4" data-duration="2.2" data-track-index="0">
+        <img id="m1-i" class="pan" src="assets/img/team.jpg" alt="" style="width: 2883px;" />
         <div class="shade"></div>
-        <div class="stat" id="mt1"><b>100</b><span>Ready-to-use Workstations</span></div>
+        <div class="stat" id="mt1" style="bottom: 300px;"><b>100</b><span>Ready-to-use Workstations</span></div>
       </div>
-      <div id="m2" class="full clip" data-start="16.15" data-duration="2.15" data-track-index="0">
-        <img id="mi2" class="pan" src="assets/img/conf.jpg" alt="" style="width: 2883px;" />
+      <div id="m2" class="full clip" data-start="17.55" data-duration="2.15" data-track-index="0">
+        <img id="m2-i" class="pan" src="assets/img/conf.jpg" alt="" style="width: 2883px;" />
         <div class="shade"></div>
-        <div class="stat" id="mt2"><b>28</b><span>Conference Seats</span></div>
+        <div class="stat" id="mt2" style="bottom: 300px;"><b>28</b><span>Conference Seats</span></div>
       </div>
-      <div id="m3" class="full clip" data-start="18.25" data-duration="1.95" data-track-index="0">
-        <img id="mi3" class="pan" src="assets/img/cabin.jpg" alt="" style="width: 2883px;" />
+      <div id="m3" class="full clip" data-start="19.65" data-duration="1.95" data-track-index="0">
+        <img id="m3-i" class="pan" src="assets/img/cabin.jpg" alt="" style="width: 2883px;" />
         <div class="shade"></div>
-        <div class="stat" id="mt3"><b>3</b><span>Executive Cabins</span></div>
+        <div class="stat" id="mt3" style="bottom: 300px;"><b>3</b><span>Executive Cabins</span></div>
       </div>
-      <div id="m4" class="full clip" data-start="20.15" data-duration="2.5" data-track-index="0">
-        <img id="mi4" class="pan" src="assets/img/cafe.jpg" alt="" style="width: 2883px;" />
+      <div id="m4" class="full clip" data-start="21.55" data-duration="2.5" data-track-index="0">
+        <img id="m4-i" class="pan" src="assets/img/cafe.jpg" alt="" style="width: 2883px;" />
         <div class="shade"></div>
-        <div class="stat" id="mt4"><b>1,500</b><span>Sq. Ft. Cafeteria</span></div>
+        <div class="stat" id="mt4" style="bottom: 300px;"><b>1,500</b><span>Sq. Ft. Cafeteria</span></div>
       </div>
-      <div id="m-head" class="clip" data-start="14.0" data-duration="8.6" data-track-index="3" style="position: absolute; left: 60px; top: 170px;">
+      <div id="m-head" class="clip" data-start="15.4" data-duration="8.6" data-track-index="3" style="position: absolute; left: 60px; top: 170px;">
         <div class="pill" id="mh">4,600 SQ. FT. · FULLY FURNISHED</div>
       </div>
-
-      <!-- S5 amenities -->
-      <div id="s5" class="full clip" data-start="22.6" data-duration="5.85" data-track-index="0">
-        <img id="i-open" class="pan" src="assets/img/open.jpg" alt="" style="width: 2883px;" />
-        <div class="dark"></div>
-        <div class="panel" id="ampanel" style="top: 400px;">
+      <div id="a1" class="full clip" data-start="24.0" data-duration="1.5" data-track-index="0">
+        <img id="a1-i" class="pan" src="assets/img/conf2.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="a2" class="full clip" data-start="25.45" data-duration="1.5" data-track-index="0">
+        <img id="a2-i" class="pan" src="assets/img/lounge.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="a3" class="full clip" data-start="26.9" data-duration="1.5" data-track-index="0">
+        <img id="a3-i" class="pan" src="assets/img/cabin2.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="a4" class="full clip" data-start="28.35" data-duration="1.5" data-track-index="0">
+        <img id="a4-i" class="pan" src="assets/img/desks4.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="s5txt" class="clip" data-start="24.0" data-duration="5.85" data-track-index="3" style="position:absolute; inset:0;">
+        <div class="panel" id="ampanel" style="bottom: 230px; padding: 32px 30px 30px;">
           <div class="head">ALL-INCLUSIVE AMENITIES</div>
           <div class="grid">
-            <div class="chip" id="a0"><i></i>High-Speed Internet</div>
-            <div class="chip" id="a1"><i></i>Air-Conditioned</div>
-            <div class="chip" id="a2"><i></i>UPS Power Backup</div>
-            <div class="chip" id="a3"><i></i>2W &amp; 4W Parking</div>
-            <div class="chip" id="a4"><i></i>CCTV Security</div>
-            <div class="chip" id="a5"><i></i>Pantry &amp; Coffee</div>
-            <div class="chip" id="a6"><i></i>Glass-Wall Cabins</div>
-            <div class="chip" id="a7"><i></i>Daily Cleaning</div>
+            <div class="chip"><i></i>High-Speed Internet</div>
+            <div class="chip"><i></i>Air-Conditioned</div>
+            <div class="chip"><i></i>UPS Power Backup</div>
+            <div class="chip"><i></i>2W &amp; 4W Parking</div>
+            <div class="chip"><i></i>CCTV Security</div>
+            <div class="chip"><i></i>Pantry &amp; Coffee</div>
+            <div class="chip"><i></i>Glass-Wall Cabins</div>
+            <div class="chip"><i></i>Daily Cleaning</div>
           </div>
         </div>
       </div>
-
-      <!-- S6 perfect for -->
-      <div id="s6" class="full clip" data-start="28.4" data-duration="3.45" data-track-index="0">
-        <img id="i-monitor" class="pan" src="assets/img/monitor.jpg" alt="" style="width: 2883px;" />
-        <div class="dark"></div>
-        <div style="position: absolute; left: 60px; right: 60px; top: 430px;">
-          <div class="t1" id="pfhead" style="margin-bottom: 36px;">Perfect for</div>
-          <div class="list">
-            <div class="chip" id="p0"><i></i>Startups &amp; Entrepreneurs</div>
-            <div class="chip" id="p1"><i></i>Freelancers &amp; Remote Workers</div>
-            <div class="chip" id="p2"><i></i>Small &amp; Medium Businesses</div>
-            <div class="chip" id="p3"><i></i>Project Teams &amp; Trainers</div>
-          </div>
+      <div id="p1" class="full clip" data-start="29.8" data-duration="1.75" data-track-index="0">
+        <img id="p1-i" class="pan" src="assets/img/team.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="p2" class="full clip" data-start="31.5" data-duration="1.75" data-track-index="0">
+        <img id="p2-i" class="pan" src="assets/img/open2.jpg" alt="" style="width: 2883px;" />
+        <div class="shade"></div>
+      </div>
+      <div id="s6txt" class="clip" data-start="29.8" data-duration="3.45" data-track-index="3" style="position:absolute; left: 60px; right: 60px; bottom: 260px;">
+        <div class="t1" id="pfhead" style="margin-bottom: 26px;">Perfect for</div>
+        <div class="list">
+          <div class="chip"><i></i>Startups &amp; Entrepreneurs</div>
+          <div class="chip"><i></i>Freelancers &amp; Remote Workers</div>
+          <div class="chip"><i></i>Small &amp; Medium Businesses</div>
+          <div class="chip"><i></i>Project Teams &amp; Trainers</div>
         </div>
       </div>
-
       <!-- S7 end card -->
-      <div id="end" class="full clip" data-start="31.8" data-duration="5.2" data-track-index="0">
+      <div id="end" class="full clip" data-start="33.2" data-duration="5.2" data-track-index="0">
         <img id="i-end" class="pan" src="assets/img/lounge.jpg" alt="" style="width: 2883px;" />
         <div class="dark" style="background: rgba(8,20,38,0.45);"></div>
         <div id="endpanel">
@@ -159,68 +196,80 @@
         </div>
       </div>
 
-      <div id="flash" class="full clip" data-start="0" data-duration="37" data-track-index="5"></div>
+      <div id="flash" class="full clip" data-start="0" data-duration="38.4" data-track-index="5"></div>
 
-      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="37" data-track-index="10" data-volume="0.26" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.6,"v":1},{"t":35.6,"v":1},{"t":37,"v":0}]}]}'></audio>
-      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.3" data-duration="2.84" data-track-index="20" data-volume="1"></audio>
-      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="3.5" data-duration="4.2" data-track-index="21" data-volume="1"></audio>
-      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="8.0" data-duration="5.85" data-track-index="22" data-volume="1"></audio>
-      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="14.1" data-duration="8.21" data-track-index="23" data-volume="1"></audio>
-      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="22.7" data-duration="5.33" data-track-index="24" data-volume="1"></audio>
-      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="28.5" data-duration="3.11" data-track-index="25" data-volume="1"></audio>
-      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="32.1" data-duration="1.34" data-track-index="26" data-volume="1"></audio>
-      <audio id="sfx-0" src="assets/sfx/shimmer.wav" data-start="0.1" data-duration="1.2" data-track-index="40" data-volume="0.35"></audio>
-      <audio id="sfx-1" src="assets/sfx/whoosh.wav" data-start="3.25" data-duration="0.45" data-track-index="41" data-volume="0.35"></audio>
-      <audio id="sfx-2" src="assets/sfx/whoosh.wav" data-start="7.75" data-duration="0.45" data-track-index="42" data-volume="0.35"></audio>
-      <audio id="sfx-3" src="assets/sfx/whoosh.wav" data-start="13.85" data-duration="0.45" data-track-index="43" data-volume="0.35"></audio>
-      <audio id="sfx-4" src="assets/sfx/whoosh.wav" data-start="16.0" data-duration="0.45" data-track-index="40" data-volume="0.35"></audio>
-      <audio id="sfx-5" src="assets/sfx/whoosh.wav" data-start="18.1" data-duration="0.45" data-track-index="41" data-volume="0.35"></audio>
-      <audio id="sfx-6" src="assets/sfx/whoosh.wav" data-start="20.0" data-duration="0.45" data-track-index="42" data-volume="0.35"></audio>
-      <audio id="sfx-7" src="assets/sfx/whoosh.wav" data-start="22.45" data-duration="0.45" data-track-index="43" data-volume="0.35"></audio>
-      <audio id="sfx-8" src="assets/sfx/whoosh.wav" data-start="28.25" data-duration="0.45" data-track-index="40" data-volume="0.35"></audio>
-      <audio id="sfx-9" src="assets/sfx/impact.wav" data-start="31.85" data-duration="0.7" data-track-index="41" data-volume="0.4"></audio>
-      <audio id="sfx-10" src="assets/sfx/shimmer.wav" data-start="32.0" data-duration="1.2" data-track-index="42" data-volume="0.3"></audio>
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="38.4" data-track-index="10" data-volume="0.26" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.4,"v":1},{"t":37,"v":1},{"t":38.4,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.15" data-duration="4.46" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="4.9" data-duration="4.2" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="9.4" data-duration="5.85" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="15.5" data-duration="8.21" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="24.1" data-duration="5.33" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="29.9" data-duration="3.11" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="33.5" data-duration="1.34" data-track-index="26" data-volume="1"></audio>
+      <audio id="sfx-0" src="assets/sfx/impact.wav" data-start="0.0" data-duration="0.7" data-track-index="40" data-volume="0.4"></audio>
+      <audio id="sfx-1" src="assets/sfx/whoosh.wav" data-start="1.05" data-duration="0.45" data-track-index="41" data-volume="0.32"></audio>
+      <audio id="sfx-2" src="assets/sfx/whoosh.wav" data-start="2.25" data-duration="0.45" data-track-index="42" data-volume="0.32"></audio>
+      <audio id="sfx-3" src="assets/sfx/whoosh.wav" data-start="3.45" data-duration="0.45" data-track-index="43" data-volume="0.32"></audio>
+      <audio id="sfx-4" src="assets/sfx/whoosh.wav" data-start="4.65" data-duration="0.45" data-track-index="40" data-volume="0.32"></audio>
+      <audio id="sfx-5" src="assets/sfx/whoosh.wav" data-start="6.75" data-duration="0.45" data-track-index="41" data-volume="0.32"></audio>
+      <audio id="sfx-6" src="assets/sfx/whoosh.wav" data-start="9.15" data-duration="0.45" data-track-index="42" data-volume="0.32"></audio>
+      <audio id="sfx-7" src="assets/sfx/whoosh.wav" data-start="12.15" data-duration="0.45" data-track-index="43" data-volume="0.32"></audio>
+      <audio id="sfx-8" src="assets/sfx/whoosh.wav" data-start="15.25" data-duration="0.45" data-track-index="40" data-volume="0.32"></audio>
+      <audio id="sfx-9" src="assets/sfx/whoosh.wav" data-start="17.4" data-duration="0.45" data-track-index="41" data-volume="0.32"></audio>
+      <audio id="sfx-10" src="assets/sfx/whoosh.wav" data-start="19.5" data-duration="0.45" data-track-index="42" data-volume="0.32"></audio>
+      <audio id="sfx-11" src="assets/sfx/whoosh.wav" data-start="21.4" data-duration="0.45" data-track-index="43" data-volume="0.32"></audio>
+      <audio id="sfx-12" src="assets/sfx/whoosh.wav" data-start="23.85" data-duration="0.45" data-track-index="40" data-volume="0.32"></audio>
+      <audio id="sfx-13" src="assets/sfx/whoosh.wav" data-start="25.3" data-duration="0.45" data-track-index="41" data-volume="0.32"></audio>
+      <audio id="sfx-14" src="assets/sfx/whoosh.wav" data-start="26.75" data-duration="0.45" data-track-index="42" data-volume="0.32"></audio>
+      <audio id="sfx-15" src="assets/sfx/whoosh.wav" data-start="28.2" data-duration="0.45" data-track-index="43" data-volume="0.32"></audio>
+      <audio id="sfx-16" src="assets/sfx/whoosh.wav" data-start="29.65" data-duration="0.45" data-track-index="40" data-volume="0.32"></audio>
+      <audio id="sfx-17" src="assets/sfx/whoosh.wav" data-start="31.35" data-duration="0.45" data-track-index="41" data-volume="0.32"></audio>
+      <audio id="sfx-18" src="assets/sfx/impact.wav" data-start="33.25" data-duration="0.7" data-track-index="42" data-volume="0.4"></audio>
+      <audio id="sfx-19" src="assets/sfx/shimmer.wav" data-start="33.4" data-duration="1.2" data-track-index="43" data-volume="0.3"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.set("#flash", { opacity: 0 }, 0);
-      [3.4, 7.9, 14.0, 16.15, 18.25, 20.15, 22.6, 28.4, 31.8].forEach((t) => tl.fromTo("#flash", { opacity: 0.55 }, { opacity: 0, duration: 0.2, ease: "power2.out", immediateRender: false }, t));
-      const pan = (sel, t, d, x1, x2, s1 = 1.04, s2 = 1.1) => tl.fromTo(sel, { x: x1, scale: s1 }, { x: x2, scale: s2, duration: d, ease: "none" }, t);
-      const pop = (sel, t, st = 0.12) => tl.fromTo(sel, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, stagger: st, ease: "power3.out" }, t);
+      [1.2, 2.4, 3.6, 4.8, 6.9, 9.3, 12.3, 15.4, 17.55, 19.65, 21.55, 24.0, 25.45, 26.9, 28.35, 29.8, 31.5, 33.2].forEach((t) => tl.fromTo("#flash", { opacity: 0.5 }, { opacity: 0, duration: 0.18, ease: "power2.out", immediateRender: false }, t));
+      const pan = (sel, t, d, x1, x2, s1 = 1.0, s2 = 1.06) => tl.fromTo(sel, { x: x1, scale: s1 }, { x: x2, scale: s2, duration: d, ease: "none" }, t);
+      const pop = (sel, t, st = 0.12) => tl.fromTo(sel, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.4, stagger: st, ease: "power3.out" }, t);
       const slide = (sel, t) => tl.fromTo(sel, { opacity: 0, x: -90 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.7)" }, t);
-      // S1
-      pan("#i-building", 0, 3.45, 0, -198, 1.12, 1.0);
-      tl.fromTo("#logo1", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.15);
-      pop("#c1 > *", 0.35, 0.18);
+      // hook: text visible from frame 0, punch-in
+      pan("#h1-i", 0, 1.25, -650, -950, 1.15, 1.05);
+      pan("#h2-i", 1.2, 1.25, -700, -1000);
+      pan("#h3-i", 2.4, 1.25, -500, -900);
+      pan("#h4-i", 3.6, 1.25, -500, -900);
+      tl.fromTo("#hk1", { scale: 1.25 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0);
+      tl.fromTo("#hk2", { scale: 1.25 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.1);
+      tl.fromTo("#hooktag", { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, 2.45);
       // S2
-      pan("#i-aerial", 3.4, 4.55, -450, -950);
-      pop("#c2 > *", 3.55);
+      pan("#b1-i", 4.8, 2.15, 0, -198, 1.1, 1.0);
+      pan("#b2-i", 6.9, 2.45, -500, -900);
+      tl.fromTo("#logo1", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 4.85);
+      pop("#c2 > *", 4.95);
       // S3
-      pan("#i-terrace", 7.9, 6.15, -600, -1200);
-      tl.fromTo("#locpanel", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.95);
-      slide("#loc-0", 8.2);
-      slide("#loc-1", 8.9);
-      slide("#loc-2", 11.0);
+      pan("#l1-i", 9.3, 3.05, -450, -850);
+      pan("#l2-i", 12.3, 3.15, -1100, -700);
+      tl.fromTo("#locpanel", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.35);
+      slide("#loc-0", 9.6); slide("#loc-1", 10.3); slide("#loc-2", 12.4);
       // S4
-      pan("#mi1", 14.0, 2.2, -500, -900);
-      pan("#mi2", 16.15, 2.15, -1100, -700);
-      pan("#mi3", 18.25, 1.95, -500, -850);
-      pan("#mi4", 20.15, 2.5, -1100, -600);
-      tl.fromTo("#mh", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 14.05);
-      [["#mt1", 14.15], ["#mt2", 16.3], ["#mt3", 18.4], ["#mt4", 20.3]].forEach(([id, t]) => tl.fromTo(id, { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, t));
+      pan("#m1-i", 15.4, 2.2, -300, -900); pan("#m2-i", 17.55, 2.15, -1200, -650);
+      pan("#m3-i", 19.65, 1.95, -400, -900); pan("#m4-i", 21.55, 2.5, -1200, -500);
+      tl.fromTo("#mh", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 15.45);
+      [["#mt1", 15.55], ["#mt2", 17.7], ["#mt3", 19.8], ["#mt4", 21.7]].forEach(([id, t]) => tl.fromTo(id, { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.35, ease: "back.out(1.6)" }, t));
       // S5
-      pan("#i-open", 22.6, 5.85, -500, -1000);
-      tl.fromTo("#ampanel", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.65);
-      tl.fromTo(".grid .chip", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.55, ease: "back.out(2)" }, 22.95);
+      pan("#a1-i", 24.0, 1.5, -400, -800); pan("#a2-i", 25.45, 1.5, -1000, -600);
+      pan("#a3-i", 26.9, 1.5, -500, -900); pan("#a4-i", 28.35, 1.5, -1000, -600);
+      tl.fromTo("#ampanel", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 24.05);
+      tl.fromTo(".grid .chip", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.5, ease: "back.out(2)" }, 24.35);
       // S6
-      pan("#i-monitor", 28.4, 3.45, -700, -1000);
-      pop("#pfhead", 28.45);
-      tl.fromTo(".list .chip", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.45, ease: "back.out(1.6)" }, 28.75);
+      pan("#p1-i", 29.8, 1.75, -500, -900); pan("#p2-i", 31.5, 1.75, -900, -500);
+      pop("#pfhead", 29.85);
+      tl.fromTo(".list .chip", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.45, ease: "back.out(1.6)" }, 30.15);
       // S7
-      pan("#i-end", 31.8, 5.2, -600, -900);
-      tl.fromTo("#endpanel", { opacity: 0, y: 140 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 31.85);
-      tl.fromTo("#cta", { scale: 1 }, { scale: 1.06, duration: 0.45, yoyo: true, repeat: 5, ease: "sine.inOut" }, 32.6);
+      pan("#i-end", 33.2, 5.2, -600, -900, 1.04, 1.1);
+      tl.fromTo("#endpanel", { opacity: 0, y: 140 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 33.25);
+      tl.fromTo("#cta", { scale: 1 }, { scale: 1.06, duration: 0.45, yoyo: true, repeat: 5, ease: "sine.inOut" }, 34.0);
       window.__timelines["main"] = tl;
     </script>
   </body>
