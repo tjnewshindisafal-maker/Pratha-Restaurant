@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Advizr Website Door</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-500-normal.woff2"); font-weight: 500; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-800-normal.woff2"); font-weight: 800; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-900-normal.woff2"); font-weight: 900; }
+      :root { --navy: #0b1b3a; --cyan: #0aa6e0; --red: #e8344a; --green: #12a05a; --slate: #4a5a78; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #f3f8ff; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; color: var(--navy); }
+      .full { position: absolute; inset: 0; overflow: hidden; }
+      #bg { background: linear-gradient(165deg, #fbfdff 0%, #eaf4ff 45%, #f6f0ff 100%); }
+      .orb { position: absolute; border-radius: 50%; filter: blur(100px); }
+      .o1 { width: 640px; height: 640px; left: -220px; top: 120px; background: #9fe3ff; opacity: 0.6; }
+      .o2 { width: 600px; height: 600px; right: -220px; top: 880px; background: #d6c4ff; opacity: 0.55; }
+      .o3 { width: 520px; height: 520px; left: 260px; bottom: -220px; background: #ffd9b8; opacity: 0.5; }
+      .floorw { position: absolute; left: -540px; right: -540px; bottom: -200px; height: 900px; transform: perspective(700px) rotateX(64deg); transform-origin: 50% 100%; overflow: hidden; -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 95%); mask-image: linear-gradient(to top, #000 30%, transparent 95%); }
+      .floor { position: absolute; left: 0; right: 0; top: -120px; bottom: -120px; background-image: linear-gradient(rgba(10,140,210,0.22) 2px, transparent 2px), linear-gradient(90deg, rgba(10,140,210,0.22) 2px, transparent 2px); background-size: 120px 120px; }
+      .head { position: absolute; left: 50px; right: 50px; top: 220px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 5; }
+      .lead { font-weight: 700; font-size: 44px; color: var(--slate); margin-bottom: 8px; }
+      .t3d { font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: var(--navy);
+        text-shadow: 0 1px 0 #24406f, 0 2px 0 #2c4a7c, 0 3px 0 #355589, 0 4px 0 #3e6096, 0 5px 0 #476ba3, 0 6px 0 #5176b0, 0 16px 30px rgba(11,27,58,0.25); }
+      .t3d.red { color: var(--red); text-shadow: 0 1px 0 #c92a3e, 0 2px 0 #b72538, 0 3px 0 #a52032, 0 4px 0 #921b2c, 0 5px 0 #801626, 0 16px 30px rgba(232,52,74,0.25); }
+      .t3d.green { color: var(--green); text-shadow: 0 1px 0 #0f8a4d, 0 2px 0 #0d7a44, 0 3px 0 #0b6b3b, 0 4px 0 #095c33, 0 5px 0 #074d2a, 0 16px 30px rgba(18,160,90,0.25); }
+      .t3d.cyan { color: var(--cyan); text-shadow: 0 1px 0 #0892c6, 0 2px 0 #077fad, 0 3px 0 #066d94, 0 4px 0 #055b7b, 0 5px 0 #044962, 0 16px 30px rgba(10,166,224,0.3); }
+      .stage { position: absolute; left: 0; right: 0; top: 640px; height: 900px; display: flex; flex-direction: column; align-items: center; justify-content: center; perspective: 1400px; }
+      .card { background: #ffffff; border-radius: 36px; box-shadow: 0 40px 80px rgba(30,60,120,0.18), 0 2px 0 rgba(255,255,255,0.9) inset; border: 2px solid rgba(10,120,200,0.08); }
+      .browser { width: 860px; overflow: hidden; }
+      .bbar { height: 64px; background: #eef3fa; display: flex; align-items: center; gap: 12px; padding: 0 24px; }
+      .bbar i { width: 18px; height: 18px; border-radius: 50%; background: #ff6b6b; display: block; } .bbar i:nth-child(2) { background: #ffc94a; } .bbar i:nth-child(3) { background: #3fd07a; }
+      .url { margin-left: 16px; flex: 1; height: 34px; border-radius: 17px; background: #fff; }
+      .hero { height: 330px; background: linear-gradient(135deg, #0784bf, #4b3fd6); position: relative; padding: 50px; color: #fff; }
+      .hero h3 { font-weight: 900; font-size: 58px; line-height: 1.05; }
+      .hero p { font-weight: 600; font-size: 28px; opacity: 0.9; margin-top: 14px; }
+      .blob3 { position: absolute; right: 50px; top: 60px; width: 200px; height: 200px; border-radius: 40% 60% 55% 45%; background: rgba(255,255,255,0.3); }
+      .rows { padding: 30px 40px 40px; display: flex; flex-direction: column; gap: 18px; }
+      .rows div { height: 24px; border-radius: 12px; background: #e9eef6; }
+      .chip { position: absolute; padding: 20px 32px; border-radius: 26px; font-weight: 900; font-size: 46px; background: #fff; box-shadow: 0 20px 50px rgba(30,60,120,0.2); }
+      .chip.red { color: var(--red); border: 3px solid rgba(232,52,74,0.4); }
+      .chip.green { color: var(--green); border: 3px solid rgba(18,160,90,0.4); }
+      .grid6 { display: grid; grid-template-columns: repeat(3, 280px); gap: 26px; transform: rotateX(18deg) rotateZ(-6deg); }
+      .mini { height: 300px; border-radius: 26px; overflow: hidden; position: relative; }
+      .mini .mh { height: 130px; } .mini .ml { margin: 22px; height: 18px; border-radius: 9px; background: #e9eef6; }
+      .stamp { position: absolute; left: 50%; top: 52%; transform: translate(-50%,-50%) rotate(-14deg); border: 6px solid var(--red); color: var(--red); font-weight: 900; font-size: 34px; padding: 6px 14px; border-radius: 12px; background: rgba(255,255,255,0.85); white-space: nowrap; }
+      .longpage { width: 640px; height: 820px; overflow: hidden; position: relative; }
+      .lp { position: absolute; left: 0; right: 0; top: 0; }
+      .lp .sec { margin: 26px 30px; height: 220px; border-radius: 20px; background: linear-gradient(135deg,#e7f3ff,#f1eaff); }
+      .lp .foot { margin: 26px 30px; padding: 20px; border-radius: 16px; background: #eef1f6; font-weight: 600; font-size: 20px; color: #9aa5b8; }
+      .mag { position: absolute; width: 150px; height: 150px; border-radius: 50%; border: 14px solid var(--navy); background: rgba(255,255,255,0.35); }
+      .mag::after { content: ""; position: absolute; width: 70px; height: 20px; background: var(--navy); right: -58px; bottom: -26px; transform: rotate(45deg); border-radius: 10px; }
+      .phone { width: 480px; height: 860px; border-radius: 64px; background: #fff; border: 16px solid #10203f; position: relative; overflow: hidden; box-shadow: 0 40px 90px rgba(30,60,120,0.3); }
+      .notch { position: absolute; left: 50%; top: 14px; width: 130px; height: 32px; margin-left: -65px; background: #10203f; border-radius: 18px; z-index: 3; }
+      .pb { position: absolute; border-radius: 16px; background: linear-gradient(135deg,#bfe9ff,#d8ccff); }
+      .spinner { position: absolute; left: 50%; top: 40%; width: 120px; height: 120px; margin-left: -60px; border-radius: 50%; border: 14px solid #e3e9f3; border-top-color: var(--cyan); }
+      .timer { position: absolute; left: 0; right: 0; top: 60%; text-align: center; font-weight: 900; font-size: 64px; color: var(--red); }
+      .phero { position: absolute; left: 0; right: 0; top: 0; height: 380px; background: linear-gradient(135deg, #0784bf, #4b3fd6); color: #fff; padding: 90px 36px 0; }
+      .phero h4 { font-weight: 900; font-size: 46px; line-height: 1.05; }
+      .phero p { font-weight: 600; font-size: 24px; margin-top: 12px; opacity: 0.9; }
+      .pbtn { position: absolute; left: 30px; right: 30px; height: 100px; border-radius: 26px; display: flex; align-items: center; justify-content: center; gap: 14px; font-weight: 900; font-size: 38px; color: #fff; box-shadow: 0 14px 30px rgba(0,0,0,0.18); }
+      .pbtn.call { background: linear-gradient(90deg,#0aa6e0,#3a6cff); }
+      .pbtn.wa { background: linear-gradient(90deg,#1fbf62,#0f9d4f); }
+      .bolt { position: absolute; font-size: 110px; }
+      .vs2 { display: flex; gap: 30px; }
+      .vcol { width: 440px; padding: 34px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+      .vcol .vt { font-weight: 900; font-size: 42px; }
+      .vcol .vb { font-weight: 900; font-size: 120px; }
+      .cbox { width: 900px; display: flex; align-items: center; gap: 22px; padding: 24px 28px; border-radius: 60px; }
+      .av { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg,#ffb37a,#ff6a8a); }
+      .ctext { font-weight: 900; font-size: 56px; color: var(--navy); }
+      .caret { width: 5px; height: 56px; background: var(--navy); }
+      .send { margin-left: auto; width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg,#0aa6e0,#3a6cff); display: flex; align-items: center; justify-content: center; font-size: 42px; color: #fff; }
+      .brand { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 26px; }
+      .bmark3d { width: 420px; height: 270px; }
+      .bname { font-weight: 900; font-size: 104px; letter-spacing: -2px; }
+      .btag { font-weight: 700; font-size: 38px; color: var(--slate); }
+      .bcta { margin-top: 20px; padding: 24px 48px; border-radius: 60px; background: linear-gradient(90deg, #0aa6e0, #3a6cff); color: #fff; font-weight: 900; font-size: 50px; box-shadow: 0 20px 50px rgba(10,166,224,0.35); }
+      .cf { position: absolute; width: 22px; height: 34px; border-radius: 4px; }
+      .subw { position: absolute; left: 60px; right: 60px; bottom: 250px; display: flex; justify-content: center; z-index: 6; }
+      .subw span { background: rgba(11,27,58,0.92); color: #fff; font-weight: 800; font-size: 38px; line-height: 1.25; padding: 14px 28px; border-radius: 16px; text-align: center; box-shadow: 0 12px 30px rgba(11,27,58,0.25); }
+      .subw span b { color: #5fd3ff; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="35.89" data-width="1080" data-height="1920">
+      <div id="bg" class="full clip" data-start="0" data-duration="35.89" data-track-index="9"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="floorw"><div class="floor" id="fl"></div></div></div>
+      <div id="tl3" class="full clip" data-start="0" data-duration="35.89" data-track-index="8" data-layout-allow-occlusion style="pointer-events:none"><canvas id="three-layer" width="1080" height="1920" style="width:1080px;height:1920px;display:block"></canvas></div>
+      <div id="s0" class="full clip" data-start="0" data-duration="4.48" data-track-index="0" style="" ><div class="stage"><div class="card browser" id="br0"><div class="bbar"><i></i><i></i><i></i><div class="url"></div></div><div class="hero"><div class="blob3"></div><h3>Your Business,<br/>Beautifully Online.</h3><p>Premium services in Pune</p></div><div class="rows"><div style="width:90%"></div><div style="width:70%"></div><div style="width:80%"></div></div></div><div class="chip red" id="iq" style="top:40px;right:60px">📩 Inquiries: 0</div></div></div>
+      <div id="h0a" class="clip head" data-start="0" data-duration="2.82" data-track-index="3" style="" ><div class="lead">sundar website bani</div><div class="t3d cyan" style="font-size:130px">Website ✓</div></div>
+      <div id="h0b" class="clip head" data-start="2.82" data-duration="1.66" data-track-index="3" style="" ><div class="lead">par</div><div class="t3d red" style="font-size:150px">Inquiry ✗</div></div>
+      <div id="s1" class="full clip" data-start="4.48" data-duration="3.62" data-track-index="0" style="" ><div class="stage"><div class="chip red" id="nd" style="bottom:20px">🚪 Darwaza hi nahi!</div></div></div>
+      <div id="h1a" class="clip head" data-start="4.48" data-duration="2.57" data-track-index="3" style="" ><div class="lead">socho, ek</div><div class="t3d " style="font-size:104px">Shaandaar Dukaan</div></div>
+      <div id="h1b" class="clip head" data-start="7.05" data-duration="1.05" data-track-index="3" style="" ><div class="lead">par</div><div class="t3d red" style="font-size:140px">Darwaza? ✗</div></div>
+      <div id="s2" class="full clip" data-start="8.1" data-duration="2.29" data-track-index="0" style="" ><div class="stage"><div class="grid6"><div class="card mini" id="mi0"><div class="mh" style="background:linear-gradient(135deg,#12c4ff,#6a5cff)"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:50%"></div><div class="stamp" id="sp0">NO DOOR</div></div><div class="card mini" id="mi1"><div class="mh" style="background:linear-gradient(135deg,#ff8a5c,#ff5c9a)"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:50%"></div><div class="stamp" id="sp1">NO DOOR</div></div><div class="card mini" id="mi2"><div class="mh" style="background:linear-gradient(135deg,#1fbf62,#12c4ff)"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:50%"></div><div class="stamp" id="sp2">NO DOOR</div></div><div class="card mini" id="mi3"><div class="mh" style="background:linear-gradient(135deg,#6a5cff,#b05cff)"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:50%"></div><div class="stamp" id="sp3">NO DOOR</div></div><div class="card mini" id="mi4"><div class="mh" style="background:linear-gradient(135deg,#ffc94a,#ff8a5c)"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:50%"></div><div class="stamp" id="sp4">NO DOOR</div></div><div class="card mini" id="mi5"><div class="mh" style="background:linear-gradient(135deg,#0aa6e0,#1fbf62)"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:50%"></div><div class="stamp" id="sp5">NO DOOR</div></div></div></div></div>
+      <div id="h2" class="clip head" data-start="8.1" data-duration="2.29" data-track-index="3" style="" ><div class="lead">zyadatar websites mein</div><div class="t3d red" style="font-size:130px">Yahi Haal!</div></div>
+      <div id="s3" class="full clip" data-start="10.39" data-duration="3.14" data-track-index="0" style="" ><div class="stage"><div class="card longpage"><div class="lp" id="lp"><div class="sec"></div><div class="sec"></div><div class="sec"></div><div class="sec"></div><div class="sec"></div><div class="foot">Contact: +91 9XXXX XXXXX · email@site.com</div></div></div><div class="mag" id="mg" style="left:640px;top:160px"></div><div class="chip red" id="bq" style="top:20px;left:90px">Button? ✗</div></div></div>
+      <div id="h3a" class="clip head" data-start="10.39" data-duration="2.0" data-track-index="3" style="" ><div class="lead">number</div><div class="t3d " style="font-size:126px">Chhupa Hai</div></div>
+      <div id="h3b" class="clip head" data-start="12.39" data-duration="1.14" data-track-index="3" style="" ><div class="lead">aur button</div><div class="t3d red" style="font-size:140px">Gayab!</div></div>
+      <div id="s4" class="full clip" data-start="13.53" data-duration="3.1" data-track-index="0" style="" ><div class="stage"><div class="phone" id="ph4"><div class="notch"></div><div class="pb" id="pbk0" style="left:30px;top:80px;width:360px;height:110px"></div><div class="pb" id="pbk1" style="left:230px;top:210px;width:180px;height:110px"></div><div class="pb" id="pbk2" style="left:30px;top:340px;width:360px;height:110px"></div><div class="pb" id="pbk3" style="left:230px;top:470px;width:180px;height:110px"></div><div class="pb" id="pbk4" style="left:30px;top:600px;width:360px;height:110px"></div><div class="spinner" id="spn"></div></div><div class="chip red" id="tm1" style="top:60px;right:80px">⏳ 3s</div><div class="chip red" id="tm2" style="top:60px;right:80px">⏳ 6s</div><div class="chip red" id="tm3" style="top:60px;right:80px">⏳ 9s...</div></div></div>
+      <div id="h4a" class="clip head" data-start="13.53" data-duration="1.36" data-track-index="3" style="" ><div class="lead">mobile pe kholo</div><div class="t3d red" style="font-size:140px">Slow...</div></div>
+      <div id="h4b" class="clip head" data-start="14.89" data-duration="1.74" data-track-index="3" style="" ><div class="lead">aur</div><div class="t3d red" style="font-size:134px">Tooti Hui!</div></div>
+      <div id="s5" class="full clip" data-start="16.63" data-duration="4.31" data-track-index="0" style="" ><div class="stage"><div class="phone" id="ph5"><div class="notch"></div><div class="phero"><h4>AC Repair<br/>in Pune</h4><p>Same-day service</p></div><div class="pbtn call" id="bt1" style="top:450px">📞 Call Now</div><div class="pbtn wa" id="bt2" style="top:580px">💬 WhatsApp</div></div><div class="chip green" id="ok5" style="top:120px;right:60px">✓ Easy</div></div></div>
+      <div id="h5a" class="clip head" data-start="16.63" data-duration="2.67" data-track-index="3" style="" ><div class="lead">har page pe</div><div class="t3d green" style="font-size:128px">Saaf Button</div></div>
+      <div id="h5b" class="clip head" data-start="19.3" data-duration="1.64" data-track-index="3" style="" ><div class="lead">call ya</div><div class="t3d green" style="font-size:126px">WhatsApp ✓</div></div>
+      <div id="s6" class="full clip" data-start="20.94" data-duration="3.98" data-track-index="0" style="" ><div class="stage"><div class="phone" id="ph6"><div class="notch"></div><div class="phero" id="ph6h"><h4>AC Repair<br/>in Pune</h4><p>Same-day service · Call now</p></div><div class="pbtn call" style="top:450px">📞 Call Now</div><div class="pbtn wa" style="top:580px">💬 WhatsApp</div></div><div class="bolt" id="bo" style="left:140px;top:120px">⚡</div><div class="chip green" id="fs" style="top:60px;right:70px">⚡ Fast</div></div></div>
+      <div id="h6a" class="clip head" data-start="20.94" data-duration="1.8" data-track-index="3" style="" ><div class="lead">mobile pe</div><div class="t3d cyan" style="font-size:140px">Tez Rakho</div></div>
+      <div id="h6b" class="clip head" data-start="22.74" data-duration="2.18" data-track-index="3" style="" ><div class="lead">aur upar hi batao</div><div class="t3d " style="font-size:92px">Aap Kya Karte Ho</div></div>
+      <div id="s7" class="full clip" data-start="24.92" data-duration="3.48" data-track-index="0" style="" ><div class="stage"></div></div>
+      <div id="h7a" class="clip head" data-start="24.92" data-duration="1.74" data-track-index="3" style="" ><div class="lead">sundar website</div><div class="t3d red" style="font-size:150px">Nahi ✗</div></div>
+      <div id="h7b" class="clip head" data-start="26.66" data-duration="1.74" data-track-index="3" style="" ><div class="lead">kaam karne wali</div><div class="t3d green" style="font-size:130px">Website ✓</div></div>
+      <div id="s8" class="full clip" data-start="28.4" data-duration="1.97" data-track-index="0" style="" ><div class="stage"></div></div>
+      <div id="h8" class="clip head" data-start="28.4" data-duration="1.97" data-track-index="3" style="" ><div class="lead">aapki website mein</div><div class="t3d cyan" style="font-size:128px">Darwaza Hai?</div></div>
+      <div id="s9" class="full clip" data-start="30.37" data-duration="2.52" data-track-index="0" style="" ><div class="stage"><div class="card cbox" id="cbx"><div class="av"></div><span class="ctext" id="ct">WEBSITE</span><span class="caret"></span><div class="send">➤</div></div></div></div>
+      <div id="h9" class="clip head" data-start="30.37" data-duration="2.52" data-track-index="3" style="" ><div class="lead">comment mein likho</div><div class="t3d cyan" style="font-size:130px">“WEBSITE”</div></div>
+      <div id="brand" class="full clip" data-start="32.89" data-duration="3.0" data-track-index="2" style="" ><div class="brand"><div class="bmark3d"></div><div class="bname t3d">Advizr Media</div><div class="btag">Website • Google Ads • Meta Ads • CRM</div><div class="bcta" id="bc">DM karo, baat karte hain 📩</div></div><div style="position:absolute;inset:0"><div class="cf" style="left:657px;top:-170px;background:#ffc94a" data-dy="2142" data-r="209"></div><div class="cf" style="left:880px;top:-62px;background:#1fbf62" data-dy="1653" data-r="340"></div><div class="cf" style="left:135px;top:-110px;background:#ff5c7a" data-dy="1852" data-r="569"></div><div class="cf" style="left:576px;top:-248px;background:#8a6bff" data-dy="1855" data-r="193"></div><div class="cf" style="left:768px;top:-190px;background:#ff5c7a" data-dy="1886" data-r="366"></div><div class="cf" style="left:958px;top:-101px;background:#1fbf62" data-dy="1673" data-r="322"></div><div class="cf" style="left:652px;top:-73px;background:#1fbf62" data-dy="1735" data-r="181"></div><div class="cf" style="left:1015px;top:-298px;background:#1fbf62" data-dy="1820" data-r="349"></div><div class="cf" style="left:913px;top:-215px;background:#ffc94a" data-dy="1921" data-r="383"></div><div class="cf" style="left:572px;top:-196px;background:#1fbf62" data-dy="1801" data-r="572"></div><div class="cf" style="left:325px;top:-289px;background:#ffc94a" data-dy="2024" data-r="349"></div><div class="cf" style="left:978px;top:-226px;background:#ffc94a" data-dy="1666" data-r="519"></div><div class="cf" style="left:328px;top:-299px;background:#8a6bff" data-dy="1946" data-r="247"></div><div class="cf" style="left:337px;top:-119px;background:#ffc94a" data-dy="2092" data-r="503"></div><div class="cf" style="left:209px;top:-54px;background:#ff5c7a" data-dy="1780" data-r="238"></div><div class="cf" style="left:282px;top:-289px;background:#ffc94a" data-dy="2013" data-r="198"></div><div class="cf" style="left:582px;top:-86px;background:#ffc94a" data-dy="1985" data-r="189"></div><div class="cf" style="left:483px;top:-277px;background:#1fbf62" data-dy="1801" data-r="301"></div><div class="cf" style="left:793px;top:-175px;background:#ff5c7a" data-dy="1952" data-r="704"></div><div class="cf" style="left:383px;top:-172px;background:#ff5c7a" data-dy="1710" data-r="556"></div><div class="cf" style="left:900px;top:-149px;background:#12c4ff" data-dy="2043" data-r="273"></div><div class="cf" style="left:233px;top:-126px;background:#8a6bff" data-dy="1971" data-r="331"></div><div class="cf" style="left:368px;top:-159px;background:#8a6bff" data-dy="1694" data-r="499"></div><div class="cf" style="left:722px;top:-138px;background:#ffc94a" data-dy="1781" data-r="260"></div><div class="cf" style="left:661px;top:-224px;background:#ffc94a" data-dy="2095" data-r="345"></div><div class="cf" style="left:757px;top:-276px;background:#12c4ff" data-dy="2146" data-r="595"></div><div class="cf" style="left:52px;top:-179px;background:#8a6bff" data-dy="1952" data-r="436"></div><div class="cf" style="left:486px;top:-85px;background:#1fbf62" data-dy="1657" data-r="213"></div><div class="cf" style="left:840px;top:-48px;background:#ffc94a" data-dy="1812" data-r="313"></div><div class="cf" style="left:1024px;top:-233px;background:#ff5c7a" data-dy="1709" data-r="352"></div><div class="cf" style="left:464px;top:-110px;background:#1fbf62" data-dy="1660" data-r="610"></div><div class="cf" style="left:321px;top:-228px;background:#ff5c7a" data-dy="1773" data-r="714"></div><div class="cf" style="left:484px;top:-51px;background:#ffc94a" data-dy="2090" data-r="460"></div><div class="cf" style="left:318px;top:-60px;background:#ff5c7a" data-dy="1750" data-r="295"></div><div class="cf" style="left:406px;top:-209px;background:#ff5c7a" data-dy="1946" data-r="364"></div><div class="cf" style="left:111px;top:-49px;background:#ffc94a" data-dy="2127" data-r="694"></div><div class="cf" style="left:389px;top:-268px;background:#ffc94a" data-dy="1635" data-r="493"></div><div class="cf" style="left:392px;top:-157px;background:#ff5c7a" data-dy="1871" data-r="480"></div><div class="cf" style="left:999px;top:-126px;background:#1fbf62" data-dy="2194" data-r="191"></div><div class="cf" style="left:505px;top:-172px;background:#ffc94a" data-dy="1880" data-r="654"></div><div class="cf" style="left:315px;top:-44px;background:#ffc94a" data-dy="1956" data-r="460"></div><div class="cf" style="left:679px;top:-124px;background:#ff5c7a" data-dy="1958" data-r="356"></div><div class="cf" style="left:910px;top:-70px;background:#ffc94a" data-dy="1942" data-r="710"></div><div class="cf" style="left:165px;top:-215px;background:#1fbf62" data-dy="1970" data-r="668"></div></div></div>
+      <div id="sub0" class="clip subw" data-start="0.3" data-duration="2.49" data-track-index="4" style="" ><span>Website banwayi, sundar bhi hai,</span></div>
+      <div id="sub1" class="clip subw" data-start="2.82" data-duration="1.79" data-track-index="4" style="" ><span>par <b>inquiry</b> nahi aati?</span></div>
+      <div id="sub2" class="clip subw" data-start="4.66" data-duration="2.36" data-track-index="4" style="" ><span>Socho, ek shaandaar dukaan...</span></div>
+      <div id="sub3" class="clip subw" data-start="7.05" data-duration="1.18" data-track-index="4" style="" ><span>par <b>darwaza</b> hi nahi!</span></div>
+      <div id="sub4" class="clip subw" data-start="8.28" data-duration="2.24" data-track-index="4" style="" ><span>Zyadatar websites mein yahi hota hai.</span></div>
+      <div id="sub5" class="clip subw" data-start="10.57" data-duration="1.79" data-track-index="4" style="" ><span>Number neeche kahin chhupa hai,</span></div>
+      <div id="sub6" class="clip subw" data-start="12.39" data-duration="1.27" data-track-index="4" style="" ><span><b>button</b> dikhta hi nahi.</span></div>
+      <div id="sub7" class="clip subw" data-start="13.71" data-duration="1.15" data-track-index="4" style="" ><span>Mobile pe kholo,</span></div>
+      <div id="sub8" class="clip subw" data-start="14.89" data-duration="1.87" data-track-index="4" style="" ><span>toh <b>dheemi</b> aur <b>tooti</b> hui.</span></div>
+      <div id="sub9" class="clip subw" data-start="16.81" data-duration="2.46" data-track-index="4" style="" ><span>Har page pe ek saaf button rakho:</span></div>
+      <div id="sub10" class="clip subw" data-start="19.3" data-duration="1.77" data-track-index="4" style="" ><span><b>Call karo</b> ya <b>WhatsApp</b> karo.</span></div>
+      <div id="sub11" class="clip subw" data-start="21.12" data-duration="1.59" data-track-index="4" style="" ><span>Mobile pe tez rakho,</span></div>
+      <div id="sub12" class="clip subw" data-start="22.74" data-duration="2.31" data-track-index="4" style="" ><span>aur upar hi batao, aap kya karte ho.</span></div>
+      <div id="sub13" class="clip subw" data-start="25.1" data-duration="1.53" data-track-index="4" style="" ><span>Sundar website nahi...</span></div>
+      <div id="sub14" class="clip subw" data-start="26.66" data-duration="1.87" data-track-index="4" style="" ><span><b>kaam karne wali</b> website chahiye.</span></div>
+      <div id="sub15" class="clip subw" data-start="28.58" data-duration="1.92" data-track-index="4" style="" ><span>Aapki website mein <b>darwaza</b> hai?</span></div>
+      <div id="sub16" class="clip subw" data-start="30.55" data-duration="2.34" data-track-index="4" style="" ><span>Comment mein likho <b>“WEBSITE”</b> 👇</span></div>
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="35.89" data-track-index="10" data-volume="0.1" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.4,"v":1},{"t":34.69,"v":1},{"t":35.89,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.3" data-duration="4.06" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="4.66" data-duration="3.32" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="8.28" data-duration="1.99" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="10.57" data-duration="2.84" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="13.71" data-duration="2.8" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="16.81" data-duration="4.01" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="21.12" data-duration="3.68" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-7" src="assets/voice/vo-7.m4a" data-start="25.1" data-duration="3.18" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-8" src="assets/voice/vo-8.m4a" data-start="28.58" data-duration="1.67" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-9" src="assets/voice/vo-9.m4a" data-start="30.55" data-duration="1.84" data-track-index="23" data-volume="1"></audio>
+      <audio id="sfx-p0" src="assets/sfx/pop.wav" data-start="2.9" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p1" src="assets/sfx/pop.wav" data-start="7.12" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p2" src="assets/sfx/pop.wav" data-start="8.95" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p3" src="assets/sfx/pop.wav" data-start="9.19" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p4" src="assets/sfx/pop.wav" data-start="9.43" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p5" src="assets/sfx/pop.wav" data-start="12.44" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p6" src="assets/sfx/pop.wav" data-start="19.3" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p7" src="assets/sfx/pop.wav" data-start="20.02" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p8" src="assets/sfx/pop.wav" data-start="21.14" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p9" src="assets/sfx/pop.wav" data-start="32.03" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p10" src="assets/sfx/pop.wav" data-start="32.99" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fl",{y:0},{y:120,duration:2,repeat:18,ease:"none"},0);
+      tl.fromTo(".o1",{x:-60,y:0},{x:120,y:140,duration:17.95,repeat:1,yoyo:true,ease:"sine.inOut"},0);
+      tl.fromTo(".o2",{x:40,y:0},{x:-140,y:-120,duration:17.95,repeat:1,yoyo:true,ease:"sine.inOut"},0);
+      tl.fromTo("#h0a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},0.02);
+      tl.fromTo("#h0a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},0.08);
+      tl.fromTo("#h0b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},2.84);
+      tl.fromTo("#h0b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},2.9);
+      tl.fromTo("#br0",{opacity:0,rotationX:60,y:200,transformPerspective:1400},{opacity:1,rotationX:8,y:0,duration:0.8,ease:"back.out(1.2)"},0.15);
+      tl.fromTo("#br0",{rotationY:-12,rotationX:6,transformPerspective:1400},{rotationY:10,rotationX:-3,duration:3.5800000000000005,ease:"sine.inOut",immediateRender:false},0.9);
+      tl.fromTo("#iq",{opacity:0,scale:0.3,rotation:-14},{opacity:1,scale:1,rotation:-4,duration:0.35,ease:"back.out(2.4)"},2.9);
+      tl.fromTo("#h1a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},4.5);
+      tl.fromTo("#h1a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},4.56);
+      tl.fromTo("#h1b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},7.07);
+      tl.fromTo("#h1b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},7.13);
+      tl.fromTo("#nd",{opacity:0,y:60,scale:0.6},{opacity:1,y:0,scale:1,duration:0.4,ease:"back.out(2)"},7.12);
+      tl.fromTo("#h2 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},8.12);
+      tl.fromTo("#h2 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},8.18);
+      tl.fromTo("#s2 .mini",{opacity:0,y:80,rotationY:40},{opacity:1,y:0,rotationY:0,duration:0.4,stagger:0.07,ease:"back.out(1.5)"},8.15);
+      tl.fromTo("#s2 .stamp",{opacity:0,scale:2.4},{opacity:1,scale:1,duration:0.25,stagger:0.12,ease:"power4.in"},8.7);
+      tl.fromTo("#h3a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},10.41);
+      tl.fromTo("#h3a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},10.47);
+      tl.fromTo("#h3b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},12.41);
+      tl.fromTo("#h3b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},12.47);
+      tl.fromTo("#lp",{y:0},{y:-560,duration:1.7,ease:"power2.inOut"},10.59);
+      tl.fromTo("#mg",{x:0,y:0},{x:-380,y:420,duration:1.7,ease:"sine.inOut"},10.59);
+      tl.fromTo("#bq",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.35,ease:"back.out(2.4)"},12.44);
+      tl.fromTo("#h4a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},13.55);
+      tl.fromTo("#h4a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},13.61);
+      tl.fromTo("#h4b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},14.91);
+      tl.fromTo("#h4b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},14.97);
+      tl.fromTo("#ph4",{opacity:0,y:200,rotation:4},{opacity:1,y:0,rotation:0,duration:0.5,ease:"power3.out"},13.58);
+      tl.fromTo("#spn",{rotation:0},{rotation:1080,duration:3.1,ease:"none"},13.53);
+      tl.fromTo("#tm1",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.25,ease:"back.out(2)"},14.05);
+      tl.to("#tm1",{opacity:0,duration:0.1},14.55);
+      tl.fromTo("#tm2",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.25,ease:"back.out(2)"},14.55);
+      tl.to("#tm2",{opacity:0,duration:0.1},15.05);
+      tl.fromTo("#tm3",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.25,ease:"back.out(2)"},15.05);
+      tl.to("#pbk0",{rotation:-18,x:-40,y:30,duration:0.5,ease:"back.out(2)"},14.94);
+      tl.to("#pbk1",{rotation:22,x:60,y:-20,duration:0.5,ease:"back.out(2)"},14.99);
+      tl.to("#pbk2",{rotation:-10,x:-30,y:50,duration:0.5,ease:"back.out(2)"},15.04);
+      tl.to("#pbk3",{rotation:30,x:50,y:10,duration:0.5,ease:"back.out(2)"},15.09);
+      tl.to("#pbk4",{rotation:-25,x:-60,y:40,duration:0.5,ease:"back.out(2)"},15.139999999999999);
+      tl.fromTo("#ph4",{x:-10},{x:10,duration:0.05,repeat:7,yoyo:true,ease:"none",immediateRender:false},14.94);
+      tl.fromTo("#h5a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},16.65);
+      tl.fromTo("#h5a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},16.71);
+      tl.fromTo("#h5b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},19.32);
+      tl.fromTo("#h5b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},19.38);
+      tl.fromTo("#ph5",{opacity:0,rotationY:-60,scale:0.8},{opacity:1,rotationY:0,scale:1,duration:0.6,ease:"back.out(1.3)"},16.68);
+      tl.fromTo("#bt1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(2.5)"},19.3);
+      tl.fromTo("#bt2",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(2.5)"},20.02);
+      tl.fromTo("#bt1",{scale:1},{scale:1.07,duration:0.3,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false},20.42);
+      tl.fromTo("#ok5",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.4)"},20.42);
+      tl.fromTo("#h6a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},20.96);
+      tl.fromTo("#h6a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},21.02);
+      tl.fromTo("#h6b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},22.76);
+      tl.fromTo("#h6b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},22.82);
+      tl.fromTo("#ph6",{opacity:0,y:300},{opacity:1,y:0,duration:0.35,ease:"power4.out"},20.99);
+      tl.fromTo("#bo",{opacity:0,scale:0.2,rotation:-30},{opacity:1,scale:1,rotation:0,duration:0.35,ease:"back.out(3)"},21.14);
+      tl.fromTo("#fs",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.4)"},21.34);
+      tl.fromTo("#ph6h",{boxShadow:"inset 0 0 0 0 rgba(255,255,255,0)"},{boxShadow:"inset 0 0 0 10px rgba(255,255,255,0.9)",duration:0.35,yoyo:true,repeat:3,immediateRender:false},22.96);
+      tl.fromTo("#h7a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},24.94);
+      tl.fromTo("#h7a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},25.0);
+      tl.fromTo("#h7b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},26.68);
+      tl.fromTo("#h7b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},26.74);
+      tl.fromTo("#h8 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},28.42);
+      tl.fromTo("#h8 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},28.48);
+      tl.fromTo("#h9 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},30.39);
+      tl.fromTo("#h9 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},30.45);
+      tl.fromTo("#cbx",{opacity:0,y:120,rotationX:50},{opacity:1,y:0,rotationX:0,duration:0.5,ease:"back.out(1.5)"},30.42);
+      tl.fromTo("#ct",{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.6,ease:"steps(7)"},31.38);
+      tl.fromTo("#brand .bname",{opacity:0,y:40},{opacity:1,y:0,duration:0.4,ease:"power3.out"},33.29);
+      tl.fromTo("#brand .btag",{opacity:0,y:30},{opacity:1,y:0,duration:0.4,ease:"power3.out"},33.49);
+      tl.fromTo("#bc",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"},33.69);
+      tl.fromTo("#bc",{scale:1},{scale:1.06,duration:0.4,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false},34.19);
+      gsap.utils.toArray("#brand .cf").forEach((el)=>tl.fromTo(el,{y:0,rotation:0},{y:+el.dataset.dy,rotation:+el.dataset.r,duration:2.4,ease:"power1.in"},32.89));
+      window.__timelines["main"] = tl;
+    </script>
+    <script>window.__T5 = { s1: 4.48, s1e: 8.1, s7: 24.92, s8e: 30.37, door: 26.69, walk: 27.19, br: 32.89, logoY: 760 };</script>
+    <script type="module">
+import * as THREE from "./assets/vendor/three.module.min.js";
+import { RoomEnvironment } from "./assets/vendor/addons/RoomEnvironment.js";
+const W = 1080, H = 1920, TM = window.__T5;
+const canvas = document.getElementById("three-layer");
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.NoToneMapping;
+const scene = new THREE.Scene();
+const pm = new THREE.PMREMGenerator(renderer);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55;
+const cam = new THREE.PerspectiveCamera(30, W / H, 0.1, 100); cam.position.set(0, 0, 10);
+const PX = H / (2 * 10 * Math.tan(15 * Math.PI / 180));
+const ux = (x) => (x - W / 2) / PX, uy = (y) => (H / 2 - y) / PX;
+scene.add(new THREE.HemisphereLight(0xffffff, 0xc8d8f0, 1.3));
+const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(3, 5, 6); scene.add(key);
+const rim = new THREE.DirectionalLight(0x9fe3ff, 1.2); rim.position.set(-5, 2, -3); scene.add(rim);
+const clamp = (v) => Math.max(0, Math.min(1, v));
+const outBack = (x) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const outCubic = (x) => 1 - Math.pow(1 - x, 3);
+const outBounce = (x) => { const n = 7.5625, d = 2.75; if (x < 1 / d) return n * x * x; if (x < 2 / d) return n * (x -= 1.5 / d) * x + 0.75; if (x < 2.5 / d) return n * (x -= 2.25 / d) * x + 0.9375; return n * (x -= 2.625 / d) * x + 0.984375; };
+const M = (c, r = 0.35, m = 0.0, extra = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: r, metalness: m }, extra));
+// floating pastel shapes
+const floats = [];
+const fdefs = [[new THREE.TorusGeometry(0.32, 0.12, 24, 64), 0x5fd3ff, 150, 600], [new THREE.IcosahedronGeometry(0.3, 0), 0xb9a6ff, 950, 640], [new THREE.SphereGeometry(0.26, 48, 32), 0xffb38a, 130, 1480], [new THREE.TorusKnotGeometry(0.2, 0.07, 120, 16), 0x7be0b0, 960, 1430], [new THREE.OctahedronGeometry(0.22, 0), 0xffd36b, 880, 1640], [new THREE.CapsuleGeometry(0.12, 0.3, 8, 24), 0xff8fb1, 210, 1700]];
+fdefs.forEach(([g, c, x, y], i) => { const m = new THREE.Mesh(g, M(c, 0.3)); m.userData = { x, y, i }; scene.add(m); floats.push(m); });
+// shop
+const shop = new THREE.Group();
+const add = (g, m, x, y, z, rx = 0) => { const o = new THREE.Mesh(g, m); o.position.set(x, y, z); o.rotation.x = rx; shop.add(o); return o; };
+add(new THREE.BoxGeometry(2.6, 1.7, 1.3), M(0xffffff, 0.6), 0, 0, 0);
+add(new THREE.BoxGeometry(2.9, 0.16, 1.6), M(0xdfe7f2, 0.6), 0, -0.93, 0);
+add(new THREE.BoxGeometry(2.9, 0.22, 1.6), M(0x10203f, 0.5), 0, 0.96, 0);
+for (let k = 0; k < 8; k++) add(new THREE.BoxGeometry(0.34, 0.07, 0.62), M(k % 2 ? 0xffffff : 0x12c4ff, 0.4), -1.19 + k * 0.34, 0.6, 0.86, 0.5);
+const sc = document.createElement("canvas"); sc.width = 1024; sc.height = 216; const sx = sc.getContext("2d");
+sx.fillStyle = "#10203f"; sx.fillRect(0, 0, 1024, 216); sx.fillStyle = "#ffffff"; sx.font = "900 120px sans-serif"; sx.textAlign = "center"; sx.textBaseline = "middle"; sx.fillText("YOUR SHOP", 512, 116);
+const st = new THREE.CanvasTexture(sc); st.colorSpace = THREE.SRGBColorSpace;
+const signM = [M(0x10203f), M(0x10203f), M(0x10203f), M(0x10203f), new THREE.MeshStandardMaterial({ map: st, roughness: 0.5 }), M(0x10203f)];
+add(new THREE.BoxGeometry(1.9, 0.4, 0.08), signM, 0, 1.36, 0.3);
+const glass = M(0x8fd3f7, 0.08, 0.2);
+add(new THREE.BoxGeometry(0.7, 0.62, 0.05), glass, -0.82, -0.08, 0.66);
+add(new THREE.BoxGeometry(0.7, 0.62, 0.05), glass, 0.82, -0.08, 0.66);
+const doorM = M(0x12c4ff, 0.3, 0.1, { emissive: 0x12c4ff, emissiveIntensity: 0.0 });
+const door = add(new THREE.BoxGeometry(0.62, 1.02, 0.06), doorM, 0, -0.34, 0.67);
+const people = [0xff8a5c, 0x6a5cff, 0x1fbf62].map((c, k) => { const p = new THREE.Group(); const b = new THREE.Mesh(new THREE.CapsuleGeometry(0.11, 0.22, 8, 16), M(c, 0.4)); const h = new THREE.Mesh(new THREE.SphereGeometry(0.1, 24, 16), M(0xffd7b5, 0.5)); h.position.y = 0.28; p.add(b, h); shop.add(p); return p; });
+scene.add(shop);
+// Advizr logo
+const S = 410, OX = 250, OY = 255;
+const P = (x, y) => new THREE.Vector2((x - OX) / S, -(y - OY) / S);
+const poly = (pts) => { const s = new THREE.Shape(); pts.forEach((p, i) => { const v = P(p[0], p[1]); i ? s.lineTo(v.x, v.y) : s.moveTo(v.x, v.y); }); s.closePath(); return s; };
+const sA = poly([[8, 404], [121, 106], [166, 226], [100, 404]]), sW = poly([[121, 106], [213, 106], [325, 404], [233, 404]]);
+const sD = new THREE.Shape(); let v;
+v = P(232, 106); sD.moveTo(v.x, v.y); v = P(350, 106); sD.lineTo(v.x, v.y);
+const c0 = P(350, 255); sD.absarc(c0.x, c0.y, 149 / S, Math.PI / 2, -Math.PI / 2, true);
+v = P(325, 404); sD.lineTo(v.x, v.y); v = P(288, 305); sD.lineTo(v.x, v.y); v = P(350, 305); sD.lineTo(v.x, v.y);
+sD.absarc(c0.x, c0.y, 50 / S, -Math.PI / 2, Math.PI / 2, false); v = P(268, 205); sD.lineTo(v.x, v.y); sD.closePath();
+const ext = { depth: 0.22, bevelEnabled: true, bevelThickness: 0.035, bevelSize: 0.018, bevelSegments: 4, curveSegments: 48 };
+const adv = new THREE.Group();
+[[sA, M(0x12c4ff, 0.28, 0.15)], [sW, M(0x10203f, 0.3, 0.1)], [sD, M(0x12c4ff, 0.28, 0.15)]].forEach(([sh, m]) => { const g = new THREE.ExtrudeGeometry(sh, ext); g.translate(0, 0, -0.11); adv.add(new THREE.Mesh(g, m)); });
+scene.add(adv);
+function shopState(t) {
+  const inS1 = t >= TM.s1 && t < TM.s1e, inS7 = t >= TM.s7 && t < TM.s8e;
+  shop.visible = inS1 || inS7;
+  if (!shop.visible) return;
+  const t0 = inS1 ? TM.s1 : TM.s7, q = t - t0;
+  const p = clamp(q / 0.6);
+  shop.scale.setScalar(0.56 * (inS1 ? 1 : outBack(clamp(q / 0.6))));
+  shop.position.set(0, uy(1090) + (inS1 ? (1 - outBounce(p)) * 2.2 : 0), 0);
+  shop.rotation.set(0.18, Math.sin(t * 0.9) * 0.35 - 0.15, 0);
+  const dp = inS7 ? clamp((t - TM.door) / 0.6) : 0;
+  door.visible = dp > 0; door.scale.y = Math.max(0.001, outBack(dp)); door.position.y = -0.34 - (1 - dp) * 0.5;
+  doorM.emissiveIntensity = inS7 ? 0.35 + 0.25 * Math.sin(t * 6) : 0;
+  people.forEach((pp, k) => {
+    const w = inS7 ? (t - TM.walk - k * 0.45) / 1.4 : -1;
+    pp.visible = w > 0 && w < 1;
+    if (!pp.visible) return;
+    pp.position.set((k - 1) * 0.6 * (1 - w), -0.65, 1.9 - 1.3 * w);
+    pp.scale.setScalar(1 - 0.5 * clamp((w - 0.7) / 0.3));
+  });
+}
+function renderAt(t) {
+  floats.forEach((m) => { const { x, y, i } = m.userData; m.visible = t < TM.br; m.position.set(ux(x), uy(y) + Math.sin(t * 1.2 + i) * 0.12, -1); m.rotation.set(t * 0.5 + i, t * 0.7 + i * 0.5, 0); });
+  shopState(t);
+  adv.visible = t >= TM.br;
+  if (adv.visible) {
+    const q = t - TM.br, p = clamp(q / 1.0);
+    adv.scale.setScalar(Math.max(0.001, 0.25 + 0.75 * outBack(p)));
+    adv.rotation.y = -Math.PI * 1.5 * (1 - outCubic(p)) + (q > 1 ? Math.sin((q - 1) * 1.3) * 0.28 : 0);
+    adv.rotation.x = Math.sin(q * 0.9) * 0.08;
+    adv.position.set(0, uy(TM.logoY), 0);
+  }
+  renderer.render(scene, cam);
+}
+window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+renderAt(window.__hfThreeTime || 0);
+
+    </script>
+  </body>
+</html>
