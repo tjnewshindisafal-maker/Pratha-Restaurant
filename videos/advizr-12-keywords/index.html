@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Advizr Google Ads Keywords</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-500-normal.woff2"); font-weight: 500; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-800-normal.woff2"); font-weight: 800; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-900-normal.woff2"); font-weight: 900; }
+      :root { --blue: #4f8bff; --green: #2fd27a; --red: #ff4d5e; --gold: #ffc53d; --ink: #0a0f24; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #070b1c; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; color: #fff; }
+      .full { position: absolute; inset: 0; overflow: hidden; }
+      #bg { background: radial-gradient(ellipse at 50% 30%, #1b2560 0%, #0d1335 45%, #070b1c 100%); }
+      .orb { position: absolute; border-radius: 50%; filter: blur(110px); }
+      .o1 { width: 640px; height: 640px; left: -200px; top: 150px; background: #3056ff; opacity: 0.55; }
+      .o2 { width: 560px; height: 560px; right: -200px; top: 900px; background: #8a3dff; opacity: 0.45; }
+      .o3 { width: 480px; height: 480px; left: 300px; top: -200px; background: #00c2ff; opacity: 0.3; }
+      .floorw { position: absolute; left: -540px; right: -540px; bottom: -200px; height: 900px; transform: perspective(700px) rotateX(64deg); transform-origin: 50% 100%; overflow: hidden; -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 95%); mask-image: linear-gradient(to top, #000 30%, transparent 95%); }
+      .floor { position: absolute; left: 0; right: 0; top: -120px; bottom: -120px; background-image: linear-gradient(rgba(110,150,255,0.45) 2px, transparent 2px), linear-gradient(90deg, rgba(110,150,255,0.45) 2px, transparent 2px); background-size: 120px 120px; }
+      .dust { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #cfe0ff; opacity: 0.6; }
+      .head { position: absolute; left: 50px; right: 50px; top: 220px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 5; }
+      .lead { font-weight: 700; font-size: 44px; color: #b9c6ff; margin-bottom: 8px; letter-spacing: 1px; }
+      .t3d { font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: #fff;
+        text-shadow: 0 1px 0 #d7defa, 0 2px 0 #c3ccf2, 0 3px 0 #aeb9ea, 0 4px 0 #9aa6e0, 0 5px 0 #8793d4, 0 6px 0 #7480c7, 0 7px 0 #636eb8, 0 8px 0 #535da8, 0 18px 40px rgba(0,0,0,0.6); }
+      .t3d.red { color: #ff6372; text-shadow: 0 1px 0 #e94b5b, 0 2px 0 #d33f4f, 0 3px 0 #bd3443, 0 4px 0 #a72a38, 0 5px 0 #92212e, 0 6px 0 #7d1925, 0 7px 0 #68121c, 0 18px 40px rgba(0,0,0,0.6); }
+      .t3d.green { color: #45e28c; text-shadow: 0 1px 0 #36c77a, 0 2px 0 #2db06b, 0 3px 0 #25995c, 0 4px 0 #1e834e, 0 5px 0 #186e41, 0 6px 0 #125a35, 0 7px 0 #0d4729, 0 18px 40px rgba(0,0,0,0.6); }
+      .t3d.gold { color: #ffd257; text-shadow: 0 1px 0 #f0bd3a, 0 2px 0 #dca82c, 0 3px 0 #c79321, 0 4px 0 #b27f18, 0 5px 0 #9c6b10, 0 6px 0 #86590a, 0 7px 0 #704805, 0 18px 40px rgba(0,0,0,0.6); }
+      .stage { position: absolute; left: 0; right: 0; top: 640px; height: 900px; display: flex; flex-direction: column; align-items: center; justify-content: center; perspective: 1400px; }
+      .glass { background: linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05)); border: 2px solid rgba(255,255,255,0.22); border-radius: 36px; box-shadow: 0 40px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.35); }
+      .dash { width: 820px; padding: 40px 44px; }
+      .dtitle { display: flex; align-items: center; gap: 16px; font-weight: 800; font-size: 34px; color: #dfe6ff; margin-bottom: 30px; }
+      .glogo { width: 54px; height: 54px; border-radius: 14px; background: conic-gradient(#4285f4 0 25%, #34a853 0 50%, #fbbc05 0 75%, #ea4335 0); }
+      .kpis { display: flex; gap: 26px; }
+      .kpi { flex: 1; border-radius: 26px; padding: 30px; background: rgba(8,14,40,0.6); border: 2px solid rgba(255,255,255,0.12); }
+      .kl { font-weight: 700; font-size: 32px; color: #aab6e8; }
+      .kv { font-weight: 900; font-size: 110px; line-height: 1.05; }
+      .kv.g { color: var(--green); } .kv.r { color: var(--red); }
+      .bars { display: flex; align-items: flex-end; gap: 14px; height: 120px; margin-top: 30px; }
+      .bars div { flex: 1; border-radius: 8px 8px 0 0; background: linear-gradient(#6ea1ff, #3056ff); transform-origin: bottom; }
+      .srch { width: 860px; padding: 26px 34px; display: flex; align-items: center; gap: 22px; font-weight: 800; font-size: 40px; }
+      .mag { width: 64px; height: 64px; border-radius: 50%; border: 9px solid #fff; position: relative; flex: 0 0 auto; }
+      .mag::after { content: ""; position: absolute; width: 30px; height: 10px; background: #fff; right: -26px; bottom: -14px; transform: rotate(45deg); border-radius: 5px; }
+      .stlist { width: 860px; margin-top: 30px; padding: 26px 30px; }
+      .st { display: flex; justify-content: space-between; align-items: center; padding: 20px 10px; border-bottom: 2px solid rgba(255,255,255,0.1); font-weight: 700; font-size: 36px; color: #dfe6ff; }
+      .st:last-child { border-bottom: 0; }
+      .st b { font-weight: 900; color: #8fa6ff; }
+      .acbox { width: 640px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; }
+      .ac { width: 440px; height: 150px; border-radius: 30px; background: linear-gradient(#ffffff, #d9e2f5); box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 -16px 0 #b9c5df; position: relative; }
+      .ac::after { content: ""; position: absolute; left: 40px; right: 40px; bottom: 28px; height: 10px; border-radius: 5px; background: repeating-linear-gradient(90deg, #8090b5 0 30px, transparent 30px 40px); }
+      .acl { font-weight: 900; font-size: 64px; }
+      .wind { position: absolute; width: 8px; height: 90px; border-radius: 4px; background: linear-gradient(#bfe6ff, transparent); }
+      .terms { display: flex; flex-direction: column; gap: 26px; width: 900px; }
+      .term { display: flex; align-items: center; gap: 22px; padding: 26px 30px; font-weight: 800; font-size: 40px; }
+      .term .q { flex: 1; }
+      .term .x { font-weight: 900; font-size: 30px; background: var(--red); color: #fff; padding: 10px 18px; border-radius: 14px; white-space: nowrap; }
+      .term.ok .x { background: var(--green); color: #062a14; }
+      .wallet { width: 360px; height: 250px; border-radius: 40px; background: linear-gradient(145deg, #7a4cff, #4a23c9); box-shadow: 0 30px 70px rgba(0,0,0,0.55), inset 0 2px 0 rgba(255,255,255,0.35); position: relative; }
+      .wallet::after { content: ""; position: absolute; right: -10px; top: 80px; width: 120px; height: 90px; border-radius: 24px; background: linear-gradient(145deg, #9b7bff, #6a43f0); }
+      .coin { position: absolute; width: 130px; height: 130px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff2b0, #ffc53d 45%, #d9900b 100%); box-shadow: inset 0 -8px 0 #b87507, 0 14px 30px rgba(0,0,0,0.5); color: #8a5300; font-weight: 900; font-size: 70px; display: flex; align-items: center; justify-content: center; }
+      .minus { position: absolute; font-weight: 900; font-size: 64px; color: var(--red); }
+      .shield { width: 300px; height: 360px; background: linear-gradient(160deg, #45e28c, #12945a); clip-path: polygon(50% 0, 100% 16%, 92% 66%, 50% 100%, 8% 66%, 0 16%); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 140px; color: #fff; filter: drop-shadow(0 30px 50px rgba(0,0,0,0.5)); }
+      .duo { display: flex; gap: 24px; margin-top: 50px; }
+      .pill { padding: 22px 30px; font-weight: 900; font-size: 36px; }
+      .pill.b { color: #9fbaff; } .pill.g { color: var(--green); }
+      .door { position: absolute; right: 70px; top: 120px; width: 230px; height: 400px; border-radius: 20px 20px 0 0; background: linear-gradient(#2a3470, #141a3d); border: 6px solid #6f7fd1; display: flex; align-items: flex-start; justify-content: center; padding-top: 30px; font-weight: 900; font-size: 40px; color: #ff9aa4; }
+      .chips { position: absolute; left: 90px; top: 140px; display: flex; flex-direction: column; gap: 40px; }
+      .wchip { padding: 26px 46px; font-weight: 900; font-size: 64px; color: #ff6372; border-color: rgba(255,99,114,0.6); }
+      .target { width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, #fff 0 9%, var(--red) 9% 22%, #fff 22% 36%, var(--red) 36% 50%, #fff 50% 64%, var(--red) 64% 78%, #fff 78% 100%); box-shadow: 0 40px 80px rgba(0,0,0,0.55); }
+      .arrowd { position: absolute; width: 360px; height: 14px; background: linear-gradient(90deg, #ffd257, #fff); border-radius: 7px; transform-origin: right center; }
+      .arrowd::after { content: ""; position: absolute; right: -10px; top: -14px; border-left: 34px solid #fff; border-top: 21px solid transparent; border-bottom: 21px solid transparent; }
+      .callok { position: absolute; bottom: 40px; padding: 22px 34px; font-weight: 900; font-size: 44px; color: var(--green); }
+      .cal { width: 460px; height: 460px; border-radius: 40px; overflow: hidden; background: #fff; box-shadow: 0 40px 80px rgba(0,0,0,0.55); color: var(--ink); text-align: center; }
+      .calt { background: var(--red); color: #fff; font-weight: 900; font-size: 56px; padding: 26px 0; }
+      .caln { font-weight: 900; font-size: 230px; line-height: 300px; color: #c5cbe0; }
+      .cbox { width: 900px; display: flex; align-items: center; gap: 22px; padding: 24px 28px; border-radius: 60px; }
+      .av { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg,#ffb37a,#ff6a8a); }
+      .ctext { font-weight: 900; font-size: 56px; }
+      .caret { width: 5px; height: 56px; background: #fff; }
+      .send { margin-left: auto; width: 84px; height: 84px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 42px; }
+      .brand { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 26px; }
+      .bmark { width: 190px; height: 190px; border-radius: 48px; background: linear-gradient(145deg, #5b8cff, #7a3dff); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 120px; box-shadow: 0 30px 70px rgba(80,90,255,0.5), inset 0 2px 0 rgba(255,255,255,0.4); }
+      .bname { font-weight: 900; font-size: 104px; letter-spacing: -2px; }
+      .btag { font-weight: 700; font-size: 38px; color: #b9c6ff; }
+      .bcta { margin-top: 20px; padding: 24px 48px; border-radius: 60px; background: linear-gradient(90deg, #4f8bff, #7a3dff); font-weight: 900; font-size: 50px; box-shadow: 0 20px 50px rgba(79,139,255,0.45); }
+      .cf { position: absolute; width: 22px; height: 34px; border-radius: 4px; }
+      .subw { position: absolute; left: 60px; right: 60px; bottom: 250px; display: flex; justify-content: center; z-index: 6; }
+      .subw span { background: rgba(255,255,255,0.95); color: #0a0f24; font-weight: 800; font-size: 38px; line-height: 1.25; padding: 14px 28px; border-radius: 16px; text-align: center; box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+      .subw span b { color: #2b5be8; }
+      img.bmark { width: 420px; height: auto; background: none; box-shadow: none; border-radius: 0; filter: drop-shadow(0 0 40px rgba(18,196,255,0.55)) drop-shadow(0 20px 30px rgba(0,0,0,0.5)); }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="35.24" data-width="1080" data-height="1920">
+      <div id="bg" class="full clip" data-start="0" data-duration="35.24" data-track-index="9"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="floorw"><div class="floor" id="fl"></div></div><div class="dust" id="ds0" style="left:926px;top:1773px"></div><div class="dust" id="ds1" style="left:953px;top:925px"></div><div class="dust" id="ds2" style="left:1040px;top:1751px"></div><div class="dust" id="ds3" style="left:388px;top:378px"></div><div class="dust" id="ds4" style="left:1048px;top:974px"></div><div class="dust" id="ds5" style="left:381px;top:192px"></div><div class="dust" id="ds6" style="left:914px;top:621px"></div><div class="dust" id="ds7" style="left:290px;top:185px"></div><div class="dust" id="ds8" style="left:85px;top:1219px"></div><div class="dust" id="ds9" style="left:811px;top:927px"></div><div class="dust" id="ds10" style="left:322px;top:1276px"></div><div class="dust" id="ds11" style="left:30px;top:1703px"></div><div class="dust" id="ds12" style="left:129px;top:121px"></div><div class="dust" id="ds13" style="left:73px;top:389px"></div><div class="dust" id="ds14" style="left:495px;top:1228px"></div><div class="dust" id="ds15" style="left:61px;top:1593px"></div><div class="dust" id="ds16" style="left:950px;top:668px"></div><div class="dust" id="ds17" style="left:902px;top:1210px"></div><div class="dust" id="ds18" style="left:400px;top:1063px"></div><div class="dust" id="ds19" style="left:478px;top:1311px"></div><div class="dust" id="ds20" style="left:602px;top:1023px"></div><div class="dust" id="ds21" style="left:9px;top:1356px"></div><div class="dust" id="ds22" style="left:174px;top:936px"></div><div class="dust" id="ds23" style="left:569px;top:833px"></div><div class="dust" id="ds24" style="left:170px;top:1449px"></div><div class="dust" id="ds25" style="left:520px;top:645px"></div></div>
+      <div id="s0" class="full clip" data-start="0" data-duration="3.34" data-track-index="0" style=""><div class="stage"><div class="glass dash" id="dsh"><div class="dtitle"><div class="glogo"></div>Google Ads · This week</div><div class="kpis"><div class="kpi"><div class="kl">Clicks</div><div class="kv g">↑↑↑</div></div><div class="kpi" id="kc"><div class="kl">Calls</div><div class="kv r">0</div></div></div><div class="bars"><div style="height:30%"></div><div style="height:45%"></div><div style="height:38%"></div><div style="height:60%"></div><div style="height:55%"></div><div style="height:75%"></div><div style="height:70%"></div><div style="height:92%"></div></div></div></div></div>
+      <div id="h0a" class="clip head" data-start="0" data-duration="2.4" data-track-index="3" style=""><div class="lead">Google Ads mein</div><div class="t3d " style="font-size:118px">Clicks ✓</div></div>
+      <div id="h0b" class="clip head" data-start="2.4" data-duration="0.94" data-track-index="3" style=""><div class="lead">par</div><div class="t3d red" style="font-size:150px">Calls ✗</div></div>
+      <div id="s1" class="full clip" data-start="3.34" data-duration="2.88" data-track-index="0" style=""><div class="stage"><div class="glass srch" id="sr"><div class="mag"></div><span>Search Terms Report</span></div><div class="glass stlist" id="stl"><div class="st"><span>search term</span><b>clicks</b></div><div class="st"><span>• • • • •</span><b>?</b></div><div class="st"><span>• • • •</span><b>?</b></div><div class="st"><span>• • • • • •</span><b>?</b></div></div></div></div>
+      <div id="h1" class="clip head" data-start="3.34" data-duration="2.88" data-track-index="3" style=""><div class="lead">ek baar dekho, log kya</div><div class="t3d " style="font-size:104px">SEARCH kar rahe?</div></div>
+      <div id="s2" class="full clip" data-start="6.22" data-duration="2.26" data-track-index="0" style=""><div class="stage"><div class="acbox" id="acb"><div class="ac" id="acu"></div><div class="wind" style="left:210px;top:250px"></div><div class="wind" style="left:290px;top:250px"></div><div class="wind" style="left:370px;top:250px"></div><div class="wind" style="left:450px;top:250px"></div><div class="acl t3d" style="font-size:72px">AC Repair 🔧</div></div></div></div>
+      <div id="h2" class="clip head" data-start="6.22" data-duration="2.26" data-track-index="3" style=""><div class="lead">aap bechte ho</div><div class="t3d gold" style="font-size:120px">Service</div></div>
+      <div id="s3" class="full clip" data-start="8.48" data-duration="6.38" data-track-index="0" style=""><div class="stage"><div class="terms"><div class="glass term" id="tm0"><span class="mag" style="width:44px;height:44px;border-width:7px"></span><span class="q">ac repair <u>job</u></span><span class="x">✗ Naukri dhoondh raha</span></div><div class="glass term" id="tm1"><span class="mag" style="width:44px;height:44px;border-width:7px"></span><span class="q">ac repair <u>course</u></span><span class="x">✗ Seekhna chahta</span></div><div class="glass term" id="tm2"><span class="mag" style="width:44px;height:44px;border-width:7px"></span><span class="q"><u>free</u> mein AC kaise theek karein</span><span class="x">✗ Khud karega</span></div></div></div></div>
+      <div id="h3" class="clip head" data-start="8.48" data-duration="6.38" data-track-index="3" style=""><div class="lead">aur clicks aa rahe hain</div><div class="t3d red" style="font-size:116px">Galat Searches</div></div>
+      <div id="s4" class="full clip" data-start="14.86" data-duration="1.99" data-track-index="0" style=""><div class="stage"><div class="wallet" id="wl"></div><div style="position:absolute;inset:0" data-layout-allow-overlap><div class="coin" id="cn0" style="left:475px;top:330px">₹</div><div class="coin" id="cn1" style="left:475px;top:330px">₹</div><div class="coin" id="cn2" style="left:475px;top:330px">₹</div><div class="coin" id="cn3" style="left:475px;top:330px">₹</div><div class="minus" id="mn0" style="left:160px;top:120px">−₹</div><div class="minus" id="mn1" style="left:780px;top:160px">−₹</div><div class="minus" id="mn2" style="left:200px;top:560px">−₹</div><div class="minus" id="mn3" style="left:760px;top:600px">−₹</div></div></div></div>
+      <div id="h4" class="clip head" data-start="14.86" data-duration="1.99" data-track-index="3" style=""><div class="lead">har click ka</div><div class="t3d gold" style="font-size:112px">Paisa Kat Raha!</div></div>
+      <div id="s5" class="full clip" data-start="16.85" data-duration="4.28" data-track-index="0" style=""><div class="stage"><div class="shield" id="sh">✓</div><div class="duo"><div class="glass pill b" id="p1">Search Terms Report</div><div class="glass pill g" id="p2">Negative Keywords</div></div></div></div>
+      <div id="h5" class="clip head" data-start="16.85" data-duration="4.28" data-track-index="3" style=""><div class="lead">iska ilaaj</div><div class="t3d green" style="font-size:126px">2 Step Fix</div></div>
+      <div id="s6" class="full clip" data-start="21.13" data-duration="3.77" data-track-index="0" style=""><div class="stage"><div class="door" id="dr">EXIT →</div><div class="chips"><div class="glass wchip" id="w0">FREE</div><div class="glass wchip" id="w1">JOB</div><div class="glass wchip" id="w2">COURSE</div></div></div></div>
+      <div id="h6" class="clip head" data-start="21.13" data-duration="3.77" data-track-index="3" style=""><div class="lead">aise shabd</div><div class="t3d red" style="font-size:128px">BAHAR KARO!</div></div>
+      <div id="s7" class="full clip" data-start="24.9" data-duration="2.22" data-track-index="0" style=""><div class="stage"><div class="target" id="tg"></div><div class="arrowd" id="ar" style="left:180px;top:440px"></div><div class="glass callok" id="ck">📞 Call aaya ✓</div></div></div>
+      <div id="h7" class="clip head" data-start="24.9" data-duration="2.22" data-track-index="3" style=""><div class="lead">sahi keyword =</div><div class="t3d green" style="font-size:118px">Sahi Customer</div></div>
+      <div id="s8" class="full clip" data-start="27.12" data-duration="2.59" data-track-index="0" style=""><div class="stage"><div class="cal" id="cl"><div class="calt">LAST CHECKED</div><div class="caln">?</div></div></div></div>
+      <div id="h8" class="clip head" data-start="27.12" data-duration="2.59" data-track-index="3" style=""><div class="lead">aapne aakhri baar</div><div class="t3d " style="font-size:130px">Kab Dekha?</div></div>
+      <div id="s9" class="full clip" data-start="29.71" data-duration="2.53" data-track-index="0" style=""><div class="stage"><div class="glass cbox" id="cbx"><div class="av"></div><span class="ctext" id="ct">KEYWORDS</span><span class="caret"></span><div class="send">➤</div></div></div></div>
+      <div id="h9" class="clip head" data-start="29.71" data-duration="2.53" data-track-index="3" style=""><div class="lead">comment mein likho</div><div class="t3d gold" style="font-size:124px">“KEYWORDS”</div></div>
+      <div id="brand" class="full clip" data-start="32.24" data-duration="3.0" data-track-index="0" style=""><div class="brand"><img class="bmark" id="bm" src="assets/img/advizr-logo.svg" alt="Advizr Media" /><div class="bname t3d">Advizr Media</div><div class="btag">Google Ads • Meta Ads • CRM • Local SEO</div><div class="bcta" id="bc">DM karo, baat karte hain 📩</div></div><div style="position:absolute;inset:0"><div class="cf" style="left:263px;top:-234px;background:#ffc53d" data-dy="2085" data-r="247"></div><div class="cf" style="left:640px;top:-294px;background:#ff4d5e" data-dy="1865" data-r="419"></div><div class="cf" style="left:216px;top:-60px;background:#a46bff" data-dy="2162" data-r="667"></div><div class="cf" style="left:426px;top:-223px;background:#2fd27a" data-dy="1755" data-r="715"></div><div class="cf" style="left:419px;top:-293px;background:#4f8bff" data-dy="1763" data-r="223"></div><div class="cf" style="left:328px;top:-285px;background:#ffc53d" data-dy="2084" data-r="576"></div><div class="cf" style="left:751px;top:-82px;background:#ff4d5e" data-dy="2190" data-r="635"></div><div class="cf" style="left:1007px;top:-232px;background:#ffc53d" data-dy="1699" data-r="216"></div><div class="cf" style="left:159px;top:-47px;background:#2fd27a" data-dy="1864" data-r="626"></div><div class="cf" style="left:817px;top:-146px;background:#ff4d5e" data-dy="2119" data-r="575"></div><div class="cf" style="left:607px;top:-121px;background:#a46bff" data-dy="2199" data-r="597"></div><div class="cf" style="left:618px;top:-182px;background:#ffc53d" data-dy="1629" data-r="466"></div><div class="cf" style="left:1034px;top:-217px;background:#ffc53d" data-dy="2154" data-r="286"></div><div class="cf" style="left:750px;top:-192px;background:#a46bff" data-dy="1873" data-r="471"></div><div class="cf" style="left:147px;top:-268px;background:#ff4d5e" data-dy="2095" data-r="270"></div><div class="cf" style="left:372px;top:-266px;background:#ff4d5e" data-dy="1754" data-r="200"></div><div class="cf" style="left:320px;top:-82px;background:#ff4d5e" data-dy="1721" data-r="225"></div><div class="cf" style="left:639px;top:-277px;background:#ff4d5e" data-dy="2200" data-r="518"></div><div class="cf" style="left:584px;top:-158px;background:#a46bff" data-dy="1841" data-r="216"></div><div class="cf" style="left:337px;top:-297px;background:#4f8bff" data-dy="1710" data-r="212"></div><div class="cf" style="left:991px;top:-199px;background:#ff4d5e" data-dy="1898" data-r="449"></div><div class="cf" style="left:179px;top:-279px;background:#ffc53d" data-dy="1921" data-r="548"></div><div class="cf" style="left:1001px;top:-230px;background:#ff4d5e" data-dy="1985" data-r="651"></div><div class="cf" style="left:910px;top:-103px;background:#a46bff" data-dy="2172" data-r="285"></div><div class="cf" style="left:655px;top:-41px;background:#ffc53d" data-dy="2041" data-r="423"></div><div class="cf" style="left:978px;top:-146px;background:#ff4d5e" data-dy="1864" data-r="713"></div><div class="cf" style="left:330px;top:-127px;background:#4f8bff" data-dy="2025" data-r="502"></div><div class="cf" style="left:40px;top:-108px;background:#a46bff" data-dy="1736" data-r="241"></div><div class="cf" style="left:668px;top:-130px;background:#ff4d5e" data-dy="1961" data-r="541"></div><div class="cf" style="left:643px;top:-158px;background:#ff4d5e" data-dy="1622" data-r="242"></div><div class="cf" style="left:997px;top:-290px;background:#ffc53d" data-dy="1857" data-r="647"></div><div class="cf" style="left:325px;top:-137px;background:#2fd27a" data-dy="1972" data-r="369"></div><div class="cf" style="left:340px;top:-111px;background:#a46bff" data-dy="1870" data-r="487"></div><div class="cf" style="left:826px;top:-107px;background:#4f8bff" data-dy="1627" data-r="314"></div><div class="cf" style="left:337px;top:-44px;background:#2fd27a" data-dy="1875" data-r="424"></div><div class="cf" style="left:355px;top:-205px;background:#ff4d5e" data-dy="1699" data-r="284"></div><div class="cf" style="left:635px;top:-136px;background:#ffc53d" data-dy="1829" data-r="628"></div><div class="cf" style="left:849px;top:-214px;background:#4f8bff" data-dy="1944" data-r="403"></div><div class="cf" style="left:926px;top:-70px;background:#ffc53d" data-dy="1830" data-r="303"></div><div class="cf" style="left:54px;top:-203px;background:#ffc53d" data-dy="2188" data-r="367"></div><div class="cf" style="left:904px;top:-158px;background:#ffc53d" data-dy="1687" data-r="533"></div><div class="cf" style="left:623px;top:-234px;background:#ff4d5e" data-dy="1898" data-r="710"></div><div class="cf" style="left:832px;top:-162px;background:#ff4d5e" data-dy="1954" data-r="606"></div><div class="cf" style="left:317px;top:-86px;background:#a46bff" data-dy="2019" data-r="216"></div></div></div>
+      <div id="sub0" class="clip subw" data-start="0.3" data-duration="2.07" data-track-index="4" style=""><span>Google Ads mein clicks toh aa rahe hain,</span></div>
+      <div id="sub1" class="clip subw" data-start="2.4" data-duration="1.07" data-track-index="4" style=""><span>par <b>call</b> nahi?</span></div>
+      <div id="sub2" class="clip subw" data-start="3.52" data-duration="2.83" data-track-index="4" style=""><span>Ek baar dekho, log kya search karke aa rahe hain.</span></div>
+      <div id="sub3" class="clip subw" data-start="6.4" data-duration="2.21" data-track-index="4" style=""><span>Aap bechte ho: <b>AC repair</b>.</span></div>
+      <div id="sub4" class="clip subw" data-start="8.66" data-duration="1.19" data-track-index="4" style=""><span>Aur clicks aa rahe hain:</span></div>
+      <div id="sub5" class="clip subw" data-start="9.88" data-duration="1.49" data-track-index="4" style=""><span>“AC repair <b>job</b>”,</span></div>
+      <div id="sub6" class="clip subw" data-start="11.4" data-duration="1.36" data-track-index="4" style=""><span>“AC repair <b>course</b>”,</span></div>
+      <div id="sub7" class="clip subw" data-start="12.79" data-duration="2.2" data-track-index="4" style=""><span>“<b>free</b> mein AC kaise theek karein”.</span></div>
+      <div id="sub8" class="clip subw" data-start="15.04" data-duration="1.94" data-track-index="4" style=""><span>Har click ka <b>paisa</b> kat raha hai.</span></div>
+      <div id="sub9" class="clip subw" data-start="17.03" data-duration="1.08" data-track-index="4" style=""><span>Iska ilaaj hai:</span></div>
+      <div id="sub10" class="clip subw" data-start="18.14" data-duration="1.41" data-track-index="4" style=""><span><b>Search Terms Report</b></span></div>
+      <div id="sub11" class="clip subw" data-start="19.58" data-duration="1.68" data-track-index="4" style=""><span>aur <b>Negative Keywords</b>.</span></div>
+      <div id="sub12" class="clip subw" data-start="21.31" data-duration="2.12" data-track-index="4" style=""><span>Free, job, course jaise shabd...</span></div>
+      <div id="sub13" class="clip subw" data-start="23.46" data-duration="1.57" data-track-index="4" style=""><span><b>bahar karo!</b></span></div>
+      <div id="sub14" class="clip subw" data-start="25.08" data-duration="2.17" data-track-index="4" style=""><span>Sahi keyword, <b>sahi customer</b>.</span></div>
+      <div id="sub15" class="clip subw" data-start="27.3" data-duration="2.54" data-track-index="4" style=""><span>Aapne aakhri baar search terms kab dekhe the?</span></div>
+      <div id="sub16" class="clip subw" data-start="29.89" data-duration="2.35" data-track-index="4" style=""><span>Comment mein likho <b>“KEYWORDS”</b> 👇</span></div>
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="35.24" data-track-index="10" data-volume="0.1" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.4,"v":1},{"t":34.04,"v":1},{"t":35.24,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.3" data-duration="2.92" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="3.52" data-duration="2.58" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="6.4" data-duration="1.96" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="8.66" data-duration="6.08" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="15.04" data-duration="1.69" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="17.03" data-duration="3.98" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="21.31" data-duration="3.47" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-7" src="assets/voice/vo-7.m4a" data-start="25.08" data-duration="1.92" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-8" src="assets/voice/vo-8.m4a" data-start="27.3" data-duration="2.29" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-9" src="assets/voice/vo-9.m4a" data-start="29.89" data-duration="1.85" data-track-index="23" data-volume="1"></audio>
+      <audio id="sfx-p0" src="assets/sfx/pop.wav" data-start="2.46" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p1" src="assets/sfx/pop.wav" data-start="6.67" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p2" src="assets/sfx/pop.wav" data-start="9.39" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p3" src="assets/sfx/pop.wav" data-start="11.4" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p4" src="assets/sfx/pop.wav" data-start="12.79" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p5" src="assets/sfx/pop.wav" data-start="15.46" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p6" src="assets/sfx/pop.wav" data-start="15.74" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p7" src="assets/sfx/pop.wav" data-start="16.02" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p8" src="assets/sfx/pop.wav" data-start="16.3" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p9" src="assets/sfx/pop.wav" data-start="18.14" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p10" src="assets/sfx/pop.wav" data-start="19.58" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p11" src="assets/sfx/pop.wav" data-start="21.38" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p12" src="assets/sfx/pop.wav" data-start="21.8" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p13" src="assets/sfx/pop.wav" data-start="22.21" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-p14" src="assets/sfx/pop.wav" data-start="25.52" data-duration="0.18" data-track-index="43" data-volume="0.2"></audio>
+      <audio id="sfx-p15" src="assets/sfx/pop.wav" data-start="31.47" data-duration="0.18" data-track-index="41" data-volume="0.2"></audio>
+      <audio id="sfx-p16" src="assets/sfx/pop.wav" data-start="32.34" data-duration="0.18" data-track-index="42" data-volume="0.2"></audio>
+      <audio id="sfx-imp" src="assets/sfx/impact.wav" data-start="2.46" data-duration="0.7" data-track-index="40" data-volume="0.25"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fl",{y:0},{y:120,duration:2,repeat:18,ease:"none"},0);
+      tl.fromTo(".o1",{x:-60,y:0},{x:120,y:140,duration:17.62,repeat:1,yoyo:true,ease:"sine.inOut"},0);
+      tl.fromTo(".o2",{x:40,y:0},{x:-140,y:-120,duration:17.62,repeat:1,yoyo:true,ease:"sine.inOut"},0);
+      gsap.utils.toArray("#bg .dust").forEach((el,i)=>tl.fromTo(el,{y:0,opacity:0.2},{y:-260-(i%5)*40,opacity:0.8,duration:35.24,ease:"none"},0));
+      tl.fromTo("#h0a .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},0.02);
+      tl.fromTo("#h0a .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},0.08);
+      tl.fromTo("#h0b .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},2.42);
+      tl.fromTo("#h0b .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},2.48);
+      tl.fromTo("#dsh",{opacity:0,rotationX:60,y:200,transformPerspective:1400},{opacity:1,rotationX:0,y:0,duration:0.8,ease:"back.out(1.2)"},0.1);
+      tl.fromTo("#dsh .bars div",{scaleY:0},{scaleY:1,duration:0.4,stagger:0.06,ease:"back.out(1.6)"},0.6);
+      tl.fromTo("#dsh",{rotationY:-14,rotationX:8,transformPerspective:1400},{rotationY:10,rotationX:-4,duration:2.44,ease:"sine.inOut",immediateRender:false},0.9);
+      tl.fromTo("#kc",{scale:1},{scale:1.12,duration:0.25,ease:"back.out(3)"},2.46);
+      tl.fromTo("#kc",{boxShadow:"0 0 0 rgba(255,77,94,0)"},{boxShadow:"0 0 60px rgba(255,77,94,0.9)",duration:0.3,yoyo:true,repeat:3,immediateRender:false},2.52);
+      tl.fromTo("#h1 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},3.36);
+      tl.fromTo("#h1 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},3.42);
+      tl.fromTo("#sr",{opacity:0,scale:0.6,rotationY:-40},{opacity:1,scale:1,rotationY:0,duration:0.5,ease:"back.out(1.6)"},3.39);
+      tl.fromTo("#stl",{opacity:0,y:120,rotationX:40},{opacity:1,y:0,rotationX:0,duration:0.5,ease:"power3.out"},3.69);
+      tl.fromTo("#sr .mag",{x:0,rotation:0},{x:30,rotation:15,duration:0.5,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false},3.94);
+      tl.fromTo("#h2 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},6.24);
+      tl.fromTo("#h2 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},6.3);
+      tl.fromTo("#acu",{opacity:0,y:-200,rotationX:70},{opacity:1,y:0,rotationX:0,duration:0.55,ease:"back.out(1.4)"},6.27);
+      tl.fromTo("#s2 .wind",{opacity:0,y:-20},{opacity:0.8,y:40,duration:0.6,stagger:0.1,repeat:2,ease:"sine.out",immediateRender:false},6.72);
+      tl.fromTo("#acb .acl",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"},6.67);
+      tl.fromTo("#h3 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},8.5);
+      tl.fromTo("#h3 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},8.56);
+      tl.fromTo("#tm0",{opacity:0,x:-300,rotationY:50},{opacity:1,x:0,rotationY:0,duration:0.45,ease:"back.out(1.4)"},9.39);
+      tl.fromTo("#tm0 .x",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},9.74);
+      tl.fromTo("#tm1",{opacity:0,x:300,rotationY:-50},{opacity:1,x:0,rotationY:0,duration:0.45,ease:"back.out(1.4)"},11.4);
+      tl.fromTo("#tm1 .x",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},11.75);
+      tl.fromTo("#tm2",{opacity:0,x:-300,rotationY:50},{opacity:1,x:0,rotationY:0,duration:0.45,ease:"back.out(1.4)"},12.79);
+      tl.fromTo("#tm2 .x",{opacity:0,scale:0},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},13.14);
+      tl.fromTo("#h4 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},14.88);
+      tl.fromTo("#h4 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},14.94);
+      tl.fromTo("#wl",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.4,ease:"back.out(1.8)"},14.91);
+      tl.fromTo("#cn0",{opacity:1,x:0,y:60,rotationY:0,scale:0.6},{opacity:0,x:-330,y:-260,rotationY:540,scale:1,duration:0.8,ease:"power2.out"},15.16);
+      tl.fromTo("#mn0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},15.46);
+      tl.fromTo("#cn1",{opacity:1,x:0,y:60,rotationY:0,scale:0.6},{opacity:0,x:320,y:-220,rotationY:540,scale:1,duration:0.8,ease:"power2.out"},15.44);
+      tl.fromTo("#mn1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},15.74);
+      tl.fromTo("#cn2",{opacity:1,x:0,y:60,rotationY:0,scale:0.6},{opacity:0,x:-300,y:200,rotationY:540,scale:1,duration:0.8,ease:"power2.out"},15.72);
+      tl.fromTo("#mn2",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},16.02);
+      tl.fromTo("#cn3",{opacity:1,x:0,y:60,rotationY:0,scale:0.6},{opacity:0,x:300,y:240,rotationY:540,scale:1,duration:0.8,ease:"power2.out"},16.0);
+      tl.fromTo("#mn3",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},16.3);
+      tl.fromTo("#wl",{x:-10},{x:10,duration:0.06,repeat:9,yoyo:true,ease:"none",immediateRender:false},15.26);
+      tl.fromTo("#h5 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},16.87);
+      tl.fromTo("#h5 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},16.93);
+      tl.fromTo("#sh",{opacity:0,rotationY:180,scale:0.5},{opacity:1,rotationY:0,scale:1,duration:0.8,ease:"back.out(1.4)"},16.9);
+      tl.fromTo("#p1",{opacity:0,y:60},{opacity:1,y:0,duration:0.4,ease:"back.out(2)"},18.14);
+      tl.fromTo("#p2",{opacity:0,y:60},{opacity:1,y:0,duration:0.4,ease:"back.out(2)"},19.58);
+      tl.fromTo("#sh",{filter:"drop-shadow(0 30px 50px rgba(0,0,0,0.5))"},{filter:"drop-shadow(0 0 60px rgba(69,226,140,0.9))",duration:0.4,yoyo:true,repeat:3,immediateRender:false},19.62);
+      tl.fromTo("#h6 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},21.15);
+      tl.fromTo("#h6 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},21.21);
+      tl.fromTo("#dr",{opacity:0,rotationY:-70},{opacity:1,rotationY:0,duration:0.5,ease:"power3.out"},21.18);
+      tl.fromTo("#w0",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},21.38);
+      tl.fromTo("#w1",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},21.8);
+      tl.fromTo("#w2",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.3,ease:"back.out(2.5)"},22.21);
+      tl.to(["#w0","#w1","#w2"],{x:560,rotation:25,opacity:0,duration:0.5,stagger:0.12,ease:"power3.in"},23.46);
+      tl.fromTo("#h7 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},24.92);
+      tl.fromTo("#h7 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},24.98);
+      tl.fromTo("#tg",{opacity:0,rotationY:70,scale:0.6},{opacity:1,rotationY:20,scale:1,duration:0.5,ease:"power3.out"},24.95);
+      tl.fromTo("#ar",{opacity:0,x:-500},{opacity:1,x:0,duration:0.3,ease:"power4.in"},25.25);
+      tl.fromTo("#tg",{scale:1},{scale:1.06,duration:0.12,yoyo:true,repeat:1,immediateRender:false},25.549999999999997);
+      tl.fromTo("#ck",{opacity:0,y:50},{opacity:1,y:0,duration:0.35,ease:"back.out(2)"},26.04);
+      tl.fromTo("#h8 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},27.14);
+      tl.fromTo("#h8 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},27.2);
+      tl.fromTo("#cl",{opacity:0,rotationX:-90,transformOrigin:'50% 0%'},{opacity:1,rotationX:0,duration:0.7,ease:"bounce.out"},27.17);
+      tl.fromTo("#cl",{rotationY:-12,rotationX:8,transformPerspective:1400},{rotationY:12,rotationX:-4,duration:1.7899999999999998,ease:"sine.inOut",immediateRender:false},27.92);
+      tl.fromTo("#h9 .lead",{opacity:0,y:24},{opacity:1,y:0,duration:0.3,ease:"power3.out"},29.73);
+      tl.fromTo("#h9 .t3d",{opacity:0,rotationX:-80,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.5,ease:"back.out(1.5)"},29.79);
+      tl.fromTo("#cbx",{opacity:0,y:120,rotationX:50},{opacity:1,y:0,rotationX:0,duration:0.5,ease:"back.out(1.5)"},29.76);
+      tl.fromTo("#ct",{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.6,ease:"steps(8)"},30.82);
+      tl.fromTo("#bm",{opacity:0,rotationY:-180,scale:0.4},{opacity:1,rotationY:0,scale:1,duration:0.8,ease:"back.out(1.5)"},32.29);
+      tl.fromTo("#brand .bname",{opacity:0,y:40},{opacity:1,y:0,duration:0.4,ease:"power3.out"},32.64);
+      tl.fromTo("#brand .btag",{opacity:0,y:30},{opacity:1,y:0,duration:0.4,ease:"power3.out"},32.84);
+      tl.fromTo("#bc",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"},33.04);
+      tl.fromTo("#bc",{scale:1},{scale:1.06,duration:0.4,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false},33.54);
+      gsap.utils.toArray("#brand .cf").forEach((el)=>tl.fromTo(el,{y:0,rotation:0},{y:+el.dataset.dy,rotation:+el.dataset.r,duration:2.4,ease:"power1.in"},32.24));
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
