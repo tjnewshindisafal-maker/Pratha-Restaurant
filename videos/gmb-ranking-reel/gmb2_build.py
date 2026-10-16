@@ -1,6 +1,6 @@
 import sys, json, random
 P=sys.argv[1]; D=json.load(open(sys.argv[2])); CSS=open(sys.argv[3]).read()
-GAP=0.32
+GAP=0.35
 st=[];t=0.25
 for d in D: st.append(round(t,2)); t+=d+GAP
 END=round(t+1.5,2)
@@ -8,14 +8,14 @@ def at(i,f): return round(st[i]+f*D[i],2)
 def sc(i): return 0 if i==0 else round(st[i]-0.2,2)
 bounds=[sc(i) for i in range(len(D))]+[END]
 def span(i): return bounds[i], round(bounds[i+1]-bounds[i],2)
-CAPS=[[(0,"Google pe business profile bana li?"),(0.62,"Bahut achha.")],[(0,"Par calls nahi aate?")],
+CAPS=[[(0,"Google pe business profile bana li?"),(0.77,"Bahut achha.")],[(0,"Par calls nahi aate?")],
 [(0,"Kyunki profile banana sirf shuruaat hai."),(0.6,"Asli khel hai ranking.")],
-[(0,"Jab koi search karta hai “near me”,"),(0.42,"toh zyadatar log sirf upar ke 3 result dekhte hain.")],
-[(0,"Aur agar aap 27th number pe ho,"),(0.6,"toh aap dikhte hi nahi.")],
+[(0,"Jab koi search karta hai “near me”,"),(0.45,"toh zyadatar log sirf upar ke 3 result dekhte hain.")],
+[(0,"Aur agar aap 27th number pe ho,"),(0.7,"toh aap dikhte hi nahi.")],
 [(0,"Ek example dekho."),(0.4,"Ek hi area mein, do cafe.")],
 [(0,"Pehla cafe: profile banaya, aur bhool gaya.")],
 [(0,"Doosra cafe: roz nayi photos,"),(0.45,"posts aur offers, har review ka jawab.")],
-[(0,"3 mahine baad?"),(0.25,"Pehla cafe: 27th number pe."),(0.68,"Doosra: Top 3 mein.")],
+[(0,"3 mahine baad?"),(0.22,"Pehla cafe: 27th number pe."),(0.68,"Doosra: Top 3 mein.")],
 [(0,"Aur calls? Doosre ka phone bajta hi rehta hai.")],
 [(0,"Kyunki Google upar use rakhta hai jo active hai.")],
 [(0,"Roz update karo, toh rank upar."),(0.52,"Aur rank upar, toh calls zyada.")],
@@ -36,12 +36,12 @@ SHOP=lambda id,name,cls: f'<div class="shop {cls}" id="{id}"><div class="awn"></
 # 0 hook
 s,d=span(0)
 clip("s0",s,d,f'<div class="stage">{GC("Your Business","Shop · Open now")}<div class="okbadge" id="ok0">✓</div><div class="ring" id="rg0"></div></div>',0)
-head("h0a",s,round(at(0,0.62)-s,2),"Google pe","Business Profile","var(--blue)",104)
-head("h0b",at(0,0.62),round(bounds[1]-at(0,0.62),2),"bana li?","Bahut achha.","var(--green)",120)
+head("h0a",s,round(at(0,0.77)-s,2),"Google pe","Business Profile","var(--blue)",104)
+head("h0b",at(0,0.77),round(bounds[1]-at(0,0.77),2),"bana li?","Bahut achha.","var(--green)",120)
 T("#s0 .gcard","opacity:0,rotationX:70,y:160,transformPerspective:1200","opacity:1,rotationX:0,y:0",0.15,0.8,"back.out(1.3)")
 js.append(f'tl.fromTo("#s0 .gbtns > div",{{opacity:0,y:24}},{{opacity:1,y:0,duration:0.25,stagger:0.08}},0.7);')
-T("#ok0","opacity:0,scale:0,rotation:-90","opacity:1,scale:1,rotation:0",at(0,0.64),0.45,"back.out(2.2)"); pops.append(at(0,0.64))
-T("#rg0","opacity:0.9,scale:0.3","opacity:0,scale:2.4",at(0,0.66),0.7,"power2.out")
+T("#ok0","opacity:0,scale:0,rotation:-90","opacity:1,scale:1,rotation:0",at(0,0.78),0.45,"back.out(2.2)"); pops.append(at(0,0.78))
+T("#rg0","opacity:0.9,scale:0.3","opacity:0,scale:2.4",at(0,0.8),0.7,"power2.out")
 # 1 dark
 s,d=span(1)
 clip("s1",s,d,'<div class="darkbg"></div><div class="vig" id="vg"></div><div class="stage"><div class="dk"><div class="lead w">par</div><div class="glow" id="gl">CALLS<br/>NAHI AATE?</div><div class="callbox" id="cb"><i class="b1 red"></i><span>Calls today</span><b>0</b></div></div></div>',0)
@@ -67,8 +67,8 @@ s,d=span(3)
 res=''.join(f'<div class="res" id="res{n}"><span class="num">{n}</span><div><div class="rn">{nm}</div><div class="rs"><span class="stars">★★★★★</span> · Open</div></div><div class="rcall"></div></div>' for n,nm in [(1,"Cafe Aroma"),(2,"Brew House"),(3,"Daily Grind")])
 rip=''.join(f'<div class="rip q{n}"></div>' for n in (1,2,3))
 clip("s3",s,d,f'<div class="stage"><div class="phone"><div class="notch"></div><div class="sbar"><span class="g">G</span><span class="typed" id="ty">cafe near me</span><span class="caret"></span></div><div class="map"><div class="road a"></div><div class="road b"></div>{rip}<div class="mp p1">1</div><div class="mp p2">2</div><div class="mp p3">3</div></div><div class="results">{res}</div></div><div class="top3" id="t3">TOP 3</div></div>',0)
-head("h3a",s,round(at(3,0.42)-s,2),"search:","“near me”","var(--blue)",124)
-head("h3b",at(3,0.42),round(bounds[4]-at(3,0.42),2),"zyadatar log dekhte hain","sirf TOP 3","var(--ink)",120)
+head("h3a",s,round(at(3,0.45)-s,2),"search:","“near me”","var(--blue)",124)
+head("h3b",at(3,0.45),round(bounds[4]-at(3,0.45),2),"zyadatar log dekhte hain","sirf TOP 3","var(--ink)",120)
 T("#s3 .phone","opacity:0,y:260,rotation:6","opacity:1,y:0,rotation:0",s+0.05,0.6,"power3.out")
 T("#ty","clipPath:'inset(0 100% 0 0)'","clipPath:'inset(0 0% 0 0)'",at(3,0.08),1.0,"steps(12)")
 js.append(f'tl.fromTo("#s3 .mp",{{opacity:0,y:-60}},{{opacity:1,y:0,duration:0.35,stagger:0.15,ease:"bounce.out"}},{at(3,0.3)});')
@@ -80,10 +80,10 @@ T("#t3","opacity:0,scale:3,rotation:-25","opacity:1,scale:1,rotation:6",at(3,0.7
 s,d=span(4)
 rows=''.join(f'<div class="lrow{" me" if n==27 else ""}"><span class="ln">#{n}</span><span class="lt">{"Your Business" if n==27 else ""}</span></div>' for n in range(4,29))
 clip("s4",s,d,f'<div class="stage"><div class="listwin"><div class="lcol" id="lcol">{rows}</div><div class="fadeT"></div><div class="fadeB"></div></div></div>',0)
-head("h4a",s,round(at(4,0.6)-s,2),"aur aap ho","#27","var(--red)",180)
-head("h4b",at(4,0.6),round(bounds[5]-at(4,0.6),2),"toh aap","dikhte hi nahi.","#8a8f98",104)
+head("h4a",s,round(at(4,0.7)-s,2),"aur aap ho","#27","var(--red)",180)
+head("h4b",at(4,0.7),round(bounds[5]-at(4,0.7),2),"toh aap","dikhte hi nahi.","#8a8f98",104)
 js.append(f'tl.fromTo("#lcol",{{y:0}},{{y:-2480,duration:{round(D[4]*0.5,2)},ease:"power3.inOut"}},{s+0.15});')
-js.append(f'tl.to("#s4 .lrow.me",{{opacity:0.12,scale:0.92,duration:0.8}},{at(4,0.65)});')
+js.append(f'tl.to("#s4 .lrow.me",{{opacity:0.12,scale:0.92,duration:0.8}},{at(4,0.72)});')
 # 5 example intro: two shops
 s,d=span(5)
 clip("s5",s,d,f'<div class="stage"><div class="exstamp" id="exs">EXAMPLE</div><div class="shops">{SHOP("shA","Cafe A","ga")}<div class="vs">VS</div>{SHOP("shB","Cafe B","gb")}</div><div class="note">*Samjhane ke liye example</div></div>',0)
@@ -104,12 +104,12 @@ T("#dust","opacity:0","opacity:0.55",at(6,0.45),0.9,"power1.inOut")
 js.append(f'tl.fromTo("#zz",{{opacity:0,y:20}},{{opacity:1,y:-40,duration:1.2,ease:"sine.out"}},{at(6,0.5)});')
 # 7 cafe B active
 s,d=span(7)
-fly=[("Nayi photos","b5",-330,-190),("Post + Offer","b6",330,-150),("Review reply","b7",-320,250),("Updated today","b8",320,270)]
+fly=[("Nayi photos","b5",-300,-320),("Post + Offer","b6",300,-300),("Review reply","b7",-320,250),("Updated today","b8",320,270)]
 chips=''.join(f'<div class="fchip" id="fc{j}" style="left:calc(50% + {x}px);top:calc(50% + {y}px)"><i class="{c}"></i><span>{tx}</span><b>✓</b></div>' for j,(tx,c,x,y) in enumerate(fly))
 clip("s7",s,d,f'<div class="stage"><div class="cwrap">{CB}</div>{chips}</div>',0)
 head("h7",s,d,"doosra cafe","Roz Update","var(--blue)",126)
 T("#s7 .gcard","opacity:0,scale:0.7","opacity:1,scale:0.86",s+0.05,0.45,"back.out(1.6)")
-for j,f in enumerate([0.12,0.35,0.6,0.8]):
+for j,f in enumerate([0.24,0.46,0.63,0.85]):
     T(f"#fc{j}","opacity:0,scale:0.3","opacity:1,scale:1",at(7,f),0.4,"back.out(2)"); pops.append(at(7,f))
 js.append(f'tl.fromTo("#s7 .gcard",{{boxShadow:"0 30px 80px rgba(26,86,240,0.15)"}},{{boxShadow:"0 30px 110px rgba(26,86,240,0.55)",duration:0.6,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false}},{at(7,0.3)});')
 # 8 three months later: split
@@ -119,7 +119,7 @@ clip("s8",s,d,'''<div class="stage"><div class="split"><div class="side a" id="s
 head("h8",s,d,"3 mahine baad","Result?","var(--ink)",130)
 T("#sdA","opacity:0,x:-200","opacity:1,x:0",s+0.1,0.45)
 T("#sdB","opacity:0,x:200","opacity:1,x:0",s+0.2,0.45)
-js.append(f'tl.fromTo("#rcA",{{y:0}},{{y:-660,duration:1.0,ease:"power2.inOut"}},{at(8,0.25)});')
+js.append(f'tl.fromTo("#rcA",{{y:0}},{{y:-660,duration:1.0,ease:"power2.inOut"}},{at(8,0.22)});')
 js.append(f'tl.fromTo("#rcB",{{y:0}},{{y:-660,duration:1.0,ease:"power2.inOut"}},{at(8,0.68)});')
 T("#b3","opacity:0,scale:2.5,rotation:-20","opacity:1,scale:1,rotation:-6",at(8,0.68)+1.0,0.3,"power4.in"); pops.append(at(8,0.68)+1.25)
 # 9 calls
