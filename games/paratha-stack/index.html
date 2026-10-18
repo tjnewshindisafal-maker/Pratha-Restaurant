@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paratha Stack</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Hind:wght@400;600&display=swap">
+<style>
+/* Layout: one full-screen kitchen scene on canvas; score HUD on top, cards float over the stack */
+:root {
+  --night: #1d1410;
+  --wood: #3b2416;
+  --ghee: #ffc94a;
+  --chili: #e2482f;
+  --ink: #fff6e6;
+  --muted: #cdb798;
+  --card: rgba(36, 24, 18, 0.92);
+  --line: rgba(255, 201, 74, 0.28);
+  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Hind", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+.hud {
+  position: fixed; left: 0; right: 0; top: 0;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+  padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  pointer-events: none;
+}
+.score {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(44px, 12vw, 64px); line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+}
+.best { margin-top: 4px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.icon-btn {
+  pointer-events: auto;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(0, 0, 0, 0.35); color: var(--ink);
+  border: 1px solid var(--line); cursor: pointer;
+}
+.icon-btn svg { width: 22px; height: 22px; }
+.icon-btn .off { display: none; }
+.icon-btn[aria-pressed="true"] .on { display: none; }
+.icon-btn[aria-pressed="true"] .off { display: block; }
+
+.overlay {
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  padding-block: calc(24px + env(safe-area-inset-top, 0px)) calc(24px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: linear-gradient(to bottom, rgba(20, 12, 8, 0.25), rgba(20, 12, 8, 0.7));
+}
+.card {
+  width: min(100%, 360px);
+  display: grid; gap: 14px;
+  padding: 24px 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  text-align: left;
+}
+.eyebrow { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ghee); }
+.card h1, .card h2 {
+  margin: 0; font-family: var(--font-display); font-weight: 800; line-height: 0.95;
+  text-wrap: balance;
+}
+.card h1 { font-size: 48px; }
+.card h2 { font-size: 34px; }
+.devanagari { font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--muted); margin-top: -6px; }
+.card p { margin: 0; line-height: 1.5; color: var(--ink); }
+.rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; color: var(--muted); }
+.rules li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: baseline; }
+.rules b { color: var(--ghee); font-weight: 600; }
+.pip { width: 10px; height: 10px; border-radius: 50%; background: var(--ghee); transform: translateY(-1px); }
+.pip.red { background: var(--chili); }
+.result { display: flex; align-items: baseline; gap: 10px; }
+.result .num { font-family: var(--font-display); font-weight: 800; font-size: 72px; line-height: 0.9; font-variant-numeric: tabular-nums; color: var(--ghee); }
+.result .unit { font-size: 18px; color: var(--muted); }
+.badge {
+  justify-self: start;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--chili); color: var(--ink);
+  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+}
+.play {
+  margin-top: 4px;
+  font-family: var(--font-display); font-weight: 700; font-size: 22px;
+  padding: 12px 18px; border-radius: 14px; border: 0;
+  background: var(--ghee); color: #2a1709;
+  box-shadow: 0 5px 0 #b9831c;
+  cursor: pointer;
+}
+.play:active { transform: translateY(3px); box-shadow: 0 2px 0 #b9831c; }
+.hint { font-size: 13px; color: var(--muted); text-align: center; }
+button:focus-visible { outline: 3px solid var(--ghee); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<canvas id="game" aria-label="Paratha Stack game"></canvas>
+
+<div class="hud">
+  <div id="scoreBox" hidden>
+    <div class="score" id="score">0</div>
+    <div class="best">Best <span id="best">0</span></div>
+  </div>
+  <span></span>
+  <button class="icon-btn" id="mute" type="button" aria-pressed="false" aria-label="Awaaz band karo">
+    <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+    <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="m16 9 6 6"/><path d="m22 9-6 6"/></svg>
+  </button>
+</div>
+
+<div class="overlay" id="overlay">
+  <section class="card" id="startCard">
+    <div class="eyebrow">Pratha Restaurant ki rasoi se</div>
+    <h1>Paratha Stack</h1>
+    <div class="devanagari">पराठा स्टैक</div>
+    <p>Paratha left-right chal raha hai. Sahi time par tap karo taaki wo neeche wale paratha ke upar gire. Jo hissa bahar latka, wo kat jaayega.</p>
+    <ul class="rules">
+      <li><span class="pip"></span><span><b>Perfect drop</b> par ghee ki chamak aur bonus</span></li>
+      <li><span class="pip"></span><span>Lagaatar <b>3 perfect</b> se paratha thoda bada ho jaata hai</span></li>
+      <li><span class="pip red"></span><span>Paratha poora chook gaya to game khatam</span></li>
+    </ul>
+    <button class="play" id="startBtn" type="button">Khelo</button>
+    <div class="hint">Tap, click ya Space dabao</div>
+  </section>
+
+  <section class="card" id="overCard" hidden>
+    <div class="eyebrow">Game khatam</div>
+    <h2>Paratha gir gaya!</h2>
+    <div class="result"><span class="num" id="final">0</span><span class="unit">parathe ka dher</span></div>
+    <span class="badge" id="newBest" hidden>Naya record!</span>
+    <p class="best" style="margin:0">Best: <span id="finalBest">0</span></p>
+    <button class="play" id="againBtn" type="button">Phir se khelo</button>
+  </section>
+</div>
+
+<script>
+(() => {
+  const cvs = document.getElementById("game");
+  const ctx = cvs.getContext("2d");
+  const $ = (id) => document.getElementById(id);
+  const scoreBox = $("scoreBox"), scoreEl = $("score"), bestEl = $("best");
+  const overlay = $("overlay"), startCard = $("startCard"), overCard = $("overCard");
+  const finalEl = $("final"), finalBest = $("finalBest"), newBestEl = $("newBest"), muteBtn = $("mute");
+  const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const safe = (fn) => { try { return fn(); } catch (e) { return undefined; } };
+  const displayFont = getComputedStyle(document.documentElement).getPropertyValue("--font-display").trim();
+
+  // YouTube Playables SDK hooks. They only run when the game is loaded inside Playables
+  // (window.ytgame exists there); everywhere else they are skipped.
+  const yt = window.ytgame || null;
+
+  const WORLD = 400;   // world width in game units
+  const LH = 24;       // height of one paratha layer
+  const BASE_W = 220;  // starting paratha width
+  const PERFECT = 6;   // how close counts as a perfect drop
+
+  const TYPES = [
+    { name: "Plain",  light: "#f4c46c", base: "#d9952f", dark: "#9c5c1c", spot: "#7a3f12", speck: null },
+    { name: "Aloo",   light: "#f8d785", base: "#e2aa3e", dark: "#a8691f", spot: "#80460f", speck: "#fbe7a8" },
+    { name: "Methi",  light: "#eccb73", base: "#cf9a3a", dark: "#925a1b", spot: "#76400f", speck: "#3f7f35" },
+    { name: "Paneer", light: "#f6cf86", base: "#dca04a", dark: "#a1631f", spot: "#7d4410", speck: "#fff4de" },
+    { name: "Mooli",  light: "#f1cd7c", base: "#d8a140", dark: "#9a601d", spot: "#7b4310", speck: "#f3f0e6" }
+  ];
+
+  let cw = 0, ch = 0, dpr = 1, s = 1, colX = 0;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cw = window.innerWidth; ch = window.innerHeight;
+    cvs.width = Math.round(cw * dpr); cvs.height = Math.round(ch * dpr);
+    const colW = Math.min(cw, 480);
+    s = colW / WORLD;
+    colX = (cw - colW) / 2;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  let state = "menu";
+  let stack = [], cur = null, falling = [], parts = [], floats = [];
+  let score = 0, best = 0, combo = 0, dir = 1, cam = 0, overTimer = 0, time = 0;
+
+  const groundY = () => ch * 0.8;
+  const sx = (x) => colX + x * s;
+  const sy = (y) => groundY() - (y - cam) * s;
+
+  const stars = Array.from({ length: 70 }, () => ({ x: Math.random(), y: Math.random() * 0.75, r: Math.random() * 1.4 + 0.4, p: Math.random() * 6 }));
+
+  function makeSpots(w) {
+    const out = [];
+    const n = Math.max(3, Math.round(w / 11));
+    for (let i = 0; i < n; i++) {
+      out.push({ ox: Math.random() * w, y: 0.25 + Math.random() * 0.5, r: 2 + Math.random() * 4, speck: Math.random() < 0.45 });
+    }
+    return out;
+  }
+  function sliceSpots(spots, fromOx, toOx) {
+    return spots.filter((p) => p.ox >= fromOx && p.ox <= toOx).map((p) => ({ ...p, ox: p.ox - fromOx }));
+  }
+
+  function reset() {
+    stack = [{ x: (WORLD - BASE_W) / 2, w: BASE_W, type: TYPES[0], spots: makeSpots(BASE_W) }];
+    falling = []; parts = []; floats = [];
+    score = 0; combo = 0; cam = 0;
+    spawn();
+    updateHud();
+  }
+
+  function spawn() {
+    const top = stack[stack.length - 1];
+    const w = top.w;
+    const fromLeft = stack.length % 2 === 1;
+    dir = fromLeft ? 1 : -1;
+    cur = { x: fromLeft ? -w * 0.6 : WORLD - w * 0.4, w, type: TYPES[stack.length % TYPES.length], spots: makeSpots(w) };
+  }
+
+  const speed = () => Math.min(150 + score * 6, 430);
+
+  function drop() {
+    if (!cur) return;
+    const top = stack[stack.length - 1];
+    const y = stack.length * LH;
+    let piece;
+
+    if (Math.abs(cur.x - top.x) <= PERFECT) {
+      combo++;
+      piece = { x: top.x, w: cur.w, type: cur.type, spots: cur.spots };
+      if (combo >= 3 && piece.w < BASE_W) {
+        const grow = Math.min(10, BASE_W - piece.w);
+        piece.x = Math.max(0, Math.min(WORLD - piece.w - grow, piece.x - grow / 2));
+        piece.w += grow;
+        piece.spots = piece.spots.map((p) => ({ ...p, ox: p.ox + grow / 2 }));
+        addFloat("Paratha bada hua!", piece.x + piece.w / 2, y + LH * 2.4, "#ffc94a");
+      }
+      addFloat(combo > 1 ? "PERFECT x" + combo : "PERFECT", piece.x + piece.w / 2, y + LH * 1.4, "#fff6e6");
+      gheeBurst(piece.x, piece.w, y + LH);
+      tone(520 + Math.min(combo, 10) * 70, 0.16, "sine", 0.16);
+      tone(1040 + Math.min(combo, 10) * 140, 0.12, "triangle", 0.05);
+    } else {
+      const left = Math.max(cur.x, top.x);
+      const right = Math.min(cur.x + cur.w, top.x + top.w);
+      if (right - left <= 0) {
+        falling.push({ ...cur, y, vx: dir * 70, vy: 0, rot: 0, vr: dir * 2.2 });
+        cur = null;
+        tone(190, 0.45, "sawtooth", 0.08, -140);
+        endGame();
+        return;
+      }
+      combo = 0;
+      piece = { x: left, w: right - left, type: cur.type, spots: sliceSpots(cur.spots, left - cur.x, right - cur.x) };
+      const chopLeft = cur.x < top.x;
+      const cx = chopLeft ? cur.x : right;
+      const cwid = chopLeft ? left - cur.x : cur.x + cur.w - right;
+      falling.push({
+        x: cx, w: cwid, type: cur.type, y,
+        spots: sliceSpots(cur.spots, cx - cur.x, cx - cur.x + cwid),
+        vx: (chopLeft ? -1 : 1) * 90, vy: 40, rot: 0, vr: (chopLeft ? -1 : 1) * 3
+      });
+      tone(240 + Math.min(score, 30) * 8, 0.1, "triangle", 0.14);
+      tone(140, 0.12, "square", 0.04, -60);
+    }
+
+    stack.push(piece);
+    score++;
+    updateHud();
+    spawn();
+  }
+
+  function endGame() {
+    state = "dying";
+    overTimer = 1.0;
+    const isNew = score > best;
+    if (isNew) best = score;
+    saveBest();
+    finalEl.textContent = score;
+    finalBest.textContent = best;
+    newBestEl.hidden = !(isNew && score > 0);
+    if (yt) safe(() => yt.engagement.sendScore({ value: score }));
+  }
+
+  function addFloat(text, x, y, color) {
+    floats.push({ text, x, y, color, life: 1.1 });
+  }
+  function gheeBurst(x, w, y) {
+    const n = reduceMotion ? 6 : 22;
+    for (let i = 0; i < n; i++) {
+      parts.push({
+        x: x + Math.random() * w, y: y + 2,
+        vx: (Math.random() - 0.5) * 140, vy: 60 + Math.random() * 160,
+        r: 1.5 + Math.random() * 3, life: 0.6 + Math.random() * 0.5
+      });
+    }
+  }
+
+  function updateHud() {
+    scoreEl.textContent = score;
+    bestEl.textContent = best;
+  }
+
+  // ---------- storage ----------
+  function loadBest() {
+    const local = safe(() => parseInt(localStorage.getItem("paratha-stack-best") || "0", 10)) || 0;
+    best = Math.max(best, local);
+    updateHud();
+    if (yt) {
+      safe(() => yt.game.loadData().then((raw) => {
+        const data = raw ? JSON.parse(raw) : null;
+        if (data && data.best > best) { best = data.best; updateHud(); }
+      }).catch(() => {}));
+    }
+  }
+  function saveBest() {
+    safe(() => localStorage.setItem("paratha-stack-best", String(best)));
+    if (yt) safe(() => yt.game.saveData(JSON.stringify({ best })).catch(() => {}));
+  }
+
+  // ---------- sound ----------
+  let actx = null, muted = false;
+  function initAudio() {
+    if (actx) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) actx = safe(() => new AC()) || null;
+  }
+  function tone(freq, dur, type, vol, slide) {
+    if (!actx || muted) return;
+    safe(() => {
+      const now = actx.currentTime;
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type;
+      o.frequency.setValueAtTime(freq, now);
+      if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(40, freq + slide), now + dur);
+      g.gain.setValueAtTime(vol, now);
+      g.gain.exponentialRampToValueAtTime(0.001, now + dur);
+      o.connect(g).connect(actx.destination);
+      o.start(now); o.stop(now + dur + 0.02);
+    });
+  }
+  function setMuted(m) {
+    muted = m;
+    muteBtn.setAttribute("aria-pressed", String(m));
+    muteBtn.setAttribute("aria-label", m ? "Awaaz chalu karo" : "Awaaz band karo");
+  }
+  muteBtn.addEventListener("click", (e) => { e.stopPropagation(); initAudio(); setMuted(!muted); muteBtn.blur(); });
+  if (yt) {
+    safe(() => setMuted(!yt.system.isAudioEnabled()));
+    safe(() => yt.system.onAudioEnabledChange((on) => setMuted(!on)));
+  }
+
+  // ---------- flow ----------
+  let paused = false;
+  if (yt) {
+    safe(() => yt.system.onPause(() => { paused = true; }));
+    safe(() => yt.system.onResume(() => { paused = false; }));
+  }
+
+  function start() {
+    initAudio();
+    if (actx && actx.state === "suspended") safe(() => actx.resume());
+    reset();
+    state = "play";
+    overlay.hidden = true;
+    scoreBox.hidden = false;
+    document.activeElement && document.activeElement.blur && document.activeElement.blur();
+  }
+  $("startBtn").addEventListener("click", start);
+  $("againBtn").addEventListener("click", start);
+
+  window.addEventListener("pointerdown", (e) => {
+    if (state !== "play") return;
+    if (e.target.closest && e.target.closest("button")) return;
+    e.preventDefault();
+    drop();
+  }, { passive: false });
+  window.addEventListener("keydown", (e) => {
+    if (e.code !== "Space" && e.code !== "Enter") return;
+    if (state === "play") { e.preventDefault(); drop(); }
+  });
+
+  // ---------- update ----------
+  function update(dt) {
+    time += dt;
+    if (cur) {
+      cur.x += dir * speed() * dt * (state === "menu" ? 0.6 : 1);
+      const minX = -cur.w * 0.6, maxX = WORLD - cur.w * 0.4;
+      if (cur.x < minX) { cur.x = minX; dir = 1; }
+      if (cur.x > maxX) { cur.x = maxX; dir = -1; }
+    }
+
+    const target = Math.max(0, (stack.length + 1) * LH - (groundY() - ch * 0.4) / s);
+    cam += (target - cam) * Math.min(1, dt * 5);
+
+    for (const f of falling) {
+      f.vy -= 900 * dt;
+      f.x += f.vx * dt; f.y += f.vy * dt; f.rot += f.vr * dt;
+    }
+    falling = falling.filter((f) => sy(f.y) < ch + 200);
+
+    for (const p of parts) {
+      p.vy -= 420 * dt;
+      p.x += p.vx * dt; p.y += p.vy * dt; p.life -= dt;
+    }
+    parts = parts.filter((p) => p.life > 0);
+
+    for (const f of floats) { f.y += 40 * dt; f.life -= dt; }
+    floats = floats.filter((f) => f.life > 0);
+
+    if (state === "dying") {
+      overTimer -= dt;
+      if (overTimer <= 0) {
+        state = "over";
+        startCard.hidden = true;
+        overCard.hidden = false;
+        overlay.hidden = false;
+        $("againBtn").focus({ preventScroll: true });
+      }
+    }
+  }
+
+  // ---------- draw ----------
+  const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  const rgb = (c) => "rgb(" + c.join(",") + ")";
+  const SKY = [
+    { top: [74, 40, 24], bottom: [29, 20, 16] },   // kitchen glow
+    { top: [52, 34, 78], bottom: [70, 36, 30] },   // dusk
+    { top: [12, 14, 40], bottom: [38, 26, 64] }    // night sky
+  ];
+
+  function drawBackground() {
+    const h = Math.min(1.999, cam / 900);
+    const i = Math.floor(h), t = h - i;
+    const top = mix(SKY[i].top, SKY[i + 1].top, t);
+    const bot = mix(SKY[i].bottom, SKY[i + 1].bottom, t);
+    const g = ctx.createLinearGradient(0, 0, 0, ch);
+    g.addColorStop(0, rgb(top)); g.addColorStop(1, rgb(bot));
+    ctx.fillStyle = g; ctx.fillRect(0, 0, cw, ch);
+
+    const starA = Math.max(0, Math.min(1, (cam - 500) / 900));
+    if (starA > 0) {
+      ctx.fillStyle = "#fff6e6";
+      for (const st of stars) {
+        ctx.globalAlpha = starA * (0.5 + 0.5 * Math.sin(time * 2 + st.p));
+        ctx.beginPath(); ctx.arc(st.x * cw, st.y * ch, st.r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // chulha glow behind the plate
+    const gy = sy(0);
+    if (gy < ch + 300) {
+      const rg = ctx.createRadialGradient(cw / 2, gy + 40, 10, cw / 2, gy + 40, Math.max(cw, ch) * 0.6);
+      rg.addColorStop(0, "rgba(255,150,60,0.35)");
+      rg.addColorStop(1, "rgba(255,150,60,0)");
+      ctx.fillStyle = rg; ctx.fillRect(0, 0, cw, ch);
+    }
+  }
+
+  function drawCounter() {
+    const top = sy(0) + 10 * s;
+    if (top > ch) return;
+    const g = ctx.createLinearGradient(0, top, 0, ch);
+    g.addColorStop(0, "#5a351f"); g.addColorStop(0.08, "#3b2416"); g.addColorStop(1, "#24150d");
+    ctx.fillStyle = g; ctx.fillRect(0, top, cw, ch - top + 1);
+    ctx.fillStyle = "rgba(255,201,74,0.18)"; ctx.fillRect(0, top, cw, 2);
+
+    // steel thali
+    const cx = sx(WORLD / 2), cy = sy(0) + 6 * s;
+    ctx.beginPath(); ctx.ellipse(cx, cy + 6 * s, 160 * s, 16 * s, 0, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(0,0,0,0.35)"; ctx.fill();
+    const pg = ctx.createLinearGradient(0, cy - 12 * s, 0, cy + 12 * s);
+    pg.addColorStop(0, "#f1f1ee"); pg.addColorStop(0.5, "#b9bcbf"); pg.addColorStop(1, "#7d8186");
+    ctx.beginPath(); ctx.ellipse(cx, cy, 152 * s, 13 * s, 0, 0, Math.PI * 2);
+    ctx.fillStyle = pg; ctx.fill();
+    ctx.beginPath(); ctx.ellipse(cx, cy - 2 * s, 128 * s, 8 * s, 0, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255,255,255,0.25)"; ctx.fill();
+  }
+
+  function pill(x, y, w, h) {
+    const r = Math.min(h / 2, w / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.arc(x + w - r, y + r, r, -Math.PI / 2, Math.PI / 2);
+    ctx.lineTo(x + r, y + h);
+    ctx.arc(x + r, y + r, r, Math.PI / 2, Math.PI * 1.5);
+    ctx.closePath();
+  }
+
+  function drawPiece(p, y, rot) {
+    const x0 = sx(p.x), w = p.w * s, h = LH * s;
+    const top = sy(y + LH) + h * 0.08, ph = h * 0.84;
+    if (top > ch + 40 || top + ph < -40) return;
+    ctx.save();
+    if (rot) {
+      ctx.translate(x0 + w / 2, top + ph / 2);
+      ctx.rotate(rot);
+      ctx.translate(-(x0 + w / 2), -(top + ph / 2));
+    }
+    ctx.shadowColor = "rgba(0,0,0,0.3)"; ctx.shadowBlur = 6 * s; ctx.shadowOffsetY = 2 * s;
+    pill(x0, top, w, ph);
+    const g = ctx.createLinearGradient(0, top, 0, top + ph);
+    g.addColorStop(0, p.type.light); g.addColorStop(0.45, p.type.base); g.addColorStop(1, p.type.dark);
+    ctx.fillStyle = g; ctx.fill();
+    ctx.shadowColor = "transparent";
+    ctx.clip();
+    for (const sp of p.spots) {
+      const px = x0 + sp.ox * s, py = top + ph * sp.y;
+      ctx.beginPath();
+      if (sp.speck && p.type.speck) {
+        ctx.fillStyle = p.type.speck; ctx.globalAlpha = 0.9;
+        ctx.arc(px, py, sp.r * 0.45 * s, 0, Math.PI * 2);
+      } else {
+        ctx.fillStyle = p.type.spot; ctx.globalAlpha = 0.5;
+        ctx.ellipse(px, py, sp.r * 1.4 * s, sp.r * 0.5 * s, 0, 0, Math.PI * 2);
+      }
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "rgba(255,240,200,0.45)";
+    ctx.fillRect(x0, top + ph * 0.12, w, Math.max(1, ph * 0.08));
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    drawBackground();
+    drawCounter();
+    stack.forEach((p, i) => drawPiece(p, i * LH, 0));
+    if (cur) {
+      const y = stack.length * LH;
+      // faint guide showing where the top paratha sits
+      const top = stack[stack.length - 1];
+      ctx.strokeStyle = "rgba(255,201,74,0.25)"; ctx.lineWidth = 1; ctx.setLineDash([4, 6]);
+      ctx.beginPath();
+      ctx.moveTo(sx(top.x), sy(y)); ctx.lineTo(sx(top.x), sy(y + LH * 1.5));
+      ctx.moveTo(sx(top.x + top.w), sy(y)); ctx.lineTo(sx(top.x + top.w), sy(y + LH * 1.5));
+      ctx.stroke(); ctx.setLineDash([]);
+      drawPiece(cur, y, 0);
+    }
+    for (const f of falling) drawPiece(f, f.y, f.rot);
+
+    for (const p of parts) {
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life * 1.6));
+      ctx.fillStyle = "#ffd76a";
+      ctx.beginPath(); ctx.arc(sx(p.x), sy(p.y), p.r * s, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    ctx.textAlign = "center";
+    for (const f of floats) {
+      ctx.globalAlpha = Math.max(0, Math.min(1, f.life * 1.5));
+      ctx.font = "800 " + Math.round(22 * Math.max(0.8, s)) + "px " + displayFont;
+      ctx.lineWidth = 4; ctx.strokeStyle = "rgba(40,20,8,0.7)";
+      ctx.strokeText(f.text, sx(f.x), sy(f.y));
+      ctx.fillStyle = f.color; ctx.fillText(f.text, sx(f.x), sy(f.y));
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // ---------- loop ----------
+  let last = 0, firstFrame = true;
+  function loop(now) {
+    const dt = Math.min(0.05, (now - last) / 1000 || 0);
+    last = now;
+    if (!paused) update(dt);
+    draw();
+    if (firstFrame) {
+      firstFrame = false;
+      if (yt) { safe(() => yt.game.firstFrameReady()); safe(() => yt.game.gameReady()); }
+    }
+    requestAnimationFrame(loop);
+  }
+
+  function boot(data) {
+    if (data && data.best) best = Math.max(best, data.best);
+    loadBest();
+    reset();
+    requestAnimationFrame((t) => { last = t; loop(t); });
+  }
+  const hot = window.claude && window.claude.hot;
+  if (hot && typeof hot.snapshot === "function") safe(() => hot.snapshot(() => ({ best })));
+  if (hot && typeof hot.ready === "function") hot.ready(boot);
+  else boot((hot && hot.data) || {});
+})();
+</script>
+</body>
+</html>
