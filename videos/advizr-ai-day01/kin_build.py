@@ -76,7 +76,7 @@ out=f'''<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{END}" data-width="1080" data-height="1920">
-      <div id="bg" class="full clip" data-start="0" data-duration="{END}" data-track-index="9"><div class="grain"></div></div>
+      <div id="bg" class="full clip" data-start="0" data-duration="{END}" data-track-index="9"><div class="gridB"></div><div class="gridA"></div><div class="grain"></div></div>
 {chr(10).join("      "+h for h in html)}
 {chr(10).join("      "+a for a in aud)}
     </div>

@@ -153,7 +153,7 @@
   "hold": 3.0,
   "text": "*FOLLOW kar lo, varna *[n]DAY *[n]02 miss! 🔥",
   "card": {
-   "html": "<div class=\"fol\"><img src=\"assets/img/advizr-logo-dark.svg\" alt=\"Advizr Media\" /><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 02</div></div>",
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 02</div></div>",
    "anim": [
     "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
    ]
