@@ -1,0 +1,153 @@
+{
+ "title": "Advizr Bhaiya Day 0",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 00",
+ "lines": [
+  {
+   "dur": 2.39,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "Namaste!"
+    },
+    {
+     "f": 0.3,
+     "text": "Main hoon *ADVIZR *BHAIYA 👋",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">AAJ SE SHURU</div><div class=\"t\">DAY <b>00</b> 🔥</div></div>"
+     }
+    }
+   ]
+  },
+  {
+   "dur": 3.96,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "Aur ye hai *[n]RAHUL"
+    },
+    {
+     "f": 0.3,
+     "text": "Ise digital marketing ka *KUCH *NAHI aata",
+     "card": {
+      "html": "<div class=\"lvl\"><div class=\"row\"><span>Rahul ka level</span><span style=\"color:#d32f3f\">0% 😅</span></div><div class=\"bar\"><div class=\"fill\" id=\"lf\"></div></div></div>",
+      "anim": [
+       "tl.fromTo(\"#lf\",{width:\"0%\"},{width:\"4%\",duration:0.6},{T}+0.5);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 1.62,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "Sach mein bhaiya, *KUCH *NAHI! 😅",
+     "card": {
+      "html": "<div class=\"wa\"><div class=\"hd\"><div class=\"av\"></div>Rahul</div><div class=\"msg\">Bhaiya, mujhe toh Instagram bhi theek se nahi aata 😅</div><div class=\"tm\">10:02 AM ✓✓</div></div>"
+     }
+    }
+   ]
+  },
+  {
+   "dur": 3.59,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "90 din mein ise *AI *WALA *[n]DIGITAL *[n]MARKETER banaunga",
+     "card": {
+      "html": "<div class=\"zp\"><span class=\"a\" id=\"za\">ZERO</span><span class=\"ar\" id=\"zr\">➜</span><span class=\"b\" id=\"zb\">AI MARKETER 🤖</span></div>",
+      "anim": [
+       "tl.fromTo(\"#zr\",{opacity:0,x:-30},{opacity:1,x:0,duration:0.3},{T}+0.6);",
+       "tl.fromTo(\"#zb\",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.4,ease:\"back.out(2)\"},{T}+0.9);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 3.46,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "Har din ek *NAYA *SABAK",
+     "card": {
+      "html": "<div class=\"cal\" id=\"cal\"><div class=\"cd\">1</div><div class=\"cd\">2</div><div class=\"cd\">3</div><div class=\"cd\">4</div><div class=\"cd\">5</div><div class=\"cd\">6</div><div class=\"cd\">7</div><div class=\"cd\">8</div><div class=\"cd\">9</div><div class=\"cd\">10</div><div class=\"cd\">11</div><div class=\"cd\">12</div><div class=\"cd\">13</div><div class=\"cd\">14</div></div>",
+      "anim": [
+       "tl.to(\"#cal .cd\",{background:\"linear-gradient(135deg,#0aa6e0,#3a6cff)\",color:\"#fff\",duration:0.12,stagger:0.12},{T}+0.4);"
+      ]
+     }
+    },
+    {
+     "f": 0.46,
+     "text": "Aap bhi *SAATH *MEIN seekho 📚"
+    }
+   ]
+  },
+  {
+   "dur": 3.77,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "90 din baad Rahul ek *ASLI *[n]BUSINESS ka *CAMPAIGN chalayega 🚀",
+     "card": {
+      "html": "<div class=\"dash\"><div class=\"hd\"><span>📊 Day 90: Real Campaign</span><span>↑</span></div><div class=\"bars\"><div style=\"height:20%\"></div><div style=\"height:32%\"></div><div style=\"height:28%\"></div><div style=\"height:45%\"></div><div style=\"height:52%\"></div><div style=\"height:64%\"></div><div style=\"height:78%\"></div><div style=\"height:92%\"></div></div></div>",
+      "anim": [
+       "tl.fromTo(\"#cd5 .bars div, .dash .bars div\",{scaleY:0},{scaleY:1,duration:0.35,stagger:0.08,ease:\"back.out(1.6)\"},{T}+0.3);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 1.55,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "Bhaiya... kya main *KAR *PAUNGA? 🥺"
+    }
+   ]
+  },
+  {
+   "dur": 4.16,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "*[n]DEKHTE *[n]HAIN!"
+    },
+    {
+     "f": 0.14,
+     "text": "*FOLLOW karo, aur comment mein likho:",
+     "card": {
+      "html": "<div class=\"cbox\"><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Main bhi seekhunga 🙋</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(12)\"},{T}+1.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.66,
+     "text": "*“MAIN *BHI *SEEKHUNGA” 👇"
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]01 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><img src=\"assets/img/advizr-logo-dark.svg\" alt=\"Advizr Media\" /><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 01</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}

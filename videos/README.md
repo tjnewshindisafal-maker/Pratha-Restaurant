@@ -36,6 +36,7 @@ hyperframes doctor                    # verify
 | `advizr-pendulum/` | Advizr Media 14.6s brand loop: swinging logo wipes "NEED X?" → "WE GOT YOU." (built by pend_build.py) |
 | `advizr-05-website/` | Advizr Media reel #5 (Website hai, darwaza nahi), light theme + Three.js 3D shop/logo; built by a5_build.py |
 | `advizr-ai-day00/` | Advizr Bhaiya ki Class – 90 Din AI Challenge, Day 0 (3D characters Bhaiya + Rahul, chat bubbles); built by d0_build.py + three_chars.js |
+| `advizr-ai-day00-kinetic/` | Day 0 in kinetic-typography style (word-by-word, paper bg, UI cards); reusable builder kin_build.py + episode spec JSON |
 
 ## Everyday commands (run inside a project folder)
 

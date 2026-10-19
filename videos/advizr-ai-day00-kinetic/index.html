@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Advizr Bhaiya Day 0</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-800-normal.woff2"); font-weight: 800; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-900-normal.woff2"); font-weight: 900; }
+      :root { --ink: #2a2d33; --navy: #0b1b3a; --acc: #0784bf; --acc2: #0aa6e0; --org: #c9581a; --green: #12894d; --red: #d32f3f; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #efeee9; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; color: var(--ink); }
+      .full { position: absolute; inset: 0; overflow: hidden; }
+      #bg { background: radial-gradient(ellipse at 50% 42%, #fbfaf6 0%, #f1f0eb 55%, #e2e0d9 100%); }
+      .grain { position: absolute; inset: 0; opacity: 0.5; background-image: radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1.4px); background-size: 5px 5px; }
+      .pill { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); padding: 12px 28px; border-radius: 40px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.08); font-weight: 900; font-size: 32px; color: var(--navy); white-space: nowrap; z-index: 5; }
+      .pill b { color: var(--acc); }
+      .tb { position: absolute; left: 60px; right: 60px; top: 470px; height: 560px; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; align-items: baseline; column-gap: 18px; row-gap: 4px; text-align: center; z-index: 4; }
+      .tb .w { display: inline-block; font-weight: 800; font-size: 64px; line-height: 1.12; color: var(--ink); }
+      .tb .w.k { font-weight: 900; font-size: 112px; line-height: 1.02; color: var(--acc); letter-spacing: -2px; text-shadow: 0 6px 0 rgba(7,132,191,0.12), 0 14px 30px rgba(0,0,0,0.08); }
+      .tb.r .w.k { color: var(--org); text-shadow: 0 6px 0 rgba(201,88,26,0.14), 0 14px 30px rgba(0,0,0,0.08); }
+      .tb .w.k.n { color: var(--navy); text-shadow: 0 6px 0 rgba(11,27,58,0.1), 0 14px 30px rgba(0,0,0,0.08); }
+      .tb .w.k.g { color: var(--green); }
+      .who { position: absolute; left: 50%; top: 400px; transform: translateX(-50%); padding: 8px 22px; border-radius: 30px; font-weight: 900; font-size: 28px; letter-spacing: 3px; z-index: 5; white-space: nowrap; }
+      .who.r { background: #ffe6d4; color: var(--org); }
+      .who.b { background: #d8f1fb; color: var(--acc); }
+      .card { position: absolute; left: 50%; top: 1090px; transform: translateX(-50%); background: #fff; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,0.12), 0 2px 0 rgba(255,255,255,0.8) inset; padding: 34px 40px; z-index: 3; }
+      .ct { text-align: center; }
+      .ct .s { font-weight: 800; font-size: 32px; color: #6b7280; letter-spacing: 2px; }
+      .ct .t { font-weight: 900; font-size: 92px; color: var(--navy); line-height: 1.05; }
+      .ct .t b { color: var(--acc); }
+      .lvl { width: 760px; }
+      .lvl .row { display: flex; justify-content: space-between; font-weight: 900; font-size: 36px; margin-bottom: 18px; }
+      .bar { height: 46px; border-radius: 23px; background: #ebedf1; overflow: hidden; }
+      .fill { height: 100%; width: 0; border-radius: 23px; background: linear-gradient(90deg,#ff8a3d,#ffc94a); }
+      .wa { width: 760px; background: #e9f7ef; }
+      .wa .hd { display: flex; align-items: center; gap: 16px; font-weight: 900; font-size: 32px; color: #075e54; margin-bottom: 16px; }
+      .wa .av { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg,#ffb37a,#ff8a3d); }
+      .wa .msg { background: #fff; border-radius: 22px; border-top-left-radius: 6px; padding: 18px 24px; font-weight: 700; font-size: 34px; color: #222; box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+      .wa .tm { text-align: right; font-weight: 700; font-size: 22px; color: #8a9a93; margin-top: 8px; }
+      .zp { display: flex; align-items: center; gap: 26px; font-weight: 900; font-size: 54px; }
+      .zp .a { color: var(--red); padding: 14px 26px; border-radius: 20px; background: #fde8ea; }
+      .zp .ar { color: #9aa3b2; }
+      .zp .b { color: #fff; padding: 14px 26px; border-radius: 20px; background: linear-gradient(90deg,#0aa6e0,#3a6cff); }
+      .cal { display: grid; grid-template-columns: repeat(7, 86px); gap: 12px; }
+      .cal div { height: 86px; border-radius: 18px; background: #f2f4f7; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 32px; color: #8a93a3; }
+      .dash { width: 760px; }
+      .dash .hd { display: flex; justify-content: space-between; font-weight: 900; font-size: 34px; margin-bottom: 20px; }
+      .dash .hd span:last-child { color: var(--green); }
+      .bars { display: flex; align-items: flex-end; gap: 16px; height: 200px; }
+      .bars div { flex: 1; border-radius: 10px 10px 0 0; background: linear-gradient(#3a6cff,#0aa6e0); transform-origin: bottom; }
+      .cbox { width: 860px; display: flex; align-items: center; gap: 20px; border-radius: 60px; padding: 22px 26px; }
+      .cbox .av { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg,#ffb37a,#ff6a8a); flex: 0 0 auto; }
+      .cbox .tx { font-weight: 900; font-size: 44px; color: var(--navy); white-space: nowrap; }
+      .cbox .send { margin-left: auto; width: 78px; height: 78px; border-radius: 50%; background: linear-gradient(135deg,#0aa6e0,#3a6cff); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 38px; flex: 0 0 auto; }
+      .fol { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+      .fol img { width: 190px; }
+      .fol .btn { padding: 20px 46px; border-radius: 50px; background: linear-gradient(90deg,#0aa6e0,#3a6cff); color: #fff; font-weight: 900; font-size: 44px; box-shadow: 0 16px 36px rgba(10,166,224,0.35); }
+      .fol .nm { font-weight: 900; font-size: 46px; color: var(--navy); }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30.14" data-width="1080" data-height="1920">
+      <div id="bg" class="full clip" data-start="0" data-duration="30.14" data-track-index="9"><div class="grain"></div></div>
+      <div id="who0" class="clip who b" data-start="0.35" data-duration="2.67" data-track-index="5" style="">ADVIZR BHAIYA</div>
+      <div id="who1" class="clip who b" data-start="3.02" data-duration="4.24" data-track-index="5" style="">ADVIZR BHAIYA</div>
+      <div id="who2" class="clip who r" data-start="7.26" data-duration="1.9" data-track-index="5" style="">🙋 RAHUL</div>
+      <div id="who3" class="clip who b" data-start="9.16" data-duration="3.87" data-track-index="5" style="">ADVIZR BHAIYA</div>
+      <div id="who4" class="clip who b" data-start="13.03" data-duration="3.74" data-track-index="5" style="">ADVIZR BHAIYA</div>
+      <div id="who5" class="clip who b" data-start="16.77" data-duration="4.05" data-track-index="5" style="">ADVIZR BHAIYA</div>
+      <div id="who6" class="clip who r" data-start="20.82" data-duration="1.83" data-track-index="5" style="">🙋 RAHUL</div>
+      <div id="who7" class="clip who b" data-start="22.65" data-duration="4.49" data-track-index="5" style="">ADVIZR BHAIYA</div>
+      <div id="ph0" class="clip tb b" data-start="0.38" data-duration="0.71" data-track-index="4" style=""><span class="w" id="p0w0">Namaste!</span></div>
+      <div id="ph1" class="clip tb b" data-start="1.1" data-duration="1.92" data-track-index="4" style=""><span class="w" id="p1w0">Main</span><span class="w" id="p1w1">hoon</span><span class="w k" id="p1w2">ADVIZR</span><span class="w k" id="p1w3">BHAIYA</span><span class="w" id="p1w4">👋</span></div>
+      <div id="ph2" class="clip tb b" data-start="3.05" data-duration="1.18" data-track-index="4" style=""><span class="w" id="p2w0">Aur</span><span class="w" id="p2w1">ye</span><span class="w" id="p2w2">hai</span><span class="w k n" id="p2w3">RAHUL</span></div>
+      <div id="ph3" class="clip tb b" data-start="4.24" data-duration="3.02" data-track-index="4" style=""><span class="w" id="p3w0">Ise</span><span class="w" id="p3w1">digital</span><span class="w" id="p3w2">marketing</span><span class="w" id="p3w3">ka</span><span class="w k" id="p3w4">KUCH</span><span class="w k" id="p3w5">NAHI</span><span class="w" id="p3w6">aata</span></div>
+      <div id="ph4" class="clip tb r" data-start="7.29" data-duration="1.87" data-track-index="4" style=""><span class="w" id="p4w0">Sach</span><span class="w" id="p4w1">mein</span><span class="w" id="p4w2">bhaiya,</span><span class="w k" id="p4w3">KUCH</span><span class="w k" id="p4w4">NAHI!</span><span class="w" id="p4w5">😅</span></div>
+      <div id="ph5" class="clip tb b" data-start="9.19" data-duration="3.84" data-track-index="4" style=""><span class="w" id="p5w0">90</span><span class="w" id="p5w1">din</span><span class="w" id="p5w2">mein</span><span class="w" id="p5w3">ise</span><span class="w k" id="p5w4">AI</span><span class="w k" id="p5w5">WALA</span><span class="w k n" id="p5w6">DIGITAL</span><span class="w k n" id="p5w7">MARKETER</span><span class="w" id="p5w8">banaunga</span></div>
+      <div id="ph6" class="clip tb b" data-start="13.06" data-duration="1.58" data-track-index="4" style=""><span class="w" id="p6w0">Har</span><span class="w" id="p6w1">din</span><span class="w" id="p6w2">ek</span><span class="w k" id="p6w3">NAYA</span><span class="w k" id="p6w4">SABAK</span></div>
+      <div id="ph7" class="clip tb b" data-start="14.65" data-duration="2.12" data-track-index="4" style=""><span class="w" id="p7w0">Aap</span><span class="w" id="p7w1">bhi</span><span class="w k" id="p7w2">SAATH</span><span class="w k" id="p7w3">MEIN</span><span class="w" id="p7w4">seekho</span><span class="w" id="p7w5">📚</span></div>
+      <div id="ph8" class="clip tb b" data-start="16.8" data-duration="4.02" data-track-index="4" style=""><span class="w" id="p8w0">90</span><span class="w" id="p8w1">din</span><span class="w" id="p8w2">baad</span><span class="w" id="p8w3">Rahul</span><span class="w" id="p8w4">ek</span><span class="w k" id="p8w5">ASLI</span><span class="w k n" id="p8w6">BUSINESS</span><span class="w" id="p8w7">ka</span><span class="w k" id="p8w8">CAMPAIGN</span><span class="w" id="p8w9">chalayega</span><span class="w" id="p8w10">🚀</span></div>
+      <div id="ph9" class="clip tb r" data-start="20.85" data-duration="1.8" data-track-index="4" style=""><span class="w" id="p9w0">Bhaiya...</span><span class="w" id="p9w1">kya</span><span class="w" id="p9w2">main</span><span class="w k" id="p9w3">KAR</span><span class="w k" id="p9w4">PAUNGA?</span><span class="w" id="p9w5">🥺</span></div>
+      <div id="ph10" class="clip tb b" data-start="22.68" data-duration="0.57" data-track-index="4" style=""><span class="w k n" id="p10w0">DEKHTE</span><span class="w k n" id="p10w1">HAIN!</span></div>
+      <div id="ph11" class="clip tb b" data-start="23.26" data-duration="2.16" data-track-index="4" style=""><span class="w k" id="p11w0">FOLLOW</span><span class="w" id="p11w1">karo,</span><span class="w" id="p11w2">aur</span><span class="w" id="p11w3">comment</span><span class="w" id="p11w4">mein</span><span class="w" id="p11w5">likho:</span></div>
+      <div id="ph12" class="clip tb b" data-start="25.43" data-duration="1.71" data-track-index="4" style=""><span class="w k" id="p12w0">“MAIN</span><span class="w k" id="p12w1">BHI</span><span class="w k" id="p12w2">SEEKHUNGA”</span><span class="w" id="p12w3">👇</span></div>
+      <div id="ph13" class="clip tb b" data-start="27.12" data-duration="3.02" data-track-index="4" style=""><span class="w k" id="p13w0">FOLLOW</span><span class="w" id="p13w1">kar</span><span class="w" id="p13w2">lo,</span><span class="w" id="p13w3">varna</span><span class="w k n" id="p13w4">DAY</span><span class="w k n" id="p13w5">01</span><span class="w" id="p13w6">miss!</span><span class="w" id="p13w7">🔥</span></div>
+      <div id="cd0" class="clip card" data-start="1.37" data-duration="3.09" data-track-index="3" style=""><div class="ct"><div class="s">AAJ SE SHURU</div><div class="t">DAY <b>00</b> 🔥</div></div></div>
+      <div id="cd1" class="clip card" data-start="4.51" data-duration="3.0" data-track-index="3" style=""><div class="lvl"><div class="row"><span>Rahul ka level</span><span style="color:#d32f3f">0% 😅</span></div><div class="bar"><div class="fill" id="lf"></div></div></div></div>
+      <div id="cd2" class="clip card" data-start="7.56" data-duration="1.85" data-track-index="3" style=""><div class="wa"><div class="hd"><div class="av"></div>Rahul</div><div class="msg">Bhaiya, mujhe toh Instagram bhi theek se nahi aata 😅</div><div class="tm">10:02 AM ✓✓</div></div></div>
+      <div id="cd3" class="clip card" data-start="9.46" data-duration="3.82" data-track-index="3" style=""><div class="zp"><span class="a" id="za">ZERO</span><span class="ar" id="zr">➜</span><span class="b" id="zb">AI MARKETER 🤖</span></div></div>
+      <div id="cd4" class="clip card" data-start="13.33" data-duration="3.69" data-track-index="3" style=""><div class="cal" id="cal"><div class="cd">1</div><div class="cd">2</div><div class="cd">3</div><div class="cd">4</div><div class="cd">5</div><div class="cd">6</div><div class="cd">7</div><div class="cd">8</div><div class="cd">9</div><div class="cd">10</div><div class="cd">11</div><div class="cd">12</div><div class="cd">13</div><div class="cd">14</div></div></div>
+      <div id="cd5" class="clip card" data-start="17.07" data-duration="6.41" data-track-index="3" style=""><div class="dash"><div class="hd"><span>📊 Day 90: Real Campaign</span><span>↑</span></div><div class="bars"><div style="height:20%"></div><div style="height:32%"></div><div style="height:28%"></div><div style="height:45%"></div><div style="height:52%"></div><div style="height:64%"></div><div style="height:78%"></div><div style="height:92%"></div></div></div></div>
+      <div id="cd6" class="clip card" data-start="23.53" data-duration="3.81" data-track-index="3" style=""><div class="cbox"><div class="av"></div><span class="tx" id="ctx">Main bhi seekhunga 🙋</span><div class="send">➤</div></div></div>
+      <div id="cd7" class="clip card" data-start="27.39" data-duration="2.75" data-track-index="3" style=""><div class="fol"><img src="assets/img/advizr-logo-dark.svg" alt="Advizr Media" /><div class="nm">Advizr Media</div><div class="btn" id="fb">+ Follow for Day 01</div></div></div>
+      <div id="pill" class="clip pill" data-start="0" data-duration="27.14" data-track-index="5" style="">🔥 <b>90 DIN AI CHALLENGE</b> · DAY 00</div>
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="30.14" data-track-index="10" data-volume="0.09" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.4,"v":1},{"t":28.94,"v":1},{"t":30.14,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.4" data-duration="2.39" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="3.07" data-duration="3.96" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="7.31" data-duration="1.62" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="9.21" data-duration="3.59" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="13.08" data-duration="3.46" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="16.82" data-duration="3.77" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="20.87" data-duration="1.55" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-7" src="assets/voice/vo-7.m4a" data-start="22.7" data-duration="4.16" data-track-index="21" data-volume="1"></audio>
+      <audio id="sfx-p0" src="assets/sfx/pop.wav" data-start="1.37" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p1" src="assets/sfx/pop.wav" data-start="1.69" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p2" src="assets/sfx/pop.wav" data-start="2.07" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p3" src="assets/sfx/pop.wav" data-start="3.77" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p4" src="assets/sfx/pop.wav" data-start="4.51" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p5" src="assets/sfx/pop.wav" data-start="5.76" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p6" src="assets/sfx/pop.wav" data-start="6.08" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p7" src="assets/sfx/pop.wav" data-start="7.56" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p8" src="assets/sfx/pop.wav" data-start="8.12" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p9" src="assets/sfx/pop.wav" data-start="8.35" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p10" src="assets/sfx/pop.wav" data-start="9.46" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p11" src="assets/sfx/pop.wav" data-start="10.28" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p12" src="assets/sfx/pop.wav" data-start="10.5" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p13" src="assets/sfx/pop.wav" data-start="10.82" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p14" src="assets/sfx/pop.wav" data-start="11.3" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p15" src="assets/sfx/pop.wav" data-start="13.33" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p16" src="assets/sfx/pop.wav" data-start="13.81" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p17" src="assets/sfx/pop.wav" data-start="14.12" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p18" src="assets/sfx/pop.wav" data-start="15.15" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p19" src="assets/sfx/pop.wav" data-start="15.49" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p20" src="assets/sfx/pop.wav" data-start="17.07" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p21" src="assets/sfx/pop.wav" data-start="18.05" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p22" src="assets/sfx/pop.wav" data-start="18.34" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p23" src="assets/sfx/pop.wav" data-start="19.0" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p24" src="assets/sfx/pop.wav" data-start="21.64" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p25" src="assets/sfx/pop.wav" data-start="21.81" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p26" src="assets/sfx/pop.wav" data-start="22.7" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p27" src="assets/sfx/pop.wav" data-start="22.97" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p28" src="assets/sfx/pop.wav" data-start="23.28" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p29" src="assets/sfx/pop.wav" data-start="23.53" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p30" src="assets/sfx/pop.wav" data-start="25.45" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p31" src="assets/sfx/pop.wav" data-start="25.77" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p32" src="assets/sfx/pop.wav" data-start="26.0" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p33" src="assets/sfx/pop.wav" data-start="27.14" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+      <audio id="sfx-p34" src="assets/sfx/pop.wav" data-start="27.39" data-duration="0.18" data-track-index="42" data-volume="0.12"></audio>
+      <audio id="sfx-p35" src="assets/sfx/pop.wav" data-start="27.74" data-duration="0.18" data-track-index="43" data-volume="0.12"></audio>
+      <audio id="sfx-p36" src="assets/sfx/pop.wav" data-start="27.86" data-duration="0.18" data-track-index="41" data-volume="0.12"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#who0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},0.35);
+      tl.fromTo("#who1",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},3.02);
+      tl.fromTo("#who2",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},7.26);
+      tl.fromTo("#who3",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},9.16);
+      tl.fromTo("#who4",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},13.03);
+      tl.fromTo("#who5",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},16.77);
+      tl.fromTo("#who6",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},20.82);
+      tl.fromTo("#who7",{opacity:0,y:-20},{opacity:1,y:0,duration:0.25,ease:"power3.out"},22.65);
+      tl.fromTo("#p0w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},0.4);
+      tl.fromTo("#p1w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},1.12);
+      tl.fromTo("#p1w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},1.4);
+      tl.fromTo("#p1w2",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},1.69);
+      tl.fromTo("#p1w3",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},2.07);
+      tl.fromTo("#p1w4",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},2.45);
+      tl.fromTo("#p2w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},3.07);
+      tl.fromTo("#p2w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},3.32);
+      tl.fromTo("#p2w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},3.52);
+      tl.fromTo("#p2w3",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},3.77);
+      tl.fromTo("#p3w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},4.26);
+      tl.fromTo("#p3w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},4.52);
+      tl.fromTo("#p3w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},4.99);
+      tl.fromTo("#p3w3",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},5.56);
+      tl.fromTo("#p3w4",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},5.76);
+      tl.fromTo("#p3w5",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},6.08);
+      tl.fromTo("#p3w6",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},6.39);
+      tl.fromTo("#p4w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},7.31);
+      tl.fromTo("#p4w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},7.54);
+      tl.fromTo("#p4w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},7.77);
+      tl.fromTo("#p4w3",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},8.12);
+      tl.fromTo("#p4w4",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},8.35);
+      tl.fromTo("#p4w5",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},8.62);
+      tl.fromTo("#p5w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},9.21);
+      tl.fromTo("#p5w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},9.42);
+      tl.fromTo("#p5w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},9.69);
+      tl.fromTo("#p5w3",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},10.01);
+      tl.fromTo("#p5w4",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},10.28);
+      tl.fromTo("#p5w5",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},10.5);
+      tl.fromTo("#p5w6",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},10.82);
+      tl.fromTo("#p5w7",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},11.3);
+      tl.fromTo("#p5w8",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},11.83);
+      tl.fromTo("#p6w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},13.08);
+      tl.fromTo("#p6w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},13.34);
+      tl.fromTo("#p6w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},13.6);
+      tl.fromTo("#p6w3",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},13.81);
+      tl.fromTo("#p6w4",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},14.12);
+      tl.fromTo("#p7w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},14.67);
+      tl.fromTo("#p7w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},14.91);
+      tl.fromTo("#p7w2",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},15.15);
+      tl.fromTo("#p7w3",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},15.49);
+      tl.fromTo("#p7w4",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},15.78);
+      tl.fromTo("#p7w5",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},16.17);
+      tl.fromTo("#p8w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},16.82);
+      tl.fromTo("#p8w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},17.01);
+      tl.fromTo("#p8w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},17.25);
+      tl.fromTo("#p8w3",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},17.53);
+      tl.fromTo("#p8w4",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},17.86);
+      tl.fromTo("#p8w5",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},18.05);
+      tl.fromTo("#p8w6",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},18.34);
+      tl.fromTo("#p8w7",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},18.81);
+      tl.fromTo("#p8w8",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},19.0);
+      tl.fromTo("#p8w9",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},19.47);
+      tl.fromTo("#p8w10",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},20.0);
+      tl.fromTo("#p9w0",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},20.87);
+      tl.fromTo("#p9w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},21.25);
+      tl.fromTo("#p9w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},21.43);
+      tl.fromTo("#p9w3",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},21.64);
+      tl.fromTo("#p9w4",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},21.81);
+      tl.fromTo("#p9w5",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},22.13);
+      tl.fromTo("#p10w0",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},22.7);
+      tl.fromTo("#p10w1",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},22.97);
+      tl.fromTo("#p11w0",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},23.28);
+      tl.fromTo("#p11w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},23.64);
+      tl.fromTo("#p11w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},23.95);
+      tl.fromTo("#p11w3",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},24.17);
+      tl.fromTo("#p11w4",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},24.57);
+      tl.fromTo("#p11w5",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},24.83);
+      tl.fromTo("#p12w0",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},25.45);
+      tl.fromTo("#p12w1",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},25.77);
+      tl.fromTo("#p12w2",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},26.0);
+      tl.fromTo("#p12w3",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},26.55);
+      tl.fromTo("#p13w0",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},27.14);
+      tl.fromTo("#p13w1",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},27.33);
+      tl.fromTo("#p13w2",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},27.45);
+      tl.fromTo("#p13w3",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},27.57);
+      tl.fromTo("#p13w4",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},27.74);
+      tl.fromTo("#p13w5",{opacity:0,scale:1.8,y:10},{opacity:1,scale:1,y:0,duration:0.32,ease:"back.out(2.2)"},27.86);
+      tl.fromTo("#p13w6",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},27.96);
+      tl.fromTo("#p13w7",{opacity:0,y:26},{opacity:1,y:0,duration:0.22,ease:"power2.out"},28.12);
+      tl.fromTo("#cd0",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},1.37);
+      tl.fromTo("#cd1",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},4.51);
+      tl.fromTo("#lf",{width:"0%"},{width:"4%",duration:0.6},4.51+0.5);
+      tl.fromTo("#cd2",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},7.56);
+      tl.fromTo("#cd3",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},9.46);
+      tl.fromTo("#zr",{opacity:0,x:-30},{opacity:1,x:0,duration:0.3},9.46+0.6);
+      tl.fromTo("#zb",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"},9.46+0.9);
+      tl.fromTo("#cd4",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},13.33);
+      tl.to("#cal .cd",{background:"linear-gradient(135deg,#0aa6e0,#3a6cff)",color:"#fff",duration:0.12,stagger:0.12},13.33+0.4);
+      tl.fromTo("#cd5",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},17.07);
+      tl.fromTo("#cd5 .bars div, .dash .bars div",{scaleY:0},{scaleY:1,duration:0.35,stagger:0.08,ease:"back.out(1.6)"},17.07+0.3);
+      tl.fromTo("#cd6",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},23.53);
+      tl.fromTo("#ctx",{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:0.9,ease:"steps(12)"},23.53+1.2);
+      tl.fromTo("#cd7",{opacity:0,y:80,scale:0.85},{opacity:1,y:0,scale:1,duration:0.45,ease:"back.out(1.7)"},27.39);
+      tl.fromTo("#fb",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false},27.39+0.8);
+      tl.fromTo("#pill",{opacity:0,y:-30},{opacity:1,y:0,duration:0.4,ease:"back.out(2)"},0.1);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
