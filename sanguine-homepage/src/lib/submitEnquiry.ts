@@ -12,7 +12,16 @@ export type Enquiry = {
 
 export class EnquiryNotConfigured extends Error {}
 
-const ENDPOINT = (import.meta.env.VITE_ENQUIRY_ENDPOINT as string | undefined)?.trim();
+declare global {
+  interface Window {
+    /** Injected by the WordPress plugin so the built page needs no rebuild per site. */
+    SANGUINE_CONFIG?: { enquiryEndpoint?: string };
+  }
+}
+
+const ENDPOINT = (
+  window.SANGUINE_CONFIG?.enquiryEndpoint ?? (import.meta.env.VITE_ENQUIRY_ENDPOINT as string | undefined)
+)?.trim();
 
 /**
  * POSTs the enquiry as JSON. Resolves only on a 2xx response; anything else
