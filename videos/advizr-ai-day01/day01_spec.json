@@ -30,11 +30,15 @@
     },
     {
      "f": 0.147,
-     "text": "Tumhe ek *ASSISTANT mil gaya, jo *24 *GHANTE kaam karta hai, aur *[g]SALARY bhi nahi leta 😎",
+     "text": "Tumhe ek *ASSISTANT mil gaya, jo *24 *GHANTE kaam karta hai",
      "card": {
       "html": "<div class=\"wa\"><div class=\"hd\"><div class=\"av\" style=\"background:linear-gradient(135deg,#0aa6e0,#3a6cff)\"></div>AI Assistant 🤖</div><div class=\"msg\">Haan boss, kya kaam hai? ⏰ 24/7 online · ₹<s>Salary</s></div><div class=\"tm\">online ✓✓</div></div>",
       "anim": []
      }
+    },
+    {
+     "f": 0.776,
+     "text": "aur *[g]SALARY bhi *[g]NAHI leta 😎"
     }
    ]
   },
@@ -138,13 +142,17 @@
     },
     {
      "f": 0.214,
-     "text": "Comment mein likho: tumhare kaam ka kaun sa hissa *SABSE *ZYADA *TIME khata hai?",
+     "text": "Comment mein likho 👇",
      "card": {
       "html": "<div class=\"cbox\"><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Captions likhna ⏳</span><div class=\"send\">➤</div></div>",
       "anim": [
        "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(10)\"},{T}+1.4);"
       ]
      }
+    },
+    {
+     "f": 0.395,
+     "text": "Tumhare kaam ka kaun sa hissa *SABSE *ZYADA *TIME khata hai?"
     }
    ]
   }
