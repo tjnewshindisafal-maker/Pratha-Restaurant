@@ -80,6 +80,23 @@
       .brand { width: 56px; height: 56px; border-radius: 14px; flex: 0 0 auto; }
       .brand.sm { width: 64px; height: 64px; }
       .tblhd { display: flex; align-items: center; gap: 14px; font-weight: 900; font-size: 32px; color: #c13584; margin: 2px 4px 10px; }
+      /* ---- dark navy grid theme ---- */
+      :root { --ink: #e9efff; --acc: #3ec8ff; --org: #ff9a4d; --green: #3fe08a; }
+      #root { color: var(--ink); }
+      #bg { background: radial-gradient(ellipse 80% 55% at 20% 8%, #0b2a80 0%, rgba(11,42,128,0) 70%), radial-gradient(ellipse 70% 45% at 90% 100%, #0a2470 0%, rgba(10,36,112,0) 70%), linear-gradient(160deg, #061440 0%, #030a24 55%, #020718 100%); }
+      .gridA { background-image: linear-gradient(rgba(64,140,255,0.9) 2px, transparent 2px), linear-gradient(90deg, rgba(64,140,255,0.9) 2px, transparent 2px); background-size: 125px 125px; background-position: 85px 90px; filter: drop-shadow(0 0 6px rgba(60,140,255,0.9)); -webkit-mask-image: radial-gradient(ellipse 60% 45% at 45% 28%, #000 25%, transparent 100%); mask-image: radial-gradient(ellipse 60% 45% at 45% 28%, #000 25%, transparent 100%); }
+      .gridB { background-image: linear-gradient(rgba(40,100,220,0.35) 2px, transparent 2px), linear-gradient(90deg, rgba(40,100,220,0.35) 2px, transparent 2px); background-size: 125px 125px; background-position: 85px 90px; -webkit-mask-image: none; mask-image: none; opacity: 1; }
+      .grain { background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1.4px); }
+      .pill { background: rgba(255,255,255,0.95); box-shadow: 0 0 30px rgba(62,200,255,0.35); }
+      .tb .w { color: #e9efff; text-shadow: 0 4px 18px rgba(0,0,0,0.5); }
+      .tb .w.k { color: var(--acc); text-shadow: 0 0 28px rgba(62,200,255,0.55), 0 6px 0 rgba(0,0,0,0.25); }
+      .tb.r .w.k { color: var(--org); text-shadow: 0 0 28px rgba(255,154,77,0.5), 0 6px 0 rgba(0,0,0,0.25); }
+      .tb .w.k.n { color: #ffffff; text-shadow: 0 0 26px rgba(120,170,255,0.6), 0 6px 0 rgba(0,0,0,0.3); }
+      .tb .w.k.g { color: var(--green); text-shadow: 0 0 26px rgba(63,224,138,0.5); }
+      .who.r { background: #ff9a4d; color: #1a0d03; }
+      .who.b { background: #3ec8ff; color: #021030; }
+      .card { box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 40px rgba(62,140,255,0.25); }
+      .ct .t b, .pill b { color: #0784bf; }
 
     </style>
   </head>
