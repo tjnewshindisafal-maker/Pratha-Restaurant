@@ -27,6 +27,5 @@ Project scaffolding only — pages and content to be added.
 
 ## Sanguine Softwares homepage redesign
 
-`sanguine-homepage/` contains a standalone redesign of the sanguinesoftwares.com homepage
-(`index.html`, `css/style.css`, `js/script.js`). Open `sanguine-homepage/index.html` directly in a browser.
-Contact details in the Contact section are placeholders — replace before going live.
+`sanguine-homepage/` contains the redesigned sanguinesoftwares.com landing page
+(React + TypeScript + Tailwind + Framer Motion). See `sanguine-homepage/README.md`.
