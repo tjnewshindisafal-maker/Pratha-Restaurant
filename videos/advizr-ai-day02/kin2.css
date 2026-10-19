@@ -67,3 +67,5 @@
       .tbl td { background: #f2f5fa; padding: 12px 14px; color: #2a2d33; }
       .qs { display: flex; flex-direction: column; gap: 16px; width: 760px; }
       .qs div { padding: 18px 26px; border-radius: 24px; background: #fff4e8; border: 3px solid #ffd3ad; font-weight: 900; font-size: 40px; color: #c9581a; }
+      .gptlogo { display: block; width: 130px; height: 130px; margin: 0 auto 14px; border-radius: 30px; box-shadow: 0 10px 26px rgba(16,163,127,0.35); }
+      .gptdot { width: 48px; height: 48px; border-radius: 12px; }

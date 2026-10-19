@@ -32,7 +32,7 @@
      "f": 0.427,
      "text": "*CHATGPT karega 🤖",
      "card": {
-      "html": "<div class=\"ct\"><div class=\"s\">DAY 02 · SOLUTION</div><div class=\"t\">Chat<b>GPT</b> 🤖</div></div>",
+      "html": "<div class=\"ct\"><img class=\"gptlogo\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" /><div class=\"s\">DAY 02 · SOLUTION</div><div class=\"t\">Chat<b>GPT</b></div></div>",
       "anim": []
      }
     },
@@ -60,7 +60,7 @@
      "f": 0.008,
      "text": "Mera business: Pune mein ek *GYM 💪",
      "card": {
-      "html": "<div class=\"gpt\"><div class=\"hd\"><div class=\"dot\">✦</div>ChatGPT · Prompt</div><div class=\"pl\" id=\"pl1\">Mera business: Pune mein ek gym 💪</div><div class=\"pl\" id=\"pl2\">Customer: 25-40 saal, office jaane wale</div><div class=\"pl\" id=\"pl3\">30 din ka Instagram content plan, table mein: Topic + Reel idea + Caption</div></div>",
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT · Prompt</div><div class=\"pl\" id=\"pl1\">Mera business: Pune mein ek gym 💪</div><div class=\"pl\" id=\"pl2\">Customer: 25-40 saal, office jaane wale</div><div class=\"pl\" id=\"pl3\">30 din ka Instagram content plan, table mein: Topic + Reel idea + Caption</div></div>",
       "anim": [
        "tl.set([\"#pl1\",\"#pl2\",\"#pl3\"],{opacity:0},0);",
        "tl.fromTo(\"#pl1\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(14)\"},14.4);",
