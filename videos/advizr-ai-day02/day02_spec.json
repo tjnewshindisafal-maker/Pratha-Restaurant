@@ -1,0 +1,201 @@
+{
+ "title": "Advizr Bhaiya Day 2",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 02",
+ "lines": [
+  {
+   "dur": 4.74,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "Bhaiya, roz sochta hoon: *AAJ *KYA *POST karoon? 😫",
+     "card": {
+      "html": "<div class=\"wa\"><div class=\"hd\"><div class=\"av\"></div>Rahul · Instagram</div><div class=\"msg\">Aaj kya post karu?? 😫😫</div><div class=\"tm\">roz ka sawaal ✓✓</div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.75,
+     "text": "*[n]DIMAAG hi kaam nahi karta!"
+    }
+   ]
+  },
+  {
+   "dur": 5.22,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.008,
+     "text": "Rahul, ye kaam ab..."
+    },
+    {
+     "f": 0.427,
+     "text": "*CHATGPT karega 🤖",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">DAY 02 · SOLUTION</div><div class=\"t\">Chat<b>GPT</b> 🤖</div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.691,
+     "text": "Bas *SAHI *TAREEKE se poochna hai"
+    }
+   ]
+  },
+  {
+   "dur": 3.05,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.013,
+     "text": "*CHATGPT kholo, aur likho 👇"
+    }
+   ]
+  },
+  {
+   "dur": 5.18,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.008,
+     "text": "Mera business: Pune mein ek *GYM 💪",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><div class=\"dot\">✦</div>ChatGPT · Prompt</div><div class=\"pl\" id=\"pl1\">Mera business: Pune mein ek gym 💪</div><div class=\"pl\" id=\"pl2\">Customer: 25-40 saal, office jaane wale</div><div class=\"pl\" id=\"pl3\">30 din ka Instagram content plan, table mein: Topic + Reel idea + Caption</div></div>",
+      "anim": [
+       "tl.set([\"#pl1\",\"#pl2\",\"#pl3\"],{opacity:0},0);",
+       "tl.fromTo(\"#pl1\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(14)\"},14.4);",
+       "tl.fromTo(\"#pl2\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:1.0,ease:\"steps(14)\"},16.0);",
+       "tl.fromTo(\"#pl3\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:1.4,ease:\"steps(20)\"},20.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.301,
+     "text": "Customer: *25-40 saal ke, *OFFICE jaane wale"
+    }
+   ]
+  },
+  {
+   "dur": 7.64,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.005,
+     "text": "Mere liye *30 *DIN ka Instagram *CONTENT *PLAN banao"
+    },
+    {
+     "f": 0.526,
+     "text": "Table mein: *TOPIC, *[n]REEL *[n]IDEA aur *[g]CAPTION",
+     "card": {
+      "html": "<div class=\"tbl\"><table><tr><th>Din</th><th>Reel idea</th><th>Caption</th></tr><tr id=\"tr0\"><td>Day 1</td><td>Morning workout</td><td>Subah 6 baje? 🌅</td></tr><tr id=\"tr1\"><td>Day 2</td><td>Diet myth</td><td>Roti band? ❌</td></tr><tr id=\"tr2\"><td>Day 3</td><td>Member story</td><td>3 mahine baad 🔥</td></tr><tr id=\"tr3\"><td>...</td><td>...</td><td>...</td></tr></table></div>",
+      "anim": [
+       "tl.fromTo(\".tbl tr[id]\",{opacity:0,x:-40},{opacity:1,x:0,duration:0.3,stagger:0.35},{T}+0.4);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 3.57,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.011,
+     "text": "Bas itna? Aur *POORA *MAHINA taiyaar?! 😲",
+     "card": {
+      "html": "<div class=\"cal\" id=\"cal\"><div class=\"cd\">1</div><div class=\"cd\">2</div><div class=\"cd\">3</div><div class=\"cd\">4</div><div class=\"cd\">5</div><div class=\"cd\">6</div><div class=\"cd\">7</div><div class=\"cd\">8</div><div class=\"cd\">9</div><div class=\"cd\">10</div><div class=\"cd\">11</div><div class=\"cd\">12</div><div class=\"cd\">13</div><div class=\"cd\">14</div><div class=\"cd\">15</div><div class=\"cd\">16</div><div class=\"cd\">17</div><div class=\"cd\">18</div><div class=\"cd\">19</div><div class=\"cd\">20</div><div class=\"cd\">21</div></div>",
+      "anim": [
+       "tl.to(\"#cal .cd\",{background:\"linear-gradient(135deg,#0aa6e0,#3a6cff)\",color:\"#fff\",duration:0.08,stagger:0.07},{T}+0.2);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 7.04,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.006,
+     "text": "Haan! Par ek *TRICK aur 🤫"
+    },
+    {
+     "f": 0.132,
+     "text": "Use bolo, mere customer ye *SAWAAL poochte hain:",
+     "card": {
+      "html": "<div class=\"qs\"><div id=\"q1\">💰 Fees kitni hai?</div><div id=\"q2\">⏳ Result kab aayega?</div><div id=\"q3\">🥗 Diet kya rakhoon?</div></div>",
+      "anim": [
+       "tl.fromTo(\".qs div\",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,stagger:0.7,ease:\"back.out(2)\"},{T}+0.8);"
+      ]
+     }
+    },
+    {
+     "f": 0.471,
+     "text": "Fees kitni? Result kab? Diet kya? 🤔"
+    }
+   ]
+  },
+  {
+   "dur": 5.96,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.007,
+     "text": "In sawaalon ke *JAWAB = *[g]SABSE *[g]ACHHA *[g]CONTENT",
+     "card": {
+      "html": "<div class=\"zp\"><span class=\"a\" style=\"color:#c9581a;background:#fff4e8\">❓ Sawaal</span><span class=\"ar\">➜</span><span class=\"b\">🎬 Reel</span></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.537,
+     "text": "Kyunki ye *ASLI *[n]CUSTOMER ki baat hai"
+    }
+   ]
+  },
+  {
+   "dur": 3.5,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.011,
+     "text": "Matlab bhaiya, *CUSTOMER *KA *SAWAAL hi agli *REEL hai! 🤯"
+    }
+   ]
+  },
+  {
+   "dur": 7.52,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.005,
+     "text": "*[g]BILKUL!"
+    },
+    {
+     "f": 0.139,
+     "text": "Aaj ka *HOMEWORK 📝 ye prompt *TRY karo",
+     "card": {
+      "html": "<div class=\"cbox\"><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Diet wali reel 🥗🔥</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(10)\"},{T}+2.6);"
+      ]
+     }
+    },
+    {
+     "f": 0.555,
+     "text": "Comment mein batao: *SABSE *ACHHA *IDEA kaun sa mila? 👇"
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]03 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 03</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}

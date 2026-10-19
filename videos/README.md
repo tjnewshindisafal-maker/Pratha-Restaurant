@@ -38,6 +38,7 @@ hyperframes doctor                    # verify
 | `advizr-ai-day00/` | Advizr Bhaiya ki Class – 90 Din AI Challenge, Day 0 (3D characters Bhaiya + Rahul, chat bubbles); built by d0_build.py + three_chars.js |
 | `advizr-ai-day00-kinetic/` | Day 0 in kinetic-typography style (word-by-word, paper bg, UI cards); reusable builder kin_build.py + episode spec JSON |
 | `advizr-ai-day01/` | 90 Din AI Challenge Day 1 (AI karta kya hai?), kinetic style; day01_spec.json |
+| `advizr-ai-day02/` | 90 Din AI Challenge Day 2 (ChatGPT se 30 din ka content plan), kinetic style; day02_spec.json, storyboard.jpg |
 
 ## Everyday commands (run inside a project folder)
 
