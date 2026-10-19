@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Advizr Bhaiya Day 0</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-500-normal.woff2"); font-weight: 500; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-800-normal.woff2"); font-weight: 800; }
+      @font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin-900-normal.woff2"); font-weight: 900; }
+      :root { --navy: #0b1b3a; --cyan: #0aa6e0; --red: #e8344a; --green: #12a05a; --slate: #4a5a78; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #f3f8ff; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; color: var(--navy); }
+      .full { position: absolute; inset: 0; overflow: hidden; }
+      #bg { background: linear-gradient(165deg, #fbfdff 0%, #eaf4ff 45%, #f6f0ff 100%); }
+      .orb { position: absolute; border-radius: 50%; filter: blur(100px); }
+      .o1 { width: 640px; height: 640px; left: -220px; top: 120px; background: #9fe3ff; opacity: 0.6; }
+      .o2 { width: 600px; height: 600px; right: -220px; top: 880px; background: #d6c4ff; opacity: 0.55; }
+      .o3 { width: 520px; height: 520px; left: 260px; bottom: -220px; background: #ffd9b8; opacity: 0.5; }
+      .floorw { position: absolute; left: -540px; right: -540px; bottom: -200px; height: 900px; transform: perspective(700px) rotateX(64deg); transform-origin: 50% 100%; overflow: hidden; -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 95%); mask-image: linear-gradient(to top, #000 30%, transparent 95%); }
+      .floor { position: absolute; left: 0; right: 0; top: -120px; bottom: -120px; background-image: linear-gradient(rgba(10,140,210,0.22) 2px, transparent 2px), linear-gradient(90deg, rgba(10,140,210,0.22) 2px, transparent 2px); background-size: 120px 120px; }
+      .head { position: absolute; left: 50px; right: 50px; top: 220px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 5; }
+      .lead { font-weight: 700; font-size: 44px; color: var(--slate); margin-bottom: 8px; }
+      .t3d { font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: var(--navy);
+        text-shadow: 0 1px 0 #24406f, 0 2px 0 #2c4a7c, 0 3px 0 #355589, 0 4px 0 #3e6096, 0 5px 0 #476ba3, 0 6px 0 #5176b0, 0 16px 30px rgba(11,27,58,0.25); }
+      .t3d.red { color: var(--red); text-shadow: 0 1px 0 #c92a3e, 0 2px 0 #b72538, 0 3px 0 #a52032, 0 4px 0 #921b2c, 0 5px 0 #801626, 0 16px 30px rgba(232,52,74,0.25); }
+      .t3d.green { color: var(--green); text-shadow: 0 1px 0 #0f8a4d, 0 2px 0 #0d7a44, 0 3px 0 #0b6b3b, 0 4px 0 #095c33, 0 5px 0 #074d2a, 0 16px 30px rgba(18,160,90,0.25); }
+      .t3d.cyan { color: var(--cyan); text-shadow: 0 1px 0 #0892c6, 0 2px 0 #077fad, 0 3px 0 #066d94, 0 4px 0 #055b7b, 0 5px 0 #044962, 0 16px 30px rgba(10,166,224,0.3); }
+      .stage { position: absolute; left: 0; right: 0; top: 640px; height: 900px; display: flex; flex-direction: column; align-items: center; justify-content: center; perspective: 1400px; }
+      .card { background: #ffffff; border-radius: 36px; box-shadow: 0 40px 80px rgba(30,60,120,0.18), 0 2px 0 rgba(255,255,255,0.9) inset; border: 2px solid rgba(10,120,200,0.08); }
+      .browser { width: 860px; overflow: hidden; }
+      .bbar { height: 64px; background: #eef3fa; display: flex; align-items: center; gap: 12px; padding: 0 24px; }
+      .bbar i { width: 18px; height: 18px; border-radius: 50%; background: #ff6b6b; display: block; } .bbar i:nth-child(2) { background: #ffc94a; } .bbar i:nth-child(3) { background: #3fd07a; }
+      .url { margin-left: 16px; flex: 1; height: 34px; border-radius: 17px; background: #fff; }
+      .hero { height: 330px; background: linear-gradient(135deg, #0784bf, #4b3fd6); position: relative; padding: 50px; color: #fff; }
+      .hero h3 { font-weight: 900; font-size: 58px; line-height: 1.05; }
+      .hero p { font-weight: 600; font-size: 28px; opacity: 0.9; margin-top: 14px; }
+      .blob3 { position: absolute; right: 50px; top: 60px; width: 200px; height: 200px; border-radius: 40% 60% 55% 45%; background: rgba(255,255,255,0.3); }
+      .rows { padding: 30px 40px 40px; display: flex; flex-direction: column; gap: 18px; }
+      .rows div { height: 24px; border-radius: 12px; background: #e9eef6; }
+      .chip { position: absolute; padding: 20px 32px; border-radius: 26px; font-weight: 900; font-size: 46px; background: #fff; box-shadow: 0 20px 50px rgba(30,60,120,0.2); }
+      .chip.red { color: var(--red); border: 3px solid rgba(232,52,74,0.4); }
+      .chip.green { color: var(--green); border: 3px solid rgba(18,160,90,0.4); }
+      .grid6 { display: grid; grid-template-columns: repeat(3, 280px); gap: 26px; transform: rotateX(18deg) rotateZ(-6deg); }
+      .mini { height: 300px; border-radius: 26px; overflow: hidden; position: relative; }
+      .mini .mh { height: 130px; } .mini .ml { margin: 22px; height: 18px; border-radius: 9px; background: #e9eef6; }
+      .stamp { position: absolute; left: 50%; top: 52%; transform: translate(-50%,-50%) rotate(-14deg); border: 6px solid var(--red); color: var(--red); font-weight: 900; font-size: 34px; padding: 6px 14px; border-radius: 12px; background: rgba(255,255,255,0.85); white-space: nowrap; }
+      .longpage { width: 640px; height: 820px; overflow: hidden; position: relative; }
+      .lp { position: absolute; left: 0; right: 0; top: 0; }
+      .lp .sec { margin: 26px 30px; height: 220px; border-radius: 20px; background: linear-gradient(135deg,#e7f3ff,#f1eaff); }
+      .lp .foot { margin: 26px 30px; padding: 20px; border-radius: 16px; background: #eef1f6; font-weight: 600; font-size: 20px; color: #9aa5b8; }
+      .mag { position: absolute; width: 150px; height: 150px; border-radius: 50%; border: 14px solid var(--navy); background: rgba(255,255,255,0.35); }
+      .mag::after { content: ""; position: absolute; width: 70px; height: 20px; background: var(--navy); right: -58px; bottom: -26px; transform: rotate(45deg); border-radius: 10px; }
+      .phone { width: 480px; height: 860px; border-radius: 64px; background: #fff; border: 16px solid #10203f; position: relative; overflow: hidden; box-shadow: 0 40px 90px rgba(30,60,120,0.3); }
+      .notch { position: absolute; left: 50%; top: 14px; width: 130px; height: 32px; margin-left: -65px; background: #10203f; border-radius: 18px; z-index: 3; }
+      .pb { position: absolute; border-radius: 16px; background: linear-gradient(135deg,#bfe9ff,#d8ccff); }
+      .spinner { position: absolute; left: 50%; top: 40%; width: 120px; height: 120px; margin-left: -60px; border-radius: 50%; border: 14px solid #e3e9f3; border-top-color: var(--cyan); }
+      .timer { position: absolute; left: 0; right: 0; top: 60%; text-align: center; font-weight: 900; font-size: 64px; color: var(--red); }
+      .phero { position: absolute; left: 0; right: 0; top: 0; height: 380px; background: linear-gradient(135deg, #0784bf, #4b3fd6); color: #fff; padding: 90px 36px 0; }
+      .phero h4 { font-weight: 900; font-size: 46px; line-height: 1.05; }
+      .phero p { font-weight: 600; font-size: 24px; margin-top: 12px; opacity: 0.9; }
+      .pbtn { position: absolute; left: 30px; right: 30px; height: 100px; border-radius: 26px; display: flex; align-items: center; justify-content: center; gap: 14px; font-weight: 900; font-size: 38px; color: #fff; box-shadow: 0 14px 30px rgba(0,0,0,0.18); }
+      .pbtn.call { background: linear-gradient(90deg,#0aa6e0,#3a6cff); }
+      .pbtn.wa { background: linear-gradient(90deg,#1fbf62,#0f9d4f); }
+      .bolt { position: absolute; font-size: 110px; }
+      .vs2 { display: flex; gap: 30px; }
+      .vcol { width: 440px; padding: 34px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+      .vcol .vt { font-weight: 900; font-size: 42px; }
+      .vcol .vb { font-weight: 900; font-size: 120px; }
+      .cbox { width: 900px; display: flex; align-items: center; gap: 22px; padding: 24px 28px; border-radius: 60px; }
+      .av { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg,#ffb37a,#ff6a8a); }
+      .ctext { font-weight: 900; font-size: 56px; color: var(--navy); }
+      .caret { width: 5px; height: 56px; background: var(--navy); }
+      .send { margin-left: auto; width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg,#0aa6e0,#3a6cff); display: flex; align-items: center; justify-content: center; font-size: 42px; color: #fff; }
+      .brand { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 26px; }
+      .bmark3d { width: 420px; height: 270px; }
+      .bname { font-weight: 900; font-size: 104px; letter-spacing: -2px; }
+      .btag { font-weight: 700; font-size: 38px; color: var(--slate); }
+      .bcta { margin-top: 20px; padding: 24px 48px; border-radius: 60px; background: linear-gradient(90deg, #0aa6e0, #3a6cff); color: #fff; font-weight: 900; font-size: 50px; box-shadow: 0 20px 50px rgba(10,166,224,0.35); }
+      .cf { position: absolute; width: 22px; height: 34px; border-radius: 4px; }
+      .subw { position: absolute; left: 60px; right: 60px; bottom: 250px; display: flex; justify-content: center; z-index: 6; }
+      .subw span { background: rgba(11,27,58,0.92); color: #fff; font-weight: 800; font-size: 38px; line-height: 1.25; padding: 14px 28px; border-radius: 16px; text-align: center; box-shadow: 0 12px 30px rgba(11,27,58,0.25); }
+      .subw span b { color: #5fd3ff; }
+      .badge { position: absolute; left: 50px; top: 120px; padding: 14px 28px; border-radius: 40px; background: linear-gradient(90deg,#0aa6e0,#3a6cff); color: #fff; font-weight: 900; font-size: 40px; box-shadow: 0 12px 30px rgba(10,166,224,0.35); z-index: 7; }
+      .series { position: absolute; right: 50px; top: 132px; font-weight: 800; font-size: 30px; color: var(--slate); text-align: right; line-height: 1.15; z-index: 7; }
+      .series b { color: #0784bf; }
+      .panel { position: absolute; left: 50px; right: 50px; top: 250px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 5; }
+      .bub { position: absolute; top: 700px; max-width: 700px; padding: 30px 36px; border-radius: 40px; background: #fff; font-weight: 800; font-size: 46px; line-height: 1.2; color: var(--navy); box-shadow: 0 24px 60px rgba(30,60,120,0.22); z-index: 6; }
+      .bub.b { left: 50px; border: 4px solid rgba(10,166,224,0.55); border-bottom-left-radius: 10px; transform-origin: 10% 100%; }
+      .bub.r { right: 50px; border: 4px solid rgba(255,138,61,0.6); border-bottom-right-radius: 10px; transform-origin: 90% 100%; }
+      .bub .who { display: block; font-size: 28px; font-weight: 900; letter-spacing: 2px; margin-bottom: 8px; }
+      .bub.b .who { color: #0784bf; } .bub.r .who { color: #d9661c; }
+      .bub b { color: #0784bf; }
+      .qm { position: absolute; left: 740px; top: 1010px; font-weight: 900; font-size: 140px; color: #d9661c; text-shadow: 0 10px 30px rgba(255,138,61,0.4); z-index: 6; }
+      .meter { width: 820px; }
+      .mlab { display: flex; justify-content: space-between; font-weight: 900; font-size: 40px; margin-bottom: 18px; }
+      .mbar { height: 56px; border-radius: 28px; background: #e3e9f3; overflow: hidden; box-shadow: inset 0 3px 8px rgba(0,0,0,0.08); }
+      .mfill { height: 100%; width: 0; border-radius: 28px; background: linear-gradient(90deg,#ff8a3d,#ffc94a,#1fbf62,#0aa6e0); }
+      .cal { display: grid; grid-template-columns: repeat(10, 70px); gap: 10px; }
+      .cal div { height: 70px; border-radius: 16px; background: #fff; box-shadow: 0 6px 16px rgba(30,60,120,0.12); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 26px; color: var(--slate); }
+      .cal div.on { background: linear-gradient(135deg,#0aa6e0,#3a6cff); color: #fff; }
+      .rocket { font-size: 150px; }
+      .cbox { width: 900px; }
+      .tease { margin-top: 26px; font-weight: 800; font-size: 40px; color: var(--slate); }
+      .tease b { color: var(--cyan); }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="31.0" data-width="1080" data-height="1920">
+      <div id="bg" class="full clip" data-start="0" data-duration="31.0" data-track-index="9"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="floorw"><div class="floor" id="fl"></div></div></div>
+      <div id="tl3" class="full clip" data-start="0" data-duration="31.0" data-track-index="8" data-layout-allow-occlusion style="pointer-events:none"><canvas id="three-layer" width="1080" height="1920" style="width:1080px;height:1920px;display:block"></canvas></div>
+      <div id="bb0" class="clip bub b" data-start="0.5499999999999999" data-duration="2.66" data-track-index="4" style=""><span class="who">ADVIZR BHAIYA</span>Namaste! 👋 Main hoon <b>Advizr Bhaiya</b>.</div>
+      <div id="bb1" class="clip bub b" data-start="3.24" data-duration="4.23" data-track-index="4" style=""><span class="who">ADVIZR BHAIYA</span>Aur ye hai Rahul. Ise digital marketing ka <b>kuch nahi</b> aata.</div>
+      <div id="bb2" class="clip bub r" data-start="7.5" data-duration="1.89" data-track-index="4" style=""><span class="who">RAHUL</span>Sach mein bhaiya, kuch nahi! 😅</div>
+      <div id="bb3" class="clip bub b" data-start="9.42" data-duration="3.86" data-track-index="4" style=""><span class="who">ADVIZR BHAIYA</span>90 din mein ise <b>AI wala Digital Marketer</b> banaunga 🤖</div>
+      <div id="bb4" class="clip bub b" data-start="13.309999999999999" data-duration="3.73" data-track-index="4" style=""><span class="who">ADVIZR BHAIYA</span>Har din ek naya sabak. Aap bhi <b>saath mein seekho</b> 📚</div>
+      <div id="bb5" class="clip bub b" data-start="17.07" data-duration="4.04" data-track-index="4" style=""><span class="who">ADVIZR BHAIYA</span>90 din baad Rahul ek <b>asli business</b> ka campaign chalayega 🚀</div>
+      <div id="bb6" class="clip bub r" data-start="21.14" data-duration="1.82" data-track-index="4" style=""><span class="who">RAHUL</span>Bhaiya... kya main kar paunga? 🥺</div>
+      <div id="bb7" class="clip bub b" data-start="22.99" data-duration="4.81" data-track-index="4" style=""><span class="who">ADVIZR BHAIYA</span>Dekhte hain! Follow karo, aur comment mein likho: <b>“Main bhi seekhunga”</b> 👇</div>
+      <div id="badge" class="clip badge" data-start="0" data-duration="27.8" data-track-index="6" style="">DAY 0/90</div>
+      <div id="series" class="clip series" data-start="0" data-duration="27.8" data-track-index="6" style="">Advizr Bhaiya ki Class<br/><b>90 Din AI Challenge</b></div>
+      <div id="p0" class="clip full" data-start="0" data-duration="3.19" data-track-index="3" style=""><div class="panel"><div class="lead">shuru ho raha hai</div><div class="t3d cyan" style="font-size:150px">90 DIN</div><div class="t3d" style="font-size:96px">AI CHALLENGE</div></div></div>
+      <div id="p1" class="clip full" data-start="3.19" data-duration="6.18" data-track-index="3" style=""><div class="panel"><div class="meter"><div class="mlab"><span>Rahul ka level</span><span style="color:#e8344a">0% 😅</span></div><div class="mbar"><div class="mfill" id="mf1"></div></div></div></div></div>
+      <div id="qm1" class="clip qm" data-start="4.49" data-duration="4.88" data-track-index="6" style="">?</div>
+      <div id="p3" class="clip full" data-start="9.370000000000001" data-duration="3.89" data-track-index="3" style=""><div class="panel"><div class="lead">90 din mein</div><div class="t3d red" style="font-size:110px">ZERO</div><div class="t3d" style="font-size:70px">↓</div><div class="t3d green" style="font-size:96px">AI MARKETER</div></div></div>
+      <div id="p4" class="clip full" data-start="13.26" data-duration="3.76" data-track-index="3" style=""><div class="panel"><div class="cal"><div id="cd1">1</div><div id="cd2">2</div><div id="cd3">3</div><div id="cd4">4</div><div id="cd5">5</div><div id="cd6">6</div><div id="cd7">7</div><div id="cd8">8</div><div id="cd9">9</div><div id="cd10">10</div><div id="cd11">11</div><div id="cd12">12</div><div id="cd13">13</div><div id="cd14">14</div><div id="cd15">15</div><div id="cd16">16</div><div id="cd17">17</div><div id="cd18">18</div><div id="cd19">19</div><div id="cd20">20</div><div id="cd21">21</div><div id="cd22">22</div><div id="cd23">23</div><div id="cd24">24</div><div id="cd25">25</div><div id="cd26">26</div><div id="cd27">27</div><div id="cd28">28</div><div id="cd29">29</div><div id="cd30">30</div></div><div class="tease"><b>Roz 1 sabak</b> · 90 din</div></div></div>
+      <div id="p5" class="clip full" data-start="17.02" data-duration="4.07" data-track-index="3" style=""><div class="panel"><div class="rocket" id="rk">🚀</div><div class="t3d cyan" style="font-size:100px">DAY 90</div><div class="tease">Rahul ka <b>pehla real campaign</b></div></div></div>
+      <div id="qm6" class="clip qm" data-start="21.09" data-duration="1.85" data-track-index="6" style="">?</div>
+      <div id="p7" class="clip full" data-start="22.939999999999998" data-duration="4.86" data-track-index="3" style=""><div class="panel"><div class="card cbox" id="cbx"><div class="av"></div><span class="ctext" id="ct" style="font-size:44px">Main bhi seekhunga 🙋</span><div class="send">➤</div></div><div class="tease">➕ <b>Follow</b> karo, kal se Day 1</div></div></div>
+      <div id="brand" class="clip full" data-start="27.8" data-duration="3.2" data-track-index="2" style=""><div class="brand"><div class="bmark3d"></div><div class="bname t3d">Advizr Media</div><div class="btag">Kal: <b style="color:#0aa6e0">Day 1</b> — AI karta kya hai?</div><div class="bcta" id="bc">Follow karo 🔔</div></div><div style="position:absolute;inset:0"><div class="cf" style="left:494px;top:-109px;background:#ffc94a" data-dy="1741" data-r="370"></div><div class="cf" style="left:907px;top:-297px;background:#ffc94a" data-dy="2114" data-r="654"></div><div class="cf" style="left:939px;top:-259px;background:#ffc94a" data-dy="2167" data-r="221"></div><div class="cf" style="left:765px;top:-106px;background:#1fbf62" data-dy="2062" data-r="612"></div><div class="cf" style="left:180px;top:-214px;background:#1fbf62" data-dy="1652" data-r="293"></div><div class="cf" style="left:155px;top:-41px;background:#8a6bff" data-dy="1664" data-r="572"></div><div class="cf" style="left:828px;top:-248px;background:#ffc94a" data-dy="1809" data-r="409"></div><div class="cf" style="left:763px;top:-85px;background:#12c4ff" data-dy="1873" data-r="394"></div><div class="cf" style="left:426px;top:-157px;background:#ffc94a" data-dy="1644" data-r="384"></div><div class="cf" style="left:745px;top:-298px;background:#ff5c7a" data-dy="1656" data-r="567"></div><div class="cf" style="left:886px;top:-49px;background:#1fbf62" data-dy="1624" data-r="422"></div><div class="cf" style="left:454px;top:-243px;background:#8a6bff" data-dy="1603" data-r="304"></div><div class="cf" style="left:802px;top:-199px;background:#1fbf62" data-dy="1938" data-r="188"></div><div class="cf" style="left:933px;top:-258px;background:#1fbf62" data-dy="2152" data-r="197"></div><div class="cf" style="left:532px;top:-257px;background:#8a6bff" data-dy="2108" data-r="382"></div><div class="cf" style="left:450px;top:-265px;background:#ff5c7a" data-dy="1796" data-r="275"></div><div class="cf" style="left:737px;top:-226px;background:#1fbf62" data-dy="1642" data-r="235"></div><div class="cf" style="left:296px;top:-224px;background:#ffc94a" data-dy="2189" data-r="215"></div><div class="cf" style="left:144px;top:-94px;background:#1fbf62" data-dy="1765" data-r="697"></div><div class="cf" style="left:64px;top:-113px;background:#8a6bff" data-dy="2178" data-r="268"></div><div class="cf" style="left:908px;top:-123px;background:#12c4ff" data-dy="2198" data-r="554"></div><div class="cf" style="left:482px;top:-193px;background:#ff5c7a" data-dy="1803" data-r="198"></div><div class="cf" style="left:408px;top:-132px;background:#12c4ff" data-dy="2043" data-r="294"></div><div class="cf" style="left:238px;top:-187px;background:#ff5c7a" data-dy="1876" data-r="512"></div><div class="cf" style="left:854px;top:-255px;background:#ffc94a" data-dy="1891" data-r="285"></div><div class="cf" style="left:549px;top:-272px;background:#12c4ff" data-dy="1990" data-r="618"></div><div class="cf" style="left:529px;top:-123px;background:#1fbf62" data-dy="2179" data-r="247"></div><div class="cf" style="left:455px;top:-182px;background:#12c4ff" data-dy="2010" data-r="702"></div><div class="cf" style="left:401px;top:-111px;background:#1fbf62" data-dy="1897" data-r="355"></div><div class="cf" style="left:729px;top:-168px;background:#12c4ff" data-dy="1651" data-r="356"></div><div class="cf" style="left:289px;top:-216px;background:#12c4ff" data-dy="1751" data-r="192"></div><div class="cf" style="left:69px;top:-269px;background:#ff5c7a" data-dy="1813" data-r="578"></div><div class="cf" style="left:321px;top:-293px;background:#ffc94a" data-dy="1891" data-r="324"></div><div class="cf" style="left:512px;top:-158px;background:#1fbf62" data-dy="1688" data-r="483"></div><div class="cf" style="left:732px;top:-240px;background:#12c4ff" data-dy="2030" data-r="642"></div><div class="cf" style="left:165px;top:-104px;background:#8a6bff" data-dy="1773" data-r="460"></div><div class="cf" style="left:810px;top:-47px;background:#ffc94a" data-dy="1701" data-r="229"></div><div class="cf" style="left:303px;top:-235px;background:#1fbf62" data-dy="1686" data-r="346"></div><div class="cf" style="left:818px;top:-187px;background:#12c4ff" data-dy="1807" data-r="360"></div><div class="cf" style="left:505px;top:-67px;background:#8a6bff" data-dy="2172" data-r="577"></div><div class="cf" style="left:105px;top:-212px;background:#8a6bff" data-dy="2093" data-r="448"></div><div class="cf" style="left:568px;top:-266px;background:#12c4ff" data-dy="2194" data-r="626"></div><div class="cf" style="left:577px;top:-142px;background:#8a6bff" data-dy="2139" data-r="247"></div><div class="cf" style="left:918px;top:-147px;background:#12c4ff" data-dy="1829" data-r="320"></div></div></div>
+      <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="31.0" data-track-index="10" data-volume="0.1" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.4,"v":1},{"t":29.8,"v":1},{"t":31.0,"v":0}]}]}'></audio>
+      <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.6" data-duration="2.39" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-1" src="assets/voice/vo-1.m4a" data-start="3.29" data-duration="3.96" data-track-index="21" data-volume="1"></audio>
+      <audio id="vo-2" src="assets/voice/vo-2.m4a" data-start="7.55" data-duration="1.62" data-track-index="22" data-volume="1"></audio>
+      <audio id="vo-3" src="assets/voice/vo-3.m4a" data-start="9.47" data-duration="3.59" data-track-index="23" data-volume="1"></audio>
+      <audio id="vo-4" src="assets/voice/vo-4.m4a" data-start="13.36" data-duration="3.46" data-track-index="24" data-volume="1"></audio>
+      <audio id="vo-5" src="assets/voice/vo-5.m4a" data-start="17.12" data-duration="3.77" data-track-index="25" data-volume="1"></audio>
+      <audio id="vo-6" src="assets/voice/vo-6.m4a" data-start="21.19" data-duration="1.55" data-track-index="20" data-volume="1"></audio>
+      <audio id="vo-7" src="assets/voice/vo-7.m4a" data-start="23.04" data-duration="4.16" data-track-index="21" data-volume="1"></audio>
+      <audio id="sfx-p0" src="assets/sfx/pop.wav" data-start="0.6" data-duration="0.18" data-track-index="41" data-volume="0.18"></audio>
+      <audio id="sfx-p1" src="assets/sfx/pop.wav" data-start="0.6" data-duration="0.18" data-track-index="42" data-volume="0.18"></audio>
+      <audio id="sfx-p2" src="assets/sfx/pop.wav" data-start="3.29" data-duration="0.18" data-track-index="43" data-volume="0.18"></audio>
+      <audio id="sfx-p3" src="assets/sfx/pop.wav" data-start="7.55" data-duration="0.18" data-track-index="41" data-volume="0.18"></audio>
+      <audio id="sfx-p4" src="assets/sfx/pop.wav" data-start="9.47" data-duration="0.18" data-track-index="42" data-volume="0.18"></audio>
+      <audio id="sfx-p5" src="assets/sfx/pop.wav" data-start="9.47" data-duration="0.18" data-track-index="43" data-volume="0.18"></audio>
+      <audio id="sfx-p6" src="assets/sfx/pop.wav" data-start="10.17" data-duration="0.18" data-track-index="41" data-volume="0.18"></audio>
+      <audio id="sfx-p7" src="assets/sfx/pop.wav" data-start="13.36" data-duration="0.18" data-track-index="42" data-volume="0.18"></audio>
+      <audio id="sfx-p8" src="assets/sfx/pop.wav" data-start="17.07" data-duration="0.18" data-track-index="43" data-volume="0.18"></audio>
+      <audio id="sfx-p9" src="assets/sfx/pop.wav" data-start="17.12" data-duration="0.18" data-track-index="41" data-volume="0.18"></audio>
+      <audio id="sfx-p10" src="assets/sfx/pop.wav" data-start="21.19" data-duration="0.18" data-track-index="42" data-volume="0.18"></audio>
+      <audio id="sfx-p11" src="assets/sfx/pop.wav" data-start="23.04" data-duration="0.18" data-track-index="43" data-volume="0.18"></audio>
+      <audio id="sfx-p12" src="assets/sfx/pop.wav" data-start="25.95" data-duration="0.18" data-track-index="41" data-volume="0.18"></audio>
+      <audio id="sfx-p13" src="assets/sfx/pop.wav" data-start="27.9" data-duration="0.18" data-track-index="42" data-volume="0.18"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fl",{y:0},{y:120,duration:2,repeat:16,ease:"none"},0);
+      tl.fromTo(".o1",{x:-60,y:0},{x:120,y:140,duration:15.5,repeat:1,yoyo:true,ease:"sine.inOut"},0);
+      tl.fromTo(".o2",{x:40,y:0},{x:-140,y:-120,duration:15.5,repeat:1,yoyo:true,ease:"sine.inOut"},0);
+      tl.fromTo("#bb0",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},0.55);
+      tl.fromTo("#bb1",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},3.24);
+      tl.fromTo("#bb2",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},7.5);
+      tl.fromTo("#bb3",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},9.42);
+      tl.fromTo("#bb4",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},13.31);
+      tl.fromTo("#bb5",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},17.07);
+      tl.fromTo("#bb6",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},21.14);
+      tl.fromTo("#bb7",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},22.99);
+      tl.fromTo("#badge",{opacity:0,x:-120},{opacity:1,x:0,duration:0.5,ease:"back.out(1.8)"},0.1);
+      tl.fromTo("#series",{opacity:0,x:120},{opacity:1,x:0,duration:0.5,ease:"back.out(1.8)"},0.2);
+      tl.fromTo("#p0 .lead",{opacity:0,y:20},{opacity:1,y:0,duration:0.3,ease:"power3.out"},0.25);
+      tl.fromTo("#p0 .t3d.cyan",{opacity:0,rotationX:-90,y:40,transformPerspective:900},{opacity:1,rotationX:0,y:0,duration:0.55,ease:"back.out(1.5)"},0.3);
+      tl.fromTo("#p0 .t3d:not(.cyan)",{opacity:0,scale:1.6},{opacity:1,scale:1,duration:0.4,ease:"power4.out"},0.6);
+      tl.fromTo("#p1 .meter",{opacity:0,y:40},{opacity:1,y:0,duration:0.4,ease:"power3.out"},3.29);
+      tl.fromTo("#mf1",{width:"0%"},{width:"3%",duration:0.5},3.69);
+      tl.fromTo("#qm1",{opacity:0,scale:0.3,rotation:-30},{opacity:1,scale:1,rotation:0,duration:0.4,ease:"back.out(3)"},4.49);
+      tl.fromTo("#qm1",{y:0},{y:-20,duration:0.4,yoyo:true,repeat:5,ease:"sine.inOut",immediateRender:false},4.890000000000001);
+      tl.fromTo("#p3 .t3d",{opacity:0,y:40,scale:0.7},{opacity:1,y:0,scale:1,duration:0.4,stagger:0.35,ease:"back.out(2)"},9.47);
+      tl.fromTo("#p4 .cal div",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.25,stagger:0.03,ease:"back.out(2)"},13.31);
+      tl.to("#p4 .cal div",{background:"linear-gradient(135deg,#0aa6e0,#3a6cff)",color:"#fff",duration:0.1,stagger:0.06},14.459999999999999);
+      tl.fromTo("#rk",{opacity:0,y:200,rotation:-20},{opacity:1,y:0,rotation:0,duration:0.6,ease:"back.out(1.6)"},17.07);
+      tl.fromTo("#p5 .t3d",{opacity:0,scale:1.5},{opacity:1,scale:1,duration:0.4,ease:"power4.out"},17.42);
+      tl.fromTo("#p5 .tease",{opacity:0,y:20},{opacity:1,y:0,duration:0.3,ease:"power3.out"},17.72);
+      tl.fromTo("#qm6",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.35,ease:"back.out(3)"},21.19);
+      tl.fromTo("#cbx",{opacity:0,y:80,rotationX:50,transformPerspective:1200},{opacity:1,y:0,rotationX:0,duration:0.5,ease:"back.out(1.5)"},22.99);
+      tl.fromTo("#ct",{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.8,ease:"steps(12)"},24.91);
+      tl.fromTo("#p7 .tease",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.35,ease:"back.out(2)"},25.95);
+      tl.fromTo("#brand .bname",{opacity:0,y:40},{opacity:1,y:0,duration:0.4,ease:"power3.out"},28.2);
+      tl.fromTo("#brand .btag",{opacity:0,y:30},{opacity:1,y:0,duration:0.4,ease:"power3.out"},28.4);
+      tl.fromTo("#bc",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.4,ease:"back.out(2)"},28.6);
+      tl.fromTo("#bc",{scale:1},{scale:1.06,duration:0.4,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false},29.1);
+      gsap.utils.toArray("#brand .cf").forEach((el)=>tl.fromTo(el,{y:0,rotation:0},{y:+el.dataset.dy,rotation:+el.dataset.r,duration:2.4,ease:"power1.in"},27.8));
+      window.__timelines["main"] = tl;
+    </script>
+    <script>window.__TC = {"lines": [[0.6, 2.99, "B"], [3.29, 7.25, "B"], [7.55, 9.17, "R"], [9.47, 13.06, "B"], [13.36, 16.82, "B"], [17.12, 20.89, "B"], [21.19, 22.74, "R"], [23.04, 27.2, "B"]], "br": 27.8, "logoY": 760, "rEnter": 4.29, "wave": [[0.3, 2.99], [23.04, 24.24]], "shrug": [[7.55, 9.17]], "spin": 10.27};</script>
+    <script type="module">
+import * as THREE from "./assets/vendor/three.module.min.js";
+import { RoomEnvironment } from "./assets/vendor/addons/RoomEnvironment.js";
+const W = 1080, H = 1920, TM = window.__TC;
+const canvas = document.getElementById("three-layer");
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.NoToneMapping;
+const scene = new THREE.Scene();
+const pm = new THREE.PMREMGenerator(renderer);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.5;
+const cam = new THREE.PerspectiveCamera(30, W / H, 0.1, 100); cam.position.set(0, 0, 10);
+const PX = H / (2 * 10 * Math.tan(15 * Math.PI / 180));
+const ux = (x) => (x - W / 2) / PX, uy = (y) => (H / 2 - y) / PX;
+scene.add(new THREE.HemisphereLight(0xffffff, 0xc8d8f0, 1.4));
+const key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(3, 5, 6); scene.add(key);
+const rim = new THREE.DirectionalLight(0x9fe3ff, 1.0); rim.position.set(-5, 2, -3); scene.add(rim);
+const clamp = (v) => Math.max(0, Math.min(1, v));
+const outBack = (x) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const outCubic = (x) => 1 - Math.pow(1 - x, 3);
+const M = (c, r = 0.4, m = 0, ex = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: r, metalness: m }, ex));
+// AD logo shapes
+const LS = 410, OX = 250, OY = 255;
+const LP = (x, y) => new THREE.Vector2((x - OX) / LS, -(y - OY) / LS);
+const poly = (pts) => { const s = new THREE.Shape(); pts.forEach((p, i) => { const v = LP(p[0], p[1]); i ? s.lineTo(v.x, v.y) : s.moveTo(v.x, v.y); }); s.closePath(); return s; };
+function logoGroup(cA, cW, depth) {
+  const sA = poly([[8, 404], [121, 106], [166, 226], [100, 404]]), sW = poly([[121, 106], [213, 106], [325, 404], [233, 404]]);
+  const sD = new THREE.Shape(); let v;
+  v = LP(232, 106); sD.moveTo(v.x, v.y); v = LP(350, 106); sD.lineTo(v.x, v.y);
+  const c0 = LP(350, 255); sD.absarc(c0.x, c0.y, 149 / LS, Math.PI / 2, -Math.PI / 2, true);
+  v = LP(325, 404); sD.lineTo(v.x, v.y); v = LP(288, 305); sD.lineTo(v.x, v.y); v = LP(350, 305); sD.lineTo(v.x, v.y);
+  sD.absarc(c0.x, c0.y, 50 / LS, -Math.PI / 2, Math.PI / 2, false); v = LP(268, 205); sD.lineTo(v.x, v.y); sD.closePath();
+  const ext = { depth, bevelEnabled: true, bevelThickness: depth * 0.16, bevelSize: depth * 0.08, bevelSegments: 3, curveSegments: 32 };
+  const g = new THREE.Group();
+  [[sA, cA], [sW, cW], [sD, cA]].forEach(([sh, m]) => { const geo = new THREE.ExtrudeGeometry(sh, ext); geo.translate(0, 0, -depth / 2); g.add(new THREE.Mesh(geo, m)); });
+  return g;
+}
+const cyanM = M(0x12c4ff, 0.3, 0.1), navyM = M(0x10203f, 0.35, 0.1), whiteM = M(0xffffff, 0.3);
+// character factory
+function makeChar(o) {
+  const root = new THREE.Group(), body = new THREE.Group(); root.add(body);
+  const skin = M(o.skin, 0.55);
+  const torso = new THREE.Mesh(new THREE.CapsuleGeometry(0.42, 0.55, 10, 32), M(o.shirt, 0.45)); torso.position.y = 0.75; body.add(torso);
+  const legM = M(o.pants, 0.5);
+  [-0.17, 0.17].forEach((x) => { const l = new THREE.Mesh(new THREE.CapsuleGeometry(0.13, 0.32, 8, 16), legM); l.position.set(x, 0.12, 0); body.add(l); const sh = new THREE.Mesh(new THREE.SphereGeometry(0.15, 20, 12), M(0x222a3a, 0.5)); sh.scale.set(1, 0.6, 1.4); sh.position.set(x, -0.12, 0.05); body.add(sh); });
+  const arms = [];
+  [-1, 1].forEach((s) => { const piv = new THREE.Group(); piv.position.set(0.48 * s, 1.08, 0); const a = new THREE.Mesh(new THREE.CapsuleGeometry(0.11, 0.45, 8, 16), M(o.shirt, 0.45)); a.position.y = -0.3; piv.add(a); const h = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 12), skin); h.position.y = -0.6; piv.add(h); piv.rotation.z = 0.18 * s; body.add(piv); arms.push(piv); });
+  const head = new THREE.Group(); head.position.y = 1.62; body.add(head);
+  head.add(new THREE.Mesh(new THREE.SphereGeometry(0.44, 40, 28), skin));
+  const hair = new THREE.Mesh(new THREE.SphereGeometry(0.46, 40, 20, 0, Math.PI * 2, 0, Math.PI / 2.1), M(o.hair, 0.6)); hair.position.y = 0.05; hair.rotation.x = -0.25; head.add(hair);
+  const eyeM = M(0x1a1a24, 0.3);
+  [-0.15, 0.15].forEach((x) => { const e = new THREE.Mesh(new THREE.SphereGeometry(0.055, 16, 12), eyeM); e.position.set(x, 0.02, 0.4); head.add(e); });
+  const mouth = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.025, 8, 24, Math.PI), M(0x8a3b2e, 0.5)); mouth.rotation.z = Math.PI; mouth.position.set(0, -0.14, 0.41); head.add(mouth);
+  [-1, 1].forEach((s) => { const ear = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 12), skin); ear.position.set(0.43 * s, -0.02, 0); head.add(ear); });
+  if (o.glasses) { const gm = M(0x10203f, 0.3); [-0.16, 0.16].forEach((x) => { const r = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.018, 8, 32), gm); r.position.set(x, 0.02, 0.42); head.add(r); }); const br = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.1, 8), gm); br.rotation.z = Math.PI / 2; br.position.set(0, 0.03, 0.44); head.add(br); }
+  if (o.badge) { const lg = logoGroup(cyanM, navyM, 0.05); lg.scale.setScalar(0.36); lg.position.set(0, 0.86, 0.5); body.add(lg); const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.04, 40), M(0xffffff, 0.3)); plate.rotation.x = Math.PI / 2; plate.scale.set(1.25, 1, 0.85); plate.position.set(0, 0.86, 0.45); body.add(plate); }
+  if (o.phone) { const ph = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.28, 0.03), M(0x10203f, 0.3)); ph.position.set(0, -0.62, 0.1); ph.rotation.x = -0.4; arms[1].add(ph); }
+  if (o.hood) { const hd = new THREE.Mesh(new THREE.TorusGeometry(0.33, 0.1, 12, 32), M(o.shirt, 0.45)); hd.rotation.x = Math.PI / 2; hd.position.y = 1.27; body.add(hd); }
+  const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.8, 0.12, 48), M(0xffffff, 0.35, 0, { emissive: o.glow, emissiveIntensity: 0 })); disc.position.y = -0.25; root.add(disc);
+  scene.add(root);
+  return { root, body, head, arms, mouth, disc };
+}
+const B = makeChar({ shirt: 0x12c4ff, pants: 0x10203f, skin: 0xe0a77d, hair: 0x2a1d17, glasses: true, badge: true, glow: 0x12c4ff });
+const R = makeChar({ shirt: 0xff8a3d, pants: 0x3a4a6a, skin: 0xd99a6c, hair: 0x1d1410, phone: true, hood: true, glow: 0xff8a3d });
+const endLogo = logoGroup(cyanM, navyM, 0.22); scene.add(endLogo);
+const speakingAt = (t, who) => TM.lines.some(([a, b, w]) => w === who && t >= a && t < b);
+function animChar(c, t, who, baseX, scale, entry) {
+  const vis = t < TM.br;
+  c.root.visible = vis; if (!vis) return;
+  let x = baseX, hop = 0;
+  if (entry !== undefined) { const p = clamp((t - entry) / 0.7); x = baseX + (1 - outCubic(p)) * 700; hop = Math.abs(Math.sin(p * Math.PI * 3)) * 0.25 * (1 - p); c.root.visible = t >= entry - 0.01; }
+  const sp = speakingAt(t, who);
+  c.root.position.set(ux(x), uy(1650) + hop, 0);
+  c.root.scale.setScalar(scale);
+  c.root.rotation.y = (who === "B" ? 0.35 : -0.35) + Math.sin(t * 0.8) * 0.05;
+  c.body.position.y = Math.sin(t * 2.2 + (who === "B" ? 0 : 1)) * 0.03;
+  c.head.rotation.x = sp ? Math.sin(t * 11) * 0.06 : Math.sin(t * 1.3) * 0.03;
+  c.head.rotation.z = sp ? Math.sin(t * 5) * 0.05 : 0;
+  c.mouth.scale.set(1, sp ? 1 + Math.abs(Math.sin(t * 14)) * 0.45 : 1, 1);
+  c.disc.material.emissiveIntensity = sp ? 0.45 + 0.15 * Math.sin(t * 8) : 0;
+  c.arms[0].rotation.z = 0.18 * -1 + (sp ? Math.sin(t * 6) * 0.08 : 0);
+  c.arms[1].rotation.z = 0.18;
+  c.arms[1].rotation.x = 0;
+}
+function renderAt(t) {
+  animChar(B, t, "B", 320, 0.78);
+  animChar(R, t, "R", 780, 0.64, TM.rEnter);
+  // Bhaiya waves in wave windows
+  TM.wave.forEach(([a, b]) => { if (t >= a && t < b) { B.arms[1].rotation.z = 2.6 + Math.sin(t * 10) * 0.35; } });
+  // Rahul shrug
+  TM.shrug.forEach(([a, b]) => { if (t >= a && t < b) { const k = Math.sin(clamp((t - a) / (b - a)) * Math.PI); R.arms[0].rotation.z = -0.18 - 1.6 * k; R.arms[1].rotation.z = 0.18 + 1.6 * k; R.head.rotation.z = Math.sin(t * 9) * 0.12; } });
+  // Rahul spin (level up)
+  if (t >= TM.spin && t < TM.spin + 0.9) R.root.rotation.y += outCubic(clamp((t - TM.spin) / 0.9)) * Math.PI * 2;
+  endLogo.visible = t >= TM.br;
+  if (endLogo.visible) { const q = t - TM.br, p = clamp(q / 1.0); endLogo.scale.setScalar(Math.max(0.001, 0.25 + 0.75 * outBack(p))); endLogo.rotation.y = -Math.PI * 1.5 * (1 - outCubic(p)) + (q > 1 ? Math.sin((q - 1) * 1.3) * 0.28 : 0); endLogo.position.set(0, uy(TM.logoY), 0); }
+  renderer.render(scene, cam);
+}
+window.addEventListener("hf-seek", (e) => renderAt(e.detail.time));
+renderAt(window.__hfThreeTime || 0);
+
+    </script>
+  </body>
+</html>
