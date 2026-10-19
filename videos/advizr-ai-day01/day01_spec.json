@@ -1,0 +1,162 @@
+{
+ "title": "Advizr Bhaiya Day 1",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 01",
+ "lines": [
+  {
+   "dur": 5.18,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0,
+     "text": "Bhaiya, sab bol rahe hain: *AI *SEEKHO!"
+    },
+    {
+     "f": 0.57,
+     "text": "Par business mein, *AI *[n]KARTA *[n]KYA *[n]HAI? 🤔",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">DAY 01 · SAWAAL</div><div class=\"t\">AI = <b>?</b></div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 5.47,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.007,
+     "text": "*[n]SOCHO..."
+    },
+    {
+     "f": 0.147,
+     "text": "Tumhe ek *ASSISTANT mil gaya, jo *24 *GHANTE kaam karta hai, aur *[g]SALARY bhi nahi leta 😎",
+     "card": {
+      "html": "<div class=\"wa\"><div class=\"hd\"><div class=\"av\" style=\"background:linear-gradient(135deg,#0aa6e0,#3a6cff)\"></div>AI Assistant 🤖</div><div class=\"msg\">Haan boss, kya kaam hai? ⏰ 24/7 online · ₹<s>Salary</s></div><div class=\"tm\">online ✓✓</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 2.18,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.018,
+     "text": "Post ka *CAPTION likhna hai?",
+     "card": {
+      "html": "<div class=\"wa\" style=\"background:#f3f6ff\"><div class=\"hd\" style=\"color:#3a6cff\">✍️ Caption</div><div class=\"msg\" id=\"cap1\">🪔 Diwali special! Har order pe 10% OFF ✨ Aaj hi DM karo 📩</div></div>",
+      "anim": [
+       "tl.fromTo(\"#cap1\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:1.2,ease:\"steps(18)\"},{T}+0.9);"
+      ]
+     }
+    },
+    {
+     "f": 0.694,
+     "text": "*[g]AI *[g]LIKHEGA ✍️"
+    }
+   ]
+  },
+  {
+   "dur": 2.5,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.016,
+     "text": "Offer ka *POSTER banana hai?",
+     "card": {
+      "html": "<div class=\"ct\" style=\"padding:10px 20px;border-radius:24px;background:linear-gradient(135deg,#ffcf5c,#ff8a3d)\"><div class=\"s\" style=\"color:#7a3a00\">DIWALI SALE</div><div class=\"t\" style=\"color:#fff;font-size:110px\">20% OFF</div><div class=\"s\" style=\"color:#7a3a00\">AI se bana poster 🎨</div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.712,
+     "text": "*[g]AI *[g]BANAYEGA 🎨"
+    }
+   ]
+  },
+  {
+   "dur": 2.96,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.014,
+     "text": "Raat *2 *BAJE customer ka message?",
+     "card": {
+      "html": "<div class=\"wa\"><div class=\"hd\"><div class=\"av\"></div>Customer · 2:07 AM 🌙</div><div class=\"msg\">Kal appointment mil sakta hai?</div><div class=\"msg\" id=\"aiR\" style=\"margin-top:14px;background:#d9fdd3;border-top-left-radius:22px;border-top-right-radius:6px\">Haan ji! Kal 11 baje slot free hai ✅</div><div class=\"tm\">AI reply · 2:07 AM ✓✓</div></div>",
+      "anim": [
+       "tl.fromTo(\"#aiR\",{opacity:0,y:30},{opacity:1,y:0,duration:0.35,ease:\"back.out(2)\"},{T}+1.9);"
+      ]
+     }
+    },
+    {
+     "f": 0.703,
+     "text": "*[g]AI *[g]JAWAB *[g]DEGA 🌙"
+    }
+   ]
+  },
+  {
+   "dur": 2.26,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.018,
+     "text": "Toh phir bhaiya, marketer ki *ZARURAT hi nahi? 😳",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"t\" style=\"font-size:150px\">😳</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 4.33,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.009,
+     "text": "*[n]ZARURAT *[n]HAI!"
+    },
+    {
+     "f": 0.34,
+     "text": "AI sirf *AUZAAR hai... *[n]DIMAAG tumhara chahiye 🧠",
+     "card": {
+      "html": "<div class=\"zp\"><span class=\"b\" style=\"background:linear-gradient(90deg,#8a93a3,#5b6475)\">🛠️ AI = Auzaar</span><span class=\"ar\">+</span><span class=\"b\">🧠 Tum = Dimaag</span></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 6.12,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.007,
+     "text": "Aaj ka *HOMEWORK 📝"
+    },
+    {
+     "f": 0.214,
+     "text": "Comment mein likho: tumhare kaam ka kaun sa hissa *SABSE *ZYADA *TIME khata hai?",
+     "card": {
+      "html": "<div class=\"cbox\"><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Captions likhna ⏳</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(10)\"},{T}+1.4);"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]02 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><img src=\"assets/img/advizr-logo-dark.svg\" alt=\"Advizr Media\" /><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 02</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}
