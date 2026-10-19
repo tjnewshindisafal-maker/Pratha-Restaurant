@@ -69,3 +69,6 @@
       .qs div { padding: 18px 26px; border-radius: 24px; background: #fff4e8; border: 3px solid #ffd3ad; font-weight: 900; font-size: 40px; color: #c9581a; }
       .gptlogo { display: block; width: 130px; height: 130px; margin: 0 auto 14px; border-radius: 30px; box-shadow: 0 10px 26px rgba(16,163,127,0.35); }
       .gptdot { width: 48px; height: 48px; border-radius: 12px; }
+      .brand { width: 56px; height: 56px; border-radius: 14px; flex: 0 0 auto; }
+      .brand.sm { width: 64px; height: 64px; }
+      .tblhd { display: flex; align-items: center; gap: 14px; font-weight: 900; font-size: 32px; color: #c13584; margin: 2px 4px 10px; }

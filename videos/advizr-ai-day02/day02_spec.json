@@ -10,7 +10,7 @@
      "f": 0,
      "text": "Bhaiya, roz sochta hoon: *AAJ *KYA *POST karoon? 😫",
      "card": {
-      "html": "<div class=\"wa\"><div class=\"hd\"><div class=\"av\"></div>Rahul · Instagram</div><div class=\"msg\">Aaj kya post karu?? 😫😫</div><div class=\"tm\">roz ka sawaal ✓✓</div></div>",
+      "html": "<div class=\"wa\"><div class=\"hd\"><img class=\"brand\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" />Rahul · Instagram</div><div class=\"msg\">Aaj kya post karu?? 😫😫</div><div class=\"tm\">roz ka sawaal ✓✓</div></div>",
       "anim": []
      }
     },
@@ -87,7 +87,7 @@
      "f": 0.526,
      "text": "Table mein: *TOPIC, *[n]REEL *[n]IDEA aur *[g]CAPTION",
      "card": {
-      "html": "<div class=\"tbl\"><table><tr><th>Din</th><th>Reel idea</th><th>Caption</th></tr><tr id=\"tr0\"><td>Day 1</td><td>Morning workout</td><td>Subah 6 baje? 🌅</td></tr><tr id=\"tr1\"><td>Day 2</td><td>Diet myth</td><td>Roti band? ❌</td></tr><tr id=\"tr2\"><td>Day 3</td><td>Member story</td><td>3 mahine baad 🔥</td></tr><tr id=\"tr3\"><td>...</td><td>...</td><td>...</td></tr></table></div>",
+      "html": "<div class=\"tbl\"><div class=\"tblhd\"><img class=\"brand\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" />Instagram · 30 Din Content Plan</div><table><tr><th>Din</th><th>Reel idea</th><th>Caption</th></tr><tr id=\"tr0\"><td>Day 1</td><td>Morning workout</td><td>Subah 6 baje? 🌅</td></tr><tr id=\"tr1\"><td>Day 2</td><td>Diet myth</td><td>Roti band? ❌</td></tr><tr id=\"tr2\"><td>Day 3</td><td>Member story</td><td>3 mahine baad 🔥</td></tr><tr id=\"tr3\"><td>...</td><td>...</td><td>...</td></tr></table></div>",
       "anim": [
        "tl.fromTo(\".tbl tr[id]\",{opacity:0,x:-40},{opacity:1,x:0,duration:0.3,stagger:0.35},{T}+0.4);"
       ]
@@ -175,7 +175,7 @@
      "f": 0.139,
      "text": "Aaj ka *HOMEWORK 📝 ye prompt *TRY karo",
      "card": {
-      "html": "<div class=\"cbox\"><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Diet wali reel 🥗🔥</span><div class=\"send\">➤</div></div>",
+      "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Diet wali reel 🥗🔥</span><div class=\"send\">➤</div></div>",
       "anim": [
        "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(10)\"},{T}+2.6);"
       ]
