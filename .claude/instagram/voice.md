@@ -5,7 +5,7 @@ Draft filled from our work so far. Fix anything marked TODO.
 ## Who I am
 
 - **Name:** Advizr Media (series mentor character: "Advizr Bhaiya"; student: "Rahul")
-- **Handle:** TODO (confirm exact Instagram handle)
+- **Handle:** @advizr_media
 - **What I do, in one sentence:** Digital marketing agency that gets local Indian businesses leads through Google Ads, Meta Ads, Google My Business, websites and CRM.
 - **Who I am talking to:** Small business owners in India (Pune first): gyms, clinics, coaching, coworking, restaurants, local services, who post randomly, waste ad money and get few leads.
 - **What I sell:** Google Ads, Meta Ads, GMB ranking, websites, CRM setup.
