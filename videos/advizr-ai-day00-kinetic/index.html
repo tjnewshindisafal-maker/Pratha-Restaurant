@@ -14,20 +14,22 @@
       html, body { width: 1080px; height: 1920px; overflow: hidden; background: #efeee9; }
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Montserrat", sans-serif; color: var(--ink); }
       .full { position: absolute; inset: 0; overflow: hidden; }
-      #bg { background: radial-gradient(ellipse at 50% 42%, #fbfaf6 0%, #f1f0eb 55%, #e2e0d9 100%); }
-      .grain { position: absolute; inset: 0; opacity: 0.5; background-image: radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1.4px); background-size: 5px 5px; }
+      #bg { background: radial-gradient(ellipse 75% 60% at 50% 48%, #ffffff 0%, #f1f1f1 30%, #d2d2d2 62%, #a9a9a9 100%); }
+      .gridA { position: absolute; left: -2px; right: -2px; top: 0; bottom: 0; background-image: linear-gradient(rgba(190,190,190,0.85) 3px, transparent 3px), linear-gradient(90deg, rgba(190,190,190,0.85) 3px, transparent 3px); background-size: 116px 116px; background-position: 30px 40px; -webkit-mask-image: radial-gradient(ellipse 46% 38% at 50% 48%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 46% 38% at 50% 48%, #000 55%, transparent 100%); }
+      .gridB { position: absolute; left: -2px; right: -2px; top: 0; bottom: 0; background-image: linear-gradient(rgba(235,235,235,0.7) 3px, transparent 3px), linear-gradient(90deg, rgba(235,235,235,0.7) 3px, transparent 3px); background-size: 116px 116px; background-position: 30px 40px; -webkit-mask-image: linear-gradient(#000 0, #000 4%, transparent 14%, transparent 86%, #000 96%, #000 100%), radial-gradient(ellipse 35% 50% at 50% 50%, #000 0%, transparent 100%); mask-image: radial-gradient(ellipse 34% 52% at 50% 50%, #000 40%, transparent 100%); opacity: 0.6; }
+      .grain { position: absolute; inset: 0; opacity: 0.25; background-image: radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1.4px); background-size: 5px 5px; }
       .pill { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); padding: 12px 28px; border-radius: 40px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.08); font-weight: 900; font-size: 32px; color: var(--navy); white-space: nowrap; z-index: 5; }
       .pill b { color: var(--acc); }
-      .tb { position: absolute; left: 60px; right: 60px; top: 470px; height: 560px; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; align-items: baseline; column-gap: 18px; row-gap: 4px; text-align: center; z-index: 4; }
-      .tb .w { display: inline-block; font-weight: 800; font-size: 64px; line-height: 1.12; color: var(--ink); }
-      .tb .w.k { font-weight: 900; font-size: 112px; line-height: 1.02; color: var(--acc); letter-spacing: -2px; text-shadow: 0 6px 0 rgba(7,132,191,0.12), 0 14px 30px rgba(0,0,0,0.08); }
+      .tb { position: absolute; left: 50px; right: 50px; top: 480px; height: 580px; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; align-items: baseline; column-gap: 28px; row-gap: 22px; text-align: center; z-index: 4; }
+      .tb .w { display: inline-block; font-weight: 800; font-size: 62px; line-height: 1.3; letter-spacing: 0.5px; color: var(--ink); }
+      .tb .w.k { font-weight: 900; font-size: 104px; line-height: 1.15; color: var(--acc); letter-spacing: 1px; text-shadow: 0 6px 0 rgba(7,132,191,0.12), 0 14px 30px rgba(0,0,0,0.08); }
       .tb.r .w.k { color: var(--org); text-shadow: 0 6px 0 rgba(201,88,26,0.14), 0 14px 30px rgba(0,0,0,0.08); }
       .tb .w.k.n { color: var(--navy); text-shadow: 0 6px 0 rgba(11,27,58,0.1), 0 14px 30px rgba(0,0,0,0.08); }
       .tb .w.k.g { color: var(--green); }
-      .who { position: absolute; left: 50%; top: 400px; transform: translateX(-50%); padding: 8px 22px; border-radius: 30px; font-weight: 900; font-size: 28px; letter-spacing: 3px; z-index: 5; white-space: nowrap; }
+      .who { position: absolute; left: 50%; top: 380px; transform: translateX(-50%); padding: 8px 22px; border-radius: 30px; font-weight: 900; font-size: 28px; letter-spacing: 3px; z-index: 5; white-space: nowrap; }
       .who.r { background: #ffe6d4; color: var(--org); }
       .who.b { background: #d8f1fb; color: var(--acc); }
-      .card { position: absolute; left: 50%; top: 1090px; transform: translateX(-50%); background: #fff; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,0.12), 0 2px 0 rgba(255,255,255,0.8) inset; padding: 34px 40px; z-index: 3; }
+      .card { position: absolute; left: 50%; top: 1140px; transform: translateX(-50%); background: #fff; border-radius: 34px; box-shadow: 0 30px 70px rgba(0,0,0,0.12), 0 2px 0 rgba(255,255,255,0.8) inset; padding: 34px 40px; z-index: 3; }
       .ct { text-align: center; }
       .ct .s { font-weight: 800; font-size: 32px; color: #6b7280; letter-spacing: 2px; }
       .ct .t { font-weight: 900; font-size: 92px; color: var(--navy); line-height: 1.05; }
@@ -60,12 +62,30 @@
       .fol img { width: 190px; }
       .fol .btn { padding: 20px 46px; border-radius: 50px; background: linear-gradient(90deg,#0aa6e0,#3a6cff); color: #fff; font-weight: 900; font-size: 44px; box-shadow: 0 16px 36px rgba(10,166,224,0.35); }
       .fol .nm { font-weight: 900; font-size: 46px; color: var(--navy); }
+      .logotile { width: 230px; height: 230px; border-radius: 48px; background: #05080d; display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 40px rgba(0,0,0,0.25); }
+      .logotile img { width: 175px; }
+      .gpt { width: 880px; padding: 28px 30px; }
+      .gpt .hd { display: flex; align-items: center; gap: 14px; font-weight: 900; font-size: 32px; color: #10a37f; margin-bottom: 18px; }
+      .gpt .dot { width: 44px; height: 44px; border-radius: 12px; background: #10a37f; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; }
+      .gpt .pl { font-weight: 700; font-size: 30px; color: #222; line-height: 1.35; background: #f4f4f6; border-radius: 18px; padding: 14px 20px; margin-top: 10px; }
+      .tbl { width: 880px; padding: 24px; }
+      .tbl table { width: 100%; border-collapse: separate; border-spacing: 0 8px; font-weight: 800; font-size: 28px; }
+      .tbl th { text-align: left; color: #fff; background: #10203f; padding: 12px 14px; }
+      .tbl th:first-child { border-radius: 12px 0 0 12px; } .tbl th:last-child { border-radius: 0 12px 12px 0; }
+      .tbl td { background: #f2f5fa; padding: 12px 14px; color: #2a2d33; }
+      .qs { display: flex; flex-direction: column; gap: 16px; width: 760px; }
+      .qs div { padding: 18px 26px; border-radius: 24px; background: #fff4e8; border: 3px solid #ffd3ad; font-weight: 900; font-size: 40px; color: #c9581a; }
+      .gptlogo { display: block; width: 130px; height: 130px; margin: 0 auto 14px; border-radius: 30px; box-shadow: 0 10px 26px rgba(16,163,127,0.35); }
+      .gptdot { width: 48px; height: 48px; border-radius: 12px; }
+      .brand { width: 56px; height: 56px; border-radius: 14px; flex: 0 0 auto; }
+      .brand.sm { width: 64px; height: 64px; }
+      .tblhd { display: flex; align-items: center; gap: 14px; font-weight: 900; font-size: 32px; color: #c13584; margin: 2px 4px 10px; }
 
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="30.14" data-width="1080" data-height="1920">
-      <div id="bg" class="full clip" data-start="0" data-duration="30.14" data-track-index="9"><div class="grain"></div></div>
+      <div id="bg" class="full clip" data-start="0" data-duration="30.14" data-track-index="9"><div class="gridB"></div><div class="gridA"></div><div class="grain"></div></div>
       <div id="who0" class="clip who b" data-start="0.35" data-duration="2.67" data-track-index="5" style="">ADVIZR BHAIYA</div>
       <div id="who1" class="clip who b" data-start="3.02" data-duration="4.24" data-track-index="5" style="">ADVIZR BHAIYA</div>
       <div id="who2" class="clip who r" data-start="7.26" data-duration="1.9" data-track-index="5" style="">🙋 RAHUL</div>
@@ -95,7 +115,7 @@
       <div id="cd4" class="clip card" data-start="13.33" data-duration="3.69" data-track-index="3" style=""><div class="cal" id="cal"><div class="cd">1</div><div class="cd">2</div><div class="cd">3</div><div class="cd">4</div><div class="cd">5</div><div class="cd">6</div><div class="cd">7</div><div class="cd">8</div><div class="cd">9</div><div class="cd">10</div><div class="cd">11</div><div class="cd">12</div><div class="cd">13</div><div class="cd">14</div></div></div>
       <div id="cd5" class="clip card" data-start="17.07" data-duration="6.41" data-track-index="3" style=""><div class="dash"><div class="hd"><span>📊 Day 90: Real Campaign</span><span>↑</span></div><div class="bars"><div style="height:20%"></div><div style="height:32%"></div><div style="height:28%"></div><div style="height:45%"></div><div style="height:52%"></div><div style="height:64%"></div><div style="height:78%"></div><div style="height:92%"></div></div></div></div>
       <div id="cd6" class="clip card" data-start="23.53" data-duration="3.81" data-track-index="3" style=""><div class="cbox"><div class="av"></div><span class="tx" id="ctx">Main bhi seekhunga 🙋</span><div class="send">➤</div></div></div>
-      <div id="cd7" class="clip card" data-start="27.39" data-duration="2.75" data-track-index="3" style=""><div class="fol"><img src="assets/img/advizr-logo-dark.svg" alt="Advizr Media" /><div class="nm">Advizr Media</div><div class="btn" id="fb">+ Follow for Day 01</div></div></div>
+      <div id="cd7" class="clip card" data-start="27.39" data-duration="2.75" data-track-index="3" style=""><div class="fol"><div class="logotile"><img src="assets/img/advizr-logo.svg" alt="Advizr Media" /></div><div class="nm">Advizr Media</div><div class="btn" id="fb">+ Follow for Day 01</div></div></div>
       <div id="pill" class="clip pill" data-start="0" data-duration="27.14" data-track-index="5" style="">🔥 <b>90 DIN AI CHALLENGE</b> · DAY 00</div>
       <audio id="music-bed" src="assets/music/bed.m4a" data-start="0" data-duration="30.14" data-track-index="10" data-volume="0.09" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.4,"v":1},{"t":28.94,"v":1},{"t":30.14,"v":0}]}]}'></audio>
       <audio id="vo-0" src="assets/voice/vo-0.m4a" data-start="0.4" data-duration="2.39" data-track-index="20" data-volume="1"></audio>
