@@ -3,7 +3,7 @@
  "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 03",
  "lines": [
   {
-   "dur": 3.22,
+   "dur": 3.43,
    "who": "R",
    "phrases": [
     {
@@ -17,7 +17,7 @@
    ]
   },
   {
-   "dur": 5.31,
+   "dur": 4.84,
    "who": "B",
    "phrases": [
     {
@@ -25,11 +25,11 @@
      "text": "Kyunki tum *ADHA *SAWAAL poochte ho"
     },
     {
-     "f": 0.424,
+     "f": 0.457,
      "text": "Aaj ka *FORMULA yaad karo 👇"
     },
     {
-     "f": 0.701,
+     "f": 0.773,
      "text": "*R · *T · *C · *F",
      "card": {
       "html": "<div class=\"rt\"><div id=\"k1\">R</div><div id=\"k2\">T</div><div id=\"k3\">C</div><div id=\"k4\">F</div></div>",
@@ -41,7 +41,7 @@
    ]
   },
   {
-   "dur": 4.23,
+   "dur": 3.56,
    "who": "B",
    "phrases": [
     {
@@ -55,13 +55,13 @@
      }
     },
     {
-     "f": 0.338,
+     "f": 0.462,
      "text": "Bolo: Tum ek *EXPERT Instagram marketer ho"
     }
    ]
   },
   {
-   "dur": 3.59,
+   "dur": 3.46,
    "who": "B",
    "phrases": [
     {
@@ -75,13 +75,13 @@
      }
     },
     {
-     "f": 0.401,
+     "f": 0.394,
      "text": "Mere gym ke liye *5 *REEL *IDEAS do"
     }
    ]
   },
   {
-   "dur": 5.09,
+   "dur": 5.23,
    "who": "B",
    "phrases": [
     {
@@ -95,13 +95,13 @@
      }
     },
     {
-     "f": 0.373,
+     "f": 0.287,
      "text": "*PUNE mein, customer *25-40 saal, *OFFICE wale"
     }
    ]
   },
   {
-   "dur": 4.46,
+   "dur": 3.86,
    "who": "B",
    "phrases": [
     {
@@ -115,13 +115,13 @@
      }
     },
     {
-     "f": 0.409,
+     "f": 0.367,
      "text": "*TABLE mein do, *HOOK aur *CAPTION ke saath"
     }
    ]
   },
   {
-   "dur": 3.34,
+   "dur": 4.3,
    "who": "R",
    "phrases": [
     {
@@ -129,7 +129,7 @@
      "text": "Arre! 😲"
     },
     {
-     "f": 0.156,
+     "f": 0.239,
      "text": "Same ChatGPT, par jawab *EKDUM *PROFESSIONAL! 🤩",
      "card": {
       "html": "<div class=\"tbl\"><div class=\"tblhd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />5 Reel Ideas · Table</div><table><tr><th>Hook</th><th>Caption</th></tr><tr id=\"tr0\"><td>Roz gym, phir bhi pet? 🤔</td><td>Ye 3 galti mat karo</td></tr><tr id=\"tr1\"><td>Office ke baad 20 min 💼</td><td>Shortcut workout</td></tr><tr id=\"tr2\"><td>Diet myth: roti band? ❌</td><td>Sach jaano</td></tr><tr id=\"tr3\"><td>...</td><td>...</td></tr></table></div>",
@@ -141,7 +141,7 @@
    ]
   },
   {
-   "dur": 9.5,
+   "dur": 10.38,
    "who": "B",
    "phrases": [
     {
@@ -149,15 +149,15 @@
      "text": "*[g]BILKUL!"
     },
     {
-     "f": 0.069,
+     "f": 0.074,
      "text": "Achha *SAWAAL = achha *JAWAB ✅"
     },
     {
-     "f": 0.256,
+     "f": 0.263,
      "text": "Aaj ka *HOMEWORK 📝"
     },
     {
-     "f": 0.363,
+     "f": 0.381,
      "text": "*R-T-C-F se prompt likho, *COMMENT mein daalo 👇",
      "card": {
       "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Role: expert... 📝</span><div class=\"send\">➤</div></div>",
@@ -167,7 +167,7 @@
      }
     },
     {
-     "f": 0.806,
+     "f": 0.851,
      "text": "*BEST *PROMPT kal ki reel mein! 🏆"
     }
    ]
