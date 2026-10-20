@@ -39,6 +39,8 @@ hyperframes doctor                    # verify
 | `advizr-ai-day00-kinetic/` | Day 0 in kinetic-typography style (word-by-word, paper bg, UI cards); reusable builder kin_build.py + episode spec JSON |
 | `advizr-ai-day01/` | 90 Din AI Challenge Day 1 (AI karta kya hai?), kinetic style; day01_spec.json |
 | `advizr-ai-day02/` | 90 Din AI Challenge Day 2 (ChatGPT se 30 din ka content plan), kinetic style; day02_spec.json, storyboard.jpg |
+| `advizr-ai-day03/` | 90 Din AI Challenge Day 3 (R-T-C-F prompt formula), ElevenLabs Bunty v2 voice; day03_spec.json |
+| `advizr-ai-day04/` | 90 Din AI Challenge Day 4 (Canva AI poster), ElevenLabs Bunty v2 voice; day04_spec.json |
 
 ## Everyday commands (run inside a project folder)
 

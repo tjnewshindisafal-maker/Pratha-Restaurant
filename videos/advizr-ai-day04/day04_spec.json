@@ -1,0 +1,188 @@
+{
+ "title": "Advizr Bhaiya Day 4",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 04",
+ "lines": [
+  {
+   "dur": 3.77,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Bhaiya, *DIWALI *OFFER ka poster banana hai 🪔"
+    },
+    {
+     "f": 0.525,
+     "text": "Designer *₹2000 maang raha hai! 😩",
+     "card": {
+      "html": "<div class=\"wa\"><div class=\"hd\"><div class=\"av\"></div>Designer</div><div class=\"msg\">Diwali poster: ₹2000 💸<br>Delivery: 3 din</div><div class=\"tm\">2:14 PM ✓✓</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 2.54,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Rahul,"
+    },
+    {
+     "f": 0.319,
+     "text": "*CANVA kholo 🎨",
+     "card": {
+      "html": "<div class=\"ct\"><img class=\"gptlogo\" src=\"assets/img/canva.svg\" alt=\"Canva\" style=\"background:#fff;box-shadow:none\" /><div class=\"s\">DAY 04 · FREE TOOL</div><div class=\"t\">Canva <b>AI</b></div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.772,
+     "text": "*[g]FREE hai!"
+    }
+   ]
+  },
+  {
+   "dur": 5.63,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*MAGIC *DESIGN mein likho ✍️",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\" style=\"color:#7d2ae8\"><img class=\"gptdot\" src=\"assets/img/canva.svg\" alt=\"Canva\" />Canva · Magic Design</div><div class=\"pl\" id=\"mp\">Gym Diwali offer, 30% off, golden aur red colour</div></div>",
+      "anim": [
+       "tl.fromTo(\"#mp\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:3.2,ease:\"steps(30)\"},{T}+0.6);"
+      ]
+     }
+    },
+    {
+     "f": 0.258,
+     "text": "Gym *DIWALI offer,"
+    },
+    {
+     "f": 0.512,
+     "text": "*30% *OFF,"
+    },
+    {
+     "f": 0.744,
+     "text": "*[n]GOLDEN aur *RED colour"
+    }
+   ]
+  },
+  {
+   "dur": 1.92,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*ENTER dabao ⏎"
+    },
+    {
+     "f": 0.479,
+     "text": "*10 *DESIGN ready! ⚡",
+     "card": {
+      "html": "<div class=\"dgrid\"><div class=\"dz\" style=\"background:linear-gradient(135deg,#ffb300,#d32f2f)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#c62828,#ffca28)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#ff8f00,#6a1b9a)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#b71c1c,#ff6f00)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#ffd54f,#e65100)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#ad1457,#ffb300)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#ff7043,#4a148c)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#f9a825,#c62828)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#e53935,#ffd740)\">30%<br><small>OFF</small></div><div class=\"dz\" style=\"background:linear-gradient(135deg,#ff6d00,#880e4f)\">30%<br><small>OFF</small></div></div>",
+      "anim": [
+       "tl.fromTo(\".dgrid .dz\",{scale:0,opacity:0},{scale:1,opacity:1,duration:0.25,stagger:0.08,ease:\"back.out(2)\"},{T}+0.05);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 2.24,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Itne saare?! 😲"
+    },
+    {
+     "f": 0.482,
+     "text": "Aur *SAB *ACHHE hain!"
+    }
+   ]
+  },
+  {
+   "dur": 7.4,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Ek chuno ☝️"
+    },
+    {
+     "f": 0.101,
+     "text": "Apna *LOGO, *PHONE *NUMBER daalo"
+    },
+    {
+     "f": 0.408,
+     "text": "*MAGIC *RESIZE se *STORY aur *POST",
+     "card": {
+      "html": "<div class=\"rs\"><div class=\"fr post\">POST<br><small>1:1</small></div><div class=\"ar\">➜</div><div class=\"fr story\">STORY<br><small>9:16</small></div></div>",
+      "anim": [
+       "tl.fromTo(\".rs .story\",{scaleY:0.3,opacity:0},{scaleY:1,opacity:1,duration:0.5,ease:\"back.out(1.6)\"},{T}+0.7);"
+      ]
+     }
+    },
+    {
+     "f": 0.801,
+     "text": "*[n]EK *[n]CLICK mein 🖱️"
+    }
+   ]
+  },
+  {
+   "dur": 1.38,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Matlab *₹2000 *BACH *GAYE! 🤑",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">DESIGNER vs CANVA</div><div class=\"t\"><b>₹2000</b> bache ✅</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 10.12,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Paise bhi bache, *TIME bhi ⏱️"
+    },
+    {
+     "f": 0.142,
+     "text": "Aaj ka *HOMEWORK 📝 Canva se"
+    },
+    {
+     "f": 0.427,
+     "text": "Apna *OFFER *POSTER banao"
+    },
+    {
+     "f": 0.689,
+     "text": "Comment mein likho *POSTER 👇",
+     "card": {
+      "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">POSTER 🎨🔥</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.7,ease:\"steps(8)\"},{T}+0.6);"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]05 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 05</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}
