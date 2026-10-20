@@ -41,6 +41,7 @@ hyperframes doctor                    # verify
 | `advizr-ai-day02/` | 90 Din AI Challenge Day 2 (ChatGPT se 30 din ka content plan), kinetic style; day02_spec.json, storyboard.jpg |
 | `advizr-ai-day03/` | 90 Din AI Challenge Day 3 (R-T-C-F prompt formula), ElevenLabs Bunty v2 voice; day03_spec.json |
 | `advizr-ai-day04/` | 90 Din AI Challenge Day 4 (Canva AI poster), ElevenLabs Bunty v2 voice; day04_spec.json |
+| `advizr-ai-day05/` | 90 Din AI Challenge Day 5 (Reel hook, first 3 sec), ElevenLabs Bunty v2 voice; day05_spec.json |
 
 ## Everyday commands (run inside a project folder)
 
