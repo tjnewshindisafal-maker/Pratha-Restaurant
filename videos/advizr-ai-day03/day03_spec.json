@@ -1,0 +1,186 @@
+{
+ "title": "Advizr Bhaiya Day 3",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 03",
+ "lines": [
+  {
+   "dur": 3.22,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Bhaiya, *CHATGPT kabhi kabhi *[n]BEKAAR jawab deta hai! 😤",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT</div><div class=\"pl\">Reel idea do</div><div class=\"pl\" style=\"background:#fff;border:2px dashed #ccc;color:#888\">1. Daily post karo<br>2. Consistent raho 😐</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 5.31,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Kyunki tum *ADHA *SAWAAL poochte ho"
+    },
+    {
+     "f": 0.424,
+     "text": "Aaj ka *FORMULA yaad karo 👇"
+    },
+    {
+     "f": 0.701,
+     "text": "*R · *T · *C · *F",
+     "card": {
+      "html": "<div class=\"rt\"><div id=\"k1\">R</div><div id=\"k2\">T</div><div id=\"k3\">C</div><div id=\"k4\">F</div></div>",
+      "anim": [
+       "tl.fromTo(\".rt div\",{scale:0,opacity:0},{scale:1,opacity:1,duration:0.35,stagger:0.18,ease:\"back.out(2)\"},{T}+0.1);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 4.23,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*R matlab *[n]ROLE 🎭",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT · Prompt</div><div class=\"pl\" id=\"nw0\"><b>Role:</b> Tum ek expert Instagram marketer ho</div></div>",
+      "anim": [
+       "tl.fromTo(\"#nw0\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:1.0,ease:\"steps(16)\"},{T}+0.6);"
+      ]
+     }
+    },
+    {
+     "f": 0.338,
+     "text": "Bolo: Tum ek *EXPERT Instagram marketer ho"
+    }
+   ]
+  },
+  {
+   "dur": 3.59,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*T matlab *[n]TASK 🎯",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT · Prompt</div><div class=\"pl\"><b>Role:</b> Tum ek expert Instagram marketer ho</div><div class=\"pl\" id=\"nw1\"><b>Task:</b> Mere gym ke liye 5 reel ideas do</div></div>",
+      "anim": [
+       "tl.fromTo(\"#nw1\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:1.0,ease:\"steps(16)\"},{T}+0.6);"
+      ]
+     }
+    },
+    {
+     "f": 0.401,
+     "text": "Mere gym ke liye *5 *REEL *IDEAS do"
+    }
+   ]
+  },
+  {
+   "dur": 5.09,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*C matlab *[n]CONTEXT 📍",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT · Prompt</div><div class=\"pl\"><b>Role:</b> Tum ek expert Instagram marketer ho</div><div class=\"pl\"><b>Task:</b> Mere gym ke liye 5 reel ideas do</div><div class=\"pl\" id=\"nw2\"><b>Context:</b> Pune, customer 25-40, office wale</div></div>",
+      "anim": [
+       "tl.fromTo(\"#nw2\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:1.0,ease:\"steps(16)\"},{T}+0.6);"
+      ]
+     }
+    },
+    {
+     "f": 0.373,
+     "text": "*PUNE mein, customer *25-40 saal, *OFFICE wale"
+    }
+   ]
+  },
+  {
+   "dur": 4.46,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*F matlab *[n]FORMAT 📊",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT · Prompt</div><div class=\"pl\"><b>Role:</b> Tum ek expert Instagram marketer ho</div><div class=\"pl\"><b>Task:</b> Mere gym ke liye 5 reel ideas do</div><div class=\"pl\"><b>Context:</b> Pune, customer 25-40, office wale</div><div class=\"pl\" id=\"nw3\"><b>Format:</b> Table mein, hook + caption ke saath</div></div>",
+      "anim": [
+       "tl.fromTo(\"#nw3\",{opacity:0,clipPath:\"inset(0 100% 0 0)\"},{opacity:1,clipPath:\"inset(0 0% 0 0)\",duration:1.0,ease:\"steps(16)\"},{T}+0.6);"
+      ]
+     }
+    },
+    {
+     "f": 0.409,
+     "text": "*TABLE mein do, *HOOK aur *CAPTION ke saath"
+    }
+   ]
+  },
+  {
+   "dur": 3.34,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Arre! 😲"
+    },
+    {
+     "f": 0.156,
+     "text": "Same ChatGPT, par jawab *EKDUM *PROFESSIONAL! 🤩",
+     "card": {
+      "html": "<div class=\"tbl\"><div class=\"tblhd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />5 Reel Ideas · Table</div><table><tr><th>Hook</th><th>Caption</th></tr><tr id=\"tr0\"><td>Roz gym, phir bhi pet? 🤔</td><td>Ye 3 galti mat karo</td></tr><tr id=\"tr1\"><td>Office ke baad 20 min 💼</td><td>Shortcut workout</td></tr><tr id=\"tr2\"><td>Diet myth: roti band? ❌</td><td>Sach jaano</td></tr><tr id=\"tr3\"><td>...</td><td>...</td></tr></table></div>",
+      "anim": [
+       "tl.fromTo(\".tbl tr[id]\",{opacity:0,x:-40},{opacity:1,x:0,duration:0.3,stagger:0.3},{T}+0.3);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 9.5,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*[g]BILKUL!"
+    },
+    {
+     "f": 0.069,
+     "text": "Achha *SAWAAL = achha *JAWAB ✅"
+    },
+    {
+     "f": 0.256,
+     "text": "Aaj ka *HOMEWORK 📝"
+    },
+    {
+     "f": 0.363,
+     "text": "*R-T-C-F se prompt likho, *COMMENT mein daalo 👇",
+     "card": {
+      "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Role: expert... 📝</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.9,ease:\"steps(10)\"},{T}+0.8);"
+      ]
+     }
+    },
+    {
+     "f": 0.806,
+     "text": "*BEST *PROMPT kal ki reel mein! 🏆"
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]04 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 04</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}
