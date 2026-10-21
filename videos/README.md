@@ -46,6 +46,7 @@ hyperframes doctor                    # verify
 | `advizr-ai-day07/` | 90 Din AI Challenge Day 7 (Google review replies with AI), ElevenLabs Bunty v2 voice; day07_spec.json |
 | `advizr-ai-day08/` | 90 Din AI Challenge Day 8 (Instagram SEO captions + hashtags), ElevenLabs Bunty v2 voice; day08_spec.json |
 | `advizr-ai-day09/` | 90 Din AI Challenge Day 9 (product photo with Canva AI), ElevenLabs Bunty v2 voice; day09_spec.json |
+| `advizr-ai-day10/` | 90 Din AI Challenge Day 10 (10-day recap, first client cliffhanger), ElevenLabs Bunty v2 voice; day10_spec.json |
 
 ## Everyday commands (run inside a project folder)
 

@@ -1,0 +1,166 @@
+{
+ "title": "Advizr Bhaiya Day 10",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 10",
+ "lines": [
+  {
+   "dur": 4.29,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Rahul,"
+    },
+    {
+     "f": 0.2,
+     "text": "*10 *DIN ho gaye! 🎉",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">90 DIN AI CHALLENGE</div><div class=\"t\"><b>10</b>/90 ✅</div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.643,
+     "text": "Batao, *KYA *SEEKHA?"
+    }
+   ]
+  },
+  {
+   "dur": 5.09,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*CHATGPT se 30 din ka plan, *R-T-C-F prompt",
+     "card": {
+      "html": "<div class=\"chk\"><div id=\"c1\"><span>✅</span>Day 2 · ChatGPT 30 din plan</div><div id=\"c2\"><span>✅</span>Day 3 · R-T-C-F prompt</div><div id=\"c3\"><span>✅</span>Day 4 · Canva poster</div><div id=\"c4\"><span>✅</span>Day 5 · 3 sec hook</div></div>",
+      "anim": [
+       "tl.fromTo([\"#c1\",\"#c2\",\"#c3\",\"#c4\"],{opacity:0,x:-40},{opacity:1,x:0,duration:0.3,stagger:0.9},{T}+0.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.609,
+     "text": "*CANVA se poster, *3 *SECOND ka hook!"
+    }
+   ]
+  },
+  {
+   "dur": 5.26,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*WHATSAPP auto reply, *GOOGLE review ka jawab, caption mein *KEYWORDS",
+     "card": {
+      "html": "<div class=\"chk\"><div id=\"c5\"><span>✅</span>Day 6 · WhatsApp auto reply</div><div id=\"c6\"><span>✅</span>Day 7 · Google reviews</div><div id=\"c7\"><span>✅</span>Day 8 · Instagram SEO</div><div id=\"c8\"><span>✅</span>Day 9 · AI product photo</div></div>",
+      "anim": [
+       "tl.fromTo([\"#c5\",\"#c6\",\"#c7\",\"#c8\"],{opacity:0,x:-40},{opacity:1,x:0,duration:0.3,stagger:1.0},{T}+0.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.688,
+     "text": "Aur *AI se product photo! 📸"
+    }
+   ]
+  },
+  {
+   "dur": 2.04,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Sab *[g]FREE tools se. Ab *[n]ASLI *[n]TEST 🔥",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">KHARCHA</div><div class=\"t\"><b>₹0</b> 🆓</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 5.14,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Kal se ek *ASLI *BUSINESS ka Instagram tum sambhaloge"
+    },
+    {
+     "f": 0.541,
+     "text": "*PUNE ka ek chhota *CAFE ☕",
+     "card": {
+      "html": "<div class=\"cl\"><div class=\"bdg\">NEW CLIENT 🎉</div><div class=\"ic\">☕</div><div class=\"nm2\">Pune ka chhota cafe</div><div class=\"sb\">Instagram: Rahul sambhalega</div></div>",
+      "anim": [
+       "tl.fromTo(\".cl .bdg\",{scale:0},{scale:1,duration:0.4,ease:\"back.out(2.5)\"},{T}+0.6);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 3.55,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Kya? *ASLI *CLIENT?! Bhaiya, main kar paunga? 😰",
+     "card": {
+      "html": "<div class=\"pg\"><div class=\"hd3\"><span>Rahul ka safar</span><span>Day 10/90</span></div><div class=\"bar2\"><div class=\"fl\" id=\"fl\"></div></div><div class=\"ft\"><span>Day 0: kuch nahi 😅</span><span>Day 90: asli campaign 🚀</span></div></div>",
+      "anim": [
+       "tl.fromTo(\"#fl\",{width:\"0%\"},{width:\"11%\",duration:1.2,ease:\"power2.out\"},{T}+0.3);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 2.45,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "10 din pehle tumhe *[n]KUCH *[n]NAHI aata tha"
+    },
+    {
+     "f": 0.8,
+     "text": "Ab *DEKHO! 💪"
+    }
+   ]
+  },
+  {
+   "dur": 7.41,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Aap bhi bataiye: kaun sa *TOOL try kiya?"
+    },
+    {
+     "f": 0.529,
+     "text": "*COMMENT karo! 👇",
+     "card": {
+      "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">Canva + ChatGPT 🔥</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.8,ease:\"steps(9)\"},{T}+0.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.632,
+     "text": "Aur *FOLLOW karo! 🔔"
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW karo, varna *[n]CAFE *[n]CHALLENGE miss! ☕",
+  "card": {
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 11</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}
