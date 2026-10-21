@@ -1,0 +1,174 @@
+{
+ "title": "Advizr Bhaiya Day 8",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 08",
+ "lines": [
+  {
+   "dur": 3.27,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Bhaiya, main *30 *HASHTAG lagata hoon 😩",
+     "card": {
+      "html": "<div class=\"rv\"><div class=\"hd\"><img class=\"brand\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" />Rahul ki post</div><div class=\"tx\" style=\"color:#1a5fb4;font-size:28px;line-height:1.4\">#gym #fitness #love #instagood #motivation #photooftheday #happy #follow #like4like #reels #trending #viral #fun #life …</div><div class=\"nm\" style=\"font-size:30px;color:#d32f2f;font-weight:900\">Reach: 37 📉</div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.627,
+     "text": "Phir bhi *[n]REACH nahi aati!"
+    }
+   ]
+  },
+  {
+   "dur": 5.19,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.125,
+     "text": "Ab Instagram ek *SEARCH *ENGINE hai 🔍"
+    },
+    {
+     "f": 0.593,
+     "text": "Log type karte hain: *GYM *IN *PUNE",
+     "card": {
+      "html": "<div class=\"srch\"><img class=\"brand\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><span>🔍</span><span id=\"sq\">gym in pune</span></div>",
+      "anim": [
+       "tl.fromTo(\"#sq\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:1.0,ease:\"steps(11)\"},{T}+1.6);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 3.83,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Caption ki *PEHLI *LINE mein wahi *SHABD jo customer *SEARCH karta hai",
+     "card": {
+      "html": "<div class=\"rv\"><div class=\"hd\"><img class=\"brand\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" />Caption</div><div class=\"tx\"><span style=\"background:#fff3b0;padding:2px 6px;border-radius:6px\">Pune ka gym 💪 Kothrud mein, 6 AM se</span></div><div class=\"nm\" style=\"font-size:28px\">…baaki caption neeche</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 5.17,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*CHATGPT ko bolo:",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT · Prompt</div><div class=\"pl\" id=\"kp\">Pune ke gym ke liye 10 keywords do jo log Instagram pe search karte hain</div></div>",
+      "anim": [
+       "tl.fromTo(\"#kp\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:2.6,ease:\"steps(26)\"},{T}+0.9);"
+      ]
+     }
+    },
+    {
+     "f": 0.271,
+     "text": "Pune gym ke liye *10 *KEYWORDS do 🔑"
+    }
+   ]
+  },
+  {
+   "dur": 0.75,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Aur *HASHTAG? 🤔"
+    }
+   ]
+  },
+  {
+   "dur": 7.32,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Sirf *3 se *5! ✋"
+    },
+    {
+     "f": 0.214,
+     "text": "Ek *AREA ka 📍",
+     "card": {
+      "html": "<div class=\"htg\"><div id=\"t1\">#Kothrud</div><div id=\"t2\">#GymInPune</div><div id=\"t3\">#YourGymName</div></div>",
+      "anim": [
+       "tl.fromTo(\"#t1\",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:\"back.out(2)\"},{T}+0.05);",
+       "tl.fromTo(\"#t2\",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:\"back.out(2)\"},{T}+1.2);",
+       "tl.fromTo(\"#t3\",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:\"back.out(2)\"},{T}+2.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.395,
+     "text": "Ek *BUSINESS ka 💪"
+    },
+    {
+     "f": 0.542,
+     "text": "Ek apne *BRAND ka ⭐"
+    },
+    {
+     "f": 0.713,
+     "text": "*30 hashtag = *[n]SPAM ❌"
+    }
+   ]
+  },
+  {
+   "dur": 2.26,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Matlab *SAHI *SHABD, *SAHI *JAGAH! 🎯",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">INSTAGRAM SEO</div><div class=\"t\">Sahi shabd = <b>🎯</b></div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 8.43,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*[g]HAAN!"
+    },
+    {
+     "f": 0.072,
+     "text": "Aaj ka *HOMEWORK 📝"
+    },
+    {
+     "f": 0.24,
+     "text": "Pichhli post ka caption *KEYWORDS ke saath likho"
+    },
+    {
+     "f": 0.591,
+     "text": "Comment mein likho *SEO 👇",
+     "card": {
+      "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">SEO 🔍✅</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.5,ease:\"steps(6)\"},{T}+0.4);"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]09 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 09</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}
