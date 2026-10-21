@@ -1,0 +1,176 @@
+{
+ "title": "Advizr Bhaiya Day 9",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 09",
+ "lines": [
+  {
+   "dur": 6.34,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Bhaiya, meri *PRODUCT *PHOTO ekdum *[n]GHAR jaisi lagti hai 😩",
+     "card": {
+      "html": "<div class=\"ph\"><div class=\"pic messy\">🥤</div><div class=\"cap\">Ghar wali photo 😬<br><span>Photographer: ₹5000 💸</span></div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.61,
+     "text": "Photographer *₹5000 maang raha hai!"
+    }
+   ]
+  },
+  {
+   "dur": 2.2,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*PHONE se photo lo, *KHIDKI wali roshni 🪟",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">FREE SETUP</div><div class=\"t\">📱 + 🪟 <b>roshni</b></div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 3.91,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Canva mein *BACKGROUND *REMOVER ✂️",
+     "card": {
+      "html": "<div class=\"ph\"><div class=\"hd2\"><img class=\"gptdot\" src=\"assets/img/canva.svg\" alt=\"Canva\" />Canva · Background Remover</div><div class=\"pair\"><div class=\"pic messy\">🥤</div><div class=\"ar2\">➜</div><div class=\"pic clear\" id=\"cl\">🥤</div></div></div>",
+      "anim": [
+       "tl.fromTo(\"#cl\",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.4,ease:\"back.out(2)\"},{T}+1.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.529,
+     "text": "*[n]EK *[n]CLICK mein kachra *GAYAB!"
+    }
+   ]
+  },
+  {
+   "dur": 5.4,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Ab *MAGIC *EDIT mein likho:",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\" style=\"color:#7d2ae8\"><img class=\"gptdot\" src=\"assets/img/canva.svg\" alt=\"Canva\" />Canva · Magic Edit</div><div class=\"pl\" id=\"me\">Gym ke andar, table pe rakha hua</div></div>",
+      "anim": [
+       "tl.fromTo(\"#me\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:1.6,ease:\"steps(18)\"},{T}+1.2);"
+      ]
+     }
+    },
+    {
+     "f": 0.289,
+     "text": "*GYM ke andar,"
+    },
+    {
+     "f": 0.513,
+     "text": "*TABLE pe rakha hua"
+    },
+    {
+     "f": 0.724,
+     "text": "*AI naya background bana dega ✨"
+    }
+   ]
+  },
+  {
+   "dur": 2.03,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Arre, ye toh *AD jaisi photo! 🤩",
+     "card": {
+      "html": "<div class=\"ph\"><div class=\"pic gym\" id=\"gy\">🥤<div class=\"tag\">AD READY ✨</div></div></div>",
+      "anim": [
+       "tl.fromTo(\"#gy\",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.45,ease:\"back.out(1.8)\"},{T}+0.1);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 4.18,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Bas ek *DHYAN rakho ⚠️"
+    },
+    {
+     "f": 0.285,
+     "text": "Product *ASLI hi dikhao",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">⚠️ RULE</div><div class=\"t\">Product <b>ASLI</b> dikhao</div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.653,
+     "text": "Customer ko *[n]DHOKA nahi! ❌"
+    }
+   ]
+  },
+  {
+   "dur": 3.45,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Samajh gaya bhaiya!"
+    },
+    {
+     "f": 0.38,
+     "text": "Photo *SUNDAR, product *[g]SACHCHA! ✅",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">PHOTO SUNDAR +</div><div class=\"t\">Product <b>sachcha</b> ✅</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 5.76,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*[g]BILKUL!"
+    },
+    {
+     "f": 0.108,
+     "text": "Aaj ka *HOMEWORK 📝"
+    },
+    {
+     "f": 0.335,
+     "text": "*BEFORE-*AFTER photo banao, comment mein likho *PHOTO 👇",
+     "card": {
+      "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">PHOTO 📸✨</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.6,ease:\"steps(7)\"},{T}+1.6);"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]10 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 10</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}
