@@ -1,0 +1,156 @@
+{
+ "title": "Advizr Bhaiya Day 7",
+ "pill": "🔥 <b>90 DIN AI CHALLENGE</b> · DAY 07",
+ "lines": [
+  {
+   "dur": 6.27,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Bhaiya, Google pe customer ne *2 *STAR diya 😡",
+     "card": {
+      "html": "<div class=\"rv\"><div class=\"hd\"><img class=\"brand\" src=\"assets/img/google.svg\" alt=\"Google\" />Google Review</div><div class=\"st\">★★<span>★★★</span></div><div class=\"tx\">Trainer late aaya, AC bhi band tha 😠</div><div class=\"nm\">— Rohit S. · 2 din pehle</div></div>",
+      "anim": []
+     }
+    },
+    {
+     "f": 0.561,
+     "text": "Ab kya karoon? *[n]GUSSA aa raha hai!"
+    }
+   ]
+  },
+  {
+   "dur": 5.93,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*GUSSA nahi, *[g]REPLY! ✋"
+    },
+    {
+     "f": 0.243,
+     "text": "Kyunki *NAYE *CUSTOMER review se zyada"
+    },
+    {
+     "f": 0.754,
+     "text": "Tumhara *REPLY padhte hain 👀",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">NAYA CUSTOMER PADHTA HAI 👀</div><div class=\"t\">Review + <b>REPLY</b></div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 7.67,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*CHATGPT ko bolo:",
+     "card": {
+      "html": "<div class=\"gpt\"><div class=\"hd\"><img class=\"gptdot\" src=\"assets/img/chatgpt-logo.svg\" alt=\"ChatGPT\" />ChatGPT · Prompt</div><div class=\"pl\" id=\"rp\">Is review ka polite reply likho. Sorry bolo, problem fix karne ka promise karo, aur call karne ko bolo.</div></div>",
+      "anim": [
+       "tl.fromTo(\"#rp\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:3.2,ease:\"steps(30)\"},{T}+0.8);"
+      ]
+     }
+    },
+    {
+     "f": 0.169,
+     "text": "Is review ka *POLITE reply likho"
+    },
+    {
+     "f": 0.459,
+     "text": "*SORRY bolo 🙏"
+    },
+    {
+     "f": 0.601,
+     "text": "*FIX ka promise, *CALL karne ko bolo 📞"
+    }
+   ]
+  },
+  {
+   "dur": 2.11,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Wah, kitna *PROFESSIONAL lag raha hai! 🤩",
+     "card": {
+      "html": "<div class=\"rv\"><div class=\"hd\"><img class=\"brand\" src=\"assets/img/google.svg\" alt=\"Google\" />Google Review</div><div class=\"st\">★★<span>★★★</span></div><div class=\"tx\">Trainer late aaya, AC bhi band tha 😠</div><div class=\"nm\">— Rohit S. · 2 din pehle</div><div class=\"or\" id=\"orp\"><b>Owner ka reply:</b> Sorry Rohit ji 🙏 Aapki baat sahi hai. Trainer timing aur AC dono fix kar diye hain. Ek baar call karein, free session humari taraf se!</div></div>",
+      "anim": [
+       "tl.fromTo(\"#orp\",{opacity:0,y:30},{opacity:1,y:0,duration:0.4,ease:\"back.out(1.6)\"},{T}+0.2);"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "dur": 5.65,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*ACHHE reviews ka bhi reply karo ⭐"
+    },
+    {
+     "f": 0.382,
+     "text": "Har reply se *GOOGLE profile *[n]UPAR dikhata hai 📈",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\" style=\"display:flex;align-items:center;justify-content:center;gap:12px\"><img class=\"brand\" src=\"assets/img/google.svg\" alt=\"Google\" />GOOGLE PROFILE</div><div class=\"t\">Rank <b>⬆️ 📈</b></div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 2.65,
+   "who": "R",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "Matlab *BURA *REVIEW bhi *MAUKA hai! 💡",
+     "card": {
+      "html": "<div class=\"ct\"><div class=\"s\">BURA REVIEW =</div><div class=\"t\"><b>MAUKA</b> 💡</div></div>",
+      "anim": []
+     }
+    }
+   ]
+  },
+  {
+   "dur": 8.4,
+   "who": "B",
+   "phrases": [
+    {
+     "f": 0.0,
+     "text": "*[g]BILKUL!"
+    },
+    {
+     "f": 0.082,
+     "text": "Homework: *5 *REVIEWS ka reply karo, ChatGPT se ⭐"
+    },
+    {
+     "f": 0.756,
+     "text": "*KITNE kiye, *COMMENT mein batao 👇",
+     "card": {
+      "html": "<div class=\"cbox\"><img class=\"brand sm\" src=\"assets/img/instagram.svg\" alt=\"Instagram\" /><div class=\"av\"></div><span class=\"tx\" id=\"ctx\">5 reply done ✅⭐</span><div class=\"send\">➤</div></div>",
+      "anim": [
+       "tl.fromTo(\"#ctx\",{clipPath:\"inset(0 100% 0 0)\"},{clipPath:\"inset(0 0% 0 0)\",duration:0.8,ease:\"steps(9)\"},{T}+0.6);"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "end": {
+  "hold": 3.0,
+  "text": "*FOLLOW kar lo, varna *[n]DAY *[n]08 miss! 🔥",
+  "card": {
+   "html": "<div class=\"fol\"><div class=\"logotile\"><img src=\"assets/img/advizr-logo.svg\" alt=\"Advizr Media\" /></div><div class=\"nm\">Advizr Media</div><div class=\"btn\" id=\"fb\">+ Follow for Day 08</div></div>",
+   "anim": [
+    "tl.fromTo(\"#fb\",{scale:1},{scale:1.07,duration:0.4,yoyo:true,repeat:3,ease:\"sine.inOut\",immediateRender:false},{T}+0.8);"
+   ]
+  }
+ }
+}
