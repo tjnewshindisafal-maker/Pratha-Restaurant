@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in — ChatPilot</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="auth">
+    <a class="logo" href="/">Chat<span>Pilot</span></a>
+    <div class="card" style="margin-top:16px">
+      <div class="tabs">
+        <button type="button" data-tab="login" class="active">Log in</button>
+        <button type="button" data-tab="signup">Create account</button>
+      </div>
+
+      <form id="login">
+        <label for="l-email">Email</label>
+        <input id="l-email" name="email" type="email" autocomplete="email" required />
+        <label for="l-pass">Password</label>
+        <input id="l-pass" name="password" type="password" autocomplete="current-password" required />
+        <div class="error"></div>
+        <button class="btn" style="width:100%">Log in</button>
+      </form>
+
+      <form id="signup" class="hidden">
+        <label for="s-name">Your name</label>
+        <input id="s-name" name="name" autocomplete="name" required />
+        <label for="s-biz">Business name</label>
+        <input id="s-biz" name="business" placeholder="e.g. Sharma Dental Clinic" required />
+        <label for="s-email">Email</label>
+        <input id="s-email" name="email" type="email" autocomplete="email" required />
+        <label for="s-pass">Password <span class="muted">(min 8 characters)</span></label>
+        <input id="s-pass" name="password" type="password" minlength="8" autocomplete="new-password" required />
+        <div class="error"></div>
+        <button class="btn" style="width:100%">Create free account</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const forms = { login: document.getElementById('login'), signup: document.getElementById('signup') };
+    function show(tab) {
+      for (const [name, form] of Object.entries(forms)) form.classList.toggle('hidden', name !== tab);
+      document.querySelectorAll('.tabs button').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
+    }
+    document.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
+    if (location.hash === '#signup') show('signup');
+
+    for (const [name, form] of Object.entries(forms)) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const err = form.querySelector('.error');
+        btn.disabled = true;
+        err.textContent = '';
+        try {
+          const res = await fetch(`/api/${name}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(new FormData(form))),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error);
+          location.href = '/app';
+        } catch (ex) {
+          err.textContent = ex.message || 'Something went wrong';
+          btn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

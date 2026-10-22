@@ -24,7 +24,7 @@ function normalizePhone(raw, countryCode = '91') {
 function messagesThisMonth(db, workspaceId) {
   const monthStart = sqlNow().slice(0, 7) + '-01 00:00:00';
   return db.prepare(
-    "SELECT COUNT(*) AS n FROM messages WHERE workspace_id = ? AND direction = 'out' AND status != 'failed' AND created_at >= ?"
+    "SELECT COUNT(*) AS n FROM messages WHERE workspace_id = ? AND direction = 'out' AND status NOT IN ('failed', 'simulated') AND created_at >= ?"
   ).get(workspaceId, monthStart).n;
 }
 

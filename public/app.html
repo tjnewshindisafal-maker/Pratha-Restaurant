@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — ChatPilot</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <a class="logo" href="#overview">Chat<span>Pilot</span></a>
+      <a class="nav-link" href="#overview">📊 Overview</a>
+      <a class="nav-link" href="#inbox">💬 Inbox</a>
+      <a class="nav-link" href="#contacts">👥 Contacts</a>
+      <a class="nav-link" href="#rules">🤖 Auto-replies</a>
+      <a class="nav-link" href="#broadcasts">📣 Broadcasts</a>
+      <a class="nav-link" href="#reminders">⏰ Reminders</a>
+      <a class="nav-link" href="#simulator">🧪 Test bot</a>
+      <a class="nav-link" href="#settings">⚙️ Settings</a>
+      <div class="bottom">
+        <div id="biz-name" style="font-weight:700"></div>
+        <div id="conn-status" class="small"></div>
+        <button class="btn ghost sm" id="logout" style="margin-top:8px">Log out</button>
+      </div>
+    </aside>
+    <main class="content">
+      <button class="btn ghost sm menu-btn" id="menu-btn" style="margin-bottom:12px">☰ Menu</button>
+      <div id="view"></div>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
