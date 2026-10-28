@@ -3,21 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pratha Restaurant</title>
+  <title>Pratha Restaurant — Pure Veg Indian Kitchen</title>
+  <meta name="description" content="Pratha Restaurant — fresh North &amp; South Indian food, thalis, parathas and live counters. Dine in, take away or order on WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Pratha Restaurant</h1>
+  <!-- Top strip -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>Pratha Restaurant · Open daily 11 am – 11 pm</span>
+      <a href="tel:+910000000000" class="js-phone-link"><span class="js-phone">+91 00000 00000</span></a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="Pratha Restaurant home">
+        <span class="logo__mark">P</span>
+        <span class="logo__text">Pratha<small>Restaurant</small></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#menu">Menu</a>
+        <a href="#thalis">Thalis</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-btn" id="searchOpen" aria-label="Search dishes">⌕</button>
+        <a href="tel:+910000000000" class="btn btn--grad btn--sm js-phone-link">☎ Call</a>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <!-- Search panel -->
+    <div class="search" id="search" hidden>
+      <div class="container">
+        <div class="search__box">
+          <span>⌕</span>
+          <input type="search" id="searchInput" placeholder="Search dishes — try “paneer”, “dosa” or “lassi”" autocomplete="off" />
+          <button class="icon-btn" id="searchClose" aria-label="Close search">✕</button>
+        </div>
+        <ul class="search__results" id="searchResults"></ul>
+      </div>
+    </div>
   </header>
 
   <main>
-    <p>Welcome to Pratha Restaurant. Content coming soon.</p>
+    <!-- Hero slider -->
+    <section class="hero" aria-label="Highlights">
+      <div class="hero__slides" id="heroSlides">
+        <article class="hero__slide is-active" style="--bg: radial-gradient(circle at 75% 40%, #E07B12 0%, #7A0A22 55%, #26160A 100%);">
+          <div class="container hero__content">
+            <span class="kicker">Fresh off the tawa</span>
+            <h1>Ghar jaisa khana, <span class="script">restaurant</span> wala swaad</h1>
+            <p>Hand-rolled parathas, slow-cooked dals and thalis made fresh every service.</p>
+            <div class="hero__ctas">
+              <a href="#menu" class="btn btn--grad">See the menu →</a>
+              <a href="#" class="btn btn--ghost js-wa">✆ Order on WhatsApp</a>
+            </div>
+          </div>
+          <div class="hero__art" aria-hidden="true">🫓</div>
+        </article>
+        <article class="hero__slide" style="--bg: radial-gradient(circle at 75% 40%, #F2C044 0%, #B00C2C 55%, #1B1B2F 100%);">
+          <div class="container hero__content">
+            <span class="kicker">Lunch &amp; dinner</span>
+            <h1>Unlimited <span class="script">thali</span> every day</h1>
+            <p>Two sabzis, dal, rice, roti, raita, papad and a sweet — refilled at your table.</p>
+            <div class="hero__ctas">
+              <a href="#thalis" class="btn btn--grad">View thalis →</a>
+              <a href="#contact" class="btn btn--ghost">Reserve a table</a>
+            </div>
+          </div>
+          <div class="hero__art" aria-hidden="true">🍛</div>
+        </article>
+        <article class="hero__slide" style="--bg: radial-gradient(circle at 75% 40%, #E8113C 0%, #3a2313 60%, #141414 100%);">
+          <div class="container hero__content">
+            <span class="kicker">Parties &amp; catering</span>
+            <h1>Birthdays, kitty parties <span class="script">&amp; more</span></h1>
+            <p>Book our hall or order bulk food — we quote the same day.</p>
+            <div class="hero__ctas">
+              <a href="#contact" class="btn btn--grad">Get a quote →</a>
+              <a href="tel:+910000000000" class="btn btn--ghost js-phone-link">☎ Call us</a>
+            </div>
+          </div>
+          <div class="hero__art" aria-hidden="true">🎉</div>
+        </article>
+      </div>
+      <button class="hero__arrow hero__arrow--prev" id="heroPrev" aria-label="Previous slide">‹</button>
+      <button class="hero__arrow hero__arrow--next" id="heroNext" aria-label="Next slide">›</button>
+      <div class="hero__dots" id="heroDots"></div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <h2>Explore our menu</h2>
+          <span class="script script--accent">Pure veg, made fresh every day</span>
+        </div>
+        <div class="cats" id="cats"></div>
+      </div>
+    </section>
+
+    <!-- Dish rows (rendered by JS) -->
+    <div id="rows"></div>
+
+    <!-- Thalis -->
+    <section class="section section--tint" id="thalis">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <span class="eyebrow">Most ordered</span>
+            <h2>Thalis &amp; combos</h2>
+            <p class="muted">One plate, the whole meal. Prices are indicative — ask us for today’s spread.</p>
+          </div>
+        </div>
+        <div class="packages" id="packages"></div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <h2>Order in three easy steps</h2>
+          <span class="script script--accent">You just enjoy the food</span>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="step__num">1</span><h3>Pick your dishes</h3><p>Browse the menu and tap “Add” on whatever you’re craving.</p></div>
+          <div class="step"><span class="step__num">2</span><h3>Send on WhatsApp</h3><p>Your order goes to us with the total — no app, no sign-up.</p></div>
+          <div class="step"><span class="step__num">3</span><h3>Eat hot &amp; fresh</h3><p>We confirm, cook it fresh, and keep it ready for pickup or delivery.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section--tint" id="about">
+      <div class="container about">
+        <div>
+          <span class="eyebrow">Our story</span>
+          <h2>A family kitchen, not a factory</h2>
+          <p>Pratha started with one simple idea — food the way it’s cooked at home: fresh masalas ground in-house, desi ghee where it matters, and nothing re-heated from yesterday.</p>
+          <p>Whether it’s a quick paratha breakfast or a family dinner, the same team cooks every plate.</p>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>100%</strong><span>Pure vegetarian</span></div>
+          <div class="stat"><strong>60+</strong><span>Dishes on the menu</span></div>
+          <div class="stat"><strong>Fresh</strong><span>Cooked every service</span></div>
+          <div class="stat"><strong>Hall</strong><span>For parties &amp; events</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="section__head section__head--center"><h2>Common questions</h2></div>
+        <div class="faq" id="faq"></div>
+      </div>
+    </section>
+
+    <!-- Contact / enquiry -->
+    <section class="section section--tint" id="contact">
+      <div class="container contact">
+        <div>
+          <span class="eyebrow">Reservations &amp; parties</span>
+          <h2>Tell us what you’re planning</h2>
+          <p class="muted">Fill this in and it opens WhatsApp with your message ready to send.</p>
+          <div class="contact__card">
+            <strong>Pratha Restaurant</strong>
+            <p class="js-address">Address — to be updated</p>
+            <p><a href="tel:+910000000000" class="js-phone-link"><span class="js-phone">+91 00000 00000</span></a></p>
+            <p><a href="#" class="js-wa">WhatsApp us</a></p>
+            <p class="muted">Open daily, 11 am – 11 pm</p>
+          </div>
+        </div>
+        <form class="form" id="enquiry" novalidate>
+          <label>Your name<input name="name" required /></label>
+          <label>Phone<input name="phone" type="tel" inputmode="tel" required /></label>
+          <div class="form__row">
+            <label>Date<input name="date" type="date" /></label>
+            <label>Guests<input name="guests" type="number" min="1" value="2" /></label>
+          </div>
+          <label>What are you planning?
+            <select name="type">
+              <option>Table reservation</option>
+              <option>Birthday / party</option>
+              <option>Bulk order / catering</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label>Message<textarea name="message" rows="3" placeholder="Anything we should know?"></textarea></label>
+          <p class="form__error" id="formError" role="alert"></p>
+          <button class="btn btn--grad btn--block" type="submit">Send enquiry</button>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Pratha Restaurant</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__cta">
+      <div class="container footer__cta-inner">
+        <div>
+          <span class="script">Hungry already?</span>
+          <h2>Ready to order?</h2>
+          <p>Call or WhatsApp us — we’ll have it hot and ready.</p>
+        </div>
+        <div class="hero__ctas">
+          <a href="#menu" class="btn btn--light">Order now →</a>
+          <a href="#" class="btn btn--ghost js-wa">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__grid">
+      <div>
+        <a href="#top" class="logo logo--light"><span class="logo__mark">P</span><span class="logo__text">Pratha<small>Restaurant</small></span></a>
+        <p>Pure vegetarian North &amp; South Indian food — dine in, takeaway, parties and catering.</p>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul id="footerCats"></ul>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="#thalis">Thalis</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#contact">Reservations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p class="js-address">Address — to be updated</p>
+        <p><a href="tel:+910000000000" class="js-phone-link"><span class="js-phone">+91 00000 00000</span></a></p>
+        <p>Daily · 11 am – 11 pm</p>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> Pratha Restaurant. All rights reserved.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </footer>
+
+  <!-- Floating actions -->
+  <div class="fab">
+    <a href="#" class="fab__btn fab__btn--wa js-wa" aria-label="WhatsApp">✆</a>
+    <a href="tel:+910000000000" class="fab__btn js-phone-link" aria-label="Call">☎</a>
+  </div>
+
+  <!-- Order bar -->
+  <div class="orderbar" id="orderbar" hidden>
+    <div class="container orderbar__inner">
+      <div><small>Your order</small><strong id="orderTotal">₹0</strong> <span class="muted" id="orderCount"></span></div>
+      <div class="orderbar__actions">
+        <button class="btn btn--outline btn--sm" id="orderClear">Clear</button>
+        <button class="btn btn--grad btn--sm" id="orderSend">Send on WhatsApp →</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
