@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Pratha Restaurant</title>
+  <meta name="description" content="Recipes, food stories and kitchen tips from Pratha Restaurant — a fresh post every day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="blog">
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>Pratha Restaurant · Open daily 11 am – 11 pm</span>
+      <a href="tel:+910000000000" class="js-phone-link"><span class="js-phone">+91 00000 00000</span></a>
+    </div>
+  </div>
+
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="Pratha Restaurant home">
+        <span class="logo__mark">P</span>
+        <span class="logo__text">Pratha<small>Restaurant</small></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="index.html#menu">Menu</a>
+        <a href="index.html#thalis">Thalis</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="tel:+910000000000" class="btn btn--grad btn--sm js-phone-link">☎ Call</a>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="script">From our kitchen</span>
+        <h1>The Pratha Blog</h1>
+        <p>Recipes, food stories and kitchen tips — a fresh post every day.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="chips" id="blogFilters"></div>
+        <div class="posts" id="blogList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> Pratha Restaurant. All rights reserved.</span>
+      <a href="index.html">← Back to home</a>
+    </div>
+  </footer>
+
+  <div class="fab">
+    <a href="#" class="fab__btn fab__btn--wa js-wa" aria-label="WhatsApp">✆</a>
+    <a href="tel:+910000000000" class="fab__btn js-phone-link" aria-label="Call">☎</a>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="blog/posts.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>
